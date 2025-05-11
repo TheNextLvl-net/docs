@@ -6,12 +6,11 @@
     "build": "next build",
     "dev": "next dev --turbo",
     "start": "next start",
-    "build:pages": "bunx @cloudflare/next-on-pages",
-    "dev:pages": "wrangler pages dev",
+    "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
     "postinstall": "fumadocs-mdx"
   },
   "dependencies": {
-    "@cloudflare/next-on-pages": "^1.13.12",
+    "@opennextjs/cloudflare": "^1.0.2",
     "fumadocs-core": "15.3.0",
     "fumadocs-mdx": "11.6.3",
     "fumadocs-ui": "15.3.0",
