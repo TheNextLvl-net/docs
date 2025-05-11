@@ -1,9 +1,17 @@
-import { docs } from '@/.source';
-import { loader } from 'fumadocs-core/source';
-
-// See https://fumadocs.vercel.app/docs/headless/source-api for more info
+import { docs } from "@/.source"
+import { loader } from "fumadocs-core/source"
+import { createElement } from "react"
+import { DynamicIcon } from "lucide-react/dynamic"
+import dynamicIconImports from "lucide-react/dynamicIconImports"
 export const source = loader({
-  // it assigns a URL to your pages
-  baseUrl: '/docs',
+  baseUrl: "/docs",
   source: docs.toFumadocsSource(),
-});
+  icon(icon: string | undefined) {
+    if (icon && icon in dynamicIconImports) {
+      return createElement(DynamicIcon, {
+        name: icon as keyof typeof dynamicIconImports,
+      })
+    }
+    return undefined
+  },
+})
