@@ -118,6 +118,7 @@ export default function HomePage() {
             description={card.description}
             className={card.className}
             href={card.href}
+            external={false}
           />
         ))}
       </div>
@@ -137,6 +138,7 @@ export default function HomePage() {
               description={card.description}
               className={card.className}
               href={card.href}
+              external={false}
             />
           ))}
         </div>
