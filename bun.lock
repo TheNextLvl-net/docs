@@ -4,6 +4,7 @@
     "": {
       "name": "thenextlvl-docs",
       "dependencies": {
+        "@icons-pack/react-simple-icons": "^12.8.0",
         "@opennextjs/cloudflare": "^1.0.2",
         "fumadocs-core": "15.3.0",
         "fumadocs-mdx": "11.6.3",
@@ -253,6 +254,8 @@
     "@humanwhocodes/module-importer": ["@humanwhocodes/module-importer@1.0.1", "", {}, "sha512-bxveV4V8v5Yb4ncFTT3rPSgZBOpCkjfK0y4oVVVJwIuDVBRMDXrPyXRL988i5ap9m9bnyEEjWfm5WkBmtffLfA=="],
 
     "@humanwhocodes/object-schema": ["@humanwhocodes/object-schema@2.0.3", "", {}, "sha512-93zYdMES/c1D69yZiKDBj0V24vqNzB/koF26KPaagAfd3P/4gUlh3Dys5ogAK+Exi9QyzlD8x/08Zt7wIKcDcA=="],
+
+    "@icons-pack/react-simple-icons": ["@icons-pack/react-simple-icons@12.8.0", "", { "peerDependencies": { "react": "^16.13 || ^17 || ^18 || ^19" } }, "sha512-Xj6tBadpPYVaoDaXqKpSJc5AXtcXSBk+se+GsceRouYin9XvKv2at0fO5GSr1dNDc3WfZSVc1Gs7KGwUY8PfHA=="],
 
     "@img/sharp-darwin-arm64": ["@img/sharp-darwin-arm64@0.34.1", "", { "optionalDependencies": { "@img/sharp-libvips-darwin-arm64": "1.1.0" }, "os": "darwin", "cpu": "arm64" }, "sha512-pn44xgBtgpEbZsu+lWf2KNb6OAf70X68k+yk69Ic2Xz11zHR/w24/U49XT7AeRwJ0Px+mhALhU5LPci1Aymk7A=="],
 

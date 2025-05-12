@@ -10,6 +10,7 @@
     "postinstall": "fumadocs-mdx"
   },
   "dependencies": {
+    "@icons-pack/react-simple-icons": "^12.8.0",
     "@opennextjs/cloudflare": "^1.0.2",
     "fumadocs-core": "15.3.0",
     "fumadocs-mdx": "11.6.3",
