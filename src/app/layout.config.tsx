@@ -1,5 +1,6 @@
 import type { BaseLayoutProps } from "fumadocs-ui/layouts/shared"
 import Image from "next/image"
+import { SiDiscord } from "@icons-pack/react-simple-icons"
 /**
  * Shared layout configurations
  *
@@ -16,5 +17,14 @@ export const baseOptions: BaseLayoutProps = {
       </>
     ),
   },
+  links: [
+    {
+      type: "icon",
+      label: "Discord",
+      icon: <SiDiscord />,
+      text: "Discord",
+      url: "https://thenextlvl.net/discord",
+    },
+  ],
   githubUrl: "https://github.com/TheNextLvl-net",
 }
