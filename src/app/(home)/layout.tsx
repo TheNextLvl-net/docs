@@ -9,10 +9,6 @@ export default function Layout({ children }: { children: ReactNode }) {
       {...baseOptions}
       links={[
         {
-          text: "Documentation",
-          url: "/docs",
-        },
-        {
           type: "icon",
           icon: <SiDiscord />,
           text: "Discord",
