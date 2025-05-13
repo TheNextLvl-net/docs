@@ -1,3 +1,10 @@
 {
-  "root": true
+  "root": true,
+  "pages": [
+    "---Links---",
+    "[Github](https://github.com/thenextlvl-net/worlds)",
+    "[Hangar](https://hangar.papermc.io/TheNextLvl/Worlds)",
+    "---Guide---",
+    "..."
+  ]
 }
