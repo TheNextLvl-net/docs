@@ -9,7 +9,7 @@ export default function NotFound() {
           Oops! Page Not Found.
         </h2>
         <p className="text-lg text-muted-foreground">
-          We couldn't find the page you were looking for.
+          We couldn&apos;t find the page you were looking for.
         </p>
         <Link href="/">Go back home</Link>
       </div>
