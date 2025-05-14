@@ -1,0 +1,37 @@
+---
+title: Frequently Asked Questions
+---
+
+import {Accordion, Accordions} from 'fumadocs-ui/components/accordion';
+
+<Accordions type="single">
+  <Accordion
+    title="I want to use Worlds and PerWorlds but my server doesn't start"
+    id="perworlds"
+  >
+    **Worlds** already **bundles PerWorlds**.   
+    You can safely **remove** the **PerWorlds jar** file from your plugins directory.   
+    Paper will prevent the server startup if the **same plugin** is installed **twice**.
+  </Accordion>
+  <Accordion 
+    title="Error on startup: ClassNotFoundException, NoSuchFieldError, InvocationTargetException, NullPointerException"
+    id="error"
+  >
+    If you receive one of these errors on startup, it most likely means that your **server** version is **outdated**.   
+    If you are running [Folia](https://github.com/PaperMC/Folia), make sure to use the most up to date branch.   
+    If you are running Paper, make sure to use the latest build from their [website](https://papermc.io/downloads/paper).
+    
+    <p className="text-sm italic">
+      If updating doesn't fix your problem, please [look for similar issues](https://github.com/TheNextLvl-net/Worlds/issues?q=is%3Aissue) 
+      on our GitHub or [open one](https://github.com/TheNextLvl-net/worlds/issues/new?template=bug_report.yml) if you can't find anything helpful
+    </p>
+  </Accordion>
+  <Accordion 
+    title="Links don't work"
+    id="links"
+  >
+    World **Links** only **restore** vanilla behavior for **portal travel** between 2 or 3 dimensions.   
+    Links can only link one **overworld** to one **nether** and/or one **end** dimension.   
+    _This feature is not intended to be used for custom portals._
+  </Accordion>
+</Accordions>
