@@ -3,23 +3,37 @@ title: Overview
 description: World management plugin for modern Paper and Folia servers
 ---
 
-import { Plus } from "lucide-react"
-import { Import } from "lucide-react"
+import {Group, Blend, Link2, MessageCircleQuestion} from "lucide-react"
 
-## Code Block
-
-```js
-console.log("Hello World")
-```
-
-## Cards
+Here are a few selected guides that will help you get started with Worlds
 
 <Cards>
-  <Card title="Creating new worlds" href="worlds/create_world" icon={<Plus />} target="_self" />
   <Card
-    title="Importing existing worlds"
-    href="worlds/import_world"
-    icon={<Import />}
+    title="Manage"
+    description="Create, load and import worlds"
+    href="./worlds/manage"
+    icon={<Blend/>}
+    target="_self"
+  />
+  <Card
+    title="Links"
+    description="Restore vanilla portal travel behavior"
+    href="./worlds/links"
+    icon={<Link2/>}
+    target="_self"
+  />
+  <Card
+    title="PerWorlds"
+    description="Learn how to use PerWorlds"
+    href="./worlds/per-worlds"
+    icon={<Group/>}
+    target="_self"
+  />
+  <Card
+    title="Frequently Asked Questions"
+    description="Frequently asked questions about Worlds"
+    href="./worlds/faq"
+    icon={<MessageCircleQuestion/>}
     target="_self"
   />
 </Cards>
