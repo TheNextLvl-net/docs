@@ -56,6 +56,26 @@ import {Accordion, Accordions} from 'fumadocs-ui/components/accordion';
     Unlike other world management plugins, Worlds is exclusively made for modern servers offering modern features.   
     Regarding Folia, Worlds only supports Minecraft 1.21.4 and above.
   </Accordion>
+  <Accordion
+    title="Which server software does Worlds support?"
+    id="server-software"
+  >
+    The only officially supported server software are [Paper](https://papermc.io/software/paper)
+    and [Folia](https://papermc.io/software/folia)
+    although forks like [Purpur](https://purpurmc.org/) or [Pufferfish](https://pufferfish.host/downloads)
+    most likely work as well.
+    
+    <Callout type="error" title="Note">
+      Support will not be provided for non-paper based server software or unknown, arbitrary forks.   
+      Non-paper based server software will probably never be supported.   
+      Hybrids that try to support both mods and plugins are completely unsupported and will most likely not work.
+    </Callout>
+    <Callout type="warn" title="Warning">
+      Forks of Folia might not work as intended with Worlds.   
+      Forks like [Foldenor](https://github.com/Edenor-Minecraft/Foldenor) are known to break compatibility,
+      see [#8](https://github.com/Edenor-Minecraft/Foldenor/issues/8)
+    </Callout>
+  </Accordion>
   <Accordion 
     title="Can I store my worlds in a seperate directory?"
     id="world-container"
