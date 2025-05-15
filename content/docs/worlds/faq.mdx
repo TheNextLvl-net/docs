@@ -79,9 +79,10 @@ import {Accordion, Accordions} from 'fumadocs-ui/components/accordion';
     title="I want to update from v1 to v2, what do I have to consider?"
     id="upgrade-v2"
   >
-    Worlds v2 changed how worlds and links are loaded.
-    When upgrading you have to import your worlds using the command
-    
-    `/world import <world> [<key>] [<dimension>] [<generator>]`
+    Before upgrading to v2, you should delete the entire `plugins/Worlds` folder and all `*.image` files
+    in your server directory since these files are no longer used.
+    After cleaning up, you'll need to import your worlds using   
+    `/world import <world> [<key>] [<dimension>] [<generator>]`   
+    and recreate world links using `/world link create <source> <destination>`
   </Accordion>
 </Accordions>
