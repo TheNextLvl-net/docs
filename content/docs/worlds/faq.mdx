@@ -57,6 +57,19 @@ import {Accordion, Accordions} from 'fumadocs-ui/components/accordion';
     Regarding Folia, Worlds only supports Minecraft 1.21.4 and above.
   </Accordion>
   <Accordion 
+    title="Can I move my worlds to another directory?"
+    id="world-container"
+  >
+    **Yes**, you can **configure** Worlds to load worlds from another **directory**.   
+    **Bukkit** offers a simple **option** for this, see
+    [#world-container](https://docs.papermc.io/paper/reference/bukkit-configuration/#settings_world_container)
+    
+    <Callout type="warn" title="Note">
+      If you configure a custom `world-container`, world migration is not handled automatically.   
+      You have to move your world directories to your defined folder by hand.
+    </Callout>
+  </Accordion>
+  <Accordion 
     title="Which version of Worlds should I choose?"
     id="version"
   >
