@@ -8,7 +8,7 @@
     "start": "next start",
     "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
     "postinstall": "fumadocs-mdx",
-    "format": "prettier --write ."
+    "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "dependencies": {
     "@icons-pack/react-simple-icons": "^12.8.0",
