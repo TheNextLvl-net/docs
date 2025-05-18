@@ -5,10 +5,14 @@
     "[Github](https://github.com/thenextlvl-net/worlds)",
     "[Hangar](https://hangar.papermc.io/TheNextLvl/Worlds)",
     "[Metrics](https://bstats.org/plugin/bukkit/TheNextLvl%20Worlds/19652)",
+    "[Repository](https://repo.thenextlvl.net/#/releases/net/thenextlvl/worlds)",
     "---Guide---",
     "index",
     "faq",
     "manage",
-    "links"
+    "links",
+    "---For Developers---",
+    "api/repository",
+    "api/index"
   ]
 }
