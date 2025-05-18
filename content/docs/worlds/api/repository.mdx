@@ -1,0 +1,80 @@
+---
+title: Repository
+---
+
+import {Tab, Tabs} from 'fumadocs-ui/components/tabs';
+
+To start, add our repository to your project:
+
+<Tabs defaultIndex='1' groupId="language" items={['Maven', 'Gradle Kotlin', 'Gradle Groovy', 'SBT']}>
+  <Tab id="maven" value="Maven">
+    ```xml
+    <repository>
+      <id>thenextlvl-releases</id>
+      <name>TheNextLvl</name>
+      <url>https://repo.thenextlvl.net/releases</url>
+    </repository>
+    ```
+  </Tab>
+  <Tab id="kotlin" value="Gradle Kotlin">
+    ```kts
+    maven {
+      name = "thenextlvlReleases"
+      url = uri("https://repo.thenextlvl.net/releases")
+    }
+    ```
+  </Tab>
+  <Tab id="groovy" value="Gradle Groovy">
+    ```groovy
+    maven {
+      name "thenextlvlReleases"
+      url "https://repo.thenextlvl.net/releases"
+    }
+    ```
+  </Tab>
+  <Tab id="sbt" value="SBT">
+    ```scala
+    resolvers += 
+      "thenextlvl-releases" 
+        at "https://repo.thenextlvl.net/releases"
+    ```
+  </Tab>
+</Tabs>
+
+## Using the Worlds API
+
+Add Worlds' API codebase as a dependency:
+
+
+<Tabs defaultIndex='1' groupId="language" items={['Maven', 'Gradle Kotlin', 'Gradle Groovy', 'SBT']}>
+  <Tab id="maven" value="Maven">
+    ```xml
+    <dependency>
+      <groupId>net.thenextlvl</groupId>
+      <artifactId>worlds</artifactId>
+      <version>VERSION</version>
+    </dependency>
+    ```
+  </Tab>
+  <Tab id="kotlin" value="Gradle Kotlin">
+    ```kts
+    implementation("net.thenextlvl:worlds:VERSION")
+    ```
+  </Tab>
+  <Tab id="groovy" value="Gradle Groovy">
+    ```groovy
+    implementation "net.thenextlvl:worlds:VERSION"
+    ```
+  </Tab>
+  <Tab id="sbt" value="SBT">
+    ```scala
+    "net.thenextlvl" %% "worlds" %% "VERSION"
+    ```
+  </Tab>
+</Tabs>
+
+<Callout type="info" title="Note">
+  The version of the Worlds API is the same as the version of the Worlds plugin.   
+  Remember to replace `VERSION` with the version you want to use.   
+  You can find the latest version on the [releases page](https://github.com/TheNextLvl-net/worlds/releases).
+</Callout>
