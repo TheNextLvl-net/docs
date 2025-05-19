@@ -4,8 +4,8 @@ title: Repository
 
 import { Tab, Tabs } from "fumadocs-ui/components/tabs"
 import { DynamicCodeBlock } from "fumadocs-ui/components/dynamic-codeblock"
-import { LatestVersion } from "@/lib/latest-version"
-export const version = await LatestVersion("worlds")
+import { latestVersion } from "@/lib/latest-version"
+export const version = await latestVersion("worlds")
 
 To start, add our repository to your project:
 
