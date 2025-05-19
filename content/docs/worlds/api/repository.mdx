@@ -2,7 +2,10 @@
 title: Repository
 ---
 
-import {Tab, Tabs} from 'fumadocs-ui/components/tabs';
+import { Tab, Tabs } from "fumadocs-ui/components/tabs"
+import { DynamicCodeBlock } from "fumadocs-ui/components/dynamic-codeblock"
+import { LatestVersion } from "@/lib/latest-version"
+export const version = await LatestVersion("worlds")
 
 To start, add our repository to your project:
 
@@ -45,36 +48,33 @@ To start, add our repository to your project:
 
 Add Worlds' API codebase as a dependency:
 
-
-<Tabs defaultIndex='1' groupId="language" items={['Maven', 'Gradle Kotlin', 'Gradle Groovy', 'SBT']}>
+<Tabs
+  defaultIndex="1"
+  groupId="language"
+  items={["Maven", "Gradle Kotlin", "Gradle Groovy", "SBT"]}
+>
   <Tab id="maven" value="Maven">
-    ```xml
-    <dependency>
-      <groupId>net.thenextlvl</groupId>
-      <artifactId>worlds</artifactId>
-      <version>VERSION</version>
-    </dependency>
-    ```
+    <DynamicCodeBlock
+      lang="xml"
+      code={`<dependency>
+    <groupId>net.thenextlvl</groupId>
+    <artifactId>worlds</artifactId>
+    <version>${version}</version>
+</dependency>`}
+    />
   </Tab>
   <Tab id="kotlin" value="Gradle Kotlin">
-    ```kts
-    implementation("net.thenextlvl:worlds:VERSION")
-    ```
+    <DynamicCodeBlock lang="kts" code={`implementation("net.thenextlvl:worlds:${version}")`} />
   </Tab>
   <Tab id="groovy" value="Gradle Groovy">
-    ```groovy
-    implementation "net.thenextlvl:worlds:VERSION"
-    ```
+    <DynamicCodeBlock lang="groovy" code={`implementation "net.thenextlvl:worlds:${version}"`} />
   </Tab>
   <Tab id="sbt" value="SBT">
-    ```scala
-    "net.thenextlvl" %% "worlds" %% "VERSION"
-    ```
+    <DynamicCodeBlock lang="scala" code={`"net.thenextlvl" %% "worlds" %% "${version}"`} />
   </Tab>
 </Tabs>
 
 <Callout type="info" title="Note">
-  The version of the Worlds API is the same as the version of the Worlds plugin.   
-  Remember to replace `VERSION` with the version you want to use.   
-  You can find the latest version on the [releases page](https://github.com/TheNextLvl-net/worlds/releases).
+  The version of the Worlds API is the same as the version of the Worlds plugin. You can find all
+  versions on the [releases page](https://github.com/TheNextLvl-net/worlds/releases).
 </Callout>
