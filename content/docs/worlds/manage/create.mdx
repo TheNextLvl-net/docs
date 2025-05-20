@@ -1,3 +1,36 @@
 ---
 title: Create a new world
 ---
+
+You can create new worlds with the `/world create <key>` command.   
+There are three options `generator`, `type`, and `preset`.
+
+To access the `/world create` command, the permission `worlds.command.create` is required
+
+<Callout type="info" title="Note">
+  `<key>` is the identifier of the world.   
+  New worlds are created under the `worlds` namespace if not specified otherwise.
+  
+  Allowed are alphanumeric characters, underscores, dashes, dots, and slashes.   
+  The key format accepts `namespace:key` or `key`.
+
+  **Why keys and not names?**
+
+  Both the minecraft server as well as the client use keys to identify worlds.   
+  Mods and shaders may use the key to differentiate worlds.
+</Callout>
+
+## Generator
+
+To generate a new world using a custom generator, use the command   
+`/world create <key> generator <generator> [<dimension>] [<structures>] [<seed>]`   
+The generator argument takes the name of the plugin that provides the custom chunk generator or biome provider.
+
+For example:
+```
+/world create city:plots generator PlotSquared
+```
+
+## Type
+
+## Preset
