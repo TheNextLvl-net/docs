@@ -118,4 +118,21 @@ import {Accordion, Accordions} from 'fumadocs-ui/components/accordion';
     `/world import <world> [<key>] [<dimension>] [<generator>]`   
     and recreate world links using `/world link create <source> <destination>`
   </Accordion>
+  <Accordion 
+    title="What does <key> stand for, in command arguments?"
+    id="key-argument"
+  >
+    `<key>` is the identifier of the world.   
+    New worlds are created under the `worlds` namespace if not specified otherwise.
+    
+    Allowed are alphanumeric characters, underscores, dashes, dots, and slashes.   
+    The key format accepts `namespace:key` or `key`.
+  </Accordion>
+  <Accordion 
+    title="Why keys instead of world names?"
+    id="why-keys"
+  >
+    Both the Minecraft server as well as the client use keys to identify worlds.   
+    Mods and shaders may use the key to differentiate worlds.
+  </Accordion>
 </Accordions>
