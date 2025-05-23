@@ -18,7 +18,7 @@ To generate a new world using a custom generator, use the command
 `/world create <key> generator <generator> [<dimension>] [<structures>] [<seed>]`   
 The generator argument takes the name of the plugin that provides the custom chunk generator or biome provider.
 
-For example:
+PlotSquared generation example:
 ```
 /world create city:plots generator PlotSquared
 ```
@@ -34,6 +34,12 @@ The following types are available:
 - `minecraft:fixed` - [Uses one specified biome everywhere.](https://minecraft.wiki/w/Dimension_definition#fixed)
 - `minecraft:debug` - [Debug all block states.](https://minecraft.wiki/w/Dimension_definition#debug)
 
+
+Amplified world example:
+```
+/world create amplified_test_world type minecraft:amplified
+```
+
 ## Preset
 
 World presets are a way to create worlds with specific settings.
@@ -47,3 +53,8 @@ The following presets are available:
 - `desert` - [A desert flat world.](https://minecraft.wiki/w/Superflat#Default_presets)
 - `redstone-ready` - [A redstone ready world.](https://minecraft.wiki/w/Superflat#Default_presets)
 - `the-void` - [A void world.](https://minecraft.wiki/w/The_Void)
+
+Void world example:
+```
+/world create my_void_world preset the-void
+```
