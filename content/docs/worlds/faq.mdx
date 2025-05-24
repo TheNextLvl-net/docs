@@ -136,4 +136,18 @@ import { Accordion, Accordions } from "fumadocs-ui/components/accordion"
     Both the Minecraft server as well as the client use keys to identify worlds.   
     Mods and shaders may use the key to differentiate worlds.
   </Accordion>
+  <Accordion 
+    title="How does Worlds handle external world creator plugins?"
+    id="thrird-party-worlds"
+  >
+    Worlds does not interfere with external world creator plugins.  
+    If you use a third-party plugin to create worlds, there is not need to import them into Worlds.  
+    Worlds will automatically detect and manage these worlds as long as they are in the world container.  
+    Loading will be handled by the third-party plugin.
+    
+    <Callout type="warn">
+      Some plugins might break if you delete or unload worlds created by them, so be careful when doing so.
+    </Callout>
+
+  </Accordion>
 </Accordions>
