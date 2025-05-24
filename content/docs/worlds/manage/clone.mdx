@@ -1,3 +1,24 @@
 ---
 title: Clone a world
 ---
+
+To clone a world you can use the `/world clone <world> <key> [template]` command.  
+This command creates a copy of the specified world, allowing you to work on a separate instance without affecting the original.
+
+<Callout type="info" title="Frequesntly asked questions">
+  [What does \<key\> stand for, in command arguments?](/docs/worlds/faq#key-argument)   
+</Callout>
+
+The `template` option defines whether the cloned world should be regenerated or an exact copy of the original world.
+
+Example on how to create an exact copy of a world (1:1):
+
+```
+/world clone worlds:my_world my_world_copy
+```
+
+Example on how to clone a world's generation settings (no region data, scoreboards, player data, etc.):
+
+```
+/world clone worlds:my_world my_world_copy template
+```
