@@ -2,7 +2,7 @@
 title: Create a new world
 ---
 
-You can create new worlds with the `/world create <key>` command.   
+You can create new worlds with the `/world create <key>` command.  
 There are three options `generator`, `type`, and `preset`.
 
 To access the `/world create` command, the permission `worlds.command.create` is required
@@ -14,19 +14,21 @@ To access the `/world create` command, the permission `worlds.command.create` is
 
 ## Generator
 
-To generate a new world using a custom generator, use the command   
-`/world create <key> generator <generator> [<dimension>] [<structures>] [<seed>]`   
+To generate a new world using a custom generator, use the command  
+`/world create <key> generator <generator> [<dimension>] [<structures>] [<seed>]`  
 The generator argument takes the name of the plugin that provides the custom chunk generator or biome provider.
 
 PlotSquared generation example:
+
 ```
 /world create city:plots generator PlotSquared
 ```
 
 ## Type
 
-World types denote the type of world you want to create.   
+World types denote the type of world you want to create.  
 The following types are available:
+
 - `minecraft:noise` - [The default world generation.](https://minecraft.wiki/w/Dimension_definition#noise)
 - `minecraft:flat` - [A superflat world.](https://minecraft.wiki/w/Dimension_definition#flat)
 - `minecraft:large_biomes` - [All biomes are larger.](https://minecraft.wiki/w/Large_biomes)
@@ -34,8 +36,8 @@ The following types are available:
 - `minecraft:fixed` - [Uses one specified biome everywhere.](https://minecraft.wiki/w/Dimension_definition#fixed)
 - `minecraft:debug` - [Debug all block states.](https://minecraft.wiki/w/Dimension_definition#debug)
 
-
 Amplified world example:
+
 ```
 /world create amplified_test_world type minecraft:amplified
 ```
@@ -44,6 +46,7 @@ Amplified world example:
 
 World presets are a way to create worlds with specific settings.
 The following presets are available:
+
 - `classic-flat` - [A classic flat world, no Strongholds unlike in default superflat.](https://minecraft.wiki/w/Superflat#Default_presets)
 - `tunnelers-dream` - [Mineshafts, Strongholds, and Dungeons.](https://minecraft.wiki/w/Superflat#Default_presets)
 - `water-world` - [A world with a lot of water.](https://minecraft.wiki/w/Superflat#Default_presets)
@@ -55,6 +58,7 @@ The following presets are available:
 - `the-void` - [A void world.](https://minecraft.wiki/w/The_Void)
 
 Void world example:
+
 ```
 /world create my_void_world preset the-void
 ```
