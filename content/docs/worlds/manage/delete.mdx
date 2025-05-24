@@ -1,3 +1,28 @@
 ---
 title: Delete a world
 ---
+
+To delete a world you can use the `/world delete <world> [<flags>]` command.
+This command will permanently delete the specified world, so use it with caution.
+
+## Flags
+
+- `--confirm`: This flag is required to confirm the deletion of the world.
+  It is a safety measure to prevent accidental deletions.
+- `--schedule`: This flag schedules the deletion of the world to the server shutdown process.
+  This option is required to be set on Folia servers, as they cannot delete worlds while they are running.
+  Also the `minecraft:overworld` can only be scheduled as it is required to always exist during runtime.
+
+## Examples
+
+To simply delete a world, you can use the following command:
+
+```
+/world delete worlds:my_world --confirm
+```
+
+To schedule the deletion of a world, you can use:
+
+```
+/world delete minecraft:overworld --confirm --schedule
+```
