@@ -10,40 +10,51 @@ Presets are a way to create custom flat world configurations in Worlds.
 Presets are stored under the `Worlds/presets` directory in your plugins folder.  
 Each preset is a JSON file that defines the properties of the flat world.
 
-https://minecraft.wiki/w/Biome#List_of_biomes
+Preset specifications are based on the [Minecraft Wiki](https://minecraft.wiki/w/Superflat#Multiplayer).
+
+- `biome`: The [Biome ID](https://minecraft.wiki/w/Biome#Java_Edition) of the world
+- `lakes`: Whether lava lakes will be generated in the world.
+- `features`: Whether the world will have features such as ores.
+- `decoration`: A boolean whether the world will have decorations such as trees, flowers, etc.
+- `layers`\*: A json array of layers, interpreted from top to bottom, starting at the world bottom.
+  - `block`: The [Block ID](https://minecraft.wiki/w/Java_Edition_data_values#Blocks) (e.g., `minecraft:stone`).
+  - `height`: The height of the layer in blocks.
+- `structure_overrides`: A json array of [Structure IDs](https://minecraft.wiki/w/Structure#ID)
+
+_Entries marked with an asterisk (\*) are required._
 
 ## Available presets
 
-The following presets are available by default:
+The following [vanilla presets](https://minecraft.wiki/w/Superflat#Default_presets) are available by default:
 
 <Files>
   <Folder name="Worlds" defaultOpen>
     <Folder name="presets" defaultOpen>
-      <a href="presets/classic-flat" target="_blank">
+      <a href="presets/classic-flat">
         <File name="classic-flat.json" />
       </a>
-      <a href="presets/tunnelers-dream" target="_blank">
+      <a href="presets/tunnelers-dream">
         <File name="tunnelers-dream.json" />
       </a>
-      <a href="presets/water-world" target="_blank">
+      <a href="presets/water-world">
         <File name="water-world.json" />
       </a>
-      <a href="presets/overworld" target="_blank">
+      <a href="presets/overworld">
         <File name="overworld.json" />
       </a>
-      <a href="presets/snowy-kingdom" target="_blank">
+      <a href="presets/snowy-kingdom">
         <File name="snowy-kingdom.json" />
       </a>
-      <a href="presets/bottomless-pit" target="_blank">
+      <a href="presets/bottomless-pit">
         <File name="bottomless-pit.json" />
       </a>
-      <a href="presets/desert" target="_blank">
+      <a href="presets/desert">
         <File name="desert.json" />
       </a>
-      <a href="presets/redstone-ready" target="_blank">
+      <a href="presets/redstone-ready">
         <File name="redstone-ready.json" />
       </a>
-      <a href="presets/the-void" target="_blank">
+      <a href="presets/the-void">
         <File name="the-void.json" />
       </a>
     </Folder>
