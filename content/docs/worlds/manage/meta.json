@@ -1,3 +1,3 @@
 {
-  "pages": ["create", "clone", "import", "load", "unload", "delete", "..."]
+  "pages": ["create", "clone", "import", "load-unload", "delete", "..."]
 }
