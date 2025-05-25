@@ -1,3 +1,55 @@
 ---
 title: Presets
+description: How to create your own presets.
 ---
+
+import { File, Folder, Files } from "fumadocs-ui/components/files"
+
+Presets are a way to create custom flat world configurations in Worlds.
+
+Presets are stored under the `Worlds/presets` directory in your plugins folder.  
+Each preset is a JSON file that defines the properties of the flat world.
+
+https://minecraft.wiki/w/Biome#List_of_biomes
+
+## Available presets
+
+The following presets are available by default:
+
+<Files>
+  <Folder name="Worlds" defaultOpen>
+    <Folder name="presets" defaultOpen>
+      <a href="presets/classic-flat" target="_blank">
+        <File name="classic-flat.json" />
+      </a>
+      <a href="presets/tunnelers-dream" target="_blank">
+        <File name="tunnelers-dream.json" />
+      </a>
+      <a href="presets/water-world" target="_blank">
+        <File name="water-world.json" />
+      </a>
+      <a href="presets/overworld" target="_blank">
+        <File name="overworld.json" />
+      </a>
+      <a href="presets/snowy-kingdom" target="_blank">
+        <File name="snowy-kingdom.json" />
+      </a>
+      <a href="presets/bottomless-pit" target="_blank">
+        <File name="bottomless-pit.json" />
+      </a>
+      <a href="presets/desert" target="_blank">
+        <File name="desert.json" />
+      </a>
+      <a href="presets/redstone-ready" target="_blank">
+        <File name="redstone-ready.json" />
+      </a>
+      <a href="presets/the-void" target="_blank">
+        <File name="the-void.json" />
+      </a>
+    </Folder>
+    <Folder name="translations">
+      <File name="worlds.properties" />
+      <File name="worlds_german.properties" />
+    </Folder>
+  </Folder>
+</Files>
