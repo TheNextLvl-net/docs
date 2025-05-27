@@ -54,10 +54,10 @@ const otherCards: CardData[] = [
     className: "group",
   },
   {
-    title: "Charachters",
+    title: "Characters",
     icon: User,
     description: "A modern, fully featured npc plugin for paper servers",
-    href: "docs/charachters",
+    href: "docs/characters",
     className: "group",
   },
   {
