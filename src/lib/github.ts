@@ -27,7 +27,7 @@ export async function latestVersion(repo: string) {
 }
 
 export async function lastEdit(page: Page): Promise<Date> {
-  var time = await getGithubLastEdit({
+  const time = await getGithubLastEdit({
     owner: "TheNextLvl-net",
     repo: "docs",
     token: process.env.GITHUB_TOKEN,
