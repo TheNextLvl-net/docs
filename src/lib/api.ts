@@ -1,16 +1,10 @@
 import { getGithubLastEdit } from "fumadocs-core/server"
 import { Page } from "fumadocs-core/source"
 
-export async function latestVersion(repo: string) {
+export async function latestVersion(project: string): Promise<string> {
   const response = await fetch(
-    `https://api.github.com/repos/TheNextLvl-net/${encodeURIComponent(repo)}/releases/latest`,
+    `https://repo.thenextlvl.net/api/maven/latest/version/releases/net/thenextlvl/${project}`,
     {
-      headers: {
-        ...(process.env.GITHUB_TOKEN && {
-          Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
-        }),
-        Accept: "application/vnd.github.v3+json",
-      },
       cache: "force-cache",
       next: {
         revalidate: 3600,
@@ -23,7 +17,7 @@ export async function latestVersion(repo: string) {
   }
 
   const data = await response.json()
-  return data.tag_name
+  return data.version
 }
 
 export async function lastEdit(page: Page): Promise<Date> {

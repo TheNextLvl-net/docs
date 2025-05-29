@@ -3,7 +3,7 @@ import { DocsPage, DocsBody, DocsDescription, DocsTitle } from "fumadocs-ui/page
 import { notFound } from "next/navigation"
 import { createRelativeLink } from "fumadocs-ui/mdx"
 import { getMDXComponents } from "@/mdx-components"
-import { lastEdit } from "@/lib/github"
+import { lastEdit } from "@/lib/api"
 import { SiGithub } from "@icons-pack/react-simple-icons"
 
 export default async function Page(props: { params: Promise<{ slug?: string[] }> }) {

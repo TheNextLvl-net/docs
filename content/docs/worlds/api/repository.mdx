@@ -4,8 +4,11 @@ title: Repository
 
 import { Tab, Tabs } from "fumadocs-ui/components/tabs"
 import { DynamicCodeBlock } from "fumadocs-ui/components/dynamic-codeblock"
-import { latestVersion } from "@/lib/github"
-export const version = await latestVersion("worlds")
+import { latestVersion } from "@/lib/api"
+export const worldsVersion = await latestVersion("worlds")
+export const perWorldsVersion = await latestVersion("per-worlds")
+
+## Add our Repository
 
 To start, add our repository to your project:
 
@@ -44,7 +47,7 @@ To start, add our repository to your project:
   </Tab>
 </Tabs>
 
-## Using the Worlds API [!toc]
+## Add the Worlds API
 
 Add Worlds' API codebase as a dependency:
 
@@ -59,18 +62,24 @@ Add Worlds' API codebase as a dependency:
       code={`<dependency>
     <groupId>net.thenextlvl</groupId>
     <artifactId>worlds</artifactId>
-    <version>${version}</version>
+    <version>${worldsVersion}</version>
 </dependency>`}
     />
   </Tab>
   <Tab id="kotlin" value="Gradle Kotlin">
-    <DynamicCodeBlock lang="kts" code={`implementation("net.thenextlvl:worlds:${version}")`} />
+    <DynamicCodeBlock
+      lang="kts"
+      code={`implementation("net.thenextlvl:worlds:${worldsVersion}")`}
+    />
   </Tab>
   <Tab id="groovy" value="Gradle Groovy">
-    <DynamicCodeBlock lang="groovy" code={`implementation "net.thenextlvl:worlds:${version}"`} />
+    <DynamicCodeBlock
+      lang="groovy"
+      code={`implementation "net.thenextlvl:worlds:${worldsVersion}"`}
+    />
   </Tab>
   <Tab id="sbt" value="SBT">
-    <DynamicCodeBlock lang="scala" code={`"net.thenextlvl" %% "worlds" %% "${version}"`} />
+    <DynamicCodeBlock lang="scala" code={`"net.thenextlvl" %% "worlds" %% "${worldsVersion}"`} />
   </Tab>
 </Tabs>
 
@@ -78,5 +87,51 @@ Add Worlds' API codebase as a dependency:
 
 The version of the Worlds API is the same as the version of the Worlds plugin.  
  You can find all versions on the [releases page](https://github.com/TheNextLvl-net/worlds/releases).
+
+</Callout>
+
+## Add the PerWorlds API
+
+If you only want to use the PerWorlds API, you can add its dependency:
+
+<Tabs
+  defaultIndex="1"
+  groupId="language"
+  items={["Maven", "Gradle Kotlin", "Gradle Groovy", "SBT"]}
+>
+  <Tab id="maven" value="Maven">
+    <DynamicCodeBlock
+      lang="xml"
+      code={`<dependency>
+    <groupId>net.thenextlvl</groupId>
+    <artifactId>per-worlds</artifactId>
+    <version>${perWorldsVersion}</version>
+</dependency>`}
+    />
+  </Tab>
+  <Tab id="kotlin" value="Gradle Kotlin">
+    <DynamicCodeBlock
+      lang="kts"
+      code={`implementation("net.thenextlvl:per-worlds:${perWorldsVersion}")`}
+    />
+  </Tab>
+  <Tab id="groovy" value="Gradle Groovy">
+    <DynamicCodeBlock
+      lang="groovy"
+      code={`implementation "net.thenextlvl:per-worlds:${perWorldsVersion}"`}
+    />
+  </Tab>
+  <Tab id="sbt" value="SBT">
+    <DynamicCodeBlock
+      lang="scala"
+      code={`"net.thenextlvl" %% "per-worlds" %% "${perWorldsVersion}"`}
+    />
+  </Tab>
+</Tabs>
+
+<Callout type="info" title="Note">
+
+The version of the PerWorlds API is the same as the version of the PerWorlds plugin.  
+ You can find all versions on the [repository](https://repo.thenextlvl.net/#/releases/net/thenextlvl/per-worlds).
 
 </Callout>
