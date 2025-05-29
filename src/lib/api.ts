@@ -7,7 +7,7 @@ export async function latestVersion(project: string): Promise<string> {
     {
       cache: "force-cache",
       next: {
-        revalidate: 3600,
+        revalidate: 300,
       },
     },
   )
