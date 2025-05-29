@@ -3,24 +3,44 @@ title: Command permissions
 description: A list of all world commands and their required permissions.
 ---
 
-| Command            | Permission                 |
-| ------------------ | -------------------------- |
-| /world clone       | worlds.command.clone       |
-| /world create      | worlds.command.create      |
-| /world delete      | worlds.command.delete      |
-| /world import      | worlds.command.import      |
-| /world info        | worlds.command.info        |
-| /world link list   | worlds.command.link.list   |
-| /world link create | worlds.command.link.create |
-| /world link remove | worlds.command.link.remove |
-| /world list        | worlds.command.list        |
-| /world load        | worlds.command.load        |
-| /world regenerate  | worlds.command.regenerate  |
-| /world save        | worlds.command.save        |
-| /world save-all    | worlds.command.save-all    |
-| /world save-off    | worlds.command.save-off    |
-| /world save-on     | worlds.command.save-on     |
-| /world setspawn    | worlds.command.setspawn    |
-| /world spawn       | worlds.command.spawn       |
-| /world teleport    | worlds.command.teleport    |
-| /world unload      | worlds.command.unload      |
+## Individual permissions
+
+| Command                  | Permission                          |
+| ------------------------ | ----------------------------------- |
+| /world clone             | worlds.command.clone                |
+| /world create            | worlds.command.create               |
+| /world delete            | worlds.command.delete               |
+| /world group add         | perworlds.command.group.add         |
+| /world group create      | perworlds.command.group.create      |
+| /world group delete      | perworlds.command.group.delete      |
+| /world group list        | perworlds.command.group.list        |
+| /world group option      | perworlds.command.group.option      |
+| /world group remove      | perworlds.command.group.remove      |
+| /world group spawn set   | perworlds.command.group.spawn.set   |
+| /world group spawn unset | perworlds.command.group.spawn.unset |
+| /world group teleport    | perworlds.command.group.teleport    |
+| /world import            | worlds.command.import               |
+| /world info              | worlds.command.info                 |
+| /world link list         | worlds.command.link.list            |
+| /world link create       | worlds.command.link.create          |
+| /world link remove       | worlds.command.link.remove          |
+| /world list              | worlds.command.list                 |
+| /world load              | worlds.command.load                 |
+| /world regenerate        | worlds.command.regenerate           |
+| /world save              | worlds.command.save                 |
+| /world save-all          | worlds.command.save-all             |
+| /world save-off          | worlds.command.save-off             |
+| /world save-on           | worlds.command.save-on              |
+| /world setspawn          | worlds.command.setspawn             |
+| /world spawn             | worlds.command.spawn                |
+| /world teleport          | worlds.command.teleport             |
+| /world unload            | worlds.command.unload               |
+
+## Permission packs
+
+| Commands                                                               | Permission           |
+| ---------------------------------------------------------------------- | -------------------- |
+| /world \*                                                              | worlds.admin         |
+| /world link \*                                                         | worlds.commands.link |
+| /world save<br/>/world save-all<br/>/world save-off<br/>/world save-on | worlds.commands.save |
+| /world group \*                                                        | perworlds.admin      |
