@@ -1,0 +1,20 @@
+---
+title: Removing a world from a group
+description: How to remove a world from a group.
+---
+
+To remove a world from a group, you can use the command `/world group remove <group> <world>`.  
+This will remove the specified world from the specified group.
+
+<Callout type="info" title="Important">
+  
+  Removing a world from a group does not delete any data associated with the group itself.  
+  The data of all players currently in the group, as well as the world data will be saved and then changed to the `unowned` group data.
+
+</Callout>
+
+### Example
+
+```
+/world group remove farmworld worlds:void
+```

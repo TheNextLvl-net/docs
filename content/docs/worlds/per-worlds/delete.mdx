@@ -1,0 +1,22 @@
+---
+title: Deleting a group
+description: How to delete a group.
+---
+
+To delete a group, you can use the command `/world group delete <group>`.  
+This will delete the specified group and all associated data, including player data and world data.  
+Deleting a group restores the world and player data to the `unowned` group.
+
+<Callout type="error" title="Caution">
+
+Deleting a group is irreversible. Make sure to back up any important data before proceeding.  
+ The group's entire folder will be permanently deleted.  
+ This includes all player data, world data (_not the worlds themselves_), and any other associated files.
+
+</Callout>
+
+### Example
+
+```
+/world group delete farmworld
+```
