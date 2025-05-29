@@ -30,5 +30,5 @@ export async function lastEdit(page: Page): Promise<Date> {
     console.error("Error fetching last edit date:", error)
     return new Date(0)
   })
-  return time ? time : new Date(0)
+  return time ? time : new Date()
 }
