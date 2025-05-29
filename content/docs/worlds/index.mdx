@@ -4,7 +4,7 @@ description: World management plugin for modern Paper and Folia servers
 icon: BookMarked
 ---
 
-import { Group, Blend, Link2, MessageCircleQuestion } from "lucide-react"
+import { Command, Group, Blend, Link2, MessageCircleQuestion } from "lucide-react"
 
 Here are a few selected guides that will help you get started with Worlds
 
@@ -19,7 +19,7 @@ Here are a few selected guides that will help you get started with Worlds
   <Card
     title="Links"
     description="Restore vanilla portal travel behavior"
-    href="./worlds/links"
+    href="./worlds/manage/links"
     icon={<Link2 />}
     target="_self"
   />
@@ -28,6 +28,13 @@ Here are a few selected guides that will help you get started with Worlds
     description="Learn how to use PerWorlds"
     href="./worlds/per-worlds"
     icon={<Group />}
+    target="_self"
+  />
+  <Card
+    title="Command permissions"
+    description="A list of all world commands and their required permissions."
+    href="./worlds/manage/command-permissions"
+    icon={<Command />}
     target="_self"
   />
 </Cards>
