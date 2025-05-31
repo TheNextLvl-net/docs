@@ -1,5 +1,40 @@
 ---
 title: Overview
+description: A modern, fully featured npc plugin for paper servers
+icon: BookMarked
 ---
 
-Coming soon!
+import { Command, TextSearch, Blend, MousePointerClick, MessageCircleQuestion } from "lucide-react"
+
+Here are a few selected guides that will help you get started with Characters
+
+<Cards>
+  <Card
+    title="Frequently Asked Questions"
+    description="Frequently asked questions about Characters"
+    href="./characters/faq"
+    icon={<MessageCircleQuestion />}
+    target="_self"
+  />
+  <Card
+    title="Actions"
+    description="Add click actions to your characters"
+    href="./characters/manage/actions"
+    icon={<MousePointerClick />}
+    target="_self"
+  />
+  <Card
+    title="Attributes"
+    description="Modify character attributes"
+    href="./characters/manage/attributes"
+    icon={<TextSearch />}
+    target="_self"
+  />
+  <Card
+    title="Command permissions"
+    description="A list of all character commands and their required permissions."
+    href="./characters/manage/command-permissions"
+    icon={<Command />}
+    target="_self"
+  />
+</Cards>
