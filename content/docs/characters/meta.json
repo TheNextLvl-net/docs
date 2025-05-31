@@ -1,3 +1,18 @@
 {
-  "root": true
+  "root": true,
+  "pages": [
+    "---Links---",
+    "[Github][GitHub](https://github.com/thenextlvl-net/characters)",
+    "[Send][Hangar](https://hangar.papermc.io/TheNextLvl/Characters)",
+    "[ChartLine][Metrics](https://bstats.org/plugin/bukkit/TheNextLvl%20Characters/24223)",
+    "[BookDown][Repository](https://repo.thenextlvl.net/#/releases/net/thenextlvl/characters)",
+    "---Introduction---",
+    "index",
+    "faq",
+    "---Guide---",
+    "manage",
+    "---For Developers---",
+    "api/repository",
+    "api/index"
+  ]
 }
