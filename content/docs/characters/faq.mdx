@@ -1,0 +1,53 @@
+---
+title: Frequently Asked Questions
+icon: MessageCircleQuestion
+description: Frequently Asked Questions about Characters
+---
+
+import { Accordion, Accordions } from "fumadocs-ui/components/accordion"
+
+<Accordions type="single">
+  <Accordion title="Where do I put skin files?" id="skin-folder">
+    You can put skin files in the `Characters/skins` folder inside your `plugins` directory.
+  </Accordion>
+  <Accordion title="Can I use the clicking player's name inside an action?" id="player-action">
+    Yes, you can use the clicking player's name inside an action by using the tag resolver `<player>`.  
+    This works for `run-command`, `run-console-command`, `send-message` and `send-actionbar` actions.
+  </Accordion>
+  <Accordion
+    title="Which server software does Characters support?"
+    id="server-software"
+  >
+    The only officially supported server software is [Paper](https://papermc.io/software/paper)
+    although forks like [Purpur](https://purpurmc.org/) or [Pufferfish](https://pufferfish.host/downloads)
+    most likely work as well.
+    
+    <Callout type="error" title="Note">
+      Support will not be provided for non-paper based server software or unknown, arbitrary forks.  
+      Non-paper based server software will probably never be supported.  
+      Hybrids that try to support both mods and plugins are completely unsupported and will most likely not work.
+    </Callout>
+  </Accordion>
+  <Accordion
+    title="Will Characters ever support older Minecraft versions?"
+    id="old-versions"
+  >
+    No, we do not aim to support any previous version of the game.  
+    Unlike other NPC plugins, Characters is exclusively made for modern servers offering modern features.
+  </Accordion>
+  <Accordion
+    title="Which version of Characters should I choose?"
+    id="version"
+  >
+    <Callout title="Important">
+      You will only get support for the latest version of Characters.  
+      If you encounter any issues while running an older build, you will not receive any support.
+    </Callout>
+
+    If you are **not** running the **latest** version of Paper, visit [Hangar](https://hangar.papermc.io/TheNextLvl/Characters/versions)
+    and look for the latest version supporting your server version.
+
+    _For any version not listed on hangar, see [#old-versions](#old-versions)._
+
+  </Accordion>
+</Accordions>
