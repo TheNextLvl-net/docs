@@ -10,7 +10,7 @@
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "dependencies": {
-    "@icons-pack/react-simple-icons": "^12.8.0",
+    "@icons-pack/react-simple-icons": "^13.0.0",
     "fumadocs-core": "15.4.2",
     "fumadocs-mdx": "11.6.6",
     "fumadocs-ui": "15.4.2",
