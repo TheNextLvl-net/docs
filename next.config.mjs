@@ -29,7 +29,7 @@ const config = {
       },
       {
         source: "/plugins",
-        destination: "https://hangar.papermc.io/TheNextLvl",
+        destination: "https://modrinth.com/organization/thenextlvl",
         permanent: false,
       },
     ]
