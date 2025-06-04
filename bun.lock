@@ -4,7 +4,7 @@
     "": {
       "name": "thenextlvl-docs",
       "dependencies": {
-        "@icons-pack/react-simple-icons": "^12.8.0",
+        "@icons-pack/react-simple-icons": "^13.0.0",
         "fumadocs-core": "15.4.2",
         "fumadocs-mdx": "11.6.6",
         "fumadocs-ui": "15.5.0",
@@ -125,7 +125,7 @@
 
     "@humanwhocodes/retry": ["@humanwhocodes/retry@0.4.3", "", {}, "sha512-bV0Tgo9K4hfPCek+aMAn81RppFKv2ySDQeMoSZuvTASywNTnVJCArCZE2FWqpvIatKu7VMRLWlR1EazvVhDyhQ=="],
 
-    "@icons-pack/react-simple-icons": ["@icons-pack/react-simple-icons@12.8.0", "", { "peerDependencies": { "react": "^16.13 || ^17 || ^18 || ^19" } }, "sha512-Xj6tBadpPYVaoDaXqKpSJc5AXtcXSBk+se+GsceRouYin9XvKv2at0fO5GSr1dNDc3WfZSVc1Gs7KGwUY8PfHA=="],
+    "@icons-pack/react-simple-icons": ["@icons-pack/react-simple-icons@13.0.0", "", { "peerDependencies": { "react": "^16.13 || ^17 || ^18 || ^19" } }, "sha512-Dmofr27ZlfBHS/2HDBKodKTUTnIjhH7cjw36WPt1CLg+1gytjr+LeabwWZ6khu/QUxmLjs3e1KrNPiuvOkEpJQ=="],
 
     "@img/sharp-darwin-arm64": ["@img/sharp-darwin-arm64@0.34.1", "", { "optionalDependencies": { "@img/sharp-libvips-darwin-arm64": "1.1.0" }, "os": "darwin", "cpu": "arm64" }, "sha512-pn44xgBtgpEbZsu+lWf2KNb6OAf70X68k+yk69Ic2Xz11zHR/w24/U49XT7AeRwJ0Px+mhALhU5LPci1Aymk7A=="],
 
