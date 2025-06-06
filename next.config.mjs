@@ -9,7 +9,7 @@ const config = {
     return [
       {
         source: "/discord",
-        destination: "https://discord.com/invite/mDP9VWGeAw",
+        destination: "https://discord.com/invite/npPXFQcsK8",
         permanent: false,
       },
       {
