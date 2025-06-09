@@ -1,3 +1,47 @@
 ---
 title: API
+description: The API documentation for the Worlds plugin.
 ---
+
+import { latestVersion } from "@/lib/api"
+export const version = await latestVersion("worlds")
+export const javadocs = `https://repo.thenextlvl.net/javadoc/releases/net/thenextlvl/worlds/${version}`
+export const docsClass = `${javadocs}/raw/net/thenextlvl/worlds/api/%s.html`
+
+Javadocs for the API can be found <a href={javadocs} target="_blank"> here</a>.
+
+## Getting Started
+
+To get started with the API, you have to retrieve the <a href={docsClass.replace("%s", "WorldsProvider")} target="\_blank">WorldsProvider</a>
+from the service manager:
+
+```java
+WorldsProvider provider = Bukkit.getServiceManager().load(WorldsProvider.class);
+```
+
+## Creating a World
+
+To create a world, you can use the <a href={docsClass.replace("%s", "level/Level.Builder")} target="\_blank">Level.Builder</a>
+which offers a fluent API to configure the world:
+
+```java
+Level level = provider.levelBuilder(Path.of("New World (1)")) // the path the world will be stored at
+        .key(Key.key("worlds", "my_new_world")) // world key (used by client and server to identify worlds)
+        .name("My New World") // the user friendly name for the world
+        .seed(9873425983045299341L) // the world seed
+        .spawnChunkRadius(2) // the spawn chunk radius
+        .hardcore(false) // whether the world is in hardcore mode
+        .bonusChest(true) // generate a starter chest at spawn
+        .structures(false) // control if structures generate
+        .preset(Presets.THE_VOID) // define a flat world preset (aka. world settings)
+        .generator(Generator.of(provider, "PlotSquared")) // define a custom generator
+        .generatorType(GeneratorType.SINGLE_BIOME) // set the generator type (aka. world type)
+        .levelStem(LevelStem.OVERWORLD) // set the level stem (aka. environment)
+        .build();
+
+level.create().ifPresentOrElse(world -> {
+    // world created successfully
+}, () -> {
+    // world creation failed
+});
+```
