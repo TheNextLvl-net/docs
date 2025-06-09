@@ -45,3 +45,18 @@ level.create().ifPresentOrElse(world -> {
     // world creation failed
 });
 ```
+
+## Cloning a World
+
+Cloning a world was never easier. You can use the <a href={docsClass.replace("%s.html", "view/LevelView.html#clone(org.bukkit.World,java.util.function.Consumer,boolean)")} target="\_blank">LevelView#clone</a>
+method.
+
+```java
+boolean full = true; // whether to fully clone including regions, entities..., or only the level.dat
+
+Optional<World> clone = provider.levelView().clone(world, builder -> {
+    // optionally configure the cloned world
+    builder.key(Key.key("worlds", "my_cloned_world")); // set the key for the cloned world
+    builder.name("My Cloned World"); // set the name for the cloned world
+}, full);
+```
