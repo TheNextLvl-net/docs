@@ -39,24 +39,32 @@ Level level = provider.levelBuilder(Path.of("New World (1)")) // the path the wo
         .levelStem(LevelStem.OVERWORLD) // set the level stem (aka. environment)
         .build();
 
-level.create().ifPresentOrElse(world -> {
+level.createAsync().thenAccept(world -> {
     // world created successfully
-}, () -> {
+}).exceptionally(throwable -> {
     // world creation failed
+    return null;
 });
 ```
 
 ## Cloning a World
 
-Cloning a world was never easier. You can use the <a href={docsClass.replace("%s.html", "view/LevelView.html#clone(org.bukkit.World,java.util.function.Consumer,boolean)")} target="\_blank">LevelView#clone</a>
+Cloning a world was never easier. You can use the <a href={docsClass.replace("%s.html", "view/LevelView.html#cloneAsync(org.bukkit.World,java.util.function.Consumer,boolean)")} target="\_blank">LevelView#cloneAsync</a>
 method.
 
 ```java
 boolean full = true; // whether to fully clone including regions, entities..., or only the level.dat
 
-Optional<World> clone = provider.levelView().clone(world, builder -> {
+CompletableFuture<World> future = provider.levelView().cloneAsync(world, builder -> {
     // optionally configure the cloned world
     builder.key(Key.key("worlds", "my_cloned_world")); // set the key for the cloned world
     builder.name("My Cloned World"); // set the name for the cloned world
 }, full);
+
+future.thenAccept(clone -> {
+    // cloned world created successfully
+}).exceptionally(throwable -> {
+    // cloning failed
+    return null;
+});
 ```
