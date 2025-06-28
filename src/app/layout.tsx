@@ -27,7 +27,7 @@ export default function Layout({ children }: { children: ReactNode }) {
           data-site-id={process.env.NEXT_PUBLIC_ANALYTICS_SITE_ID}
           data-web-vitals="true"
           data-track-errors="true"
-          async
+          defer
         />
         <RootProvider>{children}</RootProvider>
       </body>
