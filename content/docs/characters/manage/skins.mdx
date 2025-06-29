@@ -2,3 +2,115 @@
 title: Skins
 description: Manage skins for your player characters.
 ---
+
+You can customize character skins in a few different ways using the `/character skin` command.
+
+## Changing a Character's Skin
+
+To change a character's skin, you can use the command  
+`/character skin set <character> [player|file|url] <value> [slim]`.
+
+<Callout type="info">
+  The `slim` option is used to apply a slim skin model, which is typically used for characters with
+  a slimmer build. Omitting this option will apply the default (classic) skin model.
+</Callout>
+
+## Applying a Player Skin
+
+To change a character's skin to an existing player's skin,  
+you can use the command `/character skin set <character> player <player> [slim]`.
+
+<Callout type="warning" title="Skin Not Found">
+  Mojang is ratelimiting the use of player skins. If a skin is not found, it may be due to this
+  ratelimiting. In this case just try again later. If the skin is still not found, it may be due to
+  the player not having a skin set or the player not existing. You can also try using a different
+  method to set the skin, such as using a file or URL.
+</Callout>
+
+### Example [!toc]
+
+Classic skins can be applied using the following command:
+
+```
+/character skin set MyCharacter player Notch
+```
+
+To apply a slim skin, just append the `slim` option:
+
+```
+/character skin set MyCharacter player Notch slim
+```
+
+## Applying a Skin from File
+
+You can change a character's skin using a file with the command  
+`/character skin set <character> file <file> [slim]`.
+
+<Callout type="info" title="File Requirements" id="file-requirements">
+Skin files must be in **PNG format** and be of **64x64 pixels**.
+
+The file can be located anywhere on the system, but you must provide the full path to the file.  
+If the file is located in the server's main directory, you can use a relative path.
+
+</Callout>
+
+### Example [!toc]
+
+To change a character's skin using a file, you can use the following command:
+
+```
+/character skin set MyCharacter file "/home/skins/my_skin.png"
+```
+
+## Applying a Skin from URL
+
+You can change a character's skin using a URL with the command  
+`/character skin set <character> url <url> [slim]`.
+
+<Callout type="info" title="URL Requirements" id="url-requirements">
+  The URL must be a direct link to a PNG image file that conforms with the [Skin File
+  Requirements](#file-requirements).
+</Callout>
+
+### Example [!toc]
+
+To change a character's skin using a URL, you can use the following command:
+
+```
+/character skin set MyCharacter url "https://example.com/skin.png"
+```
+
+## Resetting a Skin
+
+To reset a character's skin to default, you can use the following command:
+
+```
+/character skin reset MyCharacter
+```
+
+<Callout type="info">This will only reset the skin, not the skin layers.</Callout>
+
+## Skin Layers
+
+To customize a character's skin layers, you can use the command  
+`/character skin layer [hide|show] <layer> <character>`.
+
+By default, all layers are shown. You can hide or show each layer individually.
+
+### Example [!toc]
+
+To hide a character's cape layer, you can use the following command:
+
+```
+/character skin layer hide cape MyCharacter
+```
+
+### Available Skin Layers
+
+- cape
+- hat
+- jacket
+- left_pants_leg
+- left_sleeve
+- right_pants_leg
+- right_sleeve
