@@ -26,11 +26,13 @@ export default function Layout({ children }: { children: ReactNode }) {
           defer
           data-domain={process.env.NEXT_PUBLIC_ANALYTICS_DOMAIN}
           src={process.env.NEXT_PUBLIC_ANALYTICS_URL}
+          id="plausible-script"
         />
         <Script
           dangerouslySetInnerHTML={{
             __html: `window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments) }`,
           }}
+          id="plausible-window"
         />
         <RootProvider>{children}</RootProvider>
       </body>
