@@ -2,3 +2,54 @@
 title: Nametags
 description: Manage your character's name tags.
 ---
+
+You can customize your character's nametag using the `/character tag` command.
+
+## Usage
+
+```
+/character tag [reset|set] <option> [<value>]
+```
+
+- `reset` will reset the specified option to its default value.
+- `set` will set the specified option to the provided value.
+
+## Options
+
+| Option             | Type / Values                                         | Description                    |
+| ------------------ | ----------------------------------------------------- | ------------------------------ |
+| alignment          | center, left, right                                   | Text alignment                 |
+| background-color   | Color name or hex (no #, supports alpha)              | Background color               |
+| billboard          | fixed, vertical, horizontal, center                   | Billboard mode                 |
+| brightness         | Block light (0-15), Sky light (0-15)                  | Nametag brightness             |
+| default-background | Boolean                                               | Use default background         |
+| left-rotation      | Quaternion (float) (x, y, z, w)                       | Left rotation                  |
+| line-width         | Integer (non-negative)                                | Line width                     |
+| offset             | Vector (float) (x, y, z)                              | Offset position                |
+| right-rotation     | Quaternion (float) (x, y, z, w)                       | Right rotation                 |
+| scale              | Float (0.05 - 10)                                     | Scale of nametag               |
+| see-through        | Boolean                                               | Whether nametag is see-through |
+| text               | String (MiniMessage supported)                        | Nametag text                   |
+| text-opacity       | Float (percentage, 100% = invisible, 0% = no opacity) | Text opacity                   |
+| text-shadow        | Boolean                                               | Enable text shadow             |
+| visibility         | Boolean                                               | Nametag visibility             |
+
+## Examples [!toc]
+
+Set the nametag text:
+
+```
+/character tag set text <rainbow>Hello there!</rainbow><newline><blue>Welcome to the game!</blue>
+```
+
+Change the background color to red:
+
+```
+/character tag set background-color red
+```
+
+Reset the scale to default:
+
+```
+/character tag reset scale
+```
