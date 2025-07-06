@@ -75,12 +75,14 @@ export function generate({
             color: primaryTextColor,
           }}
         >
-          <img
-            src={`${process.env.NEXT_PUBLIC_BASE_URL}/logo.png`}
-            width="60"
-            height="60"
-            alt="Logo"
-          />
+          {process.env.NEXT_PUBLIC_BASE_URL && (
+            <img
+              src={`${process.env.NEXT_PUBLIC_BASE_URL}/logo.png`}
+              width="60"
+              height="60"
+              alt="Logo"
+            />
+          )}
           <p
             style={{
               fontSize: "46px",
