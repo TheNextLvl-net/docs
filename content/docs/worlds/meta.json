@@ -1,6 +1,7 @@
 {
   "root": true,
   "title": "Worlds",
+  "description": "The most powerful world management plugin",
   "pages": [
     "---Links---",
     "[Github][GitHub](https://github.com/thenextlvl-net/worlds)",

@@ -1,6 +1,7 @@
 {
   "root": true,
   "title": "Characters",
+  "description": "Create and manage NPCs",
   "pages": [
     "---Links---",
     "[Github][GitHub](https://github.com/thenextlvl-net/characters)",

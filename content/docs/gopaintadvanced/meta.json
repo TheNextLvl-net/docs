@@ -1,4 +1,5 @@
 {
   "root": true,
-  "title": "goPaintAdvanced"
+  "title": "goPaintAdvanced",
+  "description": "goPaint but on steroids"
 }

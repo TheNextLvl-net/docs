@@ -1,4 +1,5 @@
 {
   "root": true,
-  "title": "Cinematics"
+  "title": "Cinematics",
+  "description": "Record and play in-game cinematics"
 }

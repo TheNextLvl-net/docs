@@ -1,4 +1,5 @@
 {
   "root": true,
-  "title": "Economist"
+  "title": "Economist",
+  "description": "Create and manage in-game economies"
 }
