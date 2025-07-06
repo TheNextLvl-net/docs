@@ -2,3 +2,161 @@
 title: Actions
 description: Add click actions to your characters.
 ---
+
+You can manage character actions using the `/character action` command.  
+`/character action [add|cooldown|list|permission|remove] ...`
+
+## Adding an Action [#add]
+
+Actions are triggered by specific click types. To add a new action to a character use command  
+`/character action add <character> <action> <click-type> <action-type> <parameters>`.
+
+Existing actions can be overwritten by using the same `<action>` name.
+
+### Click Types
+
+The following click types can be used for the `<click-type>` argument:
+
+- `any_click`: Any left or right click (with or without shift)
+- `any_left_click`: Any left click (normal or shift)
+- `any_right_click`: Any right click (normal or shift)
+- `left_click`: Left click only
+- `right_click`: Right click only
+- `shift_click`: Any shift click (left or right)
+- `shift_left_click`: Shift + left click only
+- `shift_right_click`: Shift + right click only
+
+Use these to specify when the action should be triggered.
+
+### Action Types & Parameters [#action-types]
+
+| Action Type         | Parameters                                                                    |
+| ------------------- | ----------------------------------------------------------------------------- |
+| connect             | `<server>` (BungeeCord/Velocity Server Name)                                  |
+| play-sound          | `<sound> <sound-source> <volume> <pitch>`                                     |
+| run-console-command | `<command>`                                                                   |
+| run-command         | `<command>`                                                                   |
+| send-actionbar      | `<message>` (MiniMessage Supported)                                           |
+| send-entity-effect  | `<entity-effect>`                                                             |
+| send-message        | `<message>` (MiniMessage Supported)                                           |
+| teleport            | `<position> [<rotation>] [<world>]`                                           |
+| send-title          | `<title> [<subtitle>] [<fade-in>] <stay> <fade-out> ` (MiniMessage Supported) |
+| transfer            | `<hostname> [<port>]`                                                         |
+
+<Callout type="info">
+Using `<player>` in a parameter will be replaced with the name of the player who triggered the action.
+</Callout>
+
+### Example [!toc] [#add-example]
+
+To add a greeting action to a character named "Steve", use the following command:
+
+```
+/character action add Steve greet any_click send-message Hello, <player>!
+```
+
+This action will be triggered on any click and sends `Hello, NonSwag!` if the player's name is NonSwag.
+
+---
+
+## Cooldowns
+
+Set or view the cooldown for your characters actions.  
+The cooldown determines how fast an action can be triggered.
+
+Usage: `/character action cooldown <character> <action> [<duration>]`
+
+- `[<duration>]`: Time in ticks (unless specified otherwise).  
+  Use `0` to remove the cooldown. Omit to view the current cooldown.
+
+### Set a Cooldown
+
+To set a cooldown for an action, use the command:  
+`/character action cooldown <character> <action> <duration>`
+
+<Callout type="info">A duration of `0` will remove the cooldown for the action.</Callout>
+
+#### Example [!toc] [#cooldown-set-example]
+
+```
+/character action cooldown Steve greet 10s
+```
+
+This sets a cooldown of **10 seconds** for the **greet** action of the character **Steve**.
+
+### View Current Cooldown
+
+To view the current cooldown for an action, use the command  
+`/character action cooldown <character> <action>`.
+
+#### Example [!toc] [#cooldown-view-example]
+
+```
+/character action cooldown Steve greet
+```
+
+---
+
+## Permissions
+
+Set, remove, or view the required permission for a character's action.  
+If a permission is set, only players with that permission can trigger the action.
+
+### Define a Permission
+
+To define a permission for an action, use the command  
+`/character action permission <character> <action> set <permission>`.
+
+#### Example [!toc] [#permission-set-example]
+
+```
+/character action permission Steve greet set warm.welcome.permission
+```
+
+### Remove a Permission
+
+To remove a permission for an action, use the command  
+`/character action permission <character> <action> remove`.
+
+#### Example [!toc] [#permission-remove-example]
+
+```
+/character action permission Steve greet remove
+```
+
+### View Current Permission
+
+To view the current permission for an action, use the command  
+`/character action permission <character> <action>`.
+
+#### Example [!toc] [#permission-view-example]
+
+```
+/character action permission Steve greet
+```
+
+---
+
+## Removing an Action
+
+To remove a specific action from a character, use the command  
+`/character action remove <character> <action>`.
+
+**Example Command:**
+
+```
+/character action remove Steve greet
+```
+
+---
+
+## List all Actions
+
+List all actions configured for a character using `/character action list <character>`.
+
+### Example [!toc]
+
+```
+/character action list Steve
+
+```
