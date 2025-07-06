@@ -55,7 +55,9 @@ export async function generateMetadata(props: { params: Promise<{ slug?: string[
   if (!page) notFound()
 
   const image = {
-    url: ["/docs-og", ...(params.slug || []), "image.png"].join("/"),
+    url: [`${process.env.NEXT_PUBLIC_BASE_URL}/docs-og`, ...(params.slug || []), "image.png"].join(
+      "/",
+    ),
     width: 1200,
     height: 630,
   }
