@@ -54,8 +54,21 @@ export async function generateMetadata(props: { params: Promise<{ slug?: string[
   const page = source.getPage(params.slug)
   if (!page) notFound()
 
+  const image = {
+    url: ["/docs-og", ...(params.slug || []), "image.png"].join("/"),
+    width: 1200,
+    height: 630,
+  }
+
   return {
     title: page.data.title,
     description: page.data.description,
+    openGraph: {
+      images: image,
+    },
+    twitter: {
+      card: "summary_large_image",
+      images: image,
+    },
   }
 }
