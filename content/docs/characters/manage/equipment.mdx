@@ -2,3 +2,70 @@
 title: Equipment
 description: Manage your character's equipment.
 ---
+
+You can manage a character's equipment using the `/character equipment` command.
+
+## Equipping Items
+
+To equip an item in a specific slot for a character, use the command:  
+`/character equipment set <character> <equipment-slot> <item>`
+
+### Parameters
+
+- `<character>`: The name of the character whose equipment you want to modify
+- `<equipment-slot>`: The equipment slot to set the item in (see [Available Equipment Slots](#available-equipment-slots))
+- `<item>`: The item to place in the specified equipment slot
+
+### Example [!toc]
+
+To equip a diamond helmet for a character named "Guardian", use:
+
+```
+/character equipment set Guardian head minecraft:diamond_helmet
+```
+
+## Clearing Equipment
+
+To clear equipment for a character, use the command  
+`/character equipment clear <character> [<equipment-slot>]`
+
+### Clear a Specific Slot
+
+To clear a specific equipment slot for a character, use the command:  
+`/character equipment clear <character> <equipment-slot>`
+
+#### Example [!toc]
+
+To clear the chestplate slot for a character named "Warrior":
+
+```
+/character equipment clear Warrior chest
+```
+
+### Clear All Equipment
+
+To clear all equipment slots for a character, use the command  
+`/character equipment clear <character>`
+
+#### Example [!toc]
+
+To clear all equipment for a character named "Mage":
+
+```
+/character equipment clear Mage
+```
+
+## Available Equipment Slots
+
+The following equipment slots can be used with the equipment commands:
+
+| Equipment Slot | Description                                                   |
+| -------------- | ------------------------------------------------------------- |
+| `head`         | Helmet slot                                                   |
+| `chest`        | Chestplate slot                                               |
+| `legs`         | Leggings slot                                                 |
+| `feet`         | Boots slot                                                    |
+| `hand`         | Main hand slot (right hand by default)                        |
+| `off_hand`     | Off-hand slot (left hand by default)                          |
+| `body`         | Body slot (for entities like happy ghasts, wolves, or horses) |
+| `saddle`       | Saddle slot (for mounts)                                      |
