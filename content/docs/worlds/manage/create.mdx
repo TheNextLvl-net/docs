@@ -4,22 +4,23 @@ description: How to use the world create command.
 ---
 
 You can create new worlds with the `/world create <key>` command.  
-There are three options `generator`, `type`, and `preset`.
+There are three options `generator`, `type`, and `preset`.  
+If you don't specify any of these options, the default world settings will be used.
 
-<Callout type="info" title="Frequesntly asked questions">
+<Callout type="info" title="Frequently asked questions">
   [What does \<key\> stand for, in command arguments?](/docs/worlds/faq#key-argument)   
   [Why keys instead of world names?](/docs/worlds/faq#why-keys)
 </Callout>
 
-## Dimensions
+### Example [!toc]
 
-There are following dimensions types:
+Creating a new world with the default settings:
 
-- `minecraft:overworld` - [The primary dimension.](https://minecraft.wiki/w/Overworld)
-- `minecraft:the_nether` - [The Nether dimension.](https://minecraft.wiki/w/The_Nether)
-- `minecraft:the_end` - [The End dimension.](https://minecraft.wiki/w/The_End)
+```
+/world create my_new_world
+```
 
-## Generator
+## Using a world generator plugin
 
 To generate a new world using a custom generator, use the command  
 `/world create <key> generator <generator> [<dimension>] [<structures>] [<seed>]`  
@@ -33,7 +34,7 @@ PlotSquared generation example:
 /world create city:plots generator PlotSquared
 ```
 
-## Type
+## Defining the world type
 
 To generate a new world using a predefined world type, use the command  
 `/world create <key> type <type> [<dimension>] [<structures>] [<seed>]`
@@ -56,7 +57,7 @@ Amplified world example:
 /world create amplified_test_world type minecraft:amplified
 ```
 
-## Preset
+## Using a flat world preset
 
 To generate a new world using an existing preset, use the command  
 `/world create <key> preset <preset> [<dimension>] [<structures>] [<seed>]`
@@ -73,4 +74,27 @@ Void world example:
 
 ```
 /world create my_void_world preset the-void
+```
+
+## Available Dimensions
+
+There are following dimensions types:
+
+- `minecraft:overworld` - [The primary dimension.](https://minecraft.wiki/w/Overworld)
+- `minecraft:the_nether` - [The Nether dimension.](https://minecraft.wiki/w/The_Nether)
+- `minecraft:the_end` - [The End dimension.](https://minecraft.wiki/w/The_End)
+
+## Additional options
+
+All of the above commands also support the following additional options:
+
+- `[<structures>]` - Controls whether structures generate in the world. Defaults to `true`.
+- `[<seed>]` - Sets the world seed. If not provided, a random seed will be used.
+
+### Example [!toc]
+
+Creating a normal world with structures disabled and a specific seed:
+
+```
+/world create no_structures_set_seed type minecraft:noise false 123456789
 ```
