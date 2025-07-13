@@ -1,5 +1,22 @@
 {
   "root": true,
   "title": "ServiceIO",
-  "description": "A powerful and fast Vault replacement"
+  "description": "A powerful and fast Vault replacement",
+  "pages": [
+    "---Links---",
+    "[Github][GitHub](https://github.com/TheNextLvl-net/service-io)",
+    "[Download][Download](https://modrinth.com/project/MNPyHOe7#download)",
+    "[ChartLine][Metrics](https://bstats.org/plugin/bukkit/TheNextLvl%20ServiceIO/23083)",
+    "[BookDown][Repository](https://repo.thenextlvl.net/#/releases/net/thenextlvl/services/service-io)",
+    "---Introduction---",
+    "index",
+    "faq",
+    "---Guide---",
+    "manage",
+    "presets",
+    "per-worlds",
+    "---For Developers---",
+    "api/repository",
+    "api/index"
+  ]
 }

@@ -1,0 +1,83 @@
+---
+title: Frequently Asked Questions
+icon: MessageCircleQuestion
+description: Frequently Asked Questions about ServiceIO
+---
+
+import { Accordion, Accordions } from "fumadocs-ui/components/accordion"
+
+<Accordions type="single">
+  <Accordion 
+    title="Why should I use ServiceIO?"
+    id="why-serviceio"
+  >
+    ServiceIO not only provides the Vault and VaultUnlocked API, but also provides a lot of additional features.<br/>
+    It is designed to be a drop-in replacement for Vault, but with more features and a nicer API.
+
+    From a user perspective, ServiceIO offers the ability to convert between any given service providers.<br/>
+    This, for example, allows you to switch out your Permissions, NPC or Holograms plugin effortlessly.<br/>
+    Vault only offers this for Economy services, while ServiceIO offers this for all providers.
+
+    In addition to the standard Vault interfaces, ServiceIO provides a common **NPC** and **Hologram API**,<br/>
+    which allows developers to support multiple plugins without having to implement the same functionality multiple times.
+
+  </Accordion>
+  <Accordion 
+    title="How does ServiceIO work?"
+    id="links"
+  >
+    ServiceIO provides both the Vault and VaultUnlocked API and creates a so called _Wrapper_ around those APIs.  
+    The wrapper _wraps_ our controller based API to a Vault interface, which is then used by other plugins.  
+    The same concept applies the other way around by wrapping the Vault interface to our controller based API.  
+    This allows users of the ServiceIO API to use the Vault API without having to implement it themselves, and again, the other way around.
+  </Accordion>
+  <Accordion 
+    title="Will ServiceIO ever support older Minecraft versions?"
+    id="old-versions"
+  >
+    No, we do not aim to support any previous version of the game.
+  </Accordion>
+  <Accordion
+    title="Which server software does ServiceIO support?"
+    id="server-software"
+  >
+    The only officially supported server software are [Paper](https://papermc.io/software/paper)
+    and [Folia](https://papermc.io/software/folia)
+    although forks like [Purpur](https://purpurmc.org/) or [Pufferfish](https://pufferfish.host/downloads)
+    most likely work as well.
+    
+    <Callout type="error" title="Note">
+      Support will not be provided for non-paper based server software or unknown, arbitrary forks.   
+      Non-paper based server software will probably never be supported.   
+      Hybrids that try to support both mods and plugins are completely unsupported and will most likely not work.
+    </Callout>
+  </Accordion>
+  <Accordion 
+    title="Which version of ServiceIO should I choose?"
+    id="version"
+  >
+    <Callout title="Important">
+      You will only get support for the latest version of ServiceIO.   
+      If you encounter any issues while running an older build, you will not receive any support.
+    </Callout>
+
+    If you are **not** running the **latest** version of Paper, visit [Modrinth](https://modrinth.com/project/MNPyHOe7/versions)
+    and look for the latest version supporting your server version.
+
+    _For any version not listed on Modrinth, see [#old-versions](#old-versions)._
+
+  </Accordion>
+  <Accordion 
+    title="One of my plugins doesn't recognize ServiceIO as Vault?"
+    id="plugin-not-recognized"
+  >
+    If one of your plugins doesn't recognize ServiceIO as a Vault provider, you can try to enable the **experimental** compatibility mode.
+    <Callout type="warning" title="Warning">
+      This mode is experimental and may not work with all plugins and could in return also cause issues with other plugins.  
+      It is recommended to only use this mode as a last resort, and to report the incompatible plugin to us on [GitHub](https://github.com/TheNextLvl-net/service-io/issues/new?template=incompatible_plugin.yml).
+    </Callout>
+
+    To enable the compatibility mode, set the environment variable `COMPATIBILITY_MODE=true`
+
+  </Accordion>
+</Accordions>
