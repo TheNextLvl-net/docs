@@ -1,5 +1,5 @@
 ---
-title: Manage group options
+title: Managing group options
 description: How to manage world group options.
 ---
 
@@ -13,6 +13,20 @@ If you omit the value, it will display the current value of the option for the s
 If an option is disabled, the vanilla default will be used for all worlds in the group.  
 For example, if the `inventory` option is disabled, a player's inventory will be cleared upon entering the group.  
 The player state will not change when switching between worlds within the same group.
+
+## Example [!toc]
+
+To disable a group entirely, you can use the command:
+
+```
+/world group option enabled farmworld false
+```
+
+To query the current value of an option, you can use the command:
+
+```
+/world group option inventory farmworld
+```
 
 ## All available options [!toc]
 
