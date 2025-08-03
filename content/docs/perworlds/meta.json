@@ -1,0 +1,22 @@
+{
+  "root": true,
+  "title": "PerWorlds",
+  "description": "The most versatile per-world plugin ever",
+  "pages": [
+    "---Links---",
+    "[Github][GitHub](https://github.com/TheNextLvl-net/per-worlds)",
+    "[Download][Download](https://modrinth.com/project/lpfQmSV2#download)",
+    "[ChartLine][Metrics](https://bstats.org/plugin/bukkit/TheNextLvl%20PerWorlds/25295)",
+    "[BookDown][Repository](https://repo.thenextlvl.net/#/releases/net/thenextlvl/per-worlds)",
+    "---Introduction---",
+    "index",
+    "faq",
+    "---Guide---",
+    "manage",
+    "presets",
+    "per-worlds",
+    "---For Developers---",
+    "api/repository",
+    "api/index"
+  ]
+}
