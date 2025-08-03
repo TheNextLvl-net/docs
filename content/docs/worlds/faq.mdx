@@ -11,9 +11,14 @@ import { Accordion, Accordions } from "fumadocs-ui/components/accordion"
     title="I want to use Worlds and PerWorlds but my server doesn't start, what do I do?"
     id="perworlds"
   >
-    **Worlds** already **bundles PerWorlds**.   
-    You can safely **remove** the **PerWorlds jar** file from your plugins directory.   
-    Paper will prevent the server startup if the **same plugin** is installed **twice**.
+    In previous versions, **Worlds** already came bundled with **PerWorlds**.  
+    You can either **update Worlds** (highly recommended), or **remove** the **PerWorlds jar** file from your plugins directory.
+
+    <Callout type="info" title="Note">
+      Since version 3.3.0, Worlds no longer includes PerWorlds.<br/>
+      If you want to use PerWorlds, you have to install it [separately](https://modrinth.com/project/lpfQmSV2).
+    </Callout>
+
   </Accordion>
   <Accordion 
     title="Error on startup, what do I do?"
@@ -35,12 +40,10 @@ import { Accordion, Accordions } from "fumadocs-ui/components/accordion"
     id="folia"
   >
     Yes, since version 2.1.0 (Minecraft 1.21.4) Worlds officially supports Folia.   
-    There are some limitations but we are working on solutions to those problems.   
-    Current limitations include:
-    - World unloading
-    - PerWorlds (completely disabled on Folia)
-    - Daylight cycle is stuck in non default worlds
-    - Mob AI behaves strangely in non default worlds
+    There are some limitations but we are working on solutions to those problems.
+
+    The most noticeable limitation is that world linking only works for end portals, but not for nether portals.
+
   </Accordion>
   <Accordion 
     title="How do World Links work?"
@@ -62,21 +65,20 @@ import { Accordion, Accordions } from "fumadocs-ui/components/accordion"
     title="Which server software does Worlds support?"
     id="server-software"
   >
-    The only officially supported server software are [Paper](https://papermc.io/software/paper)
-    and [Folia](https://papermc.io/software/folia)
-    although forks like [Purpur](https://purpurmc.org/) or [Pufferfish](https://pufferfish.host/downloads)
-    most likely work as well.
-    
+    The only officially supported and recommended server software are [Paper](https://papermc.io/software/paper) and [Folia](https://papermc.io/software/folia)
+    although forks like [Purpur](https://purpurmc.org/) or [Pufferfish](https://pufferfish.host/downloads) work as well.  
+    The Folia forks [Foldenor](https://github.com/Edenor-Minecraft/Foldenor) and [Luminol](https://github.com/LuminolMC/Luminol) are known to work properly now too.
+
     <Callout type="error" title="Note">
-      Support will not be provided for non-paper based server software or unknown, arbitrary forks.   
-      Non-paper based server software will probably never be supported.   
+      Support will not be provided for non-paper based server software or unknown, arbitrary forks.
+      Non-paper based server software will probably never be supported.
       Hybrids that try to support both mods and plugins are completely unsupported and will most likely not work.
     </Callout>
     <Callout type="warn" title="Warning">
-      Forks of Folia might not work as intended with Worlds.   
-      Forks like [Foldenor](https://github.com/Edenor-Minecraft/Foldenor) are known to break compatibility,
-      see [#8](https://github.com/Edenor-Minecraft/Foldenor/issues/8)
+      Some forks of Folia might cause problems in certain situations.<br/>
+      For reference see [#8](https://github.com/Edenor-Minecraft/Foldenor/issues/8) and [#98](https://github.com/LuminolMC/Luminol/issues/98)
     </Callout>
+
   </Accordion>
   <Accordion 
     title="Can I store my worlds in a seperate directory?"
