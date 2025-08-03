@@ -1,12 +1,12 @@
 ---
 title: Repository
-description: How to add the Worlds API to your project.
+description: How to add the PerWorlds API to your project.
 ---
 
 import { Tab, Tabs } from "fumadocs-ui/components/tabs"
 import { DynamicCodeBlock } from "fumadocs-ui/components/dynamic-codeblock"
 import { latestVersion } from "@/lib/api"
-export const worldsVersion = await latestVersion("worlds")
+export const version = await latestVersion("per-worlds")
 
 ## Add our Repository
 
@@ -47,9 +47,9 @@ To start, add our repository to your project:
   </Tab>
 </Tabs>
 
-## Add the Worlds API
+## Add the PerWorlds API
 
-Add Worlds' API codebase as a dependency:
+Add the PerWorlds API as a dependency:
 
 <Tabs
   defaultIndex="1"
@@ -61,31 +61,28 @@ Add Worlds' API codebase as a dependency:
       lang="xml"
       code={`<dependency>
     <groupId>net.thenextlvl</groupId>
-    <artifactId>worlds</artifactId>
-    <version>${worldsVersion}</version>
+    <artifactId>per-worlds</artifactId>
+    <version>${version}</version>
 </dependency>`}
     />
   </Tab>
   <Tab id="kotlin" value="Gradle Kotlin">
-    <DynamicCodeBlock
-      lang="kts"
-      code={`implementation("net.thenextlvl:worlds:${worldsVersion}")`}
-    />
+    <DynamicCodeBlock lang="kts" code={`implementation("net.thenextlvl:per-worlds:${version}")`} />
   </Tab>
   <Tab id="groovy" value="Gradle Groovy">
     <DynamicCodeBlock
       lang="groovy"
-      code={`implementation "net.thenextlvl:worlds:${worldsVersion}"`}
+      code={`implementation "net.thenextlvl:per-worlds:${version}"`}
     />
   </Tab>
   <Tab id="sbt" value="SBT">
-    <DynamicCodeBlock lang="scala" code={`"net.thenextlvl" %% "worlds" %% "${worldsVersion}"`} />
+    <DynamicCodeBlock lang="scala" code={`"net.thenextlvl" %% "per-worlds" %% "${version}"`} />
   </Tab>
 </Tabs>
 
 <Callout type="info" title="Note">
 
-The version of the Worlds API is the same as the version of the Worlds plugin.  
- You can find all versions on the [repository](https://repo.thenextlvl.net/#/releases/net/thenextlvl/worlds).
+The version of the PerWorlds API is the same as the version of the PerWorlds plugin.  
+ You can find all versions on the [repository](https://repo.thenextlvl.net/#/releases/net/thenextlvl/per-worlds).
 
 </Callout>
