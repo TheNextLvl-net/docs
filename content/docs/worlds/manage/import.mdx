@@ -3,14 +3,18 @@ title: Import an existing world
 description: How to use the world import command.
 ---
 
-To import an existing world, you can use the `/world import <world> [<key>] [<dimension>] [<generator>]` command.
+To import an existing world, you can use the `/world import <world>` command.
 
-<Callout type="info" title="Command Syntax">
-  - If `<key>` is undefined, a matching key will be created, if possible.
-  - The `<dimension>` argument denotes which dimension will be imported.  
-  If undefined, the default dimension (`minecraft:overworld`) will be used.
-  - The `<generator>` defines the custom world generator to use for the imported world.
-</Callout>
+## Additional options [!toc]
+
+The import command also supports the following additional options:
+
+- `dimension` - Specifies the [dimension type](create#available-dimensions). Defaults to `normal`.
+- `generator` - Specifies the world generator plugin to use for generating the world.
+- `key` - Sets the key for the world. Creates a key representation of the world name if not provided.
+- `name` - Sets the name for the world. If not provided, the world will be imported with its original name.
+
+Options are specified as `option value` pairs, and can be used in any given order.
 
 ## Examples [!toc]
 
