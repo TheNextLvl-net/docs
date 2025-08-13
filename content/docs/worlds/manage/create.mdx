@@ -3,8 +3,8 @@ title: Create a new world
 description: How to use the world create command.
 ---
 
-You can create new worlds with the `/world create <key>` command.  
-There are three options `generator`, `type`, and `preset`.  
+You can create new worlds with the `/world create <name>` command.  
+There are three main options: `generator`, `type`, and `preset`.  
 If you don't specify any of these options, the default world settings will be used.
 
 <Callout type="info" title="Frequently asked questions">
@@ -17,13 +17,13 @@ If you don't specify any of these options, the default world settings will be us
 Creating a new world with the default settings:
 
 ```
-/world create my_new_world
+/world create "My New World"
 ```
 
 ## Using a world generator plugin
 
 To generate a new world using a custom generator, use the command  
-`/world create <key> generator <generator> [<dimension>] [<structures>] [<seed>]`  
+`/world create <name> generator <generator> ...`  
 The generator argument takes the name of the plugin that provides the custom chunk generator or biome provider.
 
 ### Example [!toc]
@@ -31,36 +31,36 @@ The generator argument takes the name of the plugin that provides the custom chu
 PlotSquared generation example:
 
 ```
-/world create city:plots generator PlotSquared
+/world create city generator PlotSquared
 ```
 
 ## Defining the world type
 
 To generate a new world using a predefined world type, use the command  
-`/world create <key> type <type> [<dimension>] [<structures>] [<seed>]`
+`/world create <name> type <type> ...`
 
 World types denote the type of world you want to create.  
 The following types are available:
 
-- `minecraft:noise` - [The default world generation.](https://minecraft.wiki/w/Dimension_definition#noise)
-- `minecraft:flat` - [A superflat world.](https://minecraft.wiki/w/Dimension_definition#flat)
-- `minecraft:large_biomes` - [All biomes are larger.](https://minecraft.wiki/w/Large_biomes)
-- `minecraft:amplified` - [Generates amplified terrain.](https://minecraft.wiki/w/Amplified)
-- `minecraft:fixed` - [Uses one specified biome everywhere.](https://minecraft.wiki/w/Dimension_definition#fixed)
-- `minecraft:debug` - [Debug all block states.](https://minecraft.wiki/w/Dimension_definition#debug)
+- `normal` (previously `minecraft:noise`) - [The default world generation.](https://minecraft.wiki/w/Dimension_definition#noise)
+- `flat` (previously `minecraft:flat`) - [A superflat world.](https://minecraft.wiki/w/Dimension_definition#flat)
+- `large-biomes` (previously `minecraft:large_biomes`) - [All biomes are larger.](https://minecraft.wiki/w/Large_biomes)
+- `amplified` (previously `minecraft:amplified`) - [Generates amplified terrain.](https://minecraft.wiki/w/Amplified)
+- `single-biome` (previously `minecraft:fixed`) - [Uses one specified biome everywhere.](https://minecraft.wiki/w/Dimension_definition#fixed)
+- `debug` (previously `minecraft:debug`) - [Debug all block states.](https://minecraft.wiki/w/Dimension_definition#debug)
 
 ### Example [!toc]
 
 Amplified world example:
 
 ```
-/world create amplified_test_world type minecraft:amplified
+/world create Amplified type amplified
 ```
 
 ## Using a flat world preset
 
 To generate a new world using an existing preset, use the command  
-`/world create <key> preset <preset> [<dimension>] [<structures>] [<seed>]`
+`/world create <name> preset <preset> ...`
 
 World presets are a way to create worlds with specific settings.  
 Here you can find a list of [available presets](/docs/worlds/presets#available-presets).
@@ -73,28 +73,40 @@ Check out the [Creating a world preset](/docs/worlds/presets) documentation.
 Void world example:
 
 ```
-/world create my_void_world preset the-void
+/world create "My Void World" preset the-void
+```
+
+## Additional options
+
+All of the above commands also support the following additional options:
+
+- `bonus-chest` - Controls whether a bonus chest is generated in the world. Defaults to `false`.
+- `dimension` - Specifies the [dimension type](#available-dimensions). Defaults to `normal`.
+- `hardcore` - If set to `true`, the world will be created in hardcore mode. Defaults to `false`.
+- `key` - Sets the key for the world. Creates a key representation of the world name if not provided.
+- `seed` - Sets the world seed. If not provided, a random seed will be used.
+- `structures` - Controls whether structures generate in the world. Defaults to `true`.
+
+Options are specified as `option value` pairs, and can be used in any given order.
+
+### Examples [!toc]
+
+Creating a normal world with structures disabled, a bonus chest, and a specific seed:
+
+```
+/world create "A cool new world" type normal structures false bonus-chest true seed 123456789
+```
+
+Creating a nether world with a specificified key:
+
+```
+/world create "My Nether World" type normal dimension nether key citybuild:farmworld/nether
 ```
 
 ## Available Dimensions
 
 There are following dimensions types:
 
-- `minecraft:overworld` - [The primary dimension.](https://minecraft.wiki/w/Overworld)
-- `minecraft:the_nether` - [The Nether dimension.](https://minecraft.wiki/w/The_Nether)
-- `minecraft:the_end` - [The End dimension.](https://minecraft.wiki/w/The_End)
-
-## Additional options
-
-All of the above commands also support the following additional options:
-
-- `[<structures>]` - Controls whether structures generate in the world. Defaults to `true`.
-- `[<seed>]` - Sets the world seed. If not provided, a random seed will be used.
-
-### Example [!toc]
-
-Creating a normal world with structures disabled and a specific seed:
-
-```
-/world create no_structures_set_seed type minecraft:noise false 123456789
-```
+- `normal` (previously `minecraft:overworld`) - [The primary dimension.](https://minecraft.wiki/w/Overworld)
+- `nether` (previously `minecraft:the_nether`) - [The Nether dimension.](https://minecraft.wiki/w/The_Nether)
+- `end` (previously `minecraft:the_end`) - [The End dimension.](https://minecraft.wiki/w/The_End)
