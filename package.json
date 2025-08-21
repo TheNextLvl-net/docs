@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@icons-pack/react-simple-icons": "^13.3.0",
-    "fumadocs-core": "15.6.12",
+    "fumadocs-core": "15.7.0",
     "fumadocs-mdx": "11.7.5",
     "fumadocs-ui": "15.6.12",
     "lucide-react": "^0.540.0",
