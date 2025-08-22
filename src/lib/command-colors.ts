@@ -1,52 +1,30 @@
-export interface CommandColor {
-  hsl: string;
-}
-
 /**
  * Represents a color used by the command highlighter.
- * Currently only HSL is used by the transformer for inline styles.
  *
  * @example
  * ```command
  * <green>content</green>
  * ```
  */
-export const commandColors: Record<string, CommandColor> = {
-  green: {
-    hsl: "hsl(142, 76%, 36%)",
-  },
-  red: {
-    hsl: "hsl(0, 84%, 60%)",
-  },
-  blue: {
-    hsl: "hsl(221, 83%, 53%)",
-  },
-  yellow: {
-    hsl: "hsl(48, 96%, 53%)",
-  },
-  purple: {
-    hsl: "hsl(262, 83%, 58%)",
-  },
-  orange: {
-    hsl: "hsl(25, 95%, 53%)",
-  },
-  cyan: {
-    hsl: "hsl(187, 100%, 42%)",
-  },
-  pink: {
-    hsl: "hsl(330, 81%, 60%)",
-  },
-  gray: {
-    hsl: "hsl(215, 16%, 47%)",
-  },
-  white: {
-    hsl: "hsl(0, 0%, 100%)",
-  },
-  black: {
-    hsl: "hsl(0, 0%, 0%)",
-  }
-};
+export const commandColors: Record<string, string> = {
+  black: "#000000",
+  dark_blue: "#0000aa",
+  dark_green: "#00aa00",
+  dark_aqua: "#00aaaa",
+  dark_red: "#aa0000",
+  dark_purple: "#aa00aa",
+  gold: "#ffaa00",
+  gray: "#aaaaaa",
+  dark_gray: "#555555",
+  blue: "#5555ff",
+  green: "#55ff55",
+  aqua: "#55ffff",
+  red: "#ff5555",
+  light_purple: "#ff55ff",
+  yellow: "#ffff55",
+  white: "#ffffff",
+}
 
-export function getCommandColor(colorName: string): CommandColor | null {
-  return commandColors[colorName.toLowerCase()] || null;
+export function getCommandColor(colorName: string): string | null {
+  return commandColors[colorName.toLowerCase()] || null
 }

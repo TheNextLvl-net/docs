@@ -1,5 +1,5 @@
-import type { ShikiTransformer, ThemedToken } from '@shikijs/types'
-import { getCommandColor } from './command-colors'
+import type { ShikiTransformer, ThemedToken } from "@shikijs/types"
+import { getCommandColor } from "./command-colors"
 
 interface ColorContentRange {
   start: number
@@ -39,8 +39,11 @@ function detectRanges(code: string): MetaRanges {
 
 function splitTokenAtOffsets(token: ThemedToken, breakpoints: number[]): ThemedToken[] {
   if (!breakpoints.length) return [token]
-  const local = Array.from(new Set(breakpoints.filter(bp => bp > token.offset && bp < token.offset + token.content.length)))
-    .sort((a, b) => a - b)
+  const local = Array.from(
+    new Set(
+      breakpoints.filter((bp) => bp > token.offset && bp < token.offset + token.content.length),
+    ),
+  ).sort((a, b) => a - b)
 
   if (!local.length) return [token]
 
@@ -49,7 +52,11 @@ function splitTokenAtOffsets(token: ThemedToken, breakpoints: number[]): ThemedT
   for (const bp of local) {
     const idx = bp - token.offset
     if (idx > last) {
-      result.push({ ...token, content: token.content.slice(last, idx), offset: token.offset + last })
+      result.push({
+        ...token,
+        content: token.content.slice(last, idx),
+        offset: token.offset + last,
+      })
     }
     last = idx
   }
@@ -63,7 +70,7 @@ export function transformerCommandColor(): ShikiTransformer {
   const map = new WeakMap<object, MetaRanges>()
 
   return {
-    name: 'color-tags',
+    name: "color-tags",
     preprocess(code) {
       const ranges = detectRanges(code)
       const metaKey = (this as unknown as { meta?: object }).meta ?? {}
@@ -91,24 +98,28 @@ export function transformerCommandColor(): ShikiTransformer {
 
         if (!bps.length) return line
 
-        const splitted = line.flatMap(t => splitTokenAtOffsets(t, bps))
+        const splitted = line.flatMap((t) => splitTokenAtOffsets(t, bps))
 
-        const styled: ThemedToken[] = splitted.map(seg => {
-          const inHide = ranges.hides.some(r => r.start <= seg.offset && seg.offset + seg.content.length <= r.end)
+        const styled: ThemedToken[] = splitted.map((seg) => {
+          const inHide = ranges.hides.some(
+            (r) => r.start <= seg.offset && seg.offset + seg.content.length <= r.end,
+          )
           if (inHide) {
             return {
               ...seg,
-              htmlStyle: { ...(seg.htmlStyle || {}), display: 'none' },
+              htmlStyle: { ...(seg.htmlStyle || {}), display: "none" },
             }
           }
 
-          const contentRange = ranges.contents.find(r => r.start <= seg.offset && seg.offset + seg.content.length <= r.end)
+          const contentRange = ranges.contents.find(
+            (r) => r.start <= seg.offset && seg.offset + seg.content.length <= r.end,
+          )
           if (contentRange) {
             const cfg = getCommandColor(contentRange.color)
             if (cfg) {
               return {
                 ...seg,
-                htmlStyle: { ...(seg.htmlStyle || {}), color: cfg.hsl },
+                htmlStyle: { ...(seg.htmlStyle || {}), color: cfg },
               }
             }
           }
