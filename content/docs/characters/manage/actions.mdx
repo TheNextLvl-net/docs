@@ -54,7 +54,7 @@ Using `<player>` in a parameter will be replaced with the name of the player who
 To add a greeting action to a character named "Steve", use the following command:
 
 ```
-/character action add Steve greet any_click send-message Hello, <player>!
+/character action add <aqua>Steve</aqua> <yellow>greet</yellow> any_click send-message <green>Hello, <player>!</green>
 ```
 
 This action will be triggered on any click and sends `Hello, NonSwag!` if the player's name is NonSwag.
@@ -81,7 +81,7 @@ To set a cooldown for an action, use the command:
 #### Example [!toc] [#cooldown-set-example]
 
 ```
-/character action cooldown Steve greet 10s
+/character action cooldown <aqua>Steve</aqua> <yellow>greet</yellow> <green>10s</green>
 ```
 
 This sets a cooldown of **10 seconds** for the **greet** action of the character **Steve**.
@@ -94,7 +94,7 @@ To view the current cooldown for an action, use the command
 #### Example [!toc] [#cooldown-view-example]
 
 ```
-/character action cooldown Steve greet
+/character action cooldown <aqua>Steve</aqua> <yellow>greet</yellow>
 ```
 
 ---
@@ -112,7 +112,7 @@ To define a permission for an action, use the command
 #### Example [!toc] [#permission-set-example]
 
 ```
-/character action permission Steve greet set warm.welcome.permission
+/character action permission <aqua>Steve</aqua> <yellow>greet</yellow> set <green>warm.welcome.permission</green>
 ```
 
 ### Remove a Permission
@@ -123,7 +123,7 @@ To remove a permission for an action, use the command
 #### Example [!toc] [#permission-remove-example]
 
 ```
-/character action permission Steve greet remove
+/character action permission <aqua>Steve</aqua> <yellow>greet</yellow> remove
 ```
 
 ### View Current Permission
@@ -134,7 +134,7 @@ To view the current permission for an action, use the command
 #### Example [!toc] [#permission-view-example]
 
 ```
-/character action permission Steve greet
+/character action permission <aqua>Steve</aqua> <yellow>greet</yellow>
 ```
 
 ---
@@ -147,7 +147,7 @@ To remove a specific action from a character, use the command
 ### Example [!toc] [#remove-example]
 
 ```
-/character action remove Steve greet
+/character action remove <aqua>Steve</aqua> <yellow>greet</yellow>
 ```
 
 ---
@@ -159,6 +159,6 @@ List all actions configured for a character using `/character action list <chara
 ### Example [!toc] [#list-example]
 
 ```
-/character action list Steve
+/character action list <aqua>Steve</aqua>
 
 ```
