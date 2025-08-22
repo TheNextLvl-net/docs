@@ -3,5 +3,11 @@
   "extends": [
     "config:recommended",
     ":disableDependencyDashboard"
-  ]
+  ],
+    "packageRules": [
+      {
+        "matchPackageNames": ["fumadocs-*"],
+        "groupName": "fumadocs"
+        }
+    ]
 }
