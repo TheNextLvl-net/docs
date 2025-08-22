@@ -93,15 +93,9 @@ export function transformerCommandColor(): ShikiTransformer {
 
         const splitted = line.flatMap(t => splitTokenAtOffsets(t, bps))
 
-        const styled: ThemedToken[] = splitted.map(seg => {
-          const inHide = ranges.hides.some(r => r.start <= seg.offset && seg.offset + seg.content.length <= r.end)
-          if (inHide) {
-            return {
-              ...seg,
-              htmlStyle: { ...(seg.htmlStyle || {}), display: 'none' },
-            }
-          }
-
+        const styled: ThemedToken[] = splitted.filter(seg => {
+          return !ranges.hides.some(r => r.start <= seg.offset && seg.offset + seg.content.length <= r.end)
+        }).map(seg => {
           const contentRange = ranges.contents.find(r => r.start <= seg.offset && seg.offset + seg.content.length <= r.end)
           if (contentRange) {
             const cfg = getCommandColor(contentRange.color)
@@ -112,7 +106,6 @@ export function transformerCommandColor(): ShikiTransformer {
               }
             }
           }
-
           return seg
         })
 
