@@ -26,7 +26,7 @@ export default async function Page(props: { params: Promise<{ slug?: string[] }>
       <DocsDescription className="mb-0">{page.data.description}</DocsDescription>
 
       <a
-        href={`https://github.com/TheNextLvl-net/docs/blob/main/content/docs/${page.file.path}`}
+        href={`https://github.com/TheNextLvl-net/docs/blob/main/content/docs/${page.path}`}
         rel="noreferrer noopener"
         target="_blank"
         className="mb-8 w-fit border flex items-center gap-2 rounded-md p-2 font-medium text-xs text-fd-secondary-foreground hover:text-fd-accent-foreground hover:bg-fd-accent"
