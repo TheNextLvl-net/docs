@@ -21,7 +21,7 @@ function detectRanges(code: string): MetaRanges {
   const contents: ColorContentRange[] = []
   const hides: HideRange[] = []
 
-  const re = /<([A-Za-z]+)>([\s\S]*?)<\/\1>/g
+  const re = /<([A-Za-z_+-]+)>([\s\S]*?)<\/\1>/g
   let match: RegExpExecArray | null
   while ((match = re.exec(code)) !== null) {
     const [full, colorName, inner] = match
