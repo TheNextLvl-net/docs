@@ -1,5 +1,6 @@
 {
   "root": true,
   "title": "Protect",
-  "description": "Create and manage protected areas"
+  "description": "Create and manage protected areas",
+  "icon": "Shield"
 }

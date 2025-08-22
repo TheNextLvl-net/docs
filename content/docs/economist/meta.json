@@ -1,5 +1,6 @@
 {
   "root": true,
   "title": "Economist",
-  "description": "Create and manage in-game economies"
+  "description": "Create and manage in-game economies",
+  "icon": "CircleDollarSign"
 }

@@ -2,6 +2,7 @@
   "root": true,
   "title": "Worlds",
   "description": "The most powerful world management plugin",
+  "icon": "Earth",
   "pages": [
     "---Links---",
     "[Github][GitHub](https://github.com/TheNextLvl-net/worlds)",

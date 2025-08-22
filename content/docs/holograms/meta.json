@@ -1,5 +1,6 @@
 {
   "root": true,
   "title": "Holograms",
-  "description": "Create and manage holograms"
+  "description": "Create and manage holograms",
+  "icon": "Text"
 }

@@ -1,5 +1,6 @@
 {
   "root": true,
   "title": "Commander",
-  "description": "Manage command visibility and permissions"
+  "description": "Manage command visibility and permissions",
+  "icon": "Terminal"
 }

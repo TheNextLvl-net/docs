@@ -2,6 +2,7 @@
   "root": true,
   "title": "ServiceIO",
   "description": "A powerful and fast Vault replacement",
+  "icon": "LockKeyhole",
   "pages": [
     "---Links---",
     "[Github][GitHub](https://github.com/TheNextLvl-net/service-io)",

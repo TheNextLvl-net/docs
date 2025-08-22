@@ -1,5 +1,6 @@
 {
   "root": true,
   "title": "Cinematics",
-  "description": "Record and play in-game cinematics"
+  "description": "Record and play in-game cinematics",
+  "icon": "Video"
 }

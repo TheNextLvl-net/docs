@@ -2,6 +2,7 @@
   "root": true,
   "title": "Characters",
   "description": "Create and manage NPCs",
+  "icon": "User",
   "pages": [
     "---Links---",
     "[Github][GitHub](https://github.com/TheNextLvl-net/characters)",

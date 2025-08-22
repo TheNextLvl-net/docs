@@ -1,5 +1,6 @@
 {
   "root": true,
   "title": "goPaintAdvanced",
-  "description": "goPaint but on steroids"
+  "description": "goPaint but on steroids",
+  "icon": "Brush"
 }
