@@ -32,13 +32,13 @@ you can use the command `/character skin set <character> player <player> [slim]`
 Classic skins can be applied using the following command:
 
 ```
-/character skin set <aqua>MyCharacter</aqua> <yellow>player</yellow> <green>Notch</green>
+/character skin set <aqua>MyCharacter</aqua> player <yellow>Notch</yellow>
 ```
 
 To apply a slim skin, just append the `slim` option:
 
 ```
-/character skin set <aqua>MyCharacter</aqua> <yellow>player</yellow> <green>Notch</green> <light_purple>slim</light_purple>
+/character skin set <aqua>MyCharacter</aqua> player <yellow>Notch</yellow> slim
 ```
 
 ## Applying a Skin from File
@@ -59,7 +59,7 @@ If the file is located in the server's main directory, you can use a relative pa
 To change a character's skin using a file, you can use the following command:
 
 ```
-/character skin set <aqua>MyCharacter</aqua> <yellow>file</yellow> <green>"/home/skins/my_skin.png"</green>
+/character skin set <aqua>MyCharacter</aqua> file <yellow>"/home/skins/my_skin.png"</yellow>
 ```
 
 ## Applying a Skin from URL
@@ -77,7 +77,7 @@ You can change a character's skin using a URL with the command
 To change a character's skin using a URL, you can use the following command:
 
 ```
-/character skin set <aqua>MyCharacter</aqua> <yellow>url</yellow> <green>"https://example.com/skin.png"</green>
+/character skin set <aqua>MyCharacter</aqua> url <yellow>"https://example.com/skin.png"</yellow>
 ```
 
 ## Resetting a Skin
@@ -102,7 +102,7 @@ By default, all layers are shown. You can hide or show each layer individually.
 To hide a character's cape layer, you can use the following command:
 
 ```
-/character skin layer <aqua>hide</aqua> <yellow>cape</yellow> <green>MyCharacter</green>
+/character skin layer hide <aqua>cape</aqua> <yellow>MyCharacter</yellow>
 ```
 
 ### Available Skin Layers
