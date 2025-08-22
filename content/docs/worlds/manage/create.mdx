@@ -17,7 +17,7 @@ If you don't specify any of these options, the default world settings will be us
 Creating a new world with the default settings:
 
 ```
-/world create "My New World"
+/world create <aqua>"My New World"</aqua>
 ```
 
 ## Using a world generator plugin
@@ -31,7 +31,7 @@ The generator argument takes the name of the plugin that provides the custom chu
 PlotSquared generation example:
 
 ```
-/world create city generator PlotSquared
+/world create <aqua>city</aqua> generator <yellow>PlotSquared</yellow>
 ```
 
 ## Defining the world type
@@ -54,7 +54,7 @@ The following types are available:
 Amplified world example:
 
 ```
-/world create Amplified type amplified
+/world create <aqua>Amplified</aqua> type <yellow>amplified</yellow>
 ```
 
 ## Using a flat world preset
@@ -73,7 +73,7 @@ Check out the [Creating a world preset](/docs/worlds/presets) documentation.
 Void world example:
 
 ```
-/world create "My Void World" preset the-void
+/world create <aqua>"My Void World"</aqua> preset <yellow>the-void</yellow>
 ```
 
 ## Additional options
@@ -93,20 +93,20 @@ Options are specified as `option value` pairs, and can be used in any given orde
 
 Creating a normal world with structures disabled, a bonus chest, and a specific seed:
 
-```text
+```
 /world create <aqua>"A cool new world"</aqua> type <yellow>normal</yellow> structures <green>false</green> bonus-chest <light_purple>true</light_purple> seed <gold>123456789</gold>
 ```
 
 Creating a nether world with a specificified key:
 
 ```
-/world create "My Nether World" type normal dimension nether key citybuild:farmworld/nether
+/world create <aqua>"My Nether World"</aqua> type <yellow>normal</yellow> dimension <green>nether</green> key <light_purple>citybuild:farmworld/nether</light_purple>
 ```
 
 To create a default world without any custom options, you can use:
 
 ```
-/world create "My Default World"
+/world create <aqua>"My Default World"</aqua>
 ```
 
 ## Available Dimensions
