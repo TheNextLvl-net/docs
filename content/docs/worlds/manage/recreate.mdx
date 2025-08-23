@@ -1,0 +1,21 @@
+---
+title: Recreate a world
+description: How to use the world recreate command.
+---
+
+To recreate a world you can use the `/world recreate <world> <name>` command.  
+This command creates a modified instance of the specified world.  
+The same options as in [`/world create`](create#additional-options) apply: `bonus-chest`, `seed`, `structures`, `hardcore`, `key`, and `dimension`.  
+If you don't specify any of these options, the recreated world will have an auto generated name and key, and the world options will be copied 1:1.
+
+Example on how to recreate a world with a different seed:
+
+```
+/world recreate <aqua>worlds:my_world</aqua> <yellow>"recreated world"</yellow> seed <green>Hawaii</green>
+```
+
+Example on how to recreate a world without structures:
+
+```
+/world recreate <aqua>worlds:my_world</aqua> <yellow>"recreated world"</yellow> structures <green>false</green>
+```

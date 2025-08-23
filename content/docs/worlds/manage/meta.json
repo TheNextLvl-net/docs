@@ -1,3 +1,13 @@
 {
-  "pages": ["create", "clone", "import", "load-unload", "delete", "links", "..."]
+  "pages": [
+    "create",
+    "clone",
+    "regenerate",
+    "recreate",
+    "import",
+    "load-unload",
+    "delete",
+    "links",
+    "..."
+  ]
 }
