@@ -12,9 +12,9 @@
   "dependencies": {
     "@icons-pack/react-simple-icons": "^13.7.0",
     "@shikijs/types": "^3.11.0",
-    "fumadocs-core": "15.7.4",
-    "fumadocs-mdx": "11.8.1",
-    "fumadocs-ui": "15.7.4",
+    "fumadocs-core": "15.7.6",
+    "fumadocs-mdx": "11.8.2",
+    "fumadocs-ui": "15.7.6",
     "lucide-react": "^0.542.0",
     "next": "15.5.2",
     "react": "^19.1.1",
