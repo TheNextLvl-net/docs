@@ -13,7 +13,7 @@
     "@icons-pack/react-simple-icons": "^13.7.0",
     "@shikijs/types": "^3.11.0",
     "fumadocs-core": "15.7.11",
-    "fumadocs-mdx": "11.9.0",
+    "fumadocs-mdx": "11.9.1",
     "fumadocs-ui": "15.7.11",
     "lucide-react": "^0.543.0",
     "next": "15.5.2",
