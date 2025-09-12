@@ -4,10 +4,10 @@ description: PlaceholderAPI integration for ServiceIO
 icon: Variable
 ---
 
-import { Callout } from "fumadocs-ui/components/callout"
+
 
 <Callout title="Requirements">
-  ServiceIO v2.3.1+ and [PlaceholderAPI](https://github.com/PlaceholderAPI/PlaceholderAPI) are required for placeholder support.
+  ServiceIO v2.3.0+ and [PlaceholderAPI](https://github.com/PlaceholderAPI/PlaceholderAPI) are required for placeholder support.
 </Callout>
 
 ServiceIO provides PlaceholderAPI integration, allowing you to use ServiceIO data in other plugins that support placeholders.
@@ -32,7 +32,7 @@ All ServiceIO placeholders follow the format:
 - `%serviceio_balance_formatted%` - Player's current balance (formatted with currency)
 - `%serviceio_balance_formatted_<world>%` - Player's balance in a specific world (formatted with currency)
 
-<Callout title="Economy Placeholders">
+<Callout type="info" title="Economy Placeholders">
   Economy placeholders require an economy service provider to be installed and configured with ServiceIO.
 </Callout>
 
@@ -46,7 +46,7 @@ All ServiceIO placeholders follow the format:
 - `%serviceio_banks%` - List of all available banks (comma-separated)
 - `%serviceio_banks_<world>%` - List of banks available in a specific world (comma-separated)
 
-<Callout title="Bank Placeholders">
+<Callout type="info" title="Bank Placeholders">
   Bank placeholders require an economy service provider with bank support to be installed and configured with ServiceIO.
 </Callout>
 
@@ -56,7 +56,7 @@ All ServiceIO placeholders follow the format:
 
 ### VaultUnlocked Compatibility
 
-ServiceIO also provides VaultUnlocked-compatible placeholders using the `%vaultunlocked_*%` format for advanced economy features:
+ServiceIO also provides VaultUnlocked-compatible placeholders using the `%vaultunlocked_*%` format for compatibility reasons:
 
 - `%vaultunlocked_balance%` - Player's balance
 - `%vaultunlocked_balance_<world>%` - Balance in a specific world
@@ -65,7 +65,7 @@ ServiceIO also provides VaultUnlocked-compatible placeholders using the `%vaultu
 - `%vaultunlocked_accounts%` - List of accounts the player is a member of
 - `%vaultunlocked_accounts_count%` - Number of accounts the player belongs to
 
-<Callout title="VaultUnlocked Placeholders">
+<Callout type="info" title="VaultUnlocked Placeholders">
   VaultUnlocked placeholders provide advanced multi-currency and account management features. See the [VaultUnlocked documentation](https://github.com/TheNewEconomy/VaultUnlocked) for the complete list of available placeholders.
 </Callout>
 
@@ -105,23 +105,15 @@ bank-list: "Available banks: %serviceio_banks%"
 current-bank: "Your current bank: %serviceio_bank%"
 ```
 
-### In MOTD or Other Text
-```yaml
-# Welcome message with player data
-welcome-message: "Welcome %serviceio_displayname%! Your balance: %serviceio_balance_formatted%"
-
-# Group-based welcome
-group-welcome: "Hello %serviceio_prefix%%player_name%! You belong to: %serviceio_groups%"
-```
-
 ## Troubleshooting
 
 <Callout type="error" title="Placeholder Not Working?">
   Ensure that:
-  1. ServiceIO v2.3.1+ is installed
+  1. ServiceIO v2.3.0+ is installed
   2. PlaceholderAPI is installed and enabled
-  3. The relevant service provider (economy, permissions) is installed and working
+  3. The relevant service provider (economy, permissions...) is installed and working
   4. ServiceIO has successfully detected and registered the service provider
+  5. There is no typo in the placeholder and it is properly used `%serviceio_<PLACEHOLDER>%`
 </Callout>
 
-If a placeholder returns empty or default values, check your ServiceIO configuration and ensure the appropriate service providers are properly installed and configured.
+If a placeholder shows the literal placeholder text instead of the expected value, check your ServiceIO configuration and ensure the appropriate service providers are properly installed and configured.
