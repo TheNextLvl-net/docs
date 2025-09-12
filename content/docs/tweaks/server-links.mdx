@@ -1,0 +1,114 @@
+---
+title: Server Links
+description: Set up social links and server connections for your community
+---
+
+# Server Links
+
+Tweaks provides powerful social integration features that help connect your Minecraft server with your broader community presence. This includes both in-game commands and integration with Minecraft's Server Links feature.
+
+## Overview
+
+The server links system allows you to:
+
+- **Provide quick access** to your community platforms via in-game commands
+- **Integrate with Minecraft's Server Links tab** for easy access from the client
+- **Customize which platforms** are available to your players
+- **Maintain consistent branding** across your server ecosystem
+
+## Social Link Commands
+
+Tweaks provides commands for major social platforms and community features:
+
+### Platform Commands
+
+| Command | Aliases | Description |
+|---------|---------|-------------|
+| `/discord` | `/dc` | Display your Discord server invitation |
+| `/reddit` | | Share your server's subreddit |
+| `/teamspeak` | `/teamspeak3`, `/ts`, `/ts3` | Provide TeamSpeak server information |
+| `/website` | | Direct players to your main website |
+| `/x` | `/twitter` | Share your X (Twitter) profile |
+| `/youtube` | `/yt` | Promote your YouTube channel |
+
+### Community Feature Commands
+
+| Command | Description |
+|---------|-------------|
+| `/announcements` | Link to server announcements |
+| `/community` | General community hub |
+| `/feedback` | Feedback and suggestions |
+| `/forum` | Server forums |
+| `/guidelines` | Server rules and guidelines |
+| `/issues` | Bug reports and issues |
+| `/news` | Server news updates |
+| `/status` | Server status page |
+| `/support` | Help and support resources |
+
+## Configuration
+
+### Enabling Social Features
+
+In your main configuration file, you can control which features are available:
+
+```json
+{
+  "social": {
+    "add-link-commands": true,
+    "add-server-links": true,
+    "announcements": true,
+    "community": true,
+    "feedback": false,
+    "forum": true,
+    "guidelines": true,
+    "issues": false,
+    "news": true,
+    "status": false,
+    "support": true,
+    "website": true,
+    "discord": true,
+    "reddit": false,
+    "teamspeak": false,
+    "twitch": false,
+    "x": true,
+    "youtube": true
+  }
+}
+```
+
+### Setting Up Links
+
+Configure your actual URLs in the links section:
+
+```json
+{
+  "links": {
+    "announcements": "https://yourserver.com/announcements",
+    "community": "https://yourserver.com/community", 
+    "feedback": "https://forms.yourserver.com/feedback",
+    "forum": "https://forum.yourserver.com",
+    "guidelines": "https://yourserver.com/rules",
+    "issues": "https://github.com/yourserver/issues",
+    "news": "https://yourserver.com/news",
+    "status": "https://status.yourserver.com",
+    "support": "https://support.yourserver.com",
+    "website": "https://yourserver.com",
+    "discord": "https://discord.gg/yourinvite",
+    "reddit": "https://reddit.com/r/yourserver",
+    "teamspeak": "ts3server://ts.yourserver.com:9987",
+    "twitch": "https://twitch.tv/yourchannel",
+    "x": "https://x.com/yourhandle",
+    "youtube": "https://youtube.com/c/yourchannel"
+  }
+}
+```
+
+## Server Links Tab Integration
+
+When `add-server-links` is enabled, Tweaks automatically integrates with Minecraft's Server Links feature, making your community links easily accessible directly from the Minecraft client.
+
+### How It Works
+
+1. **Automatic Registration**: Enabled links are automatically registered with the Minecraft client
+2. **Client Integration**: Players can access links through the server list or in-game menus
+3. **Seamless Experience**: No need for players to remember commands or URLs
