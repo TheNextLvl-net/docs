@@ -12,11 +12,8 @@
     "---Introduction---",
     "index",
     "faq",
-    "placeholders",
     "---Guide---",
-    "manage",
-    "presets",
-    "per-worlds",
+    "guide/placeholders",
     "---For Developers---",
     "api/repository",
     "api/index"
