@@ -5,7 +5,7 @@ import {
   Shield,
   User,
   Brush,
-  Text,
+  TextAlignStart,
   Video,
   Archive,
   Landmark,
@@ -90,7 +90,7 @@ const otherCards: CardData[] = [
   },
   {
     title: "Holograms",
-    icon: Text,
+    icon: TextAlignStart,
     description: "modern hologram plugin using the new display api",
     href: "docs/holograms",
     className: "group",
