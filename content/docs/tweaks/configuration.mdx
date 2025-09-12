@@ -15,16 +15,16 @@ The main configuration file controls core plugin behavior and feature toggles.
 
 | Setting | Description | Default | Type |
 |---------|-------------|---------|------|
-| `message-deletion-timeout` | Time in milliseconds that chat messages can be deleted | 300000 (5 minutes) | Number |
-| `back-buffer-stack-size` | Number of back locations stored per user | 10 | Number |
-| `default-permission-level` | Default clientside permission level (1-4) | 1 | Number |
-| `enchantment-overflow` | Allow enchantment levels above vanilla limits | true | Boolean |
+| `message-deletion-timeout` | Time in milliseconds that chat messages can be deleted | 600000 (10 minutes) | Number |
+| `back-buffer-stack-size` | Number of back locations stored per user | 5 | Number |
+| `default-permission-level` | Default clientside permission level (1-4) | -1 | Number |
+| `enchantment-overflow` | Allow enchantment levels above vanilla limits | false | Boolean |
 | `override-join-message` | Override default join messages | false | Boolean |
 | `override-quit-message` | Override default quit messages | false | Boolean |
-| `override-chat` | Take control of chat formatting | false | Boolean |
+| `override-chat` | Take control of chat formatting | true | Boolean |
 | `log-chat` | Log chat messages to console | true | Boolean |
 | `lobby-server-name` | Name of the lobby server (for `/lobby`) | "lobby" | String |
-| `motd` | Default message of the day | "" | String |
+| `motd` | Default message of the day | | String |
 
 ### Feature Toggles
 
