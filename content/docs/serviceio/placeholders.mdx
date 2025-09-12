@@ -1,0 +1,82 @@
+---
+title: Placeholders
+description: PlaceholderAPI integration for ServiceIO
+icon: Variable
+---
+
+import { Callout } from "fumadocs-ui/components/callout"
+
+<Callout title="Requirements">
+  ServiceIO v2.3.1+ and [PlaceholderAPI](https://github.com/PlaceholderAPI/PlaceholderAPI) are required for placeholder support.
+</Callout>
+
+ServiceIO provides PlaceholderAPI integration, allowing you to use ServiceIO data in other plugins that support placeholders.
+
+## Placeholder Format
+
+All ServiceIO placeholders follow the format:
+```
+%serviceio_<placeholder>%
+```
+
+## Available Placeholders
+
+### Player Information
+- `%serviceio_prefix%` - Player's prefix from the permission service
+- `%serviceio_suffix%` - Player's suffix from the permission service  
+- `%serviceio_displayname%` - Player's display name
+
+### Economy (Bank)
+- `%serviceio_bank%` - Alias for `bank_balance`
+- `%serviceio_bank_balance%` - Player's current balance (raw number)
+- `%serviceio_bank_balance_formatted%` - Player's current balance (formatted with currency)
+
+<Callout title="Bank Placeholders">
+  Bank placeholders require an economy service provider to be installed and configured with ServiceIO.
+</Callout>
+
+### Permission Groups
+- `%serviceio_group%` - Player's primary permission group
+- `%serviceio_groups%` - All of player's permission groups (comma-separated)
+
+### Additional Placeholders
+
+More placeholders may be available depending on your installed service providers and ServiceIO configuration. The complete list depends on:
+- Installed economy plugins
+- Permission plugins 
+- Other service providers registered with ServiceIO
+
+## Usage Examples
+
+### In Chat Formats
+```yaml
+# Example chat format using ServiceIO placeholders
+format: "%serviceio_prefix%%player_name%%serviceio_suffix%: %message%"
+```
+
+### In Scoreboards
+```yaml
+# Example scoreboard using economy data
+title: "Server Info"
+lines:
+  - "Balance: %serviceio_bank_balance_formatted%"
+  - "Rank: %serviceio_group%"
+```
+
+### In MOTD or Other Text
+```yaml
+# Welcome message with player data
+welcome-message: "Welcome %serviceio_displayname%! Your balance: %serviceio_bank_balance_formatted%"
+```
+
+## Troubleshooting
+
+<Callout type="error" title="Placeholder Not Working?">
+  Ensure that:
+  1. ServiceIO v2.3.1+ is installed
+  2. PlaceholderAPI is installed and enabled
+  3. The relevant service provider (economy, permissions) is installed and working
+  4. ServiceIO has successfully detected and registered the service provider
+</Callout>
+
+If a placeholder returns empty or default values, check your ServiceIO configuration and ensure the appropriate service providers are properly installed and configured.
