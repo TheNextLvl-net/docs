@@ -23,7 +23,7 @@ The main configuration file controls core plugin behavior and feature toggles.
 | `override-quit-message` | Override default quit messages | false | Boolean |
 | `override-chat` | Take control of chat formatting | true | Boolean |
 | `log-chat` | Log chat messages to console | true | Boolean |
-| `lobby-server-name` | Name of the lobby server (for `/lobby`) | "lobby" | String |
+| `lobby-server-name` | Name of the lobby server (for `/lobby`) | lobby | String |
 | `motd` | Default message of the day | | String |
 
 ### Feature Toggles
@@ -46,7 +46,7 @@ Customize the homes feature behavior:
 | Setting | Description | Default | Type |
 |---------|-------------|---------|------|
 | `limit` | Maximum homes per player (-1 for unlimited) | 3 | Number |
-| `unnamed-name` | Default name for unnamed homes | "home" | String |
+| `unnamed-name` | Default name for unnamed homes | home | String |
 
 ### Home GUI Settings
 
@@ -54,7 +54,7 @@ Customize the homes feature behavior:
 |---------|-------------|---------|------|
 | `enabled` | Use GUI for homes (false = chat-based) | true | Boolean |
 | `rows` | Number of GUI rows | 6 | Number |
-| `action-slots` | Slots available for homes | [array] | Array |
+| `action-slots` | Slots available for homes | 1, 2, 3, 4... | Array |
 | `button-slot-next` | Next page button slot | 53 | Number |
 | `button-slot-previous` | Previous page button slot | 45 | Number |
 
@@ -68,7 +68,7 @@ Control spawn behavior and location:
 | `teleport-on-join` | TP to spawn on every join | false | Boolean |
 | `teleport-on-respawn` | TP to spawn after death | false | Boolean |
 | `ignore-respawn-position` | Ignore exact respawn coordinates | false | Boolean |
-| `location` | Spawn coordinates (world,x,y,z,yaw,pitch) | null | String |
+| `location` | Spawn coordinates (world,x,y,z,yaw,pitch) |  | String |
 
 ## Teleportation Settings
 
@@ -94,7 +94,7 @@ Customize server-wide warps:
 |---------|-------------|---------|------|
 | `enabled` | Use GUI for warps (false = chat-based) | true | Boolean |
 | `rows` | Number of GUI rows | 6 | Number |
-| `action-slots` | Slots available for warps | [array] | Array |
+| `action-slots` | Slots available for warps | 1, 2, 3, 4... | Array |
 | `button-slot-next` | Next page button slot | 53 | Number |
 | `button-slot-previous` | Previous page button slot | 45 | Number |
 
@@ -119,13 +119,13 @@ Customize the appearance of inventory inspection GUIs:
 
 | Setting | Description | Default | Type |
 |---------|-------------|---------|------|
-| `helmet` | Material for helmet placeholder | "minecraft:leather_helmet" | String |
-| `chestplate` | Material for chestplate placeholder | "minecraft:leather_chestplate" | String |
-| `leggings` | Material for leggings placeholder | "minecraft:leather_leggings" | String |
-| `boots` | Material for boots placeholder | "minecraft:leather_boots" | String |
-| `off-hand` | Material for off-hand placeholder | "minecraft:shield" | String |
-| `cursor` | Material for cursor placeholder | "minecraft:arrow" | String |
-| `placeholder` | Material for empty slots | "minecraft:gray_stained_glass_pane" | String |
+| `helmet` | Material for helmet placeholder | `minecraft:leather_helmet` | String |
+| `chestplate` | Material for chestplate placeholder | `minecraft:leather_chestplate` | String |
+| `leggings` | Material for leggings placeholder | `minecraft:leather_leggings` | String |
+| `boots` | Material for boots placeholder | `minecraft:leather_boots` | String |
+| `off-hand` | Material for off-hand placeholder | `minecraft:shield` | String |
+| `cursor` | Material for cursor placeholder | `minecraft:arrow` | String |
+| `placeholder` | Material for empty slots | `minecraft:gray_stained_glass_pane` | String |
 | `update-time` | GUI update interval in ticks | 20 | Number |
 
 ## Animal Behavior Configuration
