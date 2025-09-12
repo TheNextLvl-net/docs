@@ -1,0 +1,119 @@
+---
+title: Placeholders
+description: PlaceholderAPI integration for ServiceIO
+icon: Variable
+---
+
+
+
+<Callout title="Requirements">
+  ServiceIO v2.3.0+ and [PlaceholderAPI](https://modrinth.com/project/lKEzGugV) are required for placeholder support.
+</Callout>
+
+ServiceIO provides PlaceholderAPI integration, allowing you to use ServiceIO data in other plugins that support placeholders.
+
+## Placeholder Format
+
+All ServiceIO placeholders follow the format:
+```
+%serviceio_<placeholder>%
+```
+
+## Available Placeholders
+
+### Player Information
+- `%serviceio_prefix%` - Player's prefix from the permission service
+- `%serviceio_suffix%` - Player's suffix from the permission service  
+- `%serviceio_displayname%` - Player's display name
+
+### Economy
+- `%serviceio_balance%` - Player's current balance (raw number)
+- `%serviceio_balance_<world>%` - Player's balance in a specific world (raw number)
+- `%serviceio_balance_formatted%` - Player's current balance (formatted with currency)
+- `%serviceio_balance_formatted_<world>%` - Player's balance in a specific world (formatted with currency)
+
+<Callout type="info" title="Economy Placeholders">
+  Economy placeholders require an economy service provider to be installed and configured with ServiceIO.
+</Callout>
+
+### Banking
+- `%serviceio_bank%` - Name of the player's current bank
+- `%serviceio_bank_balance%` - Player's current bank balance (raw number)
+- `%serviceio_bank_balance_formatted%` - Player's current bank balance (formatted with currency)
+- `%serviceio_bank_<world>%` - Name of the player's bank in a specific world
+- `%serviceio_bank_<world>_balance%` - Bank balance in a specific world (raw number)
+- `%serviceio_bank_<world>_balance_formatted%` - Bank balance in a specific world (formatted with currency)
+- `%serviceio_banks%` - List of all available banks (comma-separated)
+- `%serviceio_banks_<world>%` - List of banks available in a specific world (comma-separated)
+
+<Callout type="info" title="Bank Placeholders">
+  Bank placeholders require an economy service provider with bank support to be installed and configured with ServiceIO.
+</Callout>
+
+### Permission Groups
+- `%serviceio_group%` - Player's primary permission group
+- `%serviceio_groups%` - All of player's permission groups (comma-separated)
+
+### VaultUnlocked Compatibility
+
+ServiceIO also provides VaultUnlocked placeholders using the `%vaultunlocked_<placeholder>%` format for compatibility reasons:
+
+- `%vaultunlocked_balance%` - Player's balance
+- `%vaultunlocked_balance_<world>%` - Balance in a specific world
+- `%vaultunlocked_balanceformatted%` - Formatted balance
+- `%vaultunlocked_balance_currency_<currency>%` - Balance in a specific currency
+- `%vaultunlocked_accounts%` - List of accounts the player is a member of
+- `%vaultunlocked_accounts_count%` - Number of accounts the player belongs to
+
+<Callout type="info" title="VaultUnlocked Placeholders">
+  See the [VaultUnlocked documentation](https://github.com/TheNewEconomy/VaultUnlocked?tab=readme-ov-file#-vaultunlocked-placeholderapi-placeholders-uuid-based) for the complete list of available placeholders.
+</Callout>
+
+## Usage Examples
+
+### In Chat Formats
+```yaml
+# Example chat format using ServiceIO placeholders
+format: "%serviceio_prefix%%player_name%%serviceio_suffix%: %message%"
+```
+
+### In Scoreboards
+```yaml
+# Example scoreboard using economy data
+title: "Server Info"
+lines:
+  - "Balance: %serviceio_balance_formatted%"
+  - "Bank: %serviceio_bank_balance_formatted%"
+  - "Rank: %serviceio_group%"
+```
+
+### World-Specific Economy
+```yaml
+# Show balance for specific world
+balance-message: "Your balance in %world%: %serviceio_balance_formatted_world%"
+
+# Bank balance in a specific world  
+bank-info: "Your bank in the nether: %serviceio_bank_nether_balance_formatted%"
+```
+
+### Multi-Bank Setup
+```yaml
+# List all available banks
+bank-list: "Available banks: %serviceio_banks%"
+
+# Show player's current bank
+current-bank: "Your current bank: %serviceio_bank%"
+```
+
+## Troubleshooting
+
+<Callout type="error" title="Placeholder Not Working?">
+  Ensure that:
+  1. ServiceIO v2.3.0+ is installed (`/version ServiceIO`)
+  2. [PlaceholderAPI](https://modrinth.com/project/lKEzGugV) is installed and enabled
+  3. The relevant service provider (economy, permissions...) is installed and working
+  4. ServiceIO has successfully detected the service provider (`/service info`)
+  5. There is no typo in the placeholder and it is properly used (`%serviceio_<placeholder>%`)
+</Callout>
+
+If a placeholder shows the literal placeholder text instead of the expected value, check your configuration and ensure the appropriate service providers are properly installed and configured.
