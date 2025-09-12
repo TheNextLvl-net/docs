@@ -26,25 +26,48 @@ All ServiceIO placeholders follow the format:
 - `%serviceio_suffix%` - Player's suffix from the permission service  
 - `%serviceio_displayname%` - Player's display name
 
-### Economy (Bank)
-- `%serviceio_bank%` - Alias for `bank_balance`
-- `%serviceio_bank_balance%` - Player's current balance (raw number)
-- `%serviceio_bank_balance_formatted%` - Player's current balance (formatted with currency)
+### Economy (Standard)
+- `%serviceio_balance%` - Player's current balance (raw number)
+- `%serviceio_balance_<world>%` - Player's balance in a specific world (raw number)
+- `%serviceio_balance_formatted%` - Player's current balance (formatted with currency)
+- `%serviceio_balance_formatted_<world>%` - Player's balance in a specific world (formatted with currency)
+
+<Callout title="Economy Placeholders">
+  Economy placeholders require an economy service provider to be installed and configured with ServiceIO.
+</Callout>
+
+### Economy (Bank System)
+- `%serviceio_bank%` - Name of the player's current bank
+- `%serviceio_bank_balance%` - Player's current bank balance (raw number)
+- `%serviceio_bank_balance_formatted%` - Player's current bank balance (formatted with currency)
+- `%serviceio_bank_<world>%` - Name of the player's bank in a specific world
+- `%serviceio_bank_<world>_balance%` - Bank balance in a specific world (raw number)
+- `%serviceio_bank_<world>_balance_formatted%` - Bank balance in a specific world (formatted with currency)
+- `%serviceio_banks%` - List of all available banks (comma-separated)
+- `%serviceio_banks_<world>%` - List of banks available in a specific world (comma-separated)
 
 <Callout title="Bank Placeholders">
-  Bank placeholders require an economy service provider to be installed and configured with ServiceIO.
+  Bank placeholders require an economy service provider with bank support to be installed and configured with ServiceIO.
 </Callout>
 
 ### Permission Groups
 - `%serviceio_group%` - Player's primary permission group
 - `%serviceio_groups%` - All of player's permission groups (comma-separated)
 
-### Additional Placeholders
+### VaultUnlocked Compatibility
 
-More placeholders may be available depending on your installed service providers and ServiceIO configuration. The complete list depends on:
-- Installed economy plugins
-- Permission plugins 
-- Other service providers registered with ServiceIO
+ServiceIO also provides VaultUnlocked-compatible placeholders using the `%vaultunlocked_*%` format for advanced economy features:
+
+- `%vaultunlocked_balance%` - Player's balance
+- `%vaultunlocked_balance_<world>%` - Balance in a specific world
+- `%vaultunlocked_balanceformatted%` - Formatted balance
+- `%vaultunlocked_balance_currency_<currency>%` - Balance in a specific currency
+- `%vaultunlocked_accounts%` - List of accounts the player is a member of
+- `%vaultunlocked_accounts_count%` - Number of accounts the player belongs to
+
+<Callout title="VaultUnlocked Placeholders">
+  VaultUnlocked placeholders provide advanced multi-currency and account management features. See the [VaultUnlocked documentation](https://github.com/TheNewEconomy/VaultUnlocked) for the complete list of available placeholders.
+</Callout>
 
 ## Usage Examples
 
@@ -59,14 +82,36 @@ format: "%serviceio_prefix%%player_name%%serviceio_suffix%: %message%"
 # Example scoreboard using economy data
 title: "Server Info"
 lines:
-  - "Balance: %serviceio_bank_balance_formatted%"
+  - "Balance: %serviceio_balance_formatted%"
+  - "Bank: %serviceio_bank_balance_formatted%"
   - "Rank: %serviceio_group%"
+```
+
+### World-Specific Economy
+```yaml
+# Show balance for specific world
+balance-message: "Your balance in %world%: %serviceio_balance_formatted_world%"
+
+# Bank balance in a specific world  
+bank-info: "Your bank in the nether: %serviceio_bank_nether_balance_formatted%"
+```
+
+### Multi-Bank Setup
+```yaml
+# List all available banks
+bank-list: "Available banks: %serviceio_banks%"
+
+# Show player's current bank
+current-bank: "Your current bank: %serviceio_bank%"
 ```
 
 ### In MOTD or Other Text
 ```yaml
 # Welcome message with player data
-welcome-message: "Welcome %serviceio_displayname%! Your balance: %serviceio_bank_balance_formatted%"
+welcome-message: "Welcome %serviceio_displayname%! Your balance: %serviceio_balance_formatted%"
+
+# Group-based welcome
+group-welcome: "Hello %serviceio_prefix%%player_name%! You belong to: %serviceio_groups%"
 ```
 
 ## Troubleshooting
