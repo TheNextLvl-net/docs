@@ -37,7 +37,7 @@ TheNextLvl documentation is a Next.js 15 application built with Fumadocs, TypeSc
 ### Linting and Formatting
 
 - **Format code**: `bun run format` or `npm run format` -- takes ~1 second. Uses Prettier.
-- **Lint code**: `npx next lint` -- takes ~3 seconds. NEVER CANCEL. Set timeout to 30+ seconds.
+- **Lint code**: `bunx next lint` -- takes ~3 seconds. NEVER CANCEL. Set timeout to 30+ seconds.
   - Note: Shows warnings about TypeScript version mismatch (expected)
   - May show img element and unused variable warnings (expected)
 - **CRITICAL**: Always run formatting and linting before pushing changes or CI will fail
@@ -61,7 +61,7 @@ After making changes, ALWAYS perform these validation steps:
 
 3. **Validate formatting and linting**:
    - Run `bun run format` or `npm run format` - should complete in ~1 second without errors
-   - Run `npx next lint` - should complete in ~3 seconds with minimal warnings only
+   - Run `bunx next lint` - should complete in ~3 seconds with minimal warnings only
    - Expected warnings: img element usage, unused variables (these are normal)
 
 ## Key Architecture
@@ -144,7 +144,7 @@ After making changes, ALWAYS perform these validation steps:
 ### Pre-commit Checklist
 
 1. Run `bun run format` or `npm run format` - ensure all files formatted (~1 second)
-2. Run `npx next lint` - check for linting issues (~3 seconds, warnings OK)
+2. Run `bunx next lint` - check for linting issues (~3 seconds, warnings OK)
 3. Test development server starts: `bun run dev` or `npm run dev` (~1 second)
 4. Verify content changes display correctly at http://localhost:3000
 5. Test homepage accessibility: `curl -s http://localhost:3000 | head -10`
