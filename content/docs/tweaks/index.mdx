@@ -1,5 +1,108 @@
 ---
 title: Overview
+description: An Essentials-like, must have command collection for your minecraft server
+icon: BookMarked
 ---
 
-Coming soon!
+import { Command, Settings, Link2, MessageCircleQuestionMark, Server, Home, Wrench, MessageSquare, Users, Spawn, ArrowLeftRight, MapPin } from "lucide-react"
+
+# Tweaks [!toc]
+
+Tweaks is a modern alternative to EssentialsX, providing an extensive collection of essential commands and features for modern **Paper** and **Folia** servers. It serves as a comprehensive all-in-one solution for server administrators.
+
+## Features
+
+Tweaks provides a wide range of functionality including:
+
+- **Home & Warp Management** - Personal homes and server warps
+- **Player Utilities** - Essential player commands like teleportation, inventory management, and more
+- **Server Administration** - Broadcast, MOTD management, and administrative tools
+- **Social Integration** - Link commands for Discord, website, and other platforms
+- **Item Management** - Enchanting, repairing, renaming, and item utilities
+- **Environmental Controls** - Time and weather commands
+- **Workstation Access** - Virtual access to crafting tables, anvils, and more
+- **Private Messaging** - Full messaging system with replies and toggles
+- **TPA System** - Teleport request system for players
+
+## Getting Started
+
+Here are the key documentation sections to help you configure and use Tweaks:
+
+<Cards>
+  <Card
+    title="Command Permissions"
+    description="Complete list of all commands and their required permissions"
+    href="./tweaks/commands"
+    icon={<Command />}
+    target="_self"
+  />
+  <Card
+    title="Configuration"
+    description="Configure features, limits, cooldowns, and behavior"
+    href="./tweaks/configuration"
+    icon={<Settings />}
+    target="_self"
+  />
+  <Card
+    title="Server Links"
+    description="Set up social links and server connections"
+    href="./tweaks/server-links"
+    icon={<Link2 />}
+    target="_self"
+  />
+</Cards>
+
+## Command Categories
+
+Tweaks organizes its commands into logical categories:
+
+<Cards>
+  <Card
+    title="Home Commands"
+    description="Personal home management with /sethome, /home, /delhome"
+    href="./tweaks/commands#home-commands"
+    icon={<Home />}
+    target="_self"
+  />
+  <Card
+    title="Player Commands"
+    description="Essential player utilities like /fly, /heal, /feed, /gamemode"
+    href="./tweaks/commands#player-commands"
+    icon={<Users />}
+    target="_self"
+  />
+  <Card
+    title="Server Commands"
+    description="Administrative tools like /broadcast, /motd, /lobby"
+    href="./tweaks/commands#server-commands"
+    icon={<Server />}
+    target="_self"
+  />
+  <Card
+    title="TPA Commands"
+    description="Teleport request system with /tpa, /tpaccept, /tpahere"
+    href="./tweaks/commands#tpa-commands"
+    icon={<ArrowLeftRight />}
+    target="_self"
+  />
+  <Card
+    title="Warp Commands"
+    description="Server-wide warp points with /warp, /setwarp, /delwarp"
+    href="./tweaks/commands#warp-commands"
+    icon={<MapPin />}
+    target="_self"
+  />
+  <Card
+    title="Workstation Commands"
+    description="Virtual access to crafting stations like /workbench, /anvil, /enchanting"
+    href="./tweaks/commands#workstation-commands"
+    icon={<Wrench />}
+    target="_self"
+  />
+</Cards>
+
+## Requirements
+
+- **Server:** Paper or Folia (latest version)
+- **Java:** Java 21 or higher
+- **Optional:** ServiceIO for enhanced permissions and economy features

@@ -1,0 +1,293 @@
+---
+title: Server Links
+description: Set up social links and server connections for your community
+---
+
+# Server Links
+
+Tweaks provides powerful social integration features that help connect your Minecraft server with your broader community presence. This includes both in-game commands and integration with Minecraft's Server Links feature.
+
+## Overview
+
+The server links system allows you to:
+
+- **Provide quick access** to your community platforms via in-game commands
+- **Integrate with Minecraft's Server Links tab** for easy access from the client
+- **Customize which platforms** are available to your players
+- **Maintain consistent branding** across your server ecosystem
+
+## Social Link Commands
+
+Tweaks provides commands for major social platforms and community features:
+
+### Platform Commands
+
+| Command | Aliases | Description |
+|---------|---------|-------------|
+| `/discord` | `/dc` | Display your Discord server invitation |
+| `/reddit` | | Share your server's subreddit |
+| `/teamspeak` | `/teamspeak3`, `/ts`, `/ts3` | Provide TeamSpeak server information |
+| `/website` | | Direct players to your main website |
+| `/x` | `/twitter` | Share your X (Twitter) profile |
+| `/youtube` | `/yt` | Promote your YouTube channel |
+
+### Community Feature Commands
+
+| Command | Description |
+|---------|-------------|
+| `/announcements` | Link to server announcements |
+| `/community` | General community hub |
+| `/feedback` | Feedback and suggestions |
+| `/forum` | Server forums |
+| `/guidelines` | Server rules and guidelines |
+| `/issues` | Bug reports and issues |
+| `/news` | Server news updates |
+| `/status` | Server status page |
+| `/support` | Help and support resources |
+
+## Configuration
+
+### Enabling Social Features
+
+In your main configuration file, you can control which features are available:
+
+```json
+{
+  "social": {
+    "add-link-commands": true,
+    "add-server-links": true,
+    "announcements": true,
+    "community": true,
+    "feedback": false,
+    "forum": true,
+    "guidelines": true,
+    "issues": false,
+    "news": true,
+    "status": false,
+    "support": true,
+    "website": true,
+    "discord": true,
+    "reddit": false,
+    "teamspeak": false,
+    "twitch": false,
+    "x": true,
+    "youtube": true
+  }
+}
+```
+
+### Setting Up Links
+
+Configure your actual URLs in the links section:
+
+```json
+{
+  "links": {
+    "announcements": "https://yourserver.com/announcements",
+    "community": "https://yourserver.com/community", 
+    "feedback": "https://forms.yourserver.com/feedback",
+    "forum": "https://forum.yourserver.com",
+    "guidelines": "https://yourserver.com/rules",
+    "issues": "https://github.com/yourserver/issues",
+    "news": "https://yourserver.com/news",
+    "status": "https://status.yourserver.com",
+    "support": "https://support.yourserver.com",
+    "website": "https://yourserver.com",
+    "discord": "https://discord.gg/yourinvite",
+    "reddit": "https://reddit.com/r/yourserver",
+    "teamspeak": "ts3server://ts.yourserver.com:9987",
+    "twitch": "https://twitch.tv/yourchannel",
+    "x": "https://x.com/yourhandle",
+    "youtube": "https://youtube.com/c/yourchannel"
+  }
+}
+```
+
+## Server Links Tab Integration
+
+When `add-server-links` is enabled, Tweaks automatically integrates with Minecraft's Server Links feature, making your community links easily accessible directly from the Minecraft client.
+
+### How It Works
+
+1. **Automatic Registration**: Enabled links are automatically registered with the Minecraft client
+2. **Client Integration**: Players can access links through the server list or in-game menus
+3. **Seamless Experience**: No need for players to remember commands or URLs
+
+### Supported Link Types
+
+Minecraft's Server Links feature supports these categories:
+
+- **Bug Report** (`issues`)
+- **Community Guidelines** (`guidelines`) 
+- **Discord** (`discord`)
+- **Feedback** (`feedback`)
+- **Forums** (`forum`)
+- **News** (`news`)
+- **Status** (`status`)
+- **Support** (`support`)
+- **Website** (`website`)
+
+## Link Command Behavior
+
+### Default Behavior
+
+When a player uses a social link command:
+
+1. **Message Display**: A formatted message appears in chat with the link
+2. **Click Action**: Players can click the message to open the URL
+3. **Hover Info**: Additional context appears on hover
+
+### Permissions
+
+Social link commands **do not require any permissions** by default. This ensures all players can access your community resources.
+
+To restrict access to specific commands, you can:
+
+```yaml
+# Deny access to specific commands
+- -tweaks.command.discord
+
+# Or create custom permission groups
+tweaks.links.staff:
+- tweaks.command.feedback
+- tweaks.command.issues
+```
+
+## Customization
+
+### Message Formatting
+
+You can customize the appearance of link messages in your translation files:
+
+```json
+{
+  "commands": {
+    "discord": {
+      "format": "<click:open_url:'{url}'><gradient:#5865F2:#7289DA>[Discord]</gradient> Join our community!</click>",
+      "hover": "Click to join our Discord server"
+    }
+  }
+}
+```
+
+### Conditional Links
+
+You can make links conditional based on player permissions or other criteria:
+
+```json
+{
+  "social": {
+    "staff-feedback": {
+      "enabled": true,
+      "permission": "tweaks.links.staff",
+      "url": "https://staff.yourserver.com/feedback"
+    }
+  }
+}
+```
+
+## Best Practices
+
+### URL Configuration
+
+1. **Use HTTPS** whenever possible for security
+2. **Test all links** before deploying to production
+3. **Keep URLs current** and monitor for broken links
+4. **Use short URLs** for better chat display when needed
+
+### Community Integration
+
+1. **Consistent Branding**: Match your server's theme across all platforms
+2. **Clear Descriptions**: Make it obvious what each link provides
+3. **Strategic Selection**: Don't overwhelm players with too many options
+4. **Regular Updates**: Keep content fresh and links active
+
+### Server Links Tab
+
+1. **Enable selectively**: Only show links that provide real value
+2. **Prioritize important links**: Website, Discord, and rules are most important
+3. **Test client integration**: Verify links work from the Minecraft client
+4. **Monitor usage**: Remove unused links to keep the list clean
+
+## Troubleshooting
+
+### Common Issues
+
+**Links not appearing in Server Links tab:**
+- Verify `add-server-links` is enabled
+- Check that URLs are properly formatted
+- Ensure the server has restarted after configuration changes
+
+**Commands not working:**
+- Confirm `add-link-commands` is enabled
+- Verify specific platform toggles are enabled
+- Check for permission restrictions
+
+**URLs not opening:**
+- Test URLs in a web browser
+- Ensure URLs use proper protocols (https://, ts3server://, etc.)
+- Check client-side security settings
+
+### Debugging
+
+Enable debug logging to troubleshoot link registration:
+
+```json
+{
+  "debug": {
+    "log-link-registration": true
+  }
+}
+```
+
+## Examples
+
+### Gaming Community Setup
+
+```json
+{
+  "social": {
+    "add-link-commands": true,
+    "add-server-links": true,
+    "website": true,
+    "discord": true,
+    "forum": true,
+    "guidelines": true,
+    "support": true,
+    "youtube": false,
+    "x": false
+  },
+  "links": {
+    "website": "https://craftinglegends.com",
+    "discord": "https://discord.gg/craftinglegends",
+    "forum": "https://forum.craftinglegends.com",
+    "guidelines": "https://craftinglegends.com/rules",
+    "support": "https://support.craftinglegends.com"
+  }
+}
+```
+
+### Content Creator Server
+
+```json
+{
+  "social": {
+    "add-link-commands": true,
+    "add-server-links": true,
+    "website": true,
+    "discord": true,
+    "youtube": true,
+    "twitch": true,
+    "x": true,
+    "support": true
+  },
+  "links": {
+    "website": "https://streamcraft.tv",
+    "discord": "https://discord.gg/streamcraft",
+    "youtube": "https://youtube.com/c/StreamCraft",
+    "twitch": "https://twitch.tv/streamcraft", 
+    "x": "https://x.com/StreamCraftMC",
+    "support": "https://streamcraft.tv/support"
+  }
+}
+```

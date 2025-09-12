@@ -2,5 +2,10 @@
   "root": true,
   "title": "Tweaks",
   "description": "A convenient all-in-one solution",
-  "icon": "Wrench"
+  "icon": "Wrench",
+  "pages": [
+    "commands",
+    "configuration", 
+    "server-links"
+  ]
 }

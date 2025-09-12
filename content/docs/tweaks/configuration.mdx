@@ -1,0 +1,287 @@
+---
+title: Configuration
+description: Configure Tweaks features, limits, cooldowns, and behavior
+---
+
+# Configuration
+
+Tweaks provides extensive configuration options to customize the plugin's behavior to suit your server's needs. Configuration files are generated automatically on first run.
+
+## Main Configuration File
+
+The main configuration file controls core plugin behavior and feature toggles.
+
+### General Settings
+
+| Setting | Description | Default | Type |
+|---------|-------------|---------|------|
+| `message-deletion-timeout` | Time in milliseconds that chat messages can be deleted | 300000 (5 minutes) | Number |
+| `back-buffer-stack-size` | Number of back locations stored per user | 10 | Number |
+| `default-permission-level` | Default clientside permission level (1-4) | 1 | Number |
+| `enchantment-overflow` | Allow enchantment levels above vanilla limits | true | Boolean |
+| `override-join-message` | Override default join messages | false | Boolean |
+| `override-quit-message` | Override default quit messages | false | Boolean |
+| `override-chat` | Take control of chat formatting | false | Boolean |
+| `log-chat` | Log chat messages to console | true | Boolean |
+| `lobby-server-name` | Name of the lobby server (for `/lobby`) | "lobby" | String |
+| `motd` | Default message of the day | "" | String |
+
+### Feature Toggles
+
+Enable or disable major plugin features:
+
+| Feature | Description | Default |
+|---------|-------------|---------|
+| `homes` | Enable the homes system | true |
+| `msg` | Enable private messaging | true |
+| `spawn` | Enable spawn management | true |
+| `tpa` | Enable teleport requests | true |
+| `warps` | Enable server warps | true |
+| `lobby` | Enable lobby connection (auto-detected) | varies |
+
+## Home System Configuration
+
+Customize the homes feature behavior:
+
+| Setting | Description | Default | Type |
+|---------|-------------|---------|------|
+| `limit` | Maximum homes per player (-1 for unlimited) | 3 | Number |
+| `unnamed-name` | Default name for unnamed homes | "home" | String |
+
+### Home GUI Settings
+
+| Setting | Description | Default | Type |
+|---------|-------------|---------|------|
+| `enabled` | Use GUI for homes (false = chat-based) | true | Boolean |
+| `rows` | Number of GUI rows | 6 | Number |
+| `action-slots` | Slots available for homes | [array] | Array |
+| `button-slot-next` | Next page button slot | 53 | Number |
+| `button-slot-previous` | Previous page button slot | 45 | Number |
+
+## Spawn Configuration
+
+Control spawn behavior and location:
+
+| Setting | Description | Default | Type |
+|---------|-------------|---------|------|
+| `teleport-on-first-join` | TP to spawn on first join | true | Boolean |
+| `teleport-on-join` | TP to spawn on every join | false | Boolean |
+| `teleport-on-respawn` | TP to spawn after death | false | Boolean |
+| `ignore-respawn-position` | Ignore exact respawn coordinates | false | Boolean |
+| `location` | Spawn coordinates (world,x,y,z,yaw,pitch) | null | String |
+
+## Teleportation Settings
+
+Configure teleportation behavior and restrictions:
+
+| Setting | Description | Default | Type |
+|---------|-------------|---------|------|
+| `cooldown` | Teleport cooldown in milliseconds | 3000 (3 seconds) | Number |
+| `cooldown-allow-movement` | Allow movement during cooldown | false | Boolean |
+| `tpa-timeout` | TPA request timeout in milliseconds | 60000 (1 minute) | Number |
+
+> [!TIP]
+> Players with the permission `tweaks.teleport.cooldown.bypass` can ignore teleport cooldowns.
+
+## Warp System Configuration
+
+Customize server-wide warps:
+
+### Warp GUI Settings
+
+| Setting | Description | Default | Type |
+|---------|-------------|---------|------|
+| `enabled` | Use GUI for warps (false = chat-based) | true | Boolean |
+| `rows` | Number of GUI rows | 6 | Number |
+| `action-slots` | Slots available for warps | [array] | Array |
+| `button-slot-next` | Next page button slot | 53 | Number |
+| `button-slot-previous` | Previous page button slot | 45 | Number |
+
+### Warp Icon Customization
+
+You can set custom icons for specific warp names:
+
+```json
+{
+  "name-icons": {
+    "End Ship": "minecraft:elytra",
+    "Bastion": "minecraft:polished_blackstone_bricks", 
+    "Mine": "minecraft:diamond",
+    "Casino": "minecraft:gold_ingot"
+  }
+}
+```
+
+## Inventory GUI Configuration
+
+Customize the appearance of inventory inspection GUIs:
+
+| Setting | Description | Default | Type |
+|---------|-------------|---------|------|
+| `helmet` | Material for helmet placeholder | "minecraft:leather_helmet" | String |
+| `chestplate` | Material for chestplate placeholder | "minecraft:leather_chestplate" | String |
+| `leggings` | Material for leggings placeholder | "minecraft:leather_leggings" | String |
+| `boots` | Material for boots placeholder | "minecraft:leather_boots" | String |
+| `off-hand` | Material for off-hand placeholder | "minecraft:shield" | String |
+| `cursor` | Material for cursor placeholder | "minecraft:arrow" | String |
+| `placeholder` | Material for empty slots | "minecraft:gray_stained_glass_pane" | String |
+| `update-time` | GUI update interval in ticks | 20 | Number |
+
+## Animal Behavior Configuration
+
+Customize animal interaction mechanics:
+
+| Setting | Description | Default | Type |
+|---------|-------------|---------|------|
+| `cow-milking-cooldown` | Cow milking cooldown in milliseconds | 5000 | Number |
+| `mushroom-stew-cooldown` | Mooshroom stew cooldown in milliseconds | 10000 | Number |
+| `sheep-wool-growth-cooldown` | Sheep wool regrowth time in milliseconds | 60000 | Number |
+| `animal-heal-by-feeding` | Enable healing animals by feeding | true | Boolean |
+
+## Social Features Configuration
+
+Configure social media and community links:
+
+### Social Feature Toggles
+
+| Setting | Description | Default |
+|---------|-------------|---------|
+| `add-link-commands` | Enable social link commands | true |
+| `add-server-links` | Add links to Server Links tab | true |
+| `announcements` | Enable announcements feature | false |
+| `community` | Enable community feature | false |
+| `feedback` | Enable feedback feature | false |
+| `forum` | Enable forum feature | false |
+| `guidelines` | Enable guidelines feature | false |
+| `issues` | Enable issues feature | false |
+| `news` | Enable news feature | false |
+| `status` | Enable status feature | false |
+| `support` | Enable support feature | false |
+| `website` | Enable website feature | false |
+| `discord` | Enable Discord command | false |
+| `reddit` | Enable Reddit command | false |
+| `teamspeak` | Enable TeamSpeak command | false |
+| `twitch` | Enable Twitch command | false |
+| `x` | Enable X (Twitter) command | false |
+| `youtube` | Enable YouTube command | false |
+
+### Link URLs
+
+Configure the actual URLs for social features:
+
+```json
+{
+  "links": {
+    "announcements": "https://example.com/announcements",
+    "community": "https://example.com/community",
+    "feedback": "https://example.com/feedback",
+    "forum": "https://example.com/forum",
+    "guidelines": "https://example.com/guidelines",
+    "issues": "https://github.com/example/server/issues",
+    "news": "https://example.com/news",
+    "status": "https://status.example.com",
+    "support": "https://example.com/support",
+    "website": "https://example.com",
+    "discord": "https://discord.gg/invite",
+    "reddit": "https://reddit.com/r/example",
+    "teamspeak": "ts3server://example.com",
+    "twitch": "https://twitch.tv/example",
+    "x": "https://x.com/example",
+    "youtube": "https://youtube.com/c/example"
+  }
+}
+```
+
+## Chat System Configuration
+
+Configure chat formatting and message management:
+
+### Chat Tags
+
+Tweaks supports various chat tags for formatting. These can be used in translation files:
+
+| Tag | Description |
+|-----|-------------|
+| `<delete>` | Clickable delete button for messages |
+| `<display_name>` | Player's display name |
+| `<message>` | The original message content |
+| `<message_content>` | Text content for click/hover actions |
+| `<player>` | Player's username |
+| `<world>` | Player's current world |
+
+### ServiceIO Integration Tags
+
+When using ServiceIO-compatible plugins:
+
+| Tag | Description |
+|-----|-------------|
+| `<chat_display_name>` | ServiceIO display name |
+| `<chat_prefix>` | Player's chat prefix |
+| `<chat_suffix>` | Player's chat suffix |  
+| `<player_group>` | Player's permission group |
+| `<group_prefix>` | Group prefix |
+| `<group_suffix>` | Group suffix |
+
+### Economy Integration Tags
+
+When using ServiceIO-compatible economy plugins:
+
+| Tag | Description |
+|-----|-------------|
+| `<balance>` | Formatted player balance |
+| `<balance_unformatted>` | Raw balance number |
+| `<bank_balance>` | Formatted bank balance |
+| `<bank_balance_unformatted>` | Raw bank balance |
+| `<currency_name>` | Currency name (singular) |
+| `<currency_name_plural>` | Currency name (plural) |
+| `<currency_symbol>` | Currency symbol |
+
+### Chat Hierarchy System
+
+Configure who can delete which messages using weights:
+
+```yaml
+# In LuckPerms, assign deletion weights:
+/lp user <player> meta set chat-delete-weight <number>
+
+# Or use permission:
+meta.chat-delete-weight.<weight>
+```
+
+Higher weights can delete messages from equal or lower weights.
+
+## Commands Configuration
+
+You can customize command names and aliases in `commands.json`:
+
+```json
+{
+  "example-command": {
+    "command": "customname",
+    "aliases": [
+      "alias1",
+      "alias2"
+    ]
+  }
+}
+```
+
+> [!WARNING]
+> When updating from version 3.0.x to 3.1.0+, all commands may be disabled. Replace `"enabled": false` with `"enabled": true` in the commands.json file.
+
+## Configuration Files Structure
+
+Tweaks generates several configuration files:
+
+- `config.json` - Main configuration file
+- `commands.json` - Command customization
+- `translations/` - Language files for all messages
+- `data/` - Player data storage (homes, warps, etc.)
+
+## Best Practices
+
+1. **Backup configurations** before major updates
+2. **Test changes** on a development server first
+3. **Review permissions** when enabling new features
+4. **Monitor performance** with large home/warp limits
+5. **Keep ServiceIO updated** for enhanced features

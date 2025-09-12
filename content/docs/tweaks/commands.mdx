@@ -1,0 +1,189 @@
+---
+title: Command Permissions
+description: A complete list of all Tweaks commands and their required permissions
+---
+
+# Command Permissions
+
+This page contains a comprehensive list of all Tweaks commands, their usage, aliases, and required permissions.
+
+## Environmental Commands
+
+### Time Commands
+
+| Command | Aliases | Description | Permission |
+|---------|---------|-------------|------------|
+| `/time add <time> [<world>]` | | Add N amount of ticks to the world time | tweaks.command.time.add |
+| `/time query [day/daytime/gametime] [<world>]` | | Query the time of a world | tweaks.command.time.query |
+| `/time set afternoon [<world>]` | | Set the time to afternoon (9000 ticks) | tweaks.command.time.afternoon |
+| `/time set day [<world>]` | `/day [<world>]` | Set the time to day (1000 ticks) | tweaks.command.time.day |
+| `/time set midnight [<world>]` | `/midnight [<world>]` | Set the time to midnight (18000 ticks) | tweaks.command.time.midnight |
+| `/time set morning [<world>]` | | Set the time to morning (0 ticks) | tweaks.command.time.morning |
+| `/time set night [<world>]` | `/night [<world>]` | Set the time to night (13000 ticks) | tweaks.command.time.night |
+| `/time set noon [<world>]` | `/noon [<world>]` | Set the time to noon (6000 ticks) | tweaks.command.time.noon |
+| `/time set sunrise [<world>]` | | Set the time to sunrise (23000 ticks) | tweaks.command.time.sunrise |
+| `/time set sunset [<world>]` | | Set the time to sunset (12000 ticks) | tweaks.command.time.sunset |
+
+### Weather Commands
+
+| Command | Aliases | Description | Permission |
+|---------|---------|-------------|------------|
+| `/weather clear` | `/sun` | Let the sun shine | tweaks.command.weather.sun |
+| `/weather rain` | `/rain` | Let it rain | tweaks.command.weather.rain |
+| `/weather thunder` | `/thunder` | Let it thunder | tweaks.command.weather.thunder |
+
+**Permission pack:** `tweaks.commands.environmental` (grants all environmental permissions)
+
+## Home Commands
+
+| Command | Aliases | Description | Permission |
+|---------|---------|-------------|------------|
+| `/home [<name>]` | | Teleport to your home | tweaks.command.home |
+| `/homes` | | List all of your homes | tweaks.command.home |
+| `/set-home [<name>]` | `/sethome` | Set a home location | tweaks.command.home.set |
+| `/delete-home [<name>]` | `/delhome` | Delete a home location | tweaks.command.home.delete |
+
+## Item Commands
+
+| Command | Aliases | Description | Permission |
+|---------|---------|-------------|------------|
+| `/enchant <enchantment> [<level>]` | | Enchant your held item | tweaks.command.enchant |
+| `/head [player/url/value] [<value>]` | `/skull` | Get player heads or head information | tweaks.command.head |
+| `/item [item] (amount)` | `/i` | Give yourself an item | tweaks.command.item |
+| `/lore append <text>` | | Append a line to item lore | tweaks.command.lore |
+| `/lore clear` | | Clear the item lore | tweaks.command.lore |
+| `/lore prepend <text>` | | Prepend a line to item lore | tweaks.command.lore |
+| `/lore replace <text> <replacement>` | | Replace text in item lore | tweaks.command.lore |
+| `/lore set <text>` | | Set the item lore | tweaks.command.lore |
+| `/rename <name>` | | Change the display name of your item | tweaks.command.rename |
+| `/repair [all]` | | Repair your items | tweaks.command.repair |
+| `/unbreakable` | | Make your item unbreakable | tweaks.command.unbreakable |
+| `/unenchant <enchantment>` | | Remove an enchantment from your item | tweaks.command.unenchant |
+
+**Permission pack:** `tweaks.commands.item` (grants all item permissions)
+
+## Message Commands
+
+| Command | Aliases | Description | Permission |
+|---------|---------|-------------|------------|
+| `/msg <player> <message>` | `/tell`, `/write`, `/t`, `/w` | Send a private message to a player | tweaks.command.msg |
+| `/reply <message>` | `/r` | Reply to the last received private message | tweaks.command.msg.reply |
+| `/msgtoggle` | `/togglemsg` | Toggle receiving private messages | tweaks.command.msg.toggle |
+
+## Player Commands
+
+| Command | Aliases | Description | Permission | Additional Permissions |
+|---------|---------|-------------|------------|----------------------|
+| `/back` | | Go back to your last position | tweaks.command.back | |
+| `/enderchest [<player>]` | `/ec` | Open your or another player's ender chest | tweaks.command.enderchest | tweaks.command.enderchest.others<br/>tweaks.command.enderchest.edit |
+| `/feed [<players>]` | | Satisfy your or another player's hunger | tweaks.command.feed | tweaks.command.feed.others |
+| `/fly [<players>]` | `/flight` | Toggle fly mode for yourself or others | tweaks.command.fly | tweaks.command.fly.others |
+| `/gamemode [gamemode] [<player>]` | `/gm` | Change your or another player's gamemode | tweaks.command.gamemode | tweaks.command.gamemode.others |
+| `/god [<targets>]` | `/invincible` | Toggle invulnerability for yourself or others | tweaks.command.god | tweaks.command.god.others |
+| `/hat` | | Equip your held item as a hat | tweaks.command.hat | |
+| `/heal [<targets>]` | | Heal yourself or others | tweaks.command.heal | tweaks.command.heal.others |
+| `/inventory [<player>]` | `/inv`, `/invsee` | View your or another player's inventory | tweaks.command.inventory | tweaks.command.inventory.edit |
+| `/offline-teleport <player> [<target>]` | `/offline-tp`, `/tpo` | Teleport offline players or yourself to them | tweaks.command.offline-tp | |
+| `/ping [<player>]` | `/latency`, `/ms` | Check your or another player's latency | tweaks.command.ping | tweaks.command.ping.others |
+| `/seen <player>` | `/find` | Get information about a player | tweaks.command.seen | |
+| `/speed <speed> [fly/sneak/walk] [<targets>]` | | Change movement speed | tweaks.command.speed | tweaks.command.speed.others |
+| `/speed reset [fly/sneak/walk] [<targets>]` | | Reset movement speed to default | tweaks.command.speed | tweaks.command.speed.others |
+| `/suicide` | | Take your own life | tweaks.command.suicide | |
+| `/trash` | `/dispose`, `/garbage` | Open disposal interface | tweaks.command.trash | |
+| `/vanish [<player>]` | `/v`, `/invisible` | Toggle vanish mode for yourself or others | tweaks.command.vanish | |
+
+**Permission pack:** `tweaks.commands.player` (grants all player permissions)
+
+## Server Commands
+
+| Command | Aliases | Description | Permission |
+|---------|---------|-------------|------------|
+| `/broadcast <message>` | `/bc` | Broadcast a message to all players | tweaks.command.broadcast |
+| `/lobby` | `/hub`, `/l` | Connect to the lobby server | tweaks.command.lobby |
+| `/motd clear` | | Reset the server MOTD | tweaks.command.motd |
+| `/motd get` | | Get the current server MOTD | tweaks.command.motd |
+| `/motd replace <text> <replacement>` | | Replace text in the server MOTD | tweaks.command.motd |
+| `/motd set <motd>` | | Set the server MOTD | tweaks.command.motd |
+
+**Permission pack:** `tweaks.commands.server` (grants all server permissions)
+
+## Social Commands
+
+> [!NOTE]
+> Social commands do not require permissions by default. They provide configured server links to players.
+
+| Command | Aliases | Description |
+|---------|---------|-------------|
+| `/discord` | `/dc` | Get the server's Discord invite |
+| `/reddit` | | Get the server's Reddit link |
+| `/teamspeak` | `/teamspeak3`, `/ts`, `/ts3` | Get the server's TeamSpeak information |
+| `/website` | | Get the server's website URL |
+| `/x` | `/twitter` | Get the server's X (Twitter) profile |
+| `/youtube` | `/yt` | Get the server's YouTube channel |
+
+## Spawn Commands
+
+| Command | Aliases | Description | Permission |
+|---------|---------|-------------|------------|
+| `/spawn` | | Teleport to the server spawn | tweaks.command.spawn |
+| `/set-spawn [<position>] [<yaw>] <pitch> [<world>]` | `/setspawn` | Set the server spawn location | tweaks.command.setspawn |
+
+## TPA Commands
+
+| Command | Aliases | Description | Permission |
+|---------|---------|-------------|------------|
+| `/tpa <player>` | `/tpask` | Request to teleport to a player | tweaks.command.tpa |
+| `/tpaccept` | | Accept a teleport request | tweaks.command.tpa.accept |
+| `/tpadeny` | `/tpdeny` | Deny a teleport request | tweaks.command.tpa.deny |
+| `/tpahere <player>` | `/tphere` | Request a player to teleport to you | tweaks.command.tpa.here |
+| `/tpatoggle` | `/toggletpa` | Toggle receiving teleport requests | tweaks.command.tpa.toggle |
+
+## Warp Commands
+
+| Command | Aliases | Description | Permission |
+|---------|---------|-------------|------------|
+| `/warp <warp>` | | Teleport to a warp location | tweaks.command.warp |
+| `/warps` | | List all available warps | tweaks.command.warp |
+| `/set-warp <warp>` | `/setwarp` | Create a new warp location | tweaks.command.warp.set |
+| `/delete-warp <warp>` | `/delwarp` | Delete a warp location | tweaks.command.warp.delete |
+
+## Workstation Commands
+
+| Command | Aliases | Description | Permission |
+|---------|---------|-------------|------------|
+| `/anvil` | | Open a virtual anvil | tweaks.command.anvil |
+| `/cartography-table` | `/cartography` | Open a virtual cartography table | tweaks.command.cartography-table |
+| `/enchanting-table` | `/enchanting` | Open a virtual enchanting table | tweaks.command.enchanting-table |
+| `/grindstone` | | Open a virtual grindstone | tweaks.command.grindstone |
+| `/loom` | | Open a virtual loom | tweaks.command.loom |
+| `/smithing-table` | `/smithing` | Open a virtual smithing table | tweaks.command.smithing-table |
+| `/stonecutter` | | Open a virtual stonecutter | tweaks.command.stonecutter |
+| `/workbench` | `/wb` | Open a virtual crafting table | tweaks.command.workbench |
+
+**Permission pack:** `tweaks.commands.workstation` (grants all workstation permissions)
+
+## Special Permissions
+
+### Teleportation
+
+- `tweaks.teleport.cooldown.bypass` - Bypass teleportation cooldowns
+
+### Chat Management
+
+- `tweaks.chat.delete` - See chat deletion buttons
+- `tweaks.chat.delete.own` - Delete your own chat messages
+
+### Chat Hierarchy
+
+Configure chat deletion hierarchy with:
+- `meta.chat-delete-weight.<weight>` - Set chat deletion weight (higher can delete lower)
+
+## Admin Permissions
+
+For server administrators, these permission packs grant broad access:
+
+- `tweaks.commands.environmental` - All environmental commands
+- `tweaks.commands.item` - All item manipulation commands  
+- `tweaks.commands.player` - All player management commands
+- `tweaks.commands.server` - All server administration commands
+- `tweaks.commands.workstation` - All virtual workstation commands
