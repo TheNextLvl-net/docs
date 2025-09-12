@@ -1,5 +1,5 @@
-import { defineConfig, defineDocs, frontmatterSchema, metaSchema } from "fumadocs-mdx/config";
-import { transformerCommandColor } from "./src/lib/command-transformer";
+import { defineConfig, defineDocs, frontmatterSchema, metaSchema } from "fumadocs-mdx/config"
+import { transformerCommandColor } from "./src/lib/command-transformer"
 
 // You can customise Zod schemas for frontmatter and `meta.json` here
 // see https://fumadocs.vercel.app/docs/mdx/collections#define-docs
@@ -10,7 +10,7 @@ export const docs = defineDocs({
   meta: {
     schema: metaSchema,
   },
-});
+})
 
 export default defineConfig({
   mdxOptions: {
@@ -20,11 +20,9 @@ export default defineConfig({
         dark: "github-dark",
       },
       langAlias: {
-        command: 'text',
+        command: "text",
       },
-      transformers: [
-        transformerCommandColor(),
-      ],
+      transformers: [transformerCommandColor()],
     },
   },
-});
+})
