@@ -80,8 +80,9 @@ Configure teleportation behavior and restrictions:
 | `cooldown-allow-movement` | Allow movement during cooldown | false | Boolean |
 | `tpa-timeout` | TPA request timeout in milliseconds | 60000 (1 minute) | Number |
 
-> [!TIP]
-> Players with the permission `tweaks.teleport.cooldown.bypass` can ignore teleport cooldowns.
+<Callout type="tip">
+  Players with the permission `tweaks.teleport.cooldown.bypass` ignore teleport cooldowns.
+</Callout>
 
 ## Warp System Configuration
 
@@ -266,8 +267,10 @@ You can customize command names and aliases in `commands.json`:
 }
 ```
 
-> [!WARNING]
-> When updating from version 3.0.x to 3.1.0+, all commands may be disabled. Replace `"enabled": false` with `"enabled": true` in the commands.json file.
+<Callout type="warn">
+  When updating from version 3.0.x to 3.1.0+, all commands may be disabled.  
+  Replace `"enabled": false` with `"enabled": true` in the commands.json file.
+</Callout>
 
 ## Configuration Files Structure
 
@@ -276,7 +279,7 @@ Tweaks generates several configuration files:
 - `config.json` - Main configuration file
 - `commands.json` - Command customization
 - `translations/` - Language files for all messages
-- `data/` - Player data storage (homes, warps, etc.)
+- `saves.db` - Player data storage (homes, warps, etc.)
 
 ## Best Practices
 
