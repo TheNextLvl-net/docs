@@ -1,0 +1,62 @@
+---
+title: Frequently Asked Questions
+icon: MessageCircleQuestionMark
+description: Frequently Asked Questions about PerWorlds
+---
+
+import { Accordion, Accordions } from "fumadocs-ui/components/accordion"
+
+<Accordions type="single">
+  <Accordion
+    title="What is PerWorlds and how does it work?"
+    id="what-is"
+  >
+    **PerWorlds** is a plugin that allows you to have separate inventories, advancements, statistics, and more for each world or group of worlds on your Minecraft server.  
+    It is designed to work seamlessly with [Worlds](../worlds) but can also be used on its own.
+  </Accordion>
+  <Accordion
+    title="Which server software does PerWorlds support?"
+    id="server-software"
+  >
+    The only officially supported and recommended server software is [Paper](https://papermc.io/software/paper).  
+    Forks like [Purpur](https://purpurmc.org/) and [Pufferfish](https://pufferfish.host/downloads) are known to work too.
+    
+    <Callout type="info">
+      Purpur provides an option to extend the maximum number of enderchest rows, which is supported by PerWorlds.
+    </Callout>
+
+    <Callout type="error" title="Note">
+      Support will not be provided for non-paper based server software or unknown, arbitrary forks.
+      Hybrids that try to support both mods and plugins are completely unsupported and will most likely not work.
+    </Callout>
+  </Accordion>
+  <Accordion
+    title="Can I migrate from other per-world inventory plugins?"
+    id="migration"
+  >
+    There is **no automatic migration** from other plugins (yet).  
+    However, data import is planned for a future release and currently work in progress.
+  </Accordion>
+  <Accordion
+    title="Are there any incompatible plugins?"
+    id="incompatible"
+  >
+    Yes, some plugins are known to be **incompatible** or may cause issues with PerWorlds.
+
+    <Callout type="error" title="Incompatible Plugins">
+      Below you can find all plugins that are known to be incompatible with PerWorlds.  
+      Do not use these plugins together with PerWorlds as they may cause data loss or corruption.
+
+      - **GameModeInventories**
+      - **Multiverse-Inventories**
+    </Callout>
+
+    <Callout type="warn" title="Plugins that cause slight hiccups with PerWorlds">
+      The following plugins may cause issues with PerWorlds in certain situations.  
+
+      - **Multiverse-Core** (overrides the gamemode when teleporting between worlds)
+    </Callout>
+
+    If you encounter issues with other plugins, please [open an issue](https://github.com/TheNextLvl-net/per-worlds/issues/new?template=bug_report.yml).
+  </Accordion>
+</Accordions>
