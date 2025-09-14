@@ -20,18 +20,8 @@ Permissions are hierarchical: granting a parent permission (e.g. `perworlds.admi
 | `/world group spawn unset`           | `perworlds.command.group.spawn.unset` | Unset the spawn point for a group                |
 | `/world group teleport`              | `perworlds.command.group.teleport`    | Teleport to a group's spawn point                |
 
-## Permission Hierarchy
-
-- `perworlds.admin`
-  - Grants all PerWorlds permissions.
-- `perworlds.commands.group`
-  - Grants access to all group-related commands.
-- Each sub-permission (e.g. `perworlds.command.group.add`) grants access to the specific command.
-
-
-
 ## Permission packs
 
-| Commands                                                               | Permission           |
-| ---------------------------------------------------------------------- | -------------------- |
-| /world group \*                                                        | perworlds.admin<br/>perworlds.commands.group      |
+| Commands                                                               | Permission                                   |
+|------------------------------------------------------------------------|----------------------------------------------|
+| /world group \*                                                        | perworlds.admin<br/>perworlds.commands.group |
