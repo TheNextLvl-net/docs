@@ -1,0 +1,37 @@
+---
+title: Command Permissions
+description: A list of all PerWorlds commands and their required permissions.
+---
+
+# Command Permissions
+
+Below is a list of all PerWorlds commands and the permissions required to use them.  
+Permissions are hierarchical: granting a parent permission (e.g. `perworlds.admin`) gives access to all child permissions.
+
+| Command                              | Permission                            | Description                                      |
+|--------------------------------------|---------------------------------------|--------------------------------------------------|
+| `/world group add`                   | `perworlds.command.group.add`         | Add a world to a group                           |
+| `/world group create`                | `perworlds.command.group.create`      | Create a new world group                         |
+| `/world group delete`                | `perworlds.command.group.delete`      | Delete a world group                             |
+| `/world group list`                  | `perworlds.command.group.list`        | List all world groups                            |
+| `/world group option`                | `perworlds.command.group.option`      | Configure group options                          |
+| `/world group remove`                | `perworlds.command.group.remove`      | Remove a world from a group                      |
+| `/world group spawn set`             | `perworlds.command.group.spawn.set`   | Set the spawn point for a group                  |
+| `/world group spawn unset`           | `perworlds.command.group.spawn.unset` | Unset the spawn point for a group                |
+| `/world group teleport`              | `perworlds.command.group.teleport`    | Teleport to a group's spawn point                |
+
+## Permission Hierarchy
+
+- `perworlds.admin`
+  - Grants all PerWorlds permissions.
+- `perworlds.commands.group`
+  - Grants access to all group-related commands.
+- Each sub-permission (e.g. `perworlds.command.group.add`) grants access to the specific command.
+
+
+
+## Permission packs
+
+| Commands                                                               | Permission           |
+| ---------------------------------------------------------------------- | -------------------- |
+| /world group \*                                                        | perworlds.admin<br/>perworlds.commands.group      |
