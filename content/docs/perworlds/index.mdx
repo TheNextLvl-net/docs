@@ -4,13 +4,48 @@ description: Group and manage multiple worlds with ease.
 icon: BookMarked
 ---
 
-## What is PerWorlds? [!toc]
+import { Command, Group, Blend, Link2, MessageCircleQuestionMark } from "lucide-react"
+
+# PerWorlds [!toc]
 
 PerWorlds is a plugin that allows you to group multiple worlds together, each with its own unique settings and configurations.
 This also allows you to have **player data**, **inventories**, **gamerules**, and other settings that are specific to **each** world **group**.
 
 As a quick comparison, you can think of **PerWorlds** as **Multiverse Inventories** but with much more features and higher flexibility.
 
-<Callout type="error">
-  PerWorlds does not support Folia at the moment, there are still too many technical limitations.
-</Callout>
+PerWorlds is designed to work seamlessly with [Worlds](/docs/worlds), but can also be used on its own.  
+It supports grouping worlds for separate inventories, advancements, statistics, gamerules, and more.  
+You can easily manage world groups, add or remove worlds, and configure options per group.
+
+Here are a few selected guides that will help you get started with PerWorlds
+
+<Cards>
+  <Card
+    title="Frequently Asked Questions"
+    description="Frequently asked questions about PerWorlds"
+    href="perworlds/faq"
+    icon={<MessageCircleQuestionMark />}
+    target="_self"
+  />
+  <Card
+    title="Managing Groups"
+    description="Create, delete, and manage world groups"
+    href="perworlds/manage/create"
+    icon={<Group />}
+    target="_self"
+  />
+  <Card
+    title="Group Options"
+    description="Configure what data is shared or separated per group"
+    href="perworlds/manage/options"
+    icon={<Blend />}
+    target="_self"
+  />
+  <Card
+    title="Command permissions"
+    description="A list of all PerWorlds commands and their required permissions."
+    href="perworlds/manage/command-permissions"
+    icon={<Command />}
+    target="_self"
+  />
+</Cards>
