@@ -1,0 +1,583 @@
+---
+title: Service Convert Command
+description: Convert data between different service providers seamlessly
+icon: RefreshCw
+---
+
+import { Callout } from "fumadocs-ui/components/callout"
+import { Tab, Tabs } from "fumadocs-ui/components/tabs"
+
+The Service Convert command is one of ServiceIO's most powerful features, allowing you to migrate data between different service providers without losing any information. This is particularly useful when switching from one economy or permission plugin to another.
+
+## Overview
+
+The convert command provides a safe, reliable way to:
+- **Transfer Economy Data** - Migrate balances, banks, and transaction history
+- **Convert Permission Data** - Move groups, permissions, and user assignments
+- **Preserve Relationships** - Maintain user-group associations and inheritance
+- **Validate Results** - Verify data integrity after conversion
+
+<Callout type="info" title="Safety First">
+  The convert command creates backups before any conversion and validates the process at each step. Your original data is never modified until you confirm the conversion.
+</Callout>
+
+## Command Syntax
+
+The basic command structure is:
+
+```bash
+/service convert [source] [target] [options]
+```
+
+### Parameters
+
+- **source** - The service provider to convert data FROM
+- **target** - The service provider to convert data TO  
+- **options** - Additional flags to control the conversion process
+
+## Viewing Available Options
+
+### List All Services
+
+To see all available service providers for conversion:
+
+```bash
+/service convert
+```
+
+This displays:
+- Currently detected service providers
+- Their types (Economy, Permission, etc.)
+- Current status and version information
+- Which conversions are supported
+
+### Check Specific Service
+
+To check if a specific service supports conversion:
+
+```bash
+/service convert [service-name]
+```
+
+Example:
+```bash
+/service convert Essentials
+/service convert LuckPerms
+```
+
+## Economy Conversions
+
+### Supported Economy Providers
+
+Common economy plugins that support conversion:
+
+- **Essentials** - Basic economy with per-world support
+- **VaultEconomy** - Simple economy implementation
+- **TNE (The New Economy)** - Advanced multi-currency economy
+- **CMI Economy** - Part of the CMI plugin suite
+- **EconomyLite** - Lightweight economy solution
+
+### Basic Economy Conversion
+
+Convert from one economy plugin to another:
+
+```bash
+/service convert Essentials TNE
+```
+
+This will:
+1. Scan all player balances in Essentials
+2. Create equivalent accounts in TNE
+3. Transfer balance data
+4. Verify the conversion succeeded
+5. Create a backup of original data
+
+### Per-World Economy Conversion
+
+For plugins with world-specific economies:
+
+```bash
+/service convert Essentials VaultEconomy --worlds
+```
+
+Options:
+- `--worlds` - Include world-specific balances
+- `--world [world-name]` - Convert only a specific world
+- `--merge-worlds` - Combine all world balances into global balance
+
+### Bank Account Conversion
+
+Convert banking data between supported providers:
+
+```bash
+/service convert Essentials TNE --banks
+```
+
+This preserves:
+- Bank account names and balances
+- Bank member lists and permissions
+- Bank ownership information
+- Account creation dates
+
+### Advanced Economy Options
+
+<Tabs items={['Filtering', 'Validation', 'Rollback']}>
+  <Tab value="Filtering">
+    **Filter by balance amount:**
+    ```bash
+    # Only convert accounts with balances over $1000
+    /service convert Essentials TNE --min-balance 1000.0
+    
+    # Only convert accounts with balances under $10000  
+    /service convert Essentials TNE --max-balance 10000.0
+    
+    # Convert accounts within a range
+    /service convert Essentials TNE --min-balance 100.0 --max-balance 5000.0
+    ```
+    
+    **Filter by player activity:**
+    ```bash
+    # Only convert active players (logged in within 30 days)
+    /service convert Essentials TNE --active-only 30
+    
+    # Convert all players regardless of activity
+    /service convert Essentials TNE --include-inactive
+    ```
+    
+    **Filter by account type:**
+    ```bash
+    # Only convert regular player accounts
+    /service convert Essentials TNE --players-only
+    
+    # Only convert NPC/system accounts
+    /service convert Essentials TNE --npcs-only
+    ```
+  </Tab>
+  <Tab value="Validation">
+    **Dry run (preview only):**
+    ```bash
+    # Preview what would be converted without making changes
+    /service convert Essentials TNE --dry-run
+    ```
+    
+    **Detailed validation:**
+    ```bash
+    # Run extensive validation checks
+    /service convert Essentials TNE --validate-all
+    
+    # Skip validation for faster conversion
+    /service convert Essentials TNE --skip-validation
+    ```
+    
+    **Balance verification:**
+    ```bash
+    # Verify total balances match after conversion
+    /service convert Essentials TNE --verify-totals
+    
+    # Check individual account balances
+    /service convert Essentials TNE --verify-accounts
+    ```
+  </Tab>
+  <Tab value="Rollback">
+    **Backup options:**
+    ```bash
+    # Create backup before conversion
+    /service convert Essentials TNE --backup
+    
+    # Skip backup creation (not recommended)
+    /service convert Essentials TNE --no-backup
+    
+    # Specify backup location
+    /service convert Essentials TNE --backup-dir /path/to/backups
+    ```
+    
+    **Rollback commands:**
+    ```bash
+    # List available backups
+    /service convert --list-backups
+    
+    # Restore from backup
+    /service convert --restore [backup-id]
+    
+    # Remove old backups
+    /service convert --cleanup-backups 7 # Keep 7 days
+    ```
+  </Tab>
+</Tabs>
+
+## Permission Conversions
+
+### Supported Permission Providers
+
+Popular permission plugins with conversion support:
+
+- **LuckPerms** - Modern permission system with advanced features
+- **PermissionsEx (PEX)** - Legacy but widely used
+- **GroupManager** - Part of EssentialsGroupManager
+- **PowerfulPerms** - Advanced permission management
+- **UltraPermissions** - Feature-rich permission plugin
+
+### Basic Permission Conversion
+
+Convert permissions from one plugin to another:
+
+```bash
+/service convert PermissionsEx LuckPerms
+```
+
+This transfers:
+- All user permissions
+- Group definitions and permissions
+- User-group assignments
+- Prefix/suffix information
+- Inheritance relationships
+
+### Advanced Permission Options
+
+<Tabs items={['Group Management', 'World-Specific', 'Metadata']}>
+  <Tab value="Group Management">
+    **Group filtering:**
+    ```bash
+    # Convert only specific groups
+    /service convert PEX LuckPerms --groups admin,moderator,vip
+    
+    # Exclude certain groups from conversion
+    /service convert PEX LuckPerms --exclude-groups guest,banned
+    
+    # Rename groups during conversion
+    /service convert PEX LuckPerms --rename-group "default:member"
+    ```
+    
+    **Group hierarchy:**
+    ```bash
+    # Preserve group inheritance
+    /service convert PEX LuckPerms --preserve-inheritance
+    
+    # Flatten group structure (remove inheritance)
+    /service convert PEX LuckPerms --flatten-groups
+    
+    # Convert to specific inheritance model
+    /service convert PEX LuckPerms --inheritance-model nested
+    ```
+  </Tab>
+  <Tab value="World-Specific">
+    **World permissions:**
+    ```bash
+    # Convert world-specific permissions
+    /service convert PEX LuckPerms --worlds
+    
+    # Convert only specific worlds
+    /service convert PEX LuckPerms --world world,world_nether
+    
+    # Merge world permissions into global
+    /service convert PEX LuckPerms --merge-worlds
+    
+    # Convert global permissions only
+    /service convert PEX LuckPerms --global-only
+    ```
+  </Tab>
+  <Tab value="Metadata">
+    **User metadata:**
+    ```bash
+    # Include prefix/suffix data
+    /service convert PEX LuckPerms --metadata
+    
+    # Convert chat formatting
+    /service convert PEX LuckPerms --chat-format
+    
+    # Preserve custom meta keys
+    /service convert PEX LuckPerms --preserve-meta weight,priority
+    ```
+  </Tab>
+</Tabs>
+
+### Permission Validation
+
+After conversion, validate the results:
+
+```bash
+# Check user permissions
+/service convert --validate-user [username]
+
+# Verify group structure
+/service convert --validate-groups
+
+# Test permission inheritance
+/service convert --test-inheritance [group-name]
+```
+
+## Multi-Service Conversion
+
+Convert multiple service types simultaneously:
+
+```bash
+# Convert both economy and permissions
+/service convert --economy Essentials:TNE --permissions PEX:LuckPerms
+
+# Convert with different options per service
+/service convert \
+  --economy "Essentials:TNE --banks --worlds" \
+  --permissions "PEX:LuckPerms --metadata"
+```
+
+## Conversion Process
+
+### Step-by-Step Workflow
+
+1. **Pre-Conversion Checks**
+   ```bash
+   /service convert Essentials TNE --dry-run
+   ```
+   - Validates source and target services
+   - Estimates conversion time and data volume
+   - Identifies potential issues or conflicts
+
+2. **Backup Creation**
+   ```bash
+   /service convert Essentials TNE --backup
+   ```
+   - Creates timestamped backup of source data
+   - Stores backup in secure location
+   - Provides backup verification
+
+3. **Data Migration**
+   ```bash
+   /service convert Essentials TNE --execute
+   ```
+   - Transfers data in batches for performance
+   - Provides real-time progress updates
+   - Handles errors gracefully with retry logic
+
+4. **Validation & Verification**
+   ```bash
+   /service convert --verify-last-conversion
+   ```
+   - Compares source and target data
+   - Validates data integrity
+   - Reports any discrepancies
+
+5. **Cleanup (Optional)**
+   ```bash
+   /service convert --cleanup-source Essentials
+   ```
+   - Removes old service provider data
+   - Updates plugin configuration
+   - Disables source plugin (if requested)
+
+### Monitoring Progress
+
+During conversion, monitor progress with:
+
+```bash
+# Check current conversion status
+/service convert --status
+
+# View detailed progress
+/service convert --status --verbose
+
+# Cancel running conversion
+/service convert --cancel
+```
+
+## Error Handling
+
+### Common Issues
+
+<Tabs items={['Permission Errors', 'Data Conflicts', 'Plugin Issues']}>
+  <Tab value="Permission Errors">
+    **Insufficient Permissions:**
+    ```
+    Error: You don't have permission to convert data
+    ```
+    **Solution**: Ensure you have `serviceio.convert` permission
+    
+    **File Access Issues:**
+    ```
+    Error: Cannot read source data files
+    ```
+    **Solution**: Check file permissions and plugin data folder access
+  </Tab>
+  <Tab value="Data Conflicts">
+    **Duplicate Accounts:**
+    ```
+    Error: User 'player123' already exists in target service
+    ```
+    **Solution**: Use `--merge` or `--overwrite` options
+    
+    **Invalid Data:**
+    ```
+    Error: Invalid balance value: -999999.99
+    ```
+    **Solution**: Clean source data or use `--fix-invalid` option
+  </Tab>
+  <Tab value="Plugin Issues">
+    **Service Not Found:**
+    ```
+    Error: Source service 'Essentials' not detected
+    ```
+    **Solution**: Verify plugin is installed and enabled
+    
+    **Version Incompatibility:**
+    ```
+    Error: Target service version not supported
+    ```
+    **Solution**: Update to compatible version or use `--force` flag
+  </Tab>
+</Tabs>
+
+### Recovery Options
+
+If conversion fails:
+
+```bash
+# Restore from automatic backup
+/service convert --restore-last
+
+# Restore from specific backup
+/service convert --restore [backup-timestamp]
+
+# Manual recovery with partial data
+/service convert --recover --partial-ok
+```
+
+## Best Practices
+
+### Pre-Conversion Planning
+
+1. **Test on Development Server**
+   - Never run conversions directly on production
+   - Set up identical test environment
+   - Verify all functionality after test conversion
+
+2. **Create Manual Backup**
+   ```bash
+   # Backup plugin data folders
+   tar -czf plugin-backup-$(date +%Y%m%d-%H%M%S).tar.gz \
+     plugins/Essentials \
+     plugins/LuckPerms \
+     plugins/ServiceIO
+   ```
+
+3. **Schedule Maintenance Window**
+   - Plan conversion during low-activity periods
+   - Notify users of potential downtime
+   - Have rollback plan ready
+
+### During Conversion
+
+1. **Monitor Server Resources**
+   - Watch memory usage during large conversions
+   - Monitor disk space for backup storage
+   - Check network latency if using remote databases
+
+2. **Keep Logs**
+   ```bash
+   # Enable detailed logging
+   /service convert --log-level debug Essentials TNE
+   ```
+
+3. **Validate Incrementally**
+   ```bash
+   # Check progress every 1000 records
+   /service convert --validate-every 1000 Essentials TNE
+   ```
+
+### Post-Conversion
+
+1. **Verify Critical Data**
+   - Check high-balance accounts manually
+   - Verify administrator permissions
+   - Test core plugin functionality
+
+2. **Update Configurations**
+   - Adjust plugin settings for new service
+   - Update other plugins that depend on converted service
+   - Remove or disable old service provider
+
+3. **Monitor Performance**
+   - Watch server performance after conversion
+   - Check for any error logs
+   - Verify all dependent plugins work correctly
+
+## Command Reference
+
+### Quick Reference
+
+```bash
+# Basic conversion
+/service convert [source] [target]
+
+# Show available services
+/service convert --list
+
+# Dry run (preview only)
+/service convert [source] [target] --dry-run
+
+# Convert with backup
+/service convert [source] [target] --backup
+
+# Convert specific data types
+/service convert [source] [target] --economy --permissions
+
+# Cancel running conversion
+/service convert --cancel
+
+# Show conversion status
+/service convert --status
+
+# List backups
+/service convert --backups
+
+# Restore from backup
+/service convert --restore [backup-id]
+```
+
+### Permissions
+
+Required permissions for convert command:
+
+- `serviceio.convert` - Basic conversion access
+- `serviceio.convert.economy` - Convert economy data
+- `serviceio.convert.permissions` - Convert permission data
+- `serviceio.convert.backup` - Create/restore backups
+- `serviceio.convert.admin` - Administrative functions (cleanup, force, etc.)
+
+## Examples
+
+### Complete Migration Example
+
+Migrating from Essentials + PermissionsEx to TNE + LuckPerms:
+
+```bash
+# Step 1: Preview the conversion
+/service convert --dry-run \
+  --economy Essentials:TNE \
+  --permissions PermissionsEx:LuckPerms
+
+# Step 2: Create backup and convert
+/service convert --backup \
+  --economy "Essentials:TNE --banks --worlds" \
+  --permissions "PermissionsEx:LuckPerms --metadata --inheritance"
+
+# Step 3: Validate results
+/service convert --verify-last-conversion
+
+# Step 4: Clean up old data (after verification)
+/service convert --cleanup-source Essentials PermissionsEx
+```
+
+### Selective Data Migration
+
+Converting only VIP players with high balances:
+
+```bash
+/service convert Essentials TNE \
+  --min-balance 10000.0 \
+  --groups vip,premium,elite \
+  --active-only 7 \
+  --backup
+```
+
+<Callout type="success" title="Conversion Complete">
+  Once your conversion is complete and validated, remember to update your plugin configurations and inform users of any changes that might affect their gameplay experience.
+</Callout>

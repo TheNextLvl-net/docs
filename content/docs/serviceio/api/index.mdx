@@ -1,0 +1,555 @@
+---
+title: API Documentation
+description: Developer guide for using and extending ServiceIO
+icon: Code
+---
+
+import { Callout } from "fumadocs-ui/components/callout"
+import { Tab, Tabs } from "fumadocs-ui/components/tabs"
+
+ServiceIO provides comprehensive APIs for developers to integrate with and extend the service layer functionality. This guide covers how to use ServiceIO in your projects and how to create custom service providers.
+
+## Getting Started
+
+### Adding ServiceIO to Your Project
+
+<Tabs items={['Maven', 'Gradle (Groovy)', 'Gradle (Kotlin)']}>
+  <Tab value="Maven">
+    ```xml
+    <repositories>
+        <repository>
+            <id>thenextlvl</id>
+            <url>https://repo.thenextlvl.net/releases</url>
+        </repository>
+    </repositories>
+
+    <dependencies>
+        <dependency>
+            <groupId>net.thenextlvl.services</groupId>
+            <artifactId>service-io</artifactId>
+            <version>VERSION</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+    ```
+  </Tab>
+  <Tab value="Gradle (Groovy)">
+    ```groovy
+    repositories {
+        maven {
+            name = "thenextlvl"
+            url = "https://repo.thenextlvl.net/releases"
+        }
+    }
+
+    dependencies {
+        compileOnly "net.thenextlvl.services:service-io:VERSION"
+    }
+    ```
+  </Tab>
+  <Tab value="Gradle (Kotlin)">
+    ```kotlin
+    repositories {
+        maven {
+            name = "thenextlvl"
+            url = "https://repo.thenextlvl.net/releases"
+        }
+    }
+
+    dependencies {
+        compileOnly("net.thenextlvl.services:service-io:VERSION")
+    }
+    ```
+  </Tab>
+</Tabs>
+
+<Callout type="info" title="Version Information">
+  Replace `VERSION` with the latest ServiceIO version. Check the [repository](./repository) for available versions.
+</Callout>
+
+### Plugin Dependencies
+
+Add ServiceIO as a dependency in your `plugin.yml`:
+
+```yaml
+name: YourPlugin
+version: 1.0.0
+main: com.example.YourPlugin
+depend: [ServiceIO]
+# or use soft-depend if ServiceIO is optional
+# softdepend: [ServiceIO]
+```
+
+## Using ServiceIO Services
+
+### Accessing Services
+
+ServiceIO provides multiple ways to access services:
+
+<Tabs items={['ServiceIO API', 'Vault API', 'VaultUnlocked API']}>
+  <Tab value="ServiceIO API">
+    ```java
+    import net.thenextlvl.serviceio.ServiceIO;
+    import net.thenextlvl.serviceio.economy.EconomyController;
+    import net.thenextlvl.serviceio.permission.PermissionController;
+
+    public class YourPlugin extends JavaPlugin {
+        private ServiceIO serviceIO;
+        private EconomyController economy;
+        private PermissionController permissions;
+
+        @Override
+        public void onEnable() {
+            // Get ServiceIO instance
+            serviceIO = ServiceIO.getInstance();
+            
+            // Access service controllers
+            economy = serviceIO.getEconomyController();
+            permissions = serviceIO.getPermissionController();
+            
+            // Check if services are available
+            if (economy.isEnabled()) {
+                getLogger().info("Economy service is available");
+            }
+        }
+    }
+    ```
+  </Tab>
+  <Tab value="Vault API">
+    ```java
+    import net.milkbowl.vault.economy.Economy;
+    import net.milkbowl.vault.permission.Permission;
+    import org.bukkit.plugin.RegisteredServiceProvider;
+
+    public class YourPlugin extends JavaPlugin {
+        private Economy economy;
+        private Permission permissions;
+
+        @Override
+        public void onEnable() {
+            if (!setupEconomy()) {
+                getLogger().severe("No economy plugin found!");
+                return;
+            }
+            setupPermissions();
+        }
+
+        private boolean setupEconomy() {
+            RegisteredServiceProvider<Economy> rsp = 
+                getServer().getServicesManager().getRegistration(Economy.class);
+            if (rsp == null) return false;
+            economy = rsp.getProvider();
+            return true;
+        }
+
+        private void setupPermissions() {
+            RegisteredServiceProvider<Permission> rsp = 
+                getServer().getServicesManager().getRegistration(Permission.class);
+            if (rsp != null) {
+                permissions = rsp.getProvider();
+            }
+        }
+    }
+    ```
+  </Tab>
+  <Tab value="VaultUnlocked API">
+    ```java
+    import net.thenextlvl.vaultunlocked.economy.UnlockedEconomy;
+    import net.thenextlvl.vaultunlocked.permission.UnlockedPermission;
+    import org.bukkit.plugin.RegisteredServiceProvider;
+
+    public class YourPlugin extends JavaPlugin {
+        private UnlockedEconomy economy;
+        private UnlockedPermission permissions;
+
+        @Override
+        public void onEnable() {
+            setupVaultUnlocked();
+        }
+
+        private void setupVaultUnlocked() {
+            RegisteredServiceProvider<UnlockedEconomy> economyProvider = 
+                getServer().getServicesManager().getRegistration(UnlockedEconomy.class);
+            if (economyProvider != null) {
+                economy = economyProvider.getProvider();
+            }
+
+            RegisteredServiceProvider<UnlockedPermission> permissionProvider = 
+                getServer().getServicesManager().getRegistration(UnlockedPermission.class);
+            if (permissionProvider != null) {
+                permissions = permissionProvider.getProvider();
+            }
+        }
+    }
+    ```
+  </Tab>
+</Tabs>
+
+## Working with Economy Services
+
+### Basic Operations
+
+```java
+import net.thenextlvl.serviceio.economy.EconomyController;
+import org.bukkit.entity.Player;
+
+public void handleEconomy(Player player) {
+    EconomyController economy = ServiceIO.getInstance().getEconomyController();
+    
+    // Check if economy is available
+    if (!economy.isEnabled()) {
+        player.sendMessage("Economy is not available!");
+        return;
+    }
+    
+    // Get player balance
+    double balance = economy.getBalance(player);
+    player.sendMessage("Your balance: " + economy.format(balance));
+    
+    // Check if player has enough money
+    if (economy.has(player, 100.0)) {
+        // Withdraw money
+        economy.withdraw(player, 100.0);
+        player.sendMessage("Withdrew $100!");
+    } else {
+        player.sendMessage("You don't have enough money!");
+    }
+    
+    // Deposit money
+    economy.deposit(player, 50.0);
+    player.sendMessage("Deposited $50!");
+}
+```
+
+### World-Specific Economy
+
+```java
+public void handleWorldEconomy(Player player, String worldName) {
+    EconomyController economy = ServiceIO.getInstance().getEconomyController();
+    
+    // World-specific operations
+    double worldBalance = economy.getBalance(player, worldName);
+    boolean hasWorld = economy.has(player, worldName, 200.0);
+    
+    if (hasWorld) {
+        economy.withdraw(player, worldName, 200.0);
+    }
+}
+```
+
+### Banking Operations
+
+```java
+public void handleBanking(Player player) {
+    EconomyController economy = ServiceIO.getInstance().getEconomyController();
+    
+    // Check if banking is supported
+    if (!economy.hasBankSupport()) {
+        player.sendMessage("Banking is not supported!");
+        return;
+    }
+    
+    String bankName = "MyBank";
+    
+    // Create a bank
+    if (economy.createBank(bankName, player).success()) {
+        player.sendMessage("Bank created successfully!");
+    }
+    
+    // Check bank balance
+    double bankBalance = economy.bankBalance(bankName).balance;
+    
+    // Deposit to bank
+    economy.bankDeposit(bankName, 1000.0);
+    
+    // Add member to bank
+    economy.isBankMember(bankName, player);
+}
+```
+
+## Working with Permission Services
+
+### Basic Permission Operations
+
+```java
+import net.thenextlvl.serviceio.permission.PermissionController;
+
+public void handlePermissions(Player player) {
+    PermissionController permissions = ServiceIO.getInstance().getPermissionController();
+    
+    // Check permissions
+    boolean hasPermission = permissions.has(player, "myplugin.use");
+    
+    // Add/remove permissions
+    permissions.playerAdd(player, "myplugin.vip");
+    permissions.playerRemove(player, "myplugin.basic");
+    
+    // Work with groups
+    String primaryGroup = permissions.getPrimaryGroup(player);
+    String[] playerGroups = permissions.getPlayerGroups(player);
+    
+    // Add/remove from groups
+    permissions.playerAddGroup(player, "vip");
+    permissions.playerRemoveGroup(player, "default");
+    
+    // Get prefix/suffix
+    String prefix = permissions.getPlayerPrefix(player);
+    String suffix = permissions.getPlayerSuffix(player);
+}
+```
+
+### World-Specific Permissions
+
+```java
+public void handleWorldPermissions(Player player, String worldName) {
+    PermissionController permissions = ServiceIO.getInstance().getPermissionController();
+    
+    // World-specific operations
+    boolean hasWorldPerm = permissions.has(worldName, player, "build.blocks");
+    permissions.playerAdd(worldName, player, "world.special");
+    
+    String worldGroup = permissions.getPrimaryGroup(worldName, player);
+    permissions.playerAddGroup(worldName, player, "world-builder");
+}
+```
+
+## Working with NPC Services
+
+```java
+import net.thenextlvl.serviceio.npc.NPCController;
+import net.thenextlvl.serviceio.npc.NPC;
+
+public void handleNPCs(Player player) {
+    NPCController npcController = ServiceIO.getInstance().getNPCController();
+    
+    if (!npcController.isEnabled()) {
+        player.sendMessage("NPC service is not available!");
+        return;
+    }
+    
+    // Create an NPC
+    Location location = player.getLocation();
+    NPC npc = npcController.createNPC("MyNPC", location);
+    
+    // Configure the NPC
+    npc.setSkin("Notch");
+    npc.setDisplayName("§6Merchant");
+    
+    // Spawn the NPC
+    npc.spawn();
+    
+    // Add click handler
+    npc.onClick((clickPlayer) -> {
+        clickPlayer.sendMessage("Hello from the NPC!");
+    });
+}
+```
+
+## Working with Hologram Services
+
+```java
+import net.thenextlvl.serviceio.hologram.HologramController;
+import net.thenextlvl.serviceio.hologram.Hologram;
+
+public void handleHolograms(Player player) {
+    HologramController hologramController = ServiceIO.getInstance().getHologramController();
+    
+    if (!hologramController.isEnabled()) {
+        player.sendMessage("Hologram service is not available!");
+        return;
+    }
+    
+    // Create a hologram
+    Location location = player.getLocation().add(0, 3, 0);
+    Hologram hologram = hologramController.createHologram("info", location);
+    
+    // Set content
+    hologram.setLines(Arrays.asList(
+        "§6Welcome to the Server!",
+        "§7Players online: §a" + Bukkit.getOnlinePlayers().size(),
+        "§7Server time: §b" + new Date()
+    ));
+    
+    // Show to player
+    hologram.show(player);
+    
+    // Update content dynamically
+    Bukkit.getScheduler().runTaskTimer(plugin, () -> {
+        hologram.updateLine(1, "§7Players online: §a" + Bukkit.getOnlinePlayers().size());
+        hologram.updateLine(2, "§7Server time: §b" + new Date());
+    }, 0L, 20L); // Update every second
+}
+```
+
+## Event Handling
+
+ServiceIO provides comprehensive events for all service operations:
+
+### Economy Events
+
+```java
+import net.thenextlvl.serviceio.event.economy.EconomyTransactionEvent;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+
+public class EconomyListener implements Listener {
+    
+    @EventHandler
+    public void onTransaction(EconomyTransactionEvent event) {
+        Player player = event.getPlayer();
+        double amount = event.getAmount();
+        boolean isWithdrawal = event.isWithdrawal();
+        
+        if (isWithdrawal && amount > 10000) {
+            // Log large withdrawals
+            Bukkit.getLogger().info(player.getName() + " withdrew $" + amount);
+        }
+    }
+}
+```
+
+### Permission Events
+
+```java
+import net.thenextlvl.serviceio.event.permission.PermissionChangeEvent;
+
+public class PermissionListener implements Listener {
+    
+    @EventHandler
+    public void onPermissionChange(PermissionChangeEvent event) {
+        Player player = event.getPlayer();
+        String permission = event.getPermission();
+        boolean added = event.wasAdded();
+        
+        player.sendMessage("Permission " + permission + 
+                          (added ? " granted" : " revoked"));
+    }
+}
+```
+
+## Best Practices
+
+### Error Handling
+
+```java
+public void safeEconomyOperation(Player player, double amount) {
+    EconomyController economy = ServiceIO.getInstance().getEconomyController();
+    
+    try {
+        // Always check if service is available
+        if (!economy.isEnabled()) {
+            player.sendMessage("Economy service is currently unavailable");
+            return;
+        }
+        
+        // Check prerequisites before operations
+        if (!economy.hasAccount(player)) {
+            if (!economy.createAccount(player)) {
+                player.sendMessage("Failed to create economy account");
+                return;
+            }
+        }
+        
+        // Perform operation with result checking
+        if (economy.has(player, amount)) {
+            EconomyResponse response = economy.withdraw(player, amount);
+            if (response.success()) {
+                player.sendMessage("Transaction successful!");
+            } else {
+                player.sendMessage("Transaction failed: " + response.errorMessage);
+            }
+        } else {
+            player.sendMessage("Insufficient funds");
+        }
+        
+    } catch (Exception e) {
+        player.sendMessage("An error occurred during the transaction");
+        getLogger().severe("Economy error: " + e.getMessage());
+    }
+}
+```
+
+### Asynchronous Operations
+
+```java
+public void asyncEconomyOperation(Player player, double amount) {
+    // Run database operations async
+    Bukkit.getScheduler().runTaskAsynchronously(plugin, () -> {
+        EconomyController economy = ServiceIO.getInstance().getEconomyController();
+        
+        // Perform async-safe operations
+        double balance = economy.getBalance(player);
+        boolean hasEnough = economy.has(player, amount);
+        
+        // Switch back to main thread for player interaction
+        Bukkit.getScheduler().runTask(plugin, () -> {
+            if (hasEnough) {
+                economy.withdraw(player, amount);
+                player.sendMessage("Transaction completed!");
+            } else {
+                player.sendMessage("Insufficient funds. Balance: $" + balance);
+            }
+        });
+    });
+}
+```
+
+### Service Availability Checking
+
+```java
+public class ServiceManager {
+    private final Plugin plugin;
+    private boolean economyAvailable = false;
+    private boolean permissionsAvailable = false;
+    
+    public ServiceManager(Plugin plugin) {
+        this.plugin = plugin;
+        checkServices();
+        
+        // Recheck services periodically
+        Bukkit.getScheduler().runTaskTimer(plugin, this::checkServices, 0L, 1200L); // Every minute
+    }
+    
+    private void checkServices() {
+        ServiceIO serviceIO = ServiceIO.getInstance();
+        
+        boolean oldEconomy = economyAvailable;
+        boolean oldPermissions = permissionsAvailable;
+        
+        economyAvailable = serviceIO.getEconomyController().isEnabled();
+        permissionsAvailable = serviceIO.getPermissionController().isEnabled();
+        
+        // Notify of service changes
+        if (oldEconomy != economyAvailable) {
+            plugin.getLogger().info("Economy service " + 
+                                   (economyAvailable ? "enabled" : "disabled"));
+        }
+        
+        if (oldPermissions != permissionsAvailable) {
+            plugin.getLogger().info("Permission service " + 
+                                   (permissionsAvailable ? "enabled" : "disabled"));
+        }
+    }
+    
+    public boolean isEconomyAvailable() {
+        return economyAvailable;
+    }
+    
+    public boolean isPermissionsAvailable() {
+        return permissionsAvailable;
+    }
+}
+```
+
+## Next Steps
+
+Now that you understand the basics of using ServiceIO, explore these advanced topics:
+
+- **[Repository Setup](./repository)** - Configure your build system and dependencies
+- **[Creating Service Providers](#extending-serviceio)** - Build custom service implementations
+- **[PlaceholderAPI Integration](../guide/placeholders)** - Use ServiceIO data in other plugins
+- **[Service Conversion](../commands)** - Migrate data between service providers
+
+<Callout type="info" title="Need Help?">
+  If you need assistance with the ServiceIO API, check our [FAQ](../faq) or visit our [GitHub repository](https://github.com/TheNextLvl-net/service-io) for support.
+</Callout>

@@ -1,0 +1,600 @@
+---
+title: Repository & Dependencies
+description: How to add ServiceIO to your project and manage dependencies
+icon: Package
+---
+
+import { Callout } from "fumadocs-ui/components/callout"
+import { Tab, Tabs } from "fumadocs-ui/components/tabs"
+import { latestVersion } from '@/lib/api'
+
+This guide explains how to add ServiceIO as a dependency to your Minecraft plugin project and properly configure your build system.
+
+## Repository Information
+
+ServiceIO artifacts are hosted on TheNextLvl Maven repository:
+
+- **Repository URL**: `https://repo.thenextlvl.net/releases`
+- **Group ID**: `net.thenextlvl.services`
+- **Artifact ID**: `service-io`
+- **Latest Version**: **v{await latestVersion()}**
+
+<Callout type="info" title="Version Updates">
+  Always use the latest version for the best experience. Check the [GitHub releases](https://github.com/TheNextLvl-net/service-io/releases) for changelog information.
+</Callout>
+
+## Adding the Dependency
+
+### Maven Configuration
+
+Add the repository and dependency to your `pom.xml`:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
+         http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    
+    <!-- Your project information -->
+    <groupId>com.example</groupId>
+    <artifactId>your-plugin</artifactId>
+    <version>1.0.0</version>
+    <packaging>jar</packaging>
+    
+    <properties>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+    
+    <repositories>
+        <!-- Paper repository -->
+        <repository>
+            <id>papermc</id>
+            <url>https://repo.papermc.io/repository/maven-public/</url>
+        </repository>
+        
+        <!-- TheNextLvl repository for ServiceIO -->
+        <repository>
+            <id>thenextlvl</id>
+            <url>https://repo.thenextlvl.net/releases</url>
+        </repository>
+    </repositories>
+    
+    <dependencies>
+        <!-- Paper API -->
+        <dependency>
+            <groupId>io.papermc.paper</groupId>
+            <artifactId>paper-api</artifactId>
+            <version>1.21.4-R0.1-SNAPSHOT</version>
+            <scope>provided</scope>
+        </dependency>
+        
+        <!-- ServiceIO API -->
+        <dependency>
+            <groupId>net.thenextlvl.services</groupId>
+            <artifactId>service-io</artifactId>
+            <version>VERSION</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+    
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.11.0</version>
+                <configuration>
+                    <source>17</source>
+                    <target>17</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
+```
+
+### Gradle Configuration
+
+<Tabs items={['Gradle (Kotlin DSL)', 'Gradle (Groovy DSL)']}>
+  <Tab value="Gradle (Kotlin DSL)">
+    Add to your `build.gradle.kts`:
+    
+    ```kotlin
+    plugins {
+        java
+        id("com.github.johnrengelman.shadow") version "8.1.1"
+        id("io.papermc.paperweight.userdev") version "1.7.5"
+    }
+    
+    group = "com.example"
+    version = "1.0.0"
+    
+    java {
+        toolchain.languageVersion.set(JavaLanguageVersion.of(17))
+    }
+    
+    repositories {
+        mavenCentral()
+        
+        // Paper repository
+        maven("https://repo.papermc.io/repository/maven-public/")
+        
+        // TheNextLvl repository
+        maven {
+            name = "thenextlvl"
+            url = uri("https://repo.thenextlvl.net/releases")
+        }
+    }
+    
+    dependencies {
+        // Paper API
+        paperweight.paperDevBundle("1.21.4-R0.1-SNAPSHOT")
+        
+        // ServiceIO API
+        compileOnly("net.thenextlvl.services:service-io:VERSION")
+    }
+    
+    tasks {
+        assemble {
+            dependsOn(reobfJar)
+        }
+        
+        processResources {
+            val props = mapOf("version" to version)
+            inputs.properties(props)
+            filteringCharset = "UTF-8"
+            filesMatching("plugin.yml") {
+                expand(props)
+            }
+        }
+    }
+    ```
+  </Tab>
+  <Tab value="Gradle (Groovy DSL)">
+    Add to your `build.gradle`:
+    
+    ```groovy
+    plugins {
+        id 'java'
+        id 'com.github.johnrengelman.shadow' version '8.1.1'
+        id 'io.papermc.paperweight.userdev' version '1.7.5'
+    }
+    
+    group = 'com.example'
+    version = '1.0.0'
+    
+    java {
+        toolchain.languageVersion = JavaLanguageVersion.of(17)
+    }
+    
+    repositories {
+        mavenCentral()
+        
+        // Paper repository
+        maven {
+            name = 'papermc'
+            url = 'https://repo.papermc.io/repository/maven-public/'
+        }
+        
+        // TheNextLvl repository
+        maven {
+            name = 'thenextlvl'
+            url = 'https://repo.thenextlvl.net/releases'
+        }
+    }
+    
+    dependencies {
+        // Paper API
+        paperweight.paperDevBundle('1.21.4-R0.1-SNAPSHOT')
+        
+        // ServiceIO API
+        compileOnly 'net.thenextlvl.services:service-io:VERSION'
+    }
+    
+    tasks.assemble.dependsOn(tasks.reobfJar)
+    
+    processResources {
+        def props = [version: version]
+        inputs.properties props
+        filteringCharset 'UTF-8'
+        filesMatching('plugin.yml') {
+            expand props
+        }
+    }
+    ```
+  </Tab>
+</Tabs>
+
+<Callout type="warning" title="Version Placeholder">
+  Replace `VERSION` with the actual ServiceIO version you want to use. Check the [latest releases](https://github.com/TheNextLvl-net/service-io/releases) or use **v{await latestVersion()}**.
+</Callout>
+
+## Plugin Configuration
+
+### plugin.yml Setup
+
+Configure your `plugin.yml` to properly depend on ServiceIO:
+
+```yaml
+name: YourPlugin
+version: ${version}
+main: com.example.yourplugin.YourPlugin
+api-version: "1.21"
+authors: [YourName]
+description: Your plugin description
+
+# Hard dependency - plugin won't load without ServiceIO
+depend: [ServiceIO]
+
+# Soft dependency - plugin will load but check for ServiceIO availability
+# softdepend: [ServiceIO]
+
+# Load after ServiceIO to ensure it's initialized
+loadbefore: []
+
+commands:
+  yourcommand:
+    description: Your command description
+    usage: /yourcommand
+    permission: yourplugin.command
+
+permissions:
+  yourplugin.*:
+    description: All permissions
+    children:
+      yourplugin.command: true
+  yourplugin.command:
+    description: Use the main command
+    default: true
+```
+
+### Plugin Dependencies Strategy
+
+Choose the appropriate dependency strategy:
+
+<Tabs items={['Hard Dependency', 'Soft Dependency', 'Optional Integration']}>
+  <Tab value="Hard Dependency">
+    **Use when**: Your plugin cannot function without ServiceIO
+    
+    ```yaml
+    depend: [ServiceIO]
+    ```
+    
+    **Advantages**:
+    - Guarantees ServiceIO is available
+    - Server won't start if ServiceIO is missing
+    - Simple to implement
+    
+    **Disadvantages**:
+    - Plugin won't work without ServiceIO
+    - Less flexible deployment
+  </Tab>
+  <Tab value="Soft Dependency">
+    **Use when**: Your plugin can work without ServiceIO but offers enhanced features with it
+    
+    ```yaml
+    softdepend: [ServiceIO]
+    ```
+    
+    **Java Implementation**:
+    ```java
+    public class YourPlugin extends JavaPlugin {
+        private boolean serviceIOAvailable = false;
+        
+        @Override
+        public void onEnable() {
+            // Check if ServiceIO is available
+            if (getServer().getPluginManager().getPlugin("ServiceIO") != null) {
+                serviceIOAvailable = true;
+                setupServiceIO();
+                getLogger().info("ServiceIO detected - enhanced features enabled");
+            } else {
+                getLogger().info("ServiceIO not found - running in basic mode");
+                setupBasicMode();
+            }
+        }
+        
+        private void setupServiceIO() {
+            // Initialize ServiceIO features
+        }
+        
+        private void setupBasicMode() {
+            // Fallback functionality
+        }
+    }
+    ```
+  </Tab>
+  <Tab value="Optional Integration">
+    **Use when**: ServiceIO is completely optional
+    
+    No dependency in plugin.yml, runtime detection only:
+    
+    ```java
+    public boolean isServiceIOAvailable() {
+        try {
+            Class.forName("net.thenextlvl.serviceio.ServiceIO");
+            return getServer().getPluginManager().getPlugin("ServiceIO") != null;
+        } catch (ClassNotFoundException e) {
+            return false;
+        }
+    }
+    ```
+  </Tab>
+</Tabs>
+
+## Version Compatibility
+
+### ServiceIO Versions
+
+ServiceIO follows semantic versioning:
+
+- **Major versions** (e.g., 3.0.0) - Breaking API changes
+- **Minor versions** (e.g., 2.1.0) - New features, backward compatible
+- **Patch versions** (e.g., 2.0.1) - Bug fixes, backward compatible
+
+### Minecraft Version Support
+
+ServiceIO supports the latest Minecraft versions:
+
+| ServiceIO Version | Minecraft Versions | Paper Version | Java Version |
+|------------------|-------------------|---------------|--------------|
+| 3.x.x | 1.21.4+ | Latest | Java 21+ |
+| 2.x.x | 1.20.1 - 1.21.3 | Latest | Java 17+ |
+| 1.x.x | 1.19.4 - 1.20.4 | Latest | Java 17+ |
+
+<Callout type="error" title="Older Versions">
+  ServiceIO does not support versions older than those listed. For maximum compatibility and support, always use the latest version of both ServiceIO and Minecraft.
+</Callout>
+
+## Development Setup
+
+### IDE Configuration
+
+#### IntelliJ IDEA
+
+1. Import your project
+2. Ensure Project SDK is set to Java 17+
+3. Configure annotation processing if using Lombok
+4. Install useful plugins:
+   - Minecraft Development (for Bukkit/Paper)
+   - Lombok (if using)
+
+#### Eclipse
+
+1. Import Maven/Gradle project
+2. Configure Java Build Path
+3. Set compiler compliance to Java 17+
+
+### Testing Environment
+
+Create a test server setup:
+
+```bash
+# Create test server directory
+mkdir test-server
+cd test-server
+
+# Download Paper
+wget https://api.papermc.io/v2/projects/paper/versions/1.21.4/builds/latest/downloads/paper-1.21.4-latest.jar
+
+# Create basic server structure
+mkdir plugins
+echo "eula=true" > eula.txt
+
+# Create start script
+echo "java -Xmx2G -Xms2G -jar paper-1.21.4-latest.jar --nogui" > start.sh
+chmod +x start.sh
+```
+
+### Development Dependencies
+
+For advanced development, consider these additional dependencies:
+
+<Tabs items={['Testing Framework', 'Mocking Framework', 'Utility Libraries']}>
+  <Tab value="Testing Framework">
+    ```xml
+    <!-- JUnit 5 for testing -->
+    <dependency>
+        <groupId>org.junit.jupiter</groupId>
+        <artifactId>junit-jupiter</artifactId>
+        <version>5.10.1</version>
+        <scope>test</scope>
+    </dependency>
+    
+    <!-- MockBukkit for Bukkit testing -->
+    <dependency>
+        <groupId>com.github.seeseemelk</groupId>
+        <artifactId>MockBukkit-v1.21</artifactId>
+        <version>3.142.0</version>
+        <scope>test</scope>
+    </dependency>
+    ```
+  </Tab>
+  <Tab value="Mocking Framework">
+    ```xml
+    <!-- Mockito for mocking -->
+    <dependency>
+        <groupId>org.mockito</groupId>
+        <artifactId>mockito-core</artifactId>
+        <version>5.8.0</version>
+        <scope>test</scope>
+    </dependency>
+    ```
+  </Tab>
+  <Tab value="Utility Libraries">
+    ```xml
+    <!-- Google Guava for utilities -->
+    <dependency>
+        <groupId>com.google.guava</groupId>
+        <artifactId>guava</artifactId>
+        <version>32.1.3-jre</version>
+        <scope>provided</scope> <!-- Usually provided by Paper -->
+    </dependency>
+    
+    <!-- Apache Commons Lang -->
+    <dependency>
+        <groupId>org.apache.commons</groupId>
+        <artifactId>commons-lang3</artifactId>
+        <version>3.14.0</version>
+        <scope>provided</scope>
+    </dependency>
+    ```
+  </Tab>
+</Tabs>
+
+## Build and Deployment
+
+### Building Your Plugin
+
+<Tabs items={['Maven', 'Gradle']}>
+  <Tab value="Maven">
+    ```bash
+    # Clean and compile
+    mvn clean compile
+    
+    # Run tests
+    mvn test
+    
+    # Package plugin
+    mvn package
+    
+    # Install to local repository
+    mvn install
+    ```
+  </Tab>
+  <Tab value="Gradle">
+    ```bash
+    # Clean and build
+    ./gradlew clean build
+    
+    # Run tests
+    ./gradlew test
+    
+    # Build plugin JAR
+    ./gradlew shadowJar
+    
+    # Reobfuscate for Paper
+    ./gradlew reobfJar
+    ```
+  </Tab>
+</Tabs>
+
+### Continuous Integration
+
+Example GitHub Actions workflow:
+
+```yaml
+name: Build and Test
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up JDK 17
+      uses: actions/setup-java@v4
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+    
+    - name: Cache dependencies
+      uses: actions/cache@v3
+      with:
+        path: ~/.m2
+        key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+        restore-keys: ${{ runner.os }}-m2
+    
+    - name: Build with Maven
+      run: mvn clean compile test package
+    
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: plugin-jar
+        path: target/*.jar
+```
+
+## Troubleshooting
+
+### Common Issues
+
+<Tabs items={['Dependency Not Found', 'Version Conflicts', 'Runtime Errors']}>
+  <Tab value="Dependency Not Found">
+    **Problem**: ServiceIO dependency not found during build
+    
+    **Solutions**:
+    1. Verify repository URL is correct
+    2. Check internet connectivity
+    3. Clear Maven/Gradle cache:
+       ```bash
+       # Maven
+       mvn clean -U
+       
+       # Gradle
+       ./gradlew clean --refresh-dependencies
+       ```
+    4. Check if version exists in repository
+  </Tab>
+  <Tab value="Version Conflicts">
+    **Problem**: Conflicting versions of ServiceIO or related libraries
+    
+    **Solutions**:
+    1. Check dependency tree:
+       ```bash
+       # Maven
+       mvn dependency:tree
+       
+       # Gradle
+       ./gradlew dependencies
+       ```
+    2. Exclude conflicting transitive dependencies
+    3. Use dependency management to enforce versions
+  </Tab>
+  <Tab value="Runtime Errors">
+    **Problem**: ClassNotFoundException or NoSuchMethodError
+    
+    **Solutions**:
+    1. Ensure ServiceIO is installed on the server
+    2. Verify version compatibility
+    3. Check plugin.yml dependencies
+    4. Use `provided` scope for ServiceIO dependency
+  </Tab>
+</Tabs>
+
+### Debug Information
+
+Enable verbose logging to debug issues:
+
+```java
+// Enable ServiceIO debug logging
+System.setProperty("serviceio.debug", "true");
+
+// Check ServiceIO version at runtime
+ServiceIO serviceIO = ServiceIO.getInstance();
+getLogger().info("ServiceIO version: " + serviceIO.getVersion());
+```
+
+## Next Steps
+
+Once you have ServiceIO properly configured in your project:
+
+1. **[Learn the API](./index)** - Understand how to use ServiceIO services
+2. **[Extend Services](#creating-service-providers)** - Create custom service providers
+3. **[Use Placeholders](../guide/placeholders)** - Integrate with PlaceholderAPI
+4. **[Handle Events](#events)** - React to service changes
+
+<Callout type="success" title="Ready to Code">
+  With ServiceIO properly configured, you're ready to start building powerful plugins that leverage the unified service layer!
+</Callout>

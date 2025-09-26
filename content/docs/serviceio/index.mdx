@@ -4,4 +4,149 @@ description: A vault drop-in replacement with a new and modern api
 icon: BookMarked
 ---
 
-Coming soon!
+import { Callout } from "fumadocs-ui/components/callout"
+import { latestVersion } from '@/lib/api'
+
+ServiceIO is a powerful, modern replacement for Vault that provides a comprehensive service layer for Minecraft servers. It offers both the traditional Vault API and the newer VaultUnlocked API while extending functionality far beyond what Vault provides.
+
+## What is ServiceIO?
+
+ServiceIO is designed as a drop-in replacement for Vault, but with significantly more features and a cleaner, more modern API. While Vault focuses primarily on economy services, ServiceIO provides a unified interface for:
+
+- **Economy Services** - Balance management, transactions, and banking
+- **Permission Services** - Groups, permissions, and prefixes/suffixes  
+- **NPC Services** - Cross-plugin NPC management
+- **Hologram Services** - Unified hologram API
+- **Chat Services** - Chat formatting and messaging
+- **Service Conversion** - Convert data between different service providers
+
+## Key Features
+
+### 🔄 Service Provider Flexibility
+ServiceIO allows you to switch between different service providers (like economy or permission plugins) without losing your data. The built-in conversion system lets you migrate from one plugin to another seamlessly.
+
+### 🏗️ Modern API Design
+Built with modern development practices, ServiceIO provides:
+- Clean, intuitive APIs for developers
+- Comprehensive event system
+- Asynchronous operations where appropriate
+- Type-safe interfaces
+
+### 🔌 Full Compatibility
+- **Vault API** - Complete drop-in replacement
+- **VaultUnlocked API** - Modern async-capable alternative
+- **Paper & Folia** - Optimized for modern server software
+- **PlaceholderAPI** - Extensive placeholder support
+
+### 🛠️ Developer Tools
+ServiceIO includes powerful tools for developers and server administrators:
+- Service conversion commands
+- Comprehensive debugging information  
+- Plugin compatibility testing
+- Performance monitoring
+
+## Supported Services
+
+### Economy
+- Balance management (per-world support)
+- Banking systems
+- Transaction logging
+- Currency formatting
+- Multi-economy support
+
+### Permissions
+- Group management
+- Permission assignment
+- Prefix/suffix handling
+- Inheritance systems
+- World-specific permissions
+
+### NPC Management
+- Cross-plugin NPC creation
+- Unified NPC API
+- Event handling
+- Metadata management
+
+### Holograms
+- Multi-plugin hologram support
+- Dynamic content updates
+- Performance optimization
+- Easy management commands
+
+## Getting Started
+
+### Installation
+
+1. Download ServiceIO from [Modrinth](https://modrinth.com/project/MNPyHOe7) or [GitHub Releases](https://github.com/TheNextLvl-net/service-io/releases)
+2. Place the JAR file in your server's `plugins` folder
+3. Install your preferred service providers (economy, permissions, etc.)
+4. Restart your server
+5. ServiceIO will automatically detect and wrap your service providers
+
+<Callout type="info" title="Latest Version">
+  The latest version is **v{await latestVersion()}**. Always use the latest version for the best experience and support.
+</Callout>
+
+### First Steps
+
+After installation, use these commands to verify everything is working:
+
+```bash
+# Check ServiceIO status
+/service info
+
+# List all detected service providers
+/service list
+
+# View available conversion options
+/service convert
+```
+
+### Configuration
+
+ServiceIO works out-of-the-box with minimal configuration. However, you can customize behavior through:
+
+- **Environment Variables** - For compatibility modes and debugging
+- **Service Provider Configs** - Configure individual service providers
+- **Permission Setup** - Grant appropriate permissions to users
+
+## Architecture
+
+ServiceIO uses a wrapper-based architecture that creates a bridge between different service APIs:
+
+```
+Your Plugin ↔ Vault API ↔ ServiceIO ↔ Service Provider (LuckPerms, Essentials, etc.)
+```
+
+This design allows:
+- **Bidirectional Compatibility** - Vault plugins work with modern services and vice versa
+- **Service Abstraction** - Switch providers without changing your plugins
+- **Enhanced Features** - Access advanced features through the ServiceIO API
+
+## Why Choose ServiceIO?
+
+### For Server Administrators
+- **Easy Migration** - Convert between different plugins effortlessly
+- **Better Performance** - Optimized for modern server software
+- **Comprehensive Support** - Handles economy, permissions, NPCs, and more
+- **Active Development** - Regular updates and new features
+
+### For Developers  
+- **Clean APIs** - Modern, well-documented interfaces
+- **Future-Proof** - Built for current and upcoming Minecraft versions
+- **Extensive Events** - React to service changes across all providers
+- **Type Safety** - Better IDE support and fewer runtime errors
+
+### For Players
+- **Seamless Experience** - All your favorite plugins work together
+- **Data Preservation** - Never lose progress during plugin changes
+- **Better Performance** - Faster responses and reduced lag
+
+## Community & Support
+
+- **GitHub**: [Issues & Discussions](https://github.com/TheNextLvl-net/service-io)
+- **Discord**: TheNextLvl Community Server
+- **Documentation**: Comprehensive guides and API reference
+- **Metrics**: [View usage statistics](https://bstats.org/plugin/bukkit/TheNextLvl%20ServiceIO/23083)
+
+Ready to get started? Check out our [FAQ](./faq) for common questions or dive into the [API documentation](./api) for development guides.

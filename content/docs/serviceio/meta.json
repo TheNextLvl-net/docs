@@ -12,8 +12,10 @@
     "---Introduction---",
     "index",
     "faq",
-    "---Guide---",
+    "compatibility",
+    "---User Guide---",
     "guide/placeholders",
+    "guide/commands",
     "---For Developers---",
     "api/repository",
     "api/index"

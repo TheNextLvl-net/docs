@@ -1,0 +1,343 @@
+---
+title: Compatibility Mode
+description: Enable experimental compatibility mode for problematic plugins
+icon: Settings
+---
+
+import { Callout } from "fumadocs-ui/components/callout"
+
+ServiceIO includes an experimental compatibility mode designed to resolve issues with plugins that don't properly recognize ServiceIO as a Vault provider. This mode modifies how ServiceIO registers itself with the server's service manager to improve plugin compatibility.
+
+<Callout type="warning" title="Experimental Feature">
+  Compatibility mode is experimental and may not work with all plugins. It could potentially cause issues with other plugins. Use this mode only as a last resort and report any problems to our [GitHub repository](https://github.com/TheNextLvl-net/service-io/issues).
+</Callout>
+
+## When to Use Compatibility Mode
+
+Enable compatibility mode if you encounter:
+
+### Common Compatibility Issues
+
+- **Plugin Not Detecting Vault**: A plugin reports "No economy plugin found" despite ServiceIO being installed
+- **Service Registration Problems**: Plugins that directly check for specific Vault implementation classes
+- **Legacy Plugin Support**: Older plugins written for very specific Vault implementations
+- **Custom Vault Hooks**: Plugins that use non-standard methods to access Vault services
+
+### Symptoms to Watch For
+
+```bash
+# Common error messages indicating compatibility issues:
+[ERROR] MyPlugin: No Vault economy found!
+[ERROR] SomePlugin: Economy provider not registered
+[WARN] OldPlugin: Cannot find net.milkbowl.vault.economy.Economy
+[ERROR] CustomPlugin: Vault dependency missing
+```
+
+### Plugin Compatibility Reports
+
+If you encounter an incompatible plugin, first check our [compatibility database](https://github.com/TheNextLvl-net/service-io/issues?q=label%3Acompatibility) to see if the issue is already known and has a solution.
+
+## Enabling Compatibility Mode
+
+### Method 1: Environment Variable (Recommended)
+
+Set the environment variable before starting your server:
+
+**Linux/macOS:**
+```bash
+export COMPATIBILITY_MODE=true
+java -jar paper-1.21.4-latest.jar
+```
+
+**Windows Command Prompt:**
+```cmd
+set COMPATIBILITY_MODE=true
+java -jar paper-1.21.4-latest.jar
+```
+
+**Windows PowerShell:**
+```powershell
+$env:COMPATIBILITY_MODE = "true"
+java -jar paper-1.21.4-latest.jar
+```
+
+### Method 2: Java System Property
+
+Add the system property to your startup script:
+
+```bash
+java -Dserviceio.compatibility=true -jar paper-1.21.4-latest.jar
+```
+
+### Method 3: Startup Scripts
+
+**Linux start.sh:**
+```bash
+#!/bin/bash
+export COMPATIBILITY_MODE=true
+java -Xmx4G -Xms4G -jar paper-1.21.4-latest.jar --nogui
+```
+
+**Windows start.bat:**
+```batch
+@echo off
+set COMPATIBILITY_MODE=true
+java -Xmx4G -Xms4G -jar paper-1.21.4-latest.jar --nogui
+pause
+```
+
+### Method 4: Docker Environment
+
+If using Docker, add the environment variable to your container:
+
+**Docker Compose:**
+```yaml
+version: '3.8'
+services:
+  minecraft:
+    image: your-minecraft-image
+    environment:
+      - COMPATIBILITY_MODE=true
+    volumes:
+      - ./plugins:/opt/minecraft/plugins
+      - ./world:/opt/minecraft/world
+```
+
+**Docker Run:**
+```bash
+docker run -e COMPATIBILITY_MODE=true your-minecraft-image
+```
+
+## What Compatibility Mode Does
+
+### Service Registration Changes
+
+Compatibility mode modifies how ServiceIO registers with Bukkit's service manager:
+
+1. **Priority Adjustment**: Registers with higher priority to override other providers
+2. **Class Wrapping**: Provides additional wrapper classes that some plugins expect
+3. **Service Order**: Changes the order in which services are registered
+4. **Compatibility Hooks**: Adds hooks for legacy plugin detection methods
+
+### Technical Details
+
+When compatibility mode is enabled, ServiceIO:
+
+- Registers economy services with `ServicePriority.Highest`
+- Provides additional Vault implementation classes
+- Implements workarounds for common plugin detection patterns
+- Adds compatibility shims for deprecated Vault methods
+
+### Performance Impact
+
+<Callout type="info" title="Performance Considerations">
+  Compatibility mode has minimal performance impact. The additional compatibility checks are only performed during plugin initialization, not during runtime operations.
+</Callout>
+
+## Verifying Compatibility Mode
+
+### Check ServiceIO Status
+
+Use the ServiceIO command to verify compatibility mode is active:
+
+```bash
+/service info
+```
+
+Look for output indicating compatibility mode status:
+```
+ServiceIO v3.1.0
+Status: Enabled
+Compatibility Mode: ACTIVE ✓
+Economy Provider: LuckPerms
+Permission Provider: LuckPerms
+```
+
+### Test Plugin Detection
+
+After enabling compatibility mode, test if your problematic plugin now detects Vault:
+
+1. Restart your server with compatibility mode enabled
+2. Check the plugin's startup logs for Vault detection messages
+3. Test the plugin's economy-related features
+4. Verify all functionality works as expected
+
+### Console Messages
+
+ServiceIO will log when compatibility mode is enabled:
+
+```bash
+[INFO] ServiceIO: Compatibility mode enabled
+[INFO] ServiceIO: Enhanced service registration active
+[DEBUG] ServiceIO: Registering economy service with highest priority
+[DEBUG] ServiceIO: Adding compatibility hooks for legacy plugins
+```
+
+## Troubleshooting
+
+### Compatibility Mode Not Working
+
+If compatibility mode doesn't resolve the issue:
+
+1. **Verify Environment Variable**: Ensure the variable is set correctly before server startup
+2. **Check Plugin Load Order**: Some plugins must load after ServiceIO - verify load order
+3. **Update Plugin**: Check if the problematic plugin has updates
+4. **Alternative Solutions**: Look for plugin-specific configuration options
+
+### Conflicts with Other Plugins
+
+If compatibility mode causes issues with other plugins:
+
+```bash
+# Check for conflicting services
+/service list
+
+# Look for error messages in logs
+grep -i "service\|vault\|economy" logs/latest.log
+```
+
+Common conflicts:
+- Multiple economy providers fighting for priority
+- Plugins that don't expect certain Vault implementations
+- Service registration timing issues
+
+### Debugging Steps
+
+Enable debug logging to troubleshoot issues:
+
+```bash
+# Add to your server startup
+java -Dserviceio.debug=true -Dserviceio.compatibility=true -jar server.jar
+```
+
+Debug information includes:
+- Service registration events
+- Plugin detection attempts  
+- Compatibility hook activations
+- Service priority conflicts
+
+## Alternative Solutions
+
+### Before Using Compatibility Mode
+
+Try these alternatives first:
+
+1. **Update Plugins**: Ensure all plugins are using the latest versions
+2. **Plugin Configuration**: Check if the plugin has settings to specify economy providers
+3. **Load Order**: Modify plugin load order using `loadbefore`/`depend` in plugin.yml
+4. **Contact Plugin Authors**: Report the incompatibility to plugin developers
+
+### Plugin-Specific Solutions
+
+Some plugins have specific configuration options:
+
+**Example for EconomyPlugin:**
+```yaml
+# config.yml
+economy-provider: "ServiceIO"
+vault-implementation: "auto"
+```
+
+**Example for ShopPlugin:**
+```yaml
+# settings.yml
+integration:
+  vault: true
+  economy-provider: "net.thenextlvl.serviceio"
+```
+
+### ServiceIO Configuration
+
+Some compatibility issues can be resolved through ServiceIO settings:
+
+```bash
+# Force economy provider priority
+/service priority economy ServiceIO 100
+
+# Refresh service registrations
+/service refresh
+
+# Debug service detection
+/service debug [plugin-name]
+```
+
+## Reporting Issues
+
+### Information to Include
+
+When reporting compatibility issues, provide:
+
+1. **Plugin Details**: Name, version, download source
+2. **Error Messages**: Complete error logs and stack traces
+3. **Server Environment**: Server software, version, Java version
+4. **ServiceIO Version**: Output of `/service info`
+5. **Service Providers**: List of installed economy/permission plugins
+
+### GitHub Issue Template
+
+Use our [incompatible plugin report template](https://github.com/TheNextLvl-net/service-io/issues/new?template=incompatible_plugin.yml) when reporting compatibility issues.
+
+### Test Case
+
+If possible, provide:
+- Minimal reproduction steps
+- Server logs showing the issue
+- Configuration files for problematic plugins
+- Test results with and without compatibility mode
+
+## Best Practices
+
+### When to Enable
+
+- ✅ **Enable when**: Specific plugins fail to detect ServiceIO
+- ✅ **Enable when**: Legacy plugins show economy errors
+- ✅ **Enable when**: Plugin authors recommend it for their plugin
+
+### When to Avoid
+
+- ❌ **Avoid when**: Everything is working correctly
+- ❌ **Avoid when**: You have economy conflicts
+- ❌ **Avoid when**: Performance is critical (minimal impact, but still)
+
+### Testing Process
+
+1. **Document Current State**: List all working plugins and features
+2. **Enable Compatibility Mode**: Use the environment variable method
+3. **Test Thoroughly**: Verify all economy/permission features work
+4. **Monitor for Issues**: Watch logs for new errors or warnings
+5. **Disable if Problems**: Remove compatibility mode if issues arise
+
+### Production Deployment
+
+For production servers:
+
+1. **Test on Staging**: Always test compatibility mode on a staging server first
+2. **Gradual Rollout**: Enable during low-traffic periods
+3. **Monitor Closely**: Watch for any performance or functionality issues
+4. **Have Rollback Plan**: Be ready to disable compatibility mode quickly
+
+<Callout type="success" title="Issue Resolved?">
+  If compatibility mode resolves your plugin issues, consider reporting the success to help other users with the same plugin. Include the plugin name and version in our compatibility database.
+</Callout>
+
+## FAQ
+
+### Will compatibility mode affect performance?
+
+No, compatibility mode has negligible performance impact. The compatibility checks only run during server startup and plugin initialization.
+
+### Can I use compatibility mode permanently?
+
+While you can run compatibility mode permanently, it's recommended to work with plugin authors to fix underlying compatibility issues. Compatibility mode should be considered a temporary workaround.
+
+### Does compatibility mode work with all plugins?
+
+No, compatibility mode doesn't fix all compatibility issues. Some plugins may have fundamental incompatibilities that require code changes by the plugin author.
+
+### How do I know if I need compatibility mode?
+
+You need compatibility mode if plugins report "no economy found" or similar errors despite ServiceIO being properly installed and functional with other plugins.
+
+### Can I enable compatibility mode after server startup?
+
+No, compatibility mode must be enabled before server startup. It affects how services are registered during the initialization phase, which cannot be changed at runtime.
