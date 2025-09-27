@@ -1,5 +1,6 @@
 import { defineConfig, defineDocs, frontmatterSchema, metaSchema } from "fumadocs-mdx/config"
 import { transformerCommandColor } from "./src/lib/command-transformer"
+import { remarkMdxMermaid } from "fumadocs-core/mdx-plugins"
 
 // You can customise Zod schemas for frontmatter and `meta.json` here
 // see https://fumadocs.vercel.app/docs/mdx/collections#define-docs
@@ -24,5 +25,6 @@ export default defineConfig({
       },
       transformers: [transformerCommandColor()],
     },
+    remarkPlugins: [remarkMdxMermaid],
   },
 })
