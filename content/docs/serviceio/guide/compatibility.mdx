@@ -1,0 +1,52 @@
+---
+title: Compatibility Mode
+description: Enable experimental compatibility mode for problematic plugins
+icon: Settings
+---
+
+ServiceIO includes an experimental compatibility mode designed to resolve issues with plugins that don't properly recognize ServiceIO as a Vault provider.
+This mode modifies how ServiceIO is loaded by the server making it appear like the original Vault plugin.
+
+<Callout type="warning" title="Experimental Feature">
+  Compatibility mode is experimental and may not work with all plugins.  
+  It could potentially cause issues with other plugins.  
+  Use this mode only as a last resort and report any problems to our [Issue Tracker](https://github.com/TheNextLvl-net/service-io/issues/new?template=incompatible_plugin.yml).
+</Callout>
+
+## When to Use Compatibility Mode
+
+Enable compatibility mode if you encounter:
+
+### Common Compatibility Issues
+
+- **Plugin Not Detecting Vault**: A plugin reports, e.g. "Vault not found"
+- **Service Registration Problems**: Plugins that directly check for specific Vault implementation classes
+- **Custom Vault Hooks**: Plugins that use non-standard methods to access Vault services
+
+### How to Enable Compatibility Mode
+
+To enable compatibility mode, start your server with the `COMPATIBILITY_MODE` environment variable set to `true`.
+
+For example, in a Linux environment, you can start your server with:
+
+```bash
+export COMPATIBILITY_MODE=true
+java -jar server.jar --nogui
+```
+
+Or if your setup doesnt allow exporting environment variables, you can use:
+
+```bash
+COMPATIBILITY_MODE=true java -jar server.jar --nogui
+```
+
+In docker (compose) you can set the environment variable like this:
+
+```yaml
+services:
+  your_service:
+    image: your_image
+    environment:
+      - COMPATIBILITY_MODE=true
+    ...
+```
