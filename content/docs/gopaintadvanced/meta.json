@@ -2,5 +2,19 @@
   "root": true,
   "title": "goPaintAdvanced",
   "description": "goPaint but on steroids",
-  "icon": "Brush"
+  "icon": "Brush",
+  "pages": [
+    "---Links---",
+    "[Github][GitHub](https://github.com/TheNextLvl-net/goPaintAdvanced)",
+    "[Download][Download](https://modrinth.com/project/a2wQ6jIv#download)",
+    "[ChartLine][Metrics](https://bstats.org/plugin/bukkit/TheNextLvl%20goPaintAdvanced/22279)",
+    "[BookDown][Repository](https://repo.thenextlvl.net/#/releases/net/thenextlvl/gopaint)",
+    "---Introduction---",
+    "index",
+    "faq",
+    "---Guide---",
+    "---For Developers---",
+    "api/repository",
+    "api/index"
+  ]
 }

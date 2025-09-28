@@ -1,0 +1,16 @@
+{
+  "root": true,
+  "title": "CreativeUtilities",
+  "description": "Utilities that help you building in creative mode",
+  "icon": "BrickWall",
+  "pages": [
+    "---Links---",
+    "[Github][GitHub](https://github.com/TheNextLvl-net/creative-utilities)",
+    "[Download][Download](https://modrinth.com/project/zAcZq5oV#download)",
+    "[ChartLine][Metrics](https://bstats.org/plugin/bukkit/TheNextLvl%20CreativeUtilities/22858)",
+    "---Introduction---",
+    "index",
+    "faq",
+    "---Guide---"
+  ]
+}

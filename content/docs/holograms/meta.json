@@ -2,5 +2,19 @@
   "root": true,
   "title": "Holograms",
   "description": "Create and manage holograms",
-  "icon": "TextAlignStart"
+  "icon": "TextAlignStart",
+  "pages": [
+    "---Links---",
+    "[Github][GitHub](https://github.com/TheNextLvl-net/holograms)",
+    "[Download][Download](https://modrinth.com/project/yWs5IQBz#download)",
+    "[ChartLine][Metrics](https://bstats.org/plugin/bukkit/TheNextLvl%20Holograms/25817)",
+    "[BookDown][Repository](https://repo.thenextlvl.net/#/releases/net/thenextlvl/holograms)",
+    "---Introduction---",
+    "index",
+    "faq",
+    "---Guide---",
+    "---For Developers---",
+    "api/repository",
+    "api/index"
+  ]
 }

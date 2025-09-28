@@ -2,5 +2,19 @@
   "root": true,
   "title": "Commander",
   "description": "Manage command visibility and permissions",
-  "icon": "Command"
+  "icon": "Command",
+  "pages": [
+    "---Links---",
+    "[Github][GitHub](https://github.com/TheNextLvl-net/commander)",
+    "[Download][Download](https://modrinth.com/project/USLuwMUi#download)",
+    "[ChartLine][Metrics](https://bstats.org/plugin/bukkit/TheNextLvl%20Commander/22782)",
+    "[BookDown][Repository](https://repo.thenextlvl.net/#/releases/net/thenextlvl/commander)",
+    "---Introduction---",
+    "index",
+    "faq",
+    "---Guide---",
+    "---For Developers---",
+    "api/repository",
+    "api/index"
+  ]
 }

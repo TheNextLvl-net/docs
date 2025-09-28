@@ -2,5 +2,19 @@
   "root": true,
   "title": "Protect",
   "description": "Create and manage protected areas",
-  "icon": "Shield"
+  "icon": "Shield",
+  "pages": [
+    "---Links---",
+    "[Github][GitHub](https://github.com/TheNextLvl-net/protect)",
+    "[Download][Download](https://modrinth.com/project/YNoH2pBx#download)",
+    "[ChartLine][Metrics](https://bstats.org/plugin/bukkit/TheNextLvl%20Protect/21712)",
+    "[BookDown][Repository](https://repo.thenextlvl.net/#/releases/net/thenextlvl/protect)",
+    "---Introduction---",
+    "index",
+    "faq",
+    "---Guide---",
+    "---For Developers---",
+    "api/repository",
+    "api/index"
+  ]
 }

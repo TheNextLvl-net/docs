@@ -2,5 +2,19 @@
   "root": true,
   "title": "Economist",
   "description": "Create and manage in-game economies",
-  "icon": "Landmark"
+  "icon": "Landmark",
+  "pages": [
+    "---Links---",
+    "[Github][GitHub](https://github.com/TheNextLvl-net/economist)",
+    "[Download][Download](https://modrinth.com/project/VQ63EMAa#download)",
+    "[ChartLine][Metrics](https://bstats.org/plugin/bukkit/TheNextLvl%20Economist/23261)",
+    "[BookDown][Repository](https://repo.thenextlvl.net/#/releases/net/thenextlvl/economist)",
+    "---Introduction---",
+    "index",
+    "faq",
+    "---Guide---",
+    "---For Developers---",
+    "api/repository",
+    "api/index"
+  ]
 }
