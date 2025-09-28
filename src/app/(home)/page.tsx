@@ -10,6 +10,9 @@ import {
   Archive,
   Landmark,
   Wrench,
+  Group,
+  BrickWall,
+  ShieldAlert,
 } from "lucide-react"
 import type { LucideIcon } from "lucide-react"
 
@@ -26,19 +29,33 @@ const featuredCards: CardData[] = [
     title: "Worlds",
     icon: Globe,
     description: "World management plugin for modern Paper and Folia servers",
-    className: "h-64 group",
+    className: "h-48 group",
     href: "docs/worlds",
   },
   {
-    title: "Tweaks",
-    icon: Wrench,
-    description: "An Essentials-like, must have command collection for your minecraft server.",
-    className: "h-64 group",
-    href: "docs/tweaks",
+    title: "PerWorlds",
+    icon: Group,
+    description: "A modern alternative to Multiverse-Inventories.",
+    href: "docs/perworlds",
+    className: "h-48 group",
+  },
+  {
+    title: "Characters",
+    icon: User,
+    description: "A modern, fully featured npc plugin for paper servers",
+    href: "docs/characters",
+    className: "h-48 group",
   },
 ]
 
 const otherCards: CardData[] = [
+  {
+    title: "Tweaks",
+    icon: Wrench,
+    description: "An Essentials-like, must have command collection for your minecraft server.",
+    href: "docs/tweaks",
+    className: "group",
+  },
   {
     title: "ServiceIO",
     icon: Archive,
@@ -51,13 +68,6 @@ const otherCards: CardData[] = [
     icon: Landmark,
     description: "A modern economy plugin.",
     href: "docs/economist",
-    className: "group",
-  },
-  {
-    title: "Characters",
-    icon: User,
-    description: "A modern, fully featured npc plugin for paper servers",
-    href: "docs/characters",
     className: "group",
   },
   {
@@ -91,8 +101,22 @@ const otherCards: CardData[] = [
   {
     title: "Holograms",
     icon: TextAlignStart,
-    description: "modern hologram plugin using the new display api",
+    description: "A modern hologram plugin using the new display api",
     href: "docs/holograms",
+    className: "group",
+  },
+  {
+    title: "CreativeUtilities",
+    icon: BrickWall,
+    description: "Utilities that help you building in creative mode",
+    href: "docs/creativeutilities",
+    className: "group",
+  },
+  {
+    title: "RedProtect",
+    icon: ShieldAlert,
+    description: "Prevent redstone clocks that might lag the server",
+    href: "docs/redprotect",
     className: "group",
   },
 ]
@@ -109,7 +133,7 @@ export default function HomePage() {
         </h2>
       </div>
 
-      <div className="grid md:grid-cols-2 gap-6 mb-16">
+      <div className="grid md:grid-cols-3 gap-6 mb-16">
         {featuredCards.map((card) => (
           <Card
             key={card.href}
