@@ -4,7 +4,7 @@ description: Create and manage character actions.
 ---
 
 You can manage character actions using the `/character action` command.  
-`/character action [add|cooldown|list|permission|remove] ...`
+`/character action [add|chance|cooldown|list|permission|remove] ...`
 
 ## Adding an Action [#add]
 
@@ -60,6 +60,16 @@ To add a greeting action to a character named "Steve", use the following command
 This action will be triggered on any click and sends `Hello, NonSwag!` if the player's name is NonSwag.
 
 ---
+
+## Chance
+
+Set or view the chance for your character's actions.  
+The chance determines the probability of an action being triggered when a character is clicked.
+
+Usage: `/character action chance <character> <action> [<chance>]`
+
+- `[<chance>]`: A number between `0` and `100` representing the probability in percent.  
+  A chance of 100% means the action will always be triggered. Omit to view the current chance.
 
 ## Cooldowns
 
