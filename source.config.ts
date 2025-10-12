@@ -25,7 +25,6 @@ export const blogPosts = defineCollections({
   dir: "content/blog",
   schema: frontmatterSchema.extend({
     author: z.string(),
-    date: z.iso.date().or(z.date()),
     category: z.enum(["devlog", "updates", "other"]),
   }),
 })
