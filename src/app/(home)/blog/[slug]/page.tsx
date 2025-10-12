@@ -17,7 +17,9 @@ export default async function Page(props: PageProps<"/blog/[slug]">) {
             <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_280px]">
               <div className="max-w-3xl">
                 <nav className="mb-6 text-sm text-neutral-500">
-                  <a className="hover:text-white" href="/blog">Blog</a>
+                  <a className="hover:text-white" href="/blog">
+                    Blog
+                  </a>
                   <span className="mx-2">/</span>
                   <span className="text-neutral-400">{page?.data.title}</span>
                 </nav>
@@ -39,8 +41,13 @@ export default async function Page(props: PageProps<"/blog/[slug]">) {
                   <div className="h-4 w-px bg-white/10" />
                   <time>
                     {new Date(
-                      await lastEdit(page) ?? PathUtils.basename(page.path, PathUtils.extname(page.path)),
-                    ).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}
+                      (await lastEdit(page)) ??
+                        PathUtils.basename(page.path, PathUtils.extname(page.path)),
+                    ).toLocaleDateString("en-US", {
+                      month: "long",
+                      day: "numeric",
+                      year: "numeric",
+                    })}
                   </time>
                 </div>
               </div>

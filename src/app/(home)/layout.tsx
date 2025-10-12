@@ -11,9 +11,9 @@ export default function Layout({ children }: { children: ReactNode }) {
       links={[
         {
           type: "icon",
-          icon: <RssIcon/>,
+          icon: <RssIcon />,
           text: "Blog",
-          url: "/blog"
+          url: "/blog",
         },
         {
           type: "icon",

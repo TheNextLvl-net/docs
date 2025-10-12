@@ -9,7 +9,8 @@ export function getRSS() {
     id: `${baseUrl}/blog`,
     link: `${baseUrl}/blog`,
     language: "en",
-    description: "Our blog where we post about more or less technical stuff regarding our plugins and minecraft in general",
+    description:
+      "Our blog where we post about more or less technical stuff regarding our plugins and minecraft in general",
     image: `${baseUrl}/banner.png`,
     favicon: `${baseUrl}/icon.png`,
     copyright: "All rights reserved 2025, TheNextLvl",

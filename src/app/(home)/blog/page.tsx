@@ -11,14 +11,14 @@ function getName(path: string) {
 
 export default async function Blog() {
   const pages = blog.getPages()
-  
+
   const postsWithDates = await Promise.all(
     pages.map(async (page) => ({
       page,
       lastEditDate: await lastEdit(page),
-    }))
+    })),
   )
-  
+
   const posts = postsWithDates.sort(
     (a, b) =>
       new Date(b.lastEditDate ?? getName(b.page.path)).getTime() -
@@ -35,7 +35,7 @@ export default async function Blog() {
         url: p.page.url,
         date: p.lastEditDate,
       },
-    }))
+    })),
   )
 
   return (
