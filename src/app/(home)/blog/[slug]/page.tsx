@@ -1,3 +1,4 @@
+import { lastEdit } from "@/lib/api"
 import { blog } from "@/lib/source"
 import { getMDXComponents } from "@/mdx-components"
 import { PathUtils } from "fumadocs-core/source"
@@ -27,7 +28,7 @@ export default async function Page(props: PageProps<"/blog/[slug]">) {
               <p className="text-xs uppercase tracking-wide text-neutral-500">Published</p>
               <p className="font-medium">
                 {new Date(
-                  page.data.date ?? PathUtils.basename(page.path, PathUtils.extname(page.path)),
+                  await lastEdit(page) ?? PathUtils.basename(page.path, PathUtils.extname(page.path)),
                 ).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
               </p>
             </div>
