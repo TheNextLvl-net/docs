@@ -26,6 +26,7 @@ export const blogPosts = defineCollections({
   schema: frontmatterSchema.extend({
     author: z.string(),
     category: z.enum(["devlog", "updates", "other"]),
+    keywords: z.string().array().optional(),
   }),
 })
 

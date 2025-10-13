@@ -26,7 +26,7 @@ export async function getRSS() {
       date: await lastEdit(page),
       author: [
         {
-          name: page.data.author
+          name: page.data.author,
         },
       ],
     })
