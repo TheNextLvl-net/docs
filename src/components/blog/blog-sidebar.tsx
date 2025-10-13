@@ -50,54 +50,89 @@ export function BlogSidebar({ posts }: BlogSidebarProps) {
       : posts.filter((post) => post.data.category === selectedCategory)
 
   return (
-    <main className="container mx-auto my-12 space-y-10">
-      <div className="mx-auto flex w-full  gap-16 px-8">
-        <aside className="w-48 flex-shrink-0">
-          <h1 className="text-5xl font-semibold tracking-tight">Blog</h1>
-          <nav className="mt-12 flex flex-col space-y-4 text-sm uppercase text-neutral-500">
-            {categories.map((category) => (
-              <button
-                key={category}
-                onClick={() => setSelectedCategory(category)}
-                className={`flex items-center gap-2 text-left transition-colors hover:text-white uppercase text-md ${
-                  selectedCategory === category ? "text-white" : ""
-                }`}
-              >
-                {getCategoryIcon(category)}
-                {category}
-              </button>
-            ))}
-          </nav>
-        </aside>
-        <div className="flex flex-1 flex-col space-y-6 mt-22">
-          {filteredPosts.map((post) => (
-            <Link href={post.data.url} key={post.path} className="border border-white/20 p-4">
-              <article className="group">
-                <div className="flex flex-col space-y-3 p-6 transition-colors group-hover:border-white/20">
-                  <h2 className="text-2xl font-semibold text-white group-hover:text-white/90">
-                    {post.data.title}
-                  </h2>
-                  <p className="text-sm text-neutral-400">{post.data.description}</p>
-                  <p className="text-xs uppercase tracking-wide text-neutral-500 flex items-center gap-2">
-                    {getCategoryIcon(post.data.category ?? "All Posts")} {post.data.category} ·{" "}
-                    {new Date(
-                      (typeof post.data.date === "string"
-                        ? post.data.date
-                        : post.data.date?.toISOString()) ??
-                        post.path.split("/").pop()?.replace(".mdx", "") ??
-                        "",
-                    ).toLocaleDateString("en-US", {
-                      month: "short",
-                      day: "numeric",
-                      year: "numeric",
-                    })}
-                  </p>
-                </div>
-              </article>
-            </Link>
-          ))}
+    <>
+      <header className="border-b border-fd-border">
+        <div className="container mx-auto px-4 py-12 md:py-16">
+          <div className="mx-auto max-w-7xl">
+            <h1 className="text-4xl font-bold tracking-tight text-fd-foreground md:text-5xl">
+              Blog
+            </h1>
+            <p className="mt-4 text-lg leading-relaxed text-fd-muted-foreground">
+              Updates, devlogs, and notes from the team.
+            </p>
+          </div>
         </div>
-      </div>
-    </main>
+      </header>
+
+      <main className="container mx-auto px-4 py-10">
+        <div className="mx-auto max-w-7xl">
+          <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_280px]">
+            <section className="space-y-4">
+              {filteredPosts.map((post) => (
+                <Link
+                  href={post.data.url}
+                  key={post.path}
+                  className="group block rounded-lg border border-fd-border transition-colors hover:bg-fd-accent/10"
+                >
+                  <article className="p-6">
+                    <h2 className="text-2xl font-semibold text-fd-foreground group-hover:text-fd-foreground/90">
+                      {post.data.title}
+                    </h2>
+                    {post.data.description && (
+                      <p className="mt-2 text-sm text-fd-muted-foreground">
+                        {post.data.description}
+                      </p>
+                    )}
+                    <div className="mt-4 flex flex-wrap items-center gap-3 text-xs uppercase tracking-wider text-fd-muted-foreground">
+                      <span className="inline-flex items-center gap-2">
+                        {getCategoryIcon(post.data.category ?? "All Posts")}{" "}
+                        {post.data.category ?? "other"}
+                      </span>
+                      <div className="h-3 w-px bg-fd-border" />
+                      <time>
+                        {new Date(
+                          (typeof post.data.date === "string"
+                            ? post.data.date
+                            : post.data.date?.toISOString()) ??
+                            post.path.split("/").pop()?.replace(".mdx", "") ??
+                            "",
+                        ).toLocaleDateString("en-US", {
+                          month: "long",
+                          day: "numeric",
+                          year: "numeric",
+                        })}
+                      </time>
+                    </div>
+                  </article>
+                </Link>
+              ))}
+            </section>
+
+            <aside className="hidden lg:block">
+              <div className="sticky top-24 rounded-lg border border-fd-border p-4">
+                <h3 className="mb-3 text-xs font-semibold uppercase tracking-wider text-fd-secondary-foreground">
+                  Filter
+                </h3>
+                <nav className="space-y-4 text-sm uppercase text-fd-muted-foreground">
+                  {categories.map((category) => (
+                    <button
+                      key={category}
+                      type="button"
+                      onClick={() => setSelectedCategory(category)}
+                      className={`flex items-center gap-2 text-left transition-colors hover:text-fd-foreground uppercase text-md ${
+                        selectedCategory === category ? "text-fd-foreground" : ""
+                      }`}
+                    >
+                      {getCategoryIcon(category)}
+                      {category}
+                    </button>
+                  ))}
+                </nav>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </main>
+    </>
   )
 }
