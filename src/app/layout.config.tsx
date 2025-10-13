@@ -1,6 +1,7 @@
 import type { BaseLayoutProps } from "fumadocs-ui/layouts/shared"
 import Image from "next/image"
 import { SiDiscord } from "@icons-pack/react-simple-icons"
+import { RssIcon } from "lucide-react"
 /**
  * Shared layout configurations
  *
@@ -18,6 +19,13 @@ export const baseOptions: BaseLayoutProps = {
     ),
   },
   links: [
+    {
+      type: "icon",
+      label: "Blog",
+      icon: <RssIcon />,
+      text: "Blog",
+      url: "/blog",
+    },
     {
       type: "icon",
       label: "Discord",

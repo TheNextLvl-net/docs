@@ -1,6 +1,13 @@
-import { defineConfig, defineDocs, frontmatterSchema, metaSchema } from "fumadocs-mdx/config"
+import {
+  defineConfig,
+  defineDocs,
+  defineCollections,
+  frontmatterSchema,
+  metaSchema,
+} from "fumadocs-mdx/config"
 import { transformerCommandColor } from "./src/lib/command-transformer"
 import { remarkMdxMermaid } from "fumadocs-core/mdx-plugins"
+import { z } from "zod"
 
 // You can customise Zod schemas for frontmatter and `meta.json` here
 // see https://fumadocs.vercel.app/docs/mdx/collections#define-docs
@@ -11,6 +18,16 @@ export const docs = defineDocs({
   meta: {
     schema: metaSchema,
   },
+})
+
+export const blogPosts = defineCollections({
+  type: "doc",
+  dir: "content/blog",
+  schema: frontmatterSchema.extend({
+    author: z.string(),
+    category: z.enum(["devlog", "updates", "other"]),
+    keywords: z.string().array().optional(),
+  }),
 })
 
 export default defineConfig({
