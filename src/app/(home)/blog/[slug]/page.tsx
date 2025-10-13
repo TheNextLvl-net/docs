@@ -2,13 +2,12 @@ import { lastEdit } from "@/lib/api"
 import { blog } from "@/lib/source"
 import { getMDXComponents } from "@/mdx-components"
 import { PathUtils } from "fumadocs-core/source"
-import type { Metadata, ResolvingMetadata } from "next"
+import type { Metadata } from "next"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 
 export async function generateMetadata(
   { params }: PageProps<"/blog/[slug]">,
-  parent: ResolvingMetadata,
 ): Promise<Metadata> {
   const { slug } = await params
   const page = blog.getPage([slug])
