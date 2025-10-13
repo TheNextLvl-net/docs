@@ -2,6 +2,7 @@ import { lastEdit } from "@/lib/api"
 import { blog } from "@/lib/source"
 import { getMDXComponents } from "@/mdx-components"
 import { PathUtils } from "fumadocs-core/source"
+import Link from "next/link"
 import { notFound } from "next/navigation"
 
 export default async function Page(props: PageProps<"/blog/[slug]">) {
@@ -17,9 +18,9 @@ export default async function Page(props: PageProps<"/blog/[slug]">) {
             <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_280px]">
               <div className="max-w-3xl">
                 <nav className="mb-6 text-sm text-neutral-500">
-                  <a className="hover:text-white" href="/blog">
+                  <Link className="hover:text-white" href="/blog">
                     Blog
-                  </a>
+                  </Link>
                   <span className="mx-2">/</span>
                   <span className="text-neutral-400">{page?.data.title}</span>
                 </nav>
@@ -70,14 +71,14 @@ export default async function Page(props: PageProps<"/blog/[slug]">) {
                   </h3>
                   <nav className="space-y-1">
                     {toc.map((item) => (
-                      <a
+                      <Link
                         key={item.url}
                         href={item.url}
                         className="block rounded-md py-1.5 text-sm text-neutral-400 hover:text-white"
                         style={{ paddingLeft: `${(item.depth - 1) * 12}px` }}
                       >
                         {item.title}
-                      </a>
+                      </Link>
                     ))}
                   </nav>
                 </div>
