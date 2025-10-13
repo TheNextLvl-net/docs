@@ -25,10 +25,10 @@ export async function lastEdit(page: Page): Promise<Date> {
     owner: "TheNextLvl-net",
     repo: "docs",
     token: process.env.GITHUB_TOKEN,
-    path: `content/docs/${page.file.path}`,
+    path: `content/docs/${page.path}`,
   }).catch((error) => {
     console.error("Error fetching last edit date:", error)
-    return new Date(0)
+    return new Date()
   })
   return time ? time : new Date()
 }

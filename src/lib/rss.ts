@@ -1,9 +1,10 @@
 import { Feed } from "feed"
 import { blog } from "@/lib/source"
+import { lastEdit } from "@/lib/api"
 
 const baseUrl = "https://thenextlvl.net"
 
-export function getRSS() {
+export async function getRSS() {
   const feed = new Feed({
     title: "TheNextLvl Blog",
     id: `${baseUrl}/blog`,
@@ -22,11 +23,10 @@ export function getRSS() {
       title: page.data.title,
       description: page.data.description,
       link: `${baseUrl}${page.url}`,
-      date: new Date(page.data.lastModified?.getDate() ?? new Date()),
-
+      date: await lastEdit(page),
       author: [
         {
-          name: "TheNextLvl",
+          name: page.data.author
         },
       ],
     })
