@@ -1,4 +1,4 @@
-import { getGithubLastEdit } from "fumadocs-core/server"
+import { getGithubLastEdit } from "fumadocs-core/content/github"
 import { Page } from "fumadocs-core/source"
 
 export async function latestVersion(project: string): Promise<string> {
