@@ -24,7 +24,7 @@ export async function lastEdit(page: Page): Promise<Date> {
   const time = await getGithubLastEdit({
     owner: "TheNextLvl-net",
     repo: "docs",
-    token: process.env.GITHUB_TOKEN,
+    token: process.env.GITHUB_TOKEN ? "Bearer " + process.env.GITHUB_TOKEN : undefined,
     path: `content/docs/${page.path}`,
   }).catch((error) => {
     console.error("Error fetching last edit date:", error)
