@@ -5,8 +5,3 @@
 * {
   border-radius: 0 !important;
 }
-
-[data-radix-popper-content-wrapper] > div {
-  max-height: var(--radix-popover-content-available-height);
-  overflow-y: auto;
-}
