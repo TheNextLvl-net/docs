@@ -5,9 +5,9 @@
   "icon": "ShieldAlert",
   "pages": [
     "---Links---",
-    "[Github][GitHub](https://github.com/TheNextLvl-net/red-protect)",
-    "[Download][Download](https://modrinth.com/project/loXscTUV#download)",
-    "[ChartLine][Metrics](https://bstats.org/plugin/bukkit/TheNextLvl%20RedProtect/25699)",
+    "external:[Github][GitHub](https://github.com/TheNextLvl-net/red-protect)",
+    "external:[Download][Download](https://modrinth.com/project/loXscTUV#download)",
+    "external:[ChartLine][Metrics](https://bstats.org/plugin/bukkit/TheNextLvl%20RedProtect/25699)",
     "---Introduction---",
     "index",
     "faq",
