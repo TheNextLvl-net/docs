@@ -13,6 +13,11 @@
     "index",
     "faq",
     "---Guide---",
+    "hide-reveal",
+    "unregister-register",
+    "permissions",
+    "reset",
+    "reload-save",
     "---For Developers---",
     "api/repository",
     "api/index"

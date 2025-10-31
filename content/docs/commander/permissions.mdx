@@ -1,0 +1,342 @@
+---
+title: Overriding/Querying Permissions
+description: Manage and override command permissions
+---
+
+# Overriding/Querying Permissions
+
+Command permission management allows you to override the default permissions of commands, set new permissions on commands that originally had none, and query current permission settings.
+
+## Commands
+
+### Set Command Permission
+```
+/command permission set <command> <permission>
+```
+Sets or overrides the permission required to execute a command. Supports wildcards for bulk operations.
+
+**Parameters:**
+- `<command>`: The command to modify (without the `/` prefix). Supports wildcards.
+- `<permission>`: The permission node to require
+
+**Examples:**
+```
+# Set permission on specific commands
+/command permission set luckperms luckperms.use
+/command permission set fly essentials.fly
+/command permission set gamemode server.admin.gamemode
+
+# Set permission on all commands
+/command permission set * server.admin.all
+
+# Set permission on all bukkit namespaced commands
+/command permission set bukkit:* server.admin.bukkit
+
+# Set permission on all namespaced commands
+/command permission set *:* plugin.commands
+```
+
+### Query Command Permission
+```
+/command permission query <command>
+```
+Displays the current permission setting for a command. Supports wildcards for bulk queries.
+
+**Parameters:**
+- `<command>`: The command to query (without the `/` prefix). Supports wildcards.
+
+**Examples:**
+```
+# Query specific commands
+/command permission query luckperms
+/command permission query fly
+
+# Query all commands
+/command permission query *
+
+# Query all bukkit namespaced commands
+/command permission query bukkit:*
+
+# Query all namespaced commands
+/command permission query *:*
+```
+
+### Reset Command Permission
+```
+/command permission reset <command>
+```
+Removes any permission override and restores the command's original permission. Supports wildcards for bulk operations.
+
+**Parameters:**
+- `<command>`: The command to reset (without the `/` prefix). Supports wildcards.
+
+**Examples:**
+```
+# Reset specific commands
+/command permission reset luckperms
+/command permission reset fly
+
+# Reset all permission overrides
+/command permission reset *
+
+# Reset all bukkit namespaced commands
+/command permission reset bukkit:*
+
+# Reset all namespaced commands
+/command permission reset *:*
+```
+
+**Example:**
+```
+/command permission reset luckperms
+/command permission reset fly
+```
+
+### Unset Command Permission
+```
+/command permission unset <command>
+```
+Removes the permission requirement from a command, making it usable by everyone. Supports wildcards for bulk operations.
+
+
+
+**Parameters:**
+- `<command>`: The command to unset permission for (without the `/` prefix). Supports wildcards.
+
+**Examples:**
+```
+# Unset permission on specific commands
+/command permission unset help
+/command permission unset rules
+
+# Unset permissions on all commands
+/command permission unset *
+
+# Unset permissions on all bukkit namespaced commands
+/command permission unset bukkit:*
+
+# Unset permissions on all namespaced commands
+/command permission unset *:*
+```
+
+## Wildcard Support
+
+Commander supports powerful wildcard patterns for bulk permission operations:
+
+### Wildcard Patterns
+
+- `*` - Matches any command name
+- `:*` - Matches any namespaced command (commands with colons)
+- `prefix:*` - Matches all commands with a specific namespace prefix
+- `*suffix` - Matches all commands ending with a specific suffix
+
+### Common Wildcard Examples
+
+```
+# Set permission on ALL commands
+/command permission set * server.admin.all
+
+# Set permission on all vanilla Minecraft commands
+/command permission set minecraft:* vanilla.commands
+
+# Set permission on all Bukkit/Spigot commands
+/command permission set bukkit:* bukkit.commands
+
+# Set permission on all plugin commands (namespaced)
+/command permission set *:* plugin.commands
+
+# Set permission on all commands starting with "admin"
+/command permission set admin* admin.commands
+
+# Set permission on all commands ending with "list"
+/command permission set *list utility.commands
+```
+
+### Wildcard Use Cases
+
+#### Complete Permission Lockdown
+```
+# Require admin permission for ALL commands
+/command permission set * server.admin.all
+
+# Then make essential commands available to everyone
+/command permission unset help
+/command permission unset spawn
+/command permission unset rules
+```
+
+#### Plugin Permission Standardization
+```
+# Set consistent permissions for all plugin commands
+/command permission set *:* plugin.commands
+
+# Override specific plugins with custom permissions
+/command permission set luckperms:* luckperms.admin
+/command permission set essentials:* essentials.admin
+```
+
+#### Server Type Configuration
+```
+# On a creative server, set creative-specific permissions
+/command permission set fly creative.fly
+/command permission set gamemode creative.gamemode
+/command permission set worldedit:* creative.worldedit
+```
+
+#### Bulk Permission Management
+```
+# Remove all permission overrides
+/command permission reset *
+
+# Query all current permission overrides
+/command permission query *
+
+# Unset all permissions (make everything public)
+/command permission unset *
+```
+
+### ⚠️ Important Notes
+
+🚨 **CAUTION:** Using `/command permission set *` will affect **ALL** commands on the server, including essential ones.
+
+🚨 **PERMISSION IMPACT:** Wildcard permission changes can lock players out of essential commands. Always have a backup plan.
+
+💡 **BEST PRACTICE:** Test wildcard operations on a development server first.
+
+💡 **SELECTIVE APPROACH:** Use specific wildcards (like `prefix:*`) instead of `*` when possible for more control.
+
+## Permissions
+
+- `commander.admin` - Required to use all permission management commands
+
+## Behavior
+
+### Permission Override
+- Overrides the original permission of a command
+- The new permission is enforced by Commander
+- Original plugin behavior is preserved
+- Configuration is saved to a JSON file
+
+### Permission Query
+- Shows the current effective permission for a command
+- Displays whether it's using the original permission or an override
+- Useful for debugging permission issues
+
+### Permission Reset
+- Removes Commander's permission override
+- Restores the command's original permission from its plugin
+- If the command had no original permission, it becomes unrestricted
+
+### Permission Unset
+- Completely removes permission requirements
+- Makes the command executable by anyone
+- Useful for utility commands that should be universally available
+
+## Use Cases
+
+### Adding Permissions to Unrestricted Commands
+Many plugins provide commands without permission requirements. Add security:
+
+```
+# Add permission to LuckPerms commands
+/command permission set luckperms luckperms.admin
+/command permission set perms luckperms.admin
+
+# Add permission to economy commands
+/command permission set eco economy.admin
+/command permission set balance economy.user
+```
+
+### Restricting Powerful Commands
+Add additional security layers:
+
+```
+# Make gamemode command require admin permission
+/command permission set gamemode server.admin.gamemode
+
+# Make world management commands require specific permissions
+/command permission set world server.admin.world
+/command permission set mv server.admin.multiverse
+```
+
+### World/Server-Specific Permissions
+Use permission plugins to grant command access only in certain contexts:
+
+```
+# Set a permission that's only granted in creative world
+/command permission set fly creative.fly
+
+# Set a permission that's only granted on specific servers
+/command permission set tp hub.teleport
+```
+
+### Debugging Permission Issues
+Check what permissions are actually being enforced:
+
+```
+/command permission query fly
+/command permission query gamemode
+/command permission query home
+```
+
+## Configuration
+
+Permission overrides are stored in a JSON configuration file. The file maps command names to their permission overrides.
+
+```json
+{
+  "luckperms": "luckperms.admin",
+  "fly": "essentials.fly",
+  "gamemode": "server.admin.gamemode",
+  "eco": "economy.admin"
+}
+```
+
+## Important Notes
+
+⚠️ **Warning:** Be careful when unsetting permissions from commands that should be restricted.
+
+⚠️ **Warning:** Some plugins may not work correctly if their permission system is bypassed.
+
+💡 **Tip:** Use descriptive permission names that follow your server's permission scheme.
+
+💡 **Tip:** Combine with permission plugins to create world-specific or group-specific command access.
+
+## Tips
+
+- Commands are referenced without the `/` prefix in the configuration
+- Use `/command reload` to reload the configuration if manually edited
+- Use `/command save` to ensure changes are persisted to disk
+- Query permissions before making changes to understand the current state
+- Use permission plugins to grant the new permissions to specific users, groups, or worlds
+
+## Examples
+
+### Basic Security Setup
+```
+# Add permissions to commonly unrestricted commands
+/command permission set plugins server.admin.plugins
+/command permission set version server.admin.version
+/command permission set reload server.admin.reload
+
+# Make utility commands available to all players
+/command permission unset help
+/command permission unset rules
+/command permission unset spawn
+```
+
+### Creative World Commands
+```
+# Set creative-specific permissions
+/command permission set fly creative.fly
+/command permission set gamemode creative.gamemode
+/command permission set worldedit creative.worldedit
+```
+
+### Admin Tools
+```
+# Restrict powerful admin commands
+/command permission set op server.admin.op
+/command permission set whitelist server.admin.whitelist
+/command permission set ban server.admin.ban
+```

@@ -1,0 +1,217 @@
+---
+title: Un-/registering Commands
+description: Completely remove or restore commands from the server
+---
+
+# Un-/registering Commands
+
+Command registration allows you to completely remove commands from the server or restore previously removed commands. Unlike hiding, unregistered commands cannot be executed by anyone.
+
+## Commands
+
+### Unregister a Command
+```
+/command unregister <command>
+```
+Completely removes a command from the server. The command becomes unusable by all players. Supports wildcards for bulk operations.
+
+**Parameters:**
+- `<command>`: The command to unregister (without the `/` prefix). Supports wildcards.
+
+**Examples:**
+```
+# Unregister specific commands
+/command unregister op
+/command unregister deop
+/command unregister stop
+
+# Unregister all commands (use with extreme caution!)
+/command unregister *
+
+# Unregister all bukkit namespaced commands
+/command unregister bukkit:*
+
+# Unregister all namespaced commands
+/command unregister *:*
+```
+
+### Register a Command
+```
+/command register <command>
+```
+Restores a previously unregistered command, making it available again. Supports wildcards for bulk operations.
+
+**Parameters:**
+- `<command>`: The command to register (without the `/` prefix). Supports wildcards.
+
+**Examples:**
+```
+# Register specific commands
+/command register op
+/command register deop
+
+# Register all unregistered commands
+/command register *
+
+# Register all bukkit namespaced commands
+/command register bukkit:*
+
+# Register all namespaced commands
+/command register *:*
+```
+
+## Permissions
+
+- `commander.admin` - Required to use both unregister and register commands
+
+## Behavior
+
+### Unregistered Commands
+- Unregistered commands are **completely removed** from the server
+- Unregistered commands cannot be executed by anyone, including administrators
+- Unregistered commands don't appear in tab completion or help menus
+- The command configuration is saved to a JSON file
+
+### Registered Commands
+- Previously unregistered commands become fully functional again
+- All original permissions and behavior are restored
+- The command appears in tab completion and help menus (unless hidden)
+
+## Wildcard Support
+
+Commander supports powerful wildcard patterns for bulk command operations:
+
+### Wildcard Patterns
+
+- `*` - Matches any command name
+- `:*` - Matches any namespaced command (commands with colons)
+- `prefix:*` - Matches all commands with a specific namespace prefix
+- `*suffix` - Matches all commands ending with a specific suffix
+
+### Common Wildcard Examples
+
+```
+# Unregister ALL commands (extremely dangerous!)
+/command unregister *
+
+# Unregister all vanilla Minecraft commands
+/command unregister minecraft:*
+
+# Unregister all Bukkit/Spigot commands
+/command unregister bukkit:*
+
+# Unregister all plugin commands (namespaced)
+/command unregister *:*
+
+# Unregister all commands starting with "admin"
+/command unregister admin*
+
+# Unregister all commands ending with "list"
+/command unregister *list
+```
+
+### Wildcard Use Cases
+
+#### Complete Plugin Removal
+```
+# Remove all commands from a specific plugin
+/command unregister worldedit:*
+/command unregister essentials:*
+```
+
+#### Server Type Configuration
+```
+# On a survival server, remove all creative commands
+/command unregister fly
+/command unregister gamemode
+/command unregister worldedit:*
+```
+
+#### Security Lockdown
+```
+# Remove all administrative commands
+/command unregister admin*
+/command unregister *admin
+/command unregister op
+/command unregister deop
+```
+
+### ⚠️ Critical Warnings
+
+🚨 **EXTREME CAUTION:** Using `/command unregister *` will remove **ALL** commands from the server, including `/command` itself. This may require server restart or config file editing to recover.
+
+🚨 **DANGEROUS:** Wildcard unregister operations are irreversible through normal commands. You'll need to edit configuration files manually or use `/command register *` to restore.
+
+🚨 **PLUGIN COMPATIBILITY:** Unregistering all commands from a plugin may cause the plugin to malfunction or crash.
+
+## Use Cases
+
+### Security Hardening
+Remove dangerous commands that should never be used:
+```
+/command unregister op
+/command unregister deop
+/command unregister stop
+/command unregister reload
+
+# Remove all administrative commands at once
+/command unregister admin*
+```
+
+### Plugin Management
+Remove commands from plugins you don't want players to use:
+```
+/command unregister essentials
+/command unregister eco
+```
+
+### Temporary Disabling
+Unregister commands temporarily during events or maintenance:
+```
+/command unregister tp
+/command unregister home
+```
+
+### Server-Specific Commands
+Unregister commands that don't apply to your server type:
+```
+# On a survival server, unregister creative commands
+/command unregister gamemode
+/command unregister fly
+```
+
+## Configuration
+
+Unregistered commands are stored in a JSON configuration file. The file contains a simple array of command names that should be unregistered.
+
+```json
+[
+  "op",
+  "deop",
+  "stop",
+  "reload"
+]
+```
+
+## Important Notes
+
+⚠️ **Warning:** Be careful when unregistering essential commands. Some unregistered commands may require a server restart to be properly restored.
+
+⚠️ **Warning:** Unregistering commands from other plugins may cause those plugins to malfunction. Always test in a development environment first.
+
+## Tips
+
+- Commands are unregistered without the `/` prefix in the configuration
+- Both the main command and aliases should be unregistered if desired
+- Use `/command reload` to reload the configuration if manually edited
+- Use `/command save` to ensure changes are persisted to disk
+- Consider using command hiding instead of unregistering if you still want administrators to use the command
+
+## Difference from Hiding
+
+| Feature | Hide | Unregister |
+|---------|------|------------|
+| Command execution | Still possible | Completely blocked |
+| Who can use | Anyone who knows it | Nobody |
+| Administrator access | Yes (with bypass) | No |
+| Use case | Clean UI | Security/Disabling |

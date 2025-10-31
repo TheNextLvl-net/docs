@@ -1,0 +1,265 @@
+---
+title: Reloading/Saving Configs
+description: Manage Commander configuration files
+---
+
+# Reloading/Saving Configs
+
+Configuration management allows you to reload Commander settings from disk and manually save changes to ensure persistence.
+
+## Commands
+
+### Reload Configuration
+```
+/command reload
+```
+Reload all Commander configuration files from disk, applying any changes made manually to the configuration files.
+
+### Save Configuration
+```
+/command save
+```
+Manually saves all current Commander settings to the configuration files, ensuring all changes are persisted.
+
+## Permissions
+
+- `commander.admin` - Required to use both reload and save commands
+
+## Configuration Files
+
+Commander uses three separate JSON configuration files to store different types of command modifications:
+
+### Hidden Commands (`hidden.json`)
+Stores commands that are hidden from tab completion and help menus.
+
+```json
+[
+  "plugins",
+  "pl",
+  "version",
+  "ver"
+]
+```
+
+### Unregistered Commands (`unregistered.json`)
+Stores commands that are completely removed from the server.
+
+```json
+[
+  "op",
+  "deop",
+  "stop",
+  "reload"
+]
+```
+
+### Permission Overrides (`permissions.json`)
+Stores custom permission settings for commands.
+
+```json
+{
+  "luckperms": "luckperms.admin",
+  "fly": "essentials.fly",
+  "gamemode": "server.admin.gamemode"
+}
+```
+
+## Behavior
+
+### Reload Command
+- Reads all three configuration files from disk
+- Applies any changes made to the files
+- Updates the in-memory state of Commander
+- Overwrites any unsaved changes in memory
+
+### Save Command
+- Writes the current in-memory state to all configuration files
+- Ensures all recent changes are persisted
+- Creates backup files if they don't exist
+- Validates JSON syntax before writing
+
+## Use Cases
+
+### Manual Configuration Editing
+Edit configuration files directly and reload changes:
+
+```
+# Edit hidden.json manually to add/remove hidden commands
+# Then apply the changes
+/command reload
+```
+
+### Backup and Restore
+Save current state before making changes:
+
+```
+# Save current configuration
+/command save
+
+# Make changes...
+
+# If something goes wrong, restore from backup and reload
+/command reload
+```
+
+### Multiple Administrators
+Ensure changes are synchronized between multiple administrators:
+
+```
+# After another admin makes changes
+/command reload
+
+# After making your own changes
+/command save
+```
+
+### Server Maintenance
+Save configuration before server restarts:
+
+```
+# Ensure all changes are saved before restart
+/command save
+# Then restart the server
+```
+
+### Troubleshooting
+Reload configuration to fix issues:
+
+```
+# If commands aren't behaving as expected
+/command reload
+```
+
+## Manual Configuration
+
+### Editing Hidden Commands
+Edit `plugins/Commander/hidden.json`:
+
+```json
+[
+  "plugins",
+  "pl",
+  "version",
+  "ver",
+  "about",
+  "bukkit:version"
+]
+```
+
+### Editing Unregistered Commands
+Edit `plugins/Commander/unregistered.json`:
+
+```json
+[
+  "op",
+  "deop",
+  "stop",
+  "reload",
+  "bukkit:reload"
+]
+```
+
+### Editing Permission Overrides
+Edit `plugins/Commander/permissions.json`:
+
+```json
+{
+  "luckperms": "luckperms.admin",
+  "fly": "essentials.fly",
+  "gamemode": "server.admin.gamemode",
+  "eco": "economy.admin"
+}
+```
+
+## Important Notes
+
+⚠️ **Warning:** Manual editing requires proper JSON syntax. Invalid JSON will cause reload to fail.
+
+⚠️ **Warning:** Reloading will overwrite any unsaved changes in memory.
+
+⚠️ **Warning:** Configuration files are case-sensitive. Use exact command names.
+
+💡 **Tip:** Always save before making manual changes to create a backup.
+
+💡 **Tip:** Use a JSON validator when editing configuration files manually.
+
+💡 **Tip:** Commands in configuration files should not include the `/` prefix.
+
+## Best Practices
+
+### Regular Saves
+```
+# Save after making any changes
+/command hide plugins
+/command save
+
+/command permission set fly essentials.fly
+/command save
+```
+
+### Before Manual Editing
+```
+# Save current state first
+/command save
+
+# Then edit files manually
+# Finally, reload changes
+/command reload
+```
+
+### After Manual Editing
+```
+# Always reload after manual edits
+/command reload
+
+# Verify changes took effect
+/command permission query fly
+```
+
+### Troubleshooting Steps
+```
+# If commands aren't working correctly
+/command save    # Save current state
+/command reload  # Reload from disk
+```
+
+## File Locations
+
+Configuration files are typically located at:
+```
+plugins/Commander/
+├── hidden.json
+├── unregistered.json
+└── permissions.json
+```
+
+The exact location may vary depending on your server setup.
+
+## Error Handling
+
+### Invalid JSON
+If a configuration file contains invalid JSON:
+- Reload will fail with an error message
+- Current settings will remain unchanged
+- Fix the JSON syntax and try again
+
+### Missing Files
+If configuration files are missing:
+- Commander will create new empty files
+- Default settings will be used
+- Save will create the files with current settings
+
+### Permission Issues
+If Commander can't write to configuration files:
+- Save will fail with an error message
+- Check file permissions and disk space
+- Ensure the plugins directory is writable
+
+## Tips
+
+- Use `/command save` frequently to avoid losing changes
+- Reload after manual edits to apply changes
+- Keep backups of configuration files
+- Test changes in a development environment first
+- Use JSON linters/validators when editing manually
+- Document your configuration changes for future reference
