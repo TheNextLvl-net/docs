@@ -1,11 +1,11 @@
 ---
 title: Hiding/Revealing Commands
-description: Control command visibility in tab completion and help menus
+description: Control command visibility in tab completion
 ---
 
 # Hiding and Revealing Commands
 
-Hiding commands allows you to control which commands appear in tab completion and help menus,
+Hiding commands allows you to control which commands appear in tab completion,
 creating a cleaner experience for players while still allowing the commands to be executed by those who know them.
 
 ## Commands
@@ -13,7 +13,8 @@ creating a cleaner experience for players while still allowing the commands to b
 ### Hide a Command
 
 Usage: `/command hide <command>`  
-Hides a command from tab completion and help menus. Supports wildcards for bulk operations.
+Hides a command from tab completion.
+Supports wildcards for bulk operations.
 
 **Examples:**
 ```
@@ -22,18 +23,19 @@ Hides a command from tab completion and help menus. Supports wildcards for bulk 
 /command hide <aqua>pl</aqua>
 
 <gray># Hide all commands</gray>
-/command hide <aqua>*</aqua>
+/command hide <aqua>"*"</aqua>
 
 <gray># Hide all bukkit namespaced commands</gray>
-/command hide <aqua>bukkit:*</aqua>
+/command hide <aqua>"bukkit:*"</aqua>
 
 <gray># Hide all namespaced commands</gray>
-/command hide <aqua>*:*</aqua>
+/command hide <aqua>"*:*"</aqua>
 ```
 
 ### Reveal a Command
 Usage: `/command reveal <command>`
-Makes a previously hidden command visible again in tab completion and help menus. Supports wildcards for bulk operations.
+Makes a previously hidden command visible again in tab completions.
+Supports wildcards for bulk operations.
 
 **Examples:**
 ```
@@ -42,13 +44,13 @@ Makes a previously hidden command visible again in tab completion and help menus
 /command reveal <aqua>pl</aqua>
 
 <gray># Reveal all hidden commands</gray>
-/command reveal <aqua>*</aqua>
+/command reveal <aqua>"*"</aqua>
 
 <gray># Reveal all bukkit namespaced commands</gray>
-/command reveal <aqua>bukkit:*</aqua>
+/command reveal <aqua>"bukkit:*"</aqua>
 
 <gray># Reveal all namespaced commands</gray>
-/command reveal <aqua>*:*</aqua>
+/command reveal <aqua>"*:*"</aqua>
 ```
 
 ## Wildcard Support
@@ -58,52 +60,44 @@ Commander supports powerful wildcard patterns for bulk command operations:
 ### Wildcard Patterns
 
 - `*` - Matches any command name
-- `:*` - Matches any namespaced command (commands with colons)
+- `*:*` - Matches any namespaced command (commands with colons)
 - `prefix:*` - Matches all commands with a specific namespace prefix
 - `*suffix` - Matches all commands ending with a specific suffix
 
 ### Common Wildcard Examples
 
 ```
-<gray># Hide ALL commands (use with caution!)</gray>
-/command hide <aqua>*</aqua>
+<gray># Hide ALL commands</gray>
+/command hide <aqua>"*"</aqua>
 
 <gray># Hide all vanilla Minecraft commands</gray>
-/command hide <aqua>minecraft:*</aqua>
+/command hide <aqua>"minecraft:*"</aqua>
 
-<gray># Hide all Bukkit/Spigot commands</gray>
-/command hide <aqua>bukkit:*</aqua>
+<gray># Hide all Bukkit/Spigot/Paper commands</gray>
+/command hide <aqua>"bukkit:*"</aqua>
+/command hide <aqua>"spigot:*"</aqua>
+/command hide <aqua>"paper:*"</aqua>
 
-<gray># Hide all plugin commands (namespaced)</gray>
-/command hide <aqua>*:*</aqua>
+<gray># Hide all namespaced commands</gray>
+/command hide <aqua>"*:*"</aqua>
 
 <gray># Hide all commands starting with "admin"</gray>
-/command hide <aqua>admin*</aqua>
+/command hide <aqua>"admin*"</aqua>
 
 <gray># Hide all commands ending with "list"</gray>
-/command hide <aqua>*list</aqua>
+/command hide <aqua>"*list"</aqua>
 ```
 
 ### Wildcard Use Cases
 
 #### Complete Command Cleanup
 ```
-<gray># Hide all namespaced commands (usually plugin commands)</gray>
-/command hide <aqua>*:*</aqua>
+<gray># Hide all namespaced commands</gray>
+/command hide <aqua>"*:*"</aqua>
 
 <gray># Then selectively reveal essential ones</gray>
-/command reveal <aqua>essentials:*</aqua>
-/command reveal <aqua>luckperms:*</aqua>
-```
-
-#### Plugin Management
-```
-<gray># Hide all commands from a specific plugin</gray>
-/command hide <aqua>worldedit:*</aqua>
-
-<gray># Hide all administrative commands</gray>
-/command hide <aqua>admin*</aqua>
-/command hide <aqua>*admin</aqua>
+/command reveal <aqua>"essentials:*"</aqua>
+/command reveal <aqua>"luckperms:*"</aqua>
 ```
 
 #### Server Type Filtering
@@ -111,31 +105,40 @@ Commander supports powerful wildcard patterns for bulk command operations:
 <gray># Hide all creative mode commands on a survival server</gray>
 /command hide <aqua>fly</aqua>
 /command hide <aqua>gamemode</aqua>
-/command hide <aqua>worldedit:*</aqua>
+/command hide <aqua>"worldedit:*"</aqua>
 ```
 
 ### Important Notes
 
-⚠️ **Warning:** Using `/command hide *` will hide literally ALL commands, including essential ones like `/command` itself. Make sure you have alternative access to restore commands.
+<Callout type="warning">
+  Using `/command hide "*"` will hide literally ALL commands,
+  including essential ones like `/command` itself.
+</Callout>
 
-⚠️ **Warning:** Wildcard operations affect many commands at once. Test carefully and consider using `/command save` before bulk operations.
+<Callout type="warning">
+  Wildcard operations affect many commands at once.  
+  Test carefully and consider using `/command save` before bulk operations.
+</Callout>
 
-💡 **Tip:** Use `/command reveal *` to quickly restore all hidden commands.
-
-💡 **Tip:** Combine wildcards with specific commands for fine-tuned control.
+<Callout type="tip">
+  Use `/command reveal "*"` to quickly restore all hidden commands.
+</Callout>
 
 ## Behavior
 
 ### Hidden Commands
+
 - Hidden commands are **still executable** by players who know the command
 - Hidden commands don't appear in tab completion
-- Hidden commands don't appear in help menus (`/help`, `/?`)
-- The command configuration is saved to a JSON file
+- Hidden commands **still appear** in help menus (`/help`, `/?`)
 
 ### Bypass Permission
-Players with the `commander.bypass` permission can see all hidden commands, regardless of other permissions.
+Players with the `commander.bypass` permission can see all hidden commands.
 
-**Important:** Wildcard permissions (like `*`) are ignored for the bypass permission. Players must have the explicit `commander.bypass` permission to see hidden commands.
+<Callout type="info">
+  Wildcard permissions (like `*`) are ignored for the bypass permission.  
+  Players must have the explicit `commander.bypass` permission to see hidden commands.
+</Callout>
 
 ## Use Cases
 
@@ -156,7 +159,8 @@ Hide debugging or development commands from production environments.
 
 ## Configuration
 
-Hidden commands are stored in a JSON configuration file. The file contains a simple array of command names that should be hidden.
+Hidden commands are stored in a JSON configuration file.  
+The file contains a simple array of command names that should be hidden.
 
 `hidden-commands.json`:
 ```json
