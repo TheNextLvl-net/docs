@@ -1,0 +1,122 @@
+---
+title: Command Registration
+description: Completely remove or restore commands from the server
+---
+
+# Unregistering Commands
+
+Unregistering a command allows you to completely remove commands from the server.  
+Unlike hiding, unregistered commands cannot be executed by anyone.
+
+## Commands
+
+### Unregister a Command
+
+Usage: `/command unregister <command>`  
+Completely removes a command from the server.
+
+**Examples:**
+```
+<gray># Unregister specific commands</gray>
+/command unregister <aqua>op</aqua>
+/command unregister <aqua>deop</aqua>
+/command unregister <aqua>stop</aqua>
+
+<gray># Unregister all commands (use with extreme caution!)</gray>
+/command unregister <aqua>"*"</aqua>
+
+<gray># Unregister all bukkit namespaced commands</gray>
+/command unregister <aqua>"bukkit:*"</aqua>
+
+<gray># Unregister all namespaced commands</gray>
+/command unregister <aqua>"*:*"</aqua>
+```
+
+<Callout type="warning">
+  Using `/command unregister "*"` will remove **ALL** commands from the server, including `/command` itself.  
+  For this reason the fallback command `/commander:command` is exempt from unregistering.  
+  _If you messed up, you can use `/commander:command register "*"` to restore all commands._
+</Callout>
+
+### Register a Command
+
+Usage: `/command register <command>`  
+Restores a previously unregistered command, making it available again.
+
+**Examples:**
+```
+<gray># Register specific commands</gray>
+/command register <aqua>op</aqua>
+/command register <aqua>deop</aqua>
+
+<gray># Register all unregistered commands</gray>
+/command register <aqua>"*"</aqua>
+
+<gray># Register all bukkit namespaced commands</gray>
+/command register <aqua>"bukkit:*"</aqua>
+
+<gray># Register all namespaced commands</gray>
+/command register <aqua>"*:*"</aqua>
+```
+
+## Use Cases
+
+### Security Hardening
+
+Remove dangerous commands that should never be used:
+```
+/command unregister <aqua>op</aqua>
+/command unregister <aqua>deop</aqua>
+/command unregister <aqua>stop</aqua>
+/command unregister <aqua>reload</aqua>
+```
+
+### Temporary Disabling
+
+Unregister commands temporarily during events or maintenance:
+```
+/command unregister <aqua>tpa</aqua>
+/command unregister <aqua>home</aqua>
+/command unregister <aqua>warp</aqua>
+/command unregister <aqua>plotmenu</aqua>
+```
+
+### Server-Specific Commands
+
+Unregister commands that don't apply to your server type:
+```
+/command unregister <aqua>gamemode</aqua>
+/command unregister <aqua>heal</aqua>
+/command unregister <aqua>fly</aqua>
+```
+
+## Configuration
+
+Unregistered commands are stored in a JSON configuration file.  
+The file contains a simple array of command names that should be unregistered.
+
+```json
+[
+  "op",
+  "deop",
+  "stop",
+  "reload"
+]
+```
+
+## Tips
+
+- Commands are unregistered without the `/` prefix in the configuration
+- Both the main command and aliases should be unregistered if desired
+- Use `/command reload` to reload the configuration if manually edited
+- Use `/command save` to ensure changes are persisted to disk
+- Consider using command hiding instead of unregistering if you still want administrators to use the command
+
+## Difference from Hiding
+
+| Feature              | Hide                | Unregister         |
+|----------------------|---------------------|--------------------|
+| Command execution    | Still possible      | Completely removed |
+| Who can use          | Anyone who knows it | Nobody             |
+| Administrator access | Yes (with bypass)   | No                 |
+| Use case             | Clean UI            | Security/Disabling |

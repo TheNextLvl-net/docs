@@ -1,0 +1,84 @@
+---
+title: Reloading/Saving Configs
+description: Manage Commander configuration files
+---
+
+# Reloading/Saving Configs
+
+Configuration management allows you to reload Commander settings from disk and manually save changes to ensure persistence.
+
+<Callout type="tip">
+  Manual editing requires proper JSON syntax.  
+  Use a JSON validator when editing configuration files manually.
+</Callout>
+
+## Commands
+
+### Reload Configuration
+
+Usage: `/command reload`  
+Reload all Commander configuration files from disk, applying any changes made manually to the configuration files.
+
+<Callout type="warning">
+  Reloading will overwrite any unsaved changes in memory.
+</Callout>
+
+### Save Configuration
+
+Usage: `/command save`  
+Manually saves all current Commander settings to the configuration files, ensuring all changes are persisted.
+
+## Configuration Files
+
+Commander uses three separate JSON configuration files to store different types of command modifications:
+
+<Callout type="warning">
+  Configuration files are case-sensitive. Use exact command names.
+</Callout>
+
+### Hidden Commands
+
+Stores commands that are hidden from tab completions.
+
+`hidden-commands.json`:
+```json
+[
+  "plugins",
+  "pl",
+  "version",
+  "ver"
+]
+```
+
+### Unregistered Commands
+
+Stores commands that are completely removed from the server.
+
+`unregistered-commands.json`:
+```json
+[
+  "op",
+  "deop",
+  "stop",
+  "reload"
+]
+```
+
+### Permission Overrides
+
+Stores custom permission settings for commands.
+
+`permission-overrides.json`:
+```json
+{
+  "luckperms": "luckperms.admin",
+  "fly": "essentials.fly",
+  "gamemode": "server.admin.gamemode"
+}
+```
+
+## Tips
+
+- Reload after manual edits to apply changes
+- Test changes in a development environment first
+- Use JSON linters/validators when editing manually

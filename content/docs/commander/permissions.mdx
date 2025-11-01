@@ -1,0 +1,171 @@
+---
+title: Managing Permissions
+description: Manage and override command permissions
+---
+
+# Managing Permissions
+
+Command permission management allows you to override the default permissions of commands,
+set new permissions on commands that originally had none, and query current permission settings.
+
+## Commands
+
+### Set Command Permission
+Usage: `/command permission set <command> <permission>`  
+Sets or overrides the permission required to execute a command.
+
+**Examples:**
+```
+<gray># Set permission on specific commands</gray>
+/command permission set <aqua>luckperms</aqua> <yellow>luckperms.use</yellow>
+/command permission set <aqua>fly</aqua> <yellow>essentials.fly</yellow>
+/command permission set <aqua>gamemode</aqua> <yellow>server.admin.gamemode</yellow>
+
+<gray># Set permission on all commands</gray>
+/command permission set <aqua>"*"</aqua> <yellow>server.admin.all</yellow>
+
+<gray># Set permission on all bukkit namespaced commands</gray>
+/command permission set <aqua>"bukkit:*"</aqua> <yellow>server.admin.bukkit</yellow>
+
+<gray># Set permission on all namespaced commands</gray>
+/command permission set <aqua>"*:*"</aqua> <yellow>plugin.commands</yellow>
+```
+
+### Query Command Permission
+
+Usage: `/command permission query <command>`  
+Displays the current permission setting for a command.
+
+**Examples:**
+```
+<gray># Query specific commands</gray>
+/command permission query <aqua>luckperms</aqua>
+/command permission query <aqua>fly</aqua>
+
+<gray># Query all commands</gray>
+/command permission query <aqua>"*"</aqua>
+
+<gray># Query all bukkit namespaced commands</gray>
+/command permission query <aqua>"bukkit:*"</aqua>
+
+<gray># Query all namespaced commands</gray>
+/command permission query <aqua>"*:*"</aqua>
+```
+
+### Reset Command Permission
+Usage: `/command permission reset <command>`  
+Removes any permission override and restores the command's original permission.
+
+**Examples:**
+```
+<gray># Reset specific commands</gray>
+/command permission reset <aqua>luckperms</aqua>
+/command permission reset <aqua>fly</aqua>
+
+<gray># Reset all permission overrides</gray>
+/command permission reset <aqua>"*"</aqua>
+
+<gray># Reset all bukkit namespaced commands</gray>
+/command permission reset <aqua>"bukkit:*"</aqua>
+
+<gray># Reset all namespaced commands</gray>
+/command permission reset <aqua>"*:*"</aqua>
+```
+
+### Unset Command Permission
+
+Usage: `/command permission unset <command>`  
+Removes the permission requirement from a command, making it usable by everyone.
+
+**Examples:**
+```
+<gray># Unset permission on specific commands</gray>
+/command permission unset <aqua>help</aqua>
+/command permission unset <aqua>rules</aqua>
+
+<gray># Unset permissions on all commands</gray>
+/command permission unset <aqua>"*"</aqua>
+
+<gray># Unset permissions on all bukkit namespaced commands</gray>
+/command permission unset <aqua>"bukkit:*"</aqua>
+
+<gray># Unset permissions on all namespaced commands</gray>
+/command permission unset <aqua>"*:*"</aqua>
+```
+
+<Callout type="warning">
+  Be careful when unsetting permissions from commands that should be restricted.
+</Callout>
+
+## Use Cases
+
+### Adding Permissions to Unrestricted Commands
+
+Many plugins provide commands without permission requirements. Add security:
+
+```
+<gray># Add permission to LuckPerms commands</gray>
+/command permission set <aqua>luckperms</aqua> <yellow>luckperms.admin</yellow>
+/command permission set <aqua>perms</aqua> <yellow>luckperms.admin</yellow>
+
+<gray># Add permission to economy commands</gray>
+/command permission set <aqua>eco</aqua> <yellow>economy.admin</yellow>
+/command permission set <aqua>balance</aqua> <yellow>economy.user</yellow>
+```
+
+### Restricting Powerful Commands
+
+Add additional security layers:
+
+```
+<gray># Make gamemode command require admin permission</gray>
+/command permission set <aqua>gamemode</aqua> <yellow>server.admin.gamemode</yellow>
+
+<gray># Make world management commands require specific permissions</gray>
+/command permission set <aqua>world</aqua> <yellow>server.admin.world</yellow>
+/command permission set <aqua>mv</aqua> <yellow>server.admin.multiverse</yellow>
+```
+
+### World/Server-Specific Permissions
+
+Use permission plugins to grant command access only in certain contexts:
+
+```
+<gray># Set a permission that's only granted in creative world</gray>
+/command permission set <aqua>fly</aqua> <yellow>creative.fly</yellow>
+
+<gray># Set a permission that's only granted on specific servers</gray>
+/command permission set <aqua>tp</aqua> <yellow>hub.teleport</yellow>
+```
+
+### Debugging Permission Issues
+
+Check what permissions are actually being enforced:
+
+```
+/command permission query <aqua>fly</aqua>
+/command permission query <aqua>gamemode</aqua>
+/command permission query <aqua>home</aqua>
+```
+
+## Configuration
+
+Permission overrides are stored in a JSON configuration file.  
+The file maps command names to their permission overrides.
+
+```json
+{
+  "luckperms": "luckperms.admin",
+  "fly": "essentials.fly",
+  "gamemode": "server.admin.gamemode",
+  "eco": "economy.admin"
+}
+```
+
+## Tips
+
+- Commands are referenced without the `/` prefix in the configuration
+- Use `/command reload` to reload the configuration if manually edited
+- Use `/command save` to ensure changes are persisted to disk
+- Query permissions before making changes to understand the current state
+- Use permission plugins to grant the new permissions to specific users, groups, or worlds

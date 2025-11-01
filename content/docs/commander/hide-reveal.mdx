@@ -1,0 +1,103 @@
+---
+title: Command Visibility
+description: Control command visibility in tab completion
+---
+
+# Hiding and Revealing Commands
+
+Hiding commands allows you to control which commands appear in tab completion,
+creating a cleaner experience for players while still allowing the commands to be executed by those who know them.
+
+## Commands
+
+### Hide a Command
+
+Usage: `/command hide <command>`  
+Hides a command from tab completion.
+
+**Examples:**
+```
+<gray># Hide specific commands</gray>
+/command hide <aqua>plugins</aqua>
+/command hide <aqua>pl</aqua>
+
+<gray># Hide all commands</gray>
+/command hide <aqua>"*"</aqua>
+
+<gray># Hide all bukkit namespaced commands</gray>
+/command hide <aqua>"bukkit:*"</aqua>
+
+<gray># Hide all namespaced commands</gray>
+/command hide <aqua>"*:*"</aqua>
+```
+
+<Callout type="warning">
+  Using `/command hide "*"` will hide literally **ALL** commands, including `/command` itself.  
+  Use `/command reveal "*"` to quickly restore all hidden commands.
+</Callout>
+
+### Reveal a Command
+Usage: `/command reveal <command>`
+Makes a previously hidden command visible again in tab completions.
+
+**Examples:**
+```
+<gray># Reveal specific commands</gray>
+/command reveal <aqua>plugins</aqua>
+/command reveal <aqua>pl</aqua>
+
+<gray># Reveal all hidden commands</gray>
+/command reveal <aqua>"*"</aqua>
+
+<gray># Reveal all bukkit namespaced commands</gray>
+/command reveal <aqua>"bukkit:*"</aqua>
+
+<gray># Reveal all namespaced commands</gray>
+/command reveal <aqua>"*:*"</aqua>
+```
+
+## Bypass Permission
+Players with the `commander.bypass` permission can see all hidden commands.
+
+<Callout type="info">
+  Wildcard permissions (like `*`) are ignored for the bypass permission.  
+  Players must have the explicit `commander.bypass` permission to see hidden commands.
+</Callout>
+
+## Use Cases
+
+### Clean Command Lists
+Hide administrative or utility commands that regular players shouldn't see:
+```
+/command hide <aqua>plugins</aqua>
+/command hide <aqua>pl</aqua>
+/command hide <aqua>version</aqua>
+/command hide <aqua>ver</aqua>
+```
+
+### Server-Specific Commands
+Hide commands that are only relevant to certain server types or gamemodes.
+
+### Development Commands
+Hide debugging or development commands from production environments.
+
+## Configuration
+
+Hidden commands are stored in a JSON configuration file.  
+The file contains a simple array of command names that should be hidden.
+
+`hidden-commands.json`:
+```json
+[
+  "plugins",
+  "pl",
+  "version",
+  "ver"
+]
+```
+
+## Tips
+
+- Commands are hidden without the `/` prefix in the configuration
+- Both the full command name and aliases should be hidden if desired
+- Use `/command reload` to reload the configuration if manually edited

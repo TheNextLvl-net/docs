@@ -1,0 +1,62 @@
+---
+title: Resetting Commands
+description: Reset commands to their original state
+---
+
+# Resetting Commands
+
+The reset command allows you to completely restore a command to its original state,
+removing all Commander modifications including hiding, unregistering, and permission overrides.
+
+## Command
+
+### Reset a Command
+
+Usage: `/command reset <command>`  
+Completely resets a command to its original state, removing all modifications made by Commander.
+
+**Examples:**
+```
+<gray># Reset specific commands</gray>
+/command reset <aqua>luckperms</aqua>
+/command reset <aqua>fly</aqua>
+/command reset <aqua>plugins</aqua>
+/command reset <aqua>op</aqua>
+
+<gray># Reset ALL commands (restore everything to original state)</gray>
+/command reset <aqua>"*"</aqua>
+
+<gray># Reset all bukkit namespaced commands</gray>
+/command reset <aqua>"bukkit:*"</aqua>
+
+<gray># Reset all namespaced commands</gray>
+/command reset <aqua>"*:*"</aqua>
+```
+
+<Callout type="warning">
+  Resetting a command will remove ALL Commander modifications.  
+  If you only want to remove specific modifications, use the appropriate command instead:
+  - Use `/command reveal` to only unhide a command
+  - Use `/command register` to only restore an unregistered command
+  - Use `/command permission reset` to only remove a permission override
+</Callout>
+
+<Callout type="warning">
+  Resetting commands that were unregistered for security reasons may expose them to all players again.
+</Callout>
+
+## Configuration Changes
+
+When you reset a command, Commander will:
+
+1. Remove the command from all configuration files
+2. Update the hidden commands list
+3. Update the unregistered commands list
+4. Update the permission overrides list
+5. Apply the changes immediately
+
+## Tips
+
+- Use reset when you want to completely start over with a command
+- Consider the security implications of resetting unregistered commands
+- Test the command after resetting to ensure it works as expected

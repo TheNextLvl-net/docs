@@ -4,4 +4,123 @@ description: Manage command visibility and permissions
 icon: BookMarked
 ---
 
-Coming soon!
+# Commander
+
+Commander is a powerful Minecraft server plugin that gives you complete control over command visibility,
+permissions, and registration.
+Clean up your command list, enhance security, and customize your server's command experience.
+
+## Features
+
+### Command Management
+
+- **Hide Commands**: Control which commands appear in tab completion
+- **Unregister Commands**: Completely remove commands from the server
+
+### Permission Control
+
+- **Override Permissions**: Set custom permissions on any command
+- **Query Permissions**: Check current permission settings
+- **Add Security**: Restrict commands that originally had no permissions
+
+### Configuration
+
+- **JSON Configuration**: Simple, human-readable configuration files
+- **Hot Reload**: Apply changes without server restart
+- **Manual Editing**: Direct configuration file access
+
+## Quick Start
+
+### Basic Usage
+
+The main command of Commander is `/command` (or `/commandv` on the proxy),  
+and requires the permission `commander.admin`:
+
+```
+<gray># Hide commands from players</gray>
+/command hide <aqua>plugins</aqua>
+/command hide <aqua>pl</aqua>
+
+<gray># Add permissions to unrestricted commands</gray>
+/command permission set <aqua>luckperms</aqua> <yellow>luckperms.use</yellow>
+
+<gray># Remove dangerous commands entirely</gray>
+/command unregister <aqua>op</aqua>
+/command unregister <aqua>deop</aqua>
+
+<gray># Save your changes (not required)</gray>
+/command save
+```
+
+### Common Scenarios
+
+#### Clean Command List
+
+Hide administrative commands from regular players:
+```
+/command hide <aqua>plugins</aqua>
+/command hide <aqua>version</aqua>
+```
+
+#### Security Hardening
+
+Remove dangerous commands:
+```
+/command unregister <aqua>op</aqua>
+/command unregister <aqua>deop</aqua>
+```
+
+#### Plugin Integration
+
+Add permissions to plugin commands that lack them:
+```
+/command permission set <aqua>luckperms</aqua> <yellow>luckperms.use</yellow>
+/command permission set <aqua>eco</aqua> <yellow>economy.admin</yellow>
+```
+
+## Permission System
+
+### Required Permissions
+
+- `commander.admin` - Access to all Commander commands
+- `commander.bypass` - See hidden commands (wildcard permissions ignored)
+
+### Permission Override
+
+Commander can override permissions on (almost) any command, even those from other plugins.  
+This allows you to:
+- Add permissions to unrestricted commands
+- Change existing permissions
+- Create world-specific or group-specific command access
+
+## Wildcard Support
+
+Commander supports powerful wildcard patterns for bulk operations on commands:
+
+### Wildcard Patterns
+
+- `*` - Matches any command name
+- `*:*` - Matches any namespaced command (commands with colons)
+- `prefix:*` - Matches all commands with a specific namespace prefix
+- `*suffix` - Matches all commands ending with a specific suffix
+
+<Callout type="warning">
+  Wildcard operations affect many commands at once.  
+  Test carefully and consider using `/command save` before bulk operations.  
+  _To restore from a saved configuration, use `/command reload`._
+</Callout>
+
+## Configuration Files
+
+Commander stores settings in three JSON files:
+
+- **`hidden-commands.json`** - List of hidden commands
+- **`unregistered-commands.json`** - List of unregistered commands
+- **`permission-overrides.json`** - Command permission overrides
+
+## Use Cases
+
+- Clean up command clutter for players
+- Remove dangerous commands like `/op` and `/deop`
+- Add security layers to plugin commands
+- Create context-specific command access
