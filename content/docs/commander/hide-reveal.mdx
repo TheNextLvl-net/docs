@@ -64,6 +64,17 @@ Commander supports powerful wildcard patterns for bulk command operations:
 - `prefix:*` - Matches all commands with a specific namespace prefix
 - `*suffix` - Matches all commands ending with a specific suffix
 
+
+<Callout type="warning">
+  Using `/command hide "*"` will hide literally **ALL** commands, including `/command` itself.  
+  Use `/command reveal "*"` to quickly restore all hidden commands.
+</Callout>
+
+<Callout type="warning">
+  Wildcard operations affect many commands at once.  
+  Test carefully and consider using `/command save` before bulk operations.
+</Callout>
+
 ### Common Wildcard Examples
 
 ```
@@ -99,30 +110,6 @@ Commander supports powerful wildcard patterns for bulk command operations:
 /command reveal <aqua>"essentials:*"</aqua>
 /command reveal <aqua>"luckperms:*"</aqua>
 ```
-
-#### Server Type Filtering
-```
-<gray># Hide all creative mode commands on a survival server</gray>
-/command hide <aqua>fly</aqua>
-/command hide <aqua>gamemode</aqua>
-/command hide <aqua>"worldedit:*"</aqua>
-```
-
-### Important Notes
-
-<Callout type="warning">
-  Using `/command hide "*"` will hide literally ALL commands,
-  including essential ones like `/command` itself.
-</Callout>
-
-<Callout type="warning">
-  Wildcard operations affect many commands at once.  
-  Test carefully and consider using `/command save` before bulk operations.
-</Callout>
-
-<Callout type="tip">
-  Use `/command reveal "*"` to quickly restore all hidden commands.
-</Callout>
 
 ## Behavior
 
