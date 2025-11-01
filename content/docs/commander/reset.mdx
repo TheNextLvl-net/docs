@@ -5,215 +5,45 @@ description: Reset commands to their original state
 
 # Resetting Commands
 
-The reset command allows you to completely restore a command to its original state, removing all Commander modifications including hiding, unregistering, and permission overrides.
+The reset command allows you to completely restore a command to its original state,
+removing all Commander modifications including hiding, unregistering, and permission overrides.
 
 ## Command
 
 ### Reset a Command
-```
-/command reset <command>
-```
-Completely resets a command to its original state, removing all modifications made by Commander. Supports wildcards for bulk operations.
 
-**Parameters:**
-- `<command>`: The command to reset (without the `/` prefix). Supports wildcards.
+Usage: `/command reset <command>`  
+Completely resets a command to its original state, removing all modifications made by Commander.
 
 **Examples:**
 ```
-# Reset specific commands
-/command reset luckperms
-/command reset fly
-/command reset plugins
-/command reset op
+<gray># Reset specific commands</gray>
+/command reset <aqua>luckperms</aqua>
+/command reset <aqua>fly</aqua>
+/command reset <aqua>plugins</aqua>
+/command reset <aqua>op</aqua>
 
-# Reset ALL commands (restore everything to original state)
-/command reset *
+<gray># Reset ALL commands (restore everything to original state)</gray>
+/command reset <aqua>"*"</aqua>
 
-# Reset all bukkit namespaced commands
-/command reset bukkit:*
+<gray># Reset all bukkit namespaced commands</gray>
+/command reset <aqua>"bukkit:*"</aqua>
 
-# Reset all namespaced commands
-/command reset *:*
+<gray># Reset all namespaced commands</gray>
+/command reset <aqua>"*:*"</aqua>
 ```
 
-## Permissions
+<Callout type="warning">
+  Resetting a command will remove ALL Commander modifications.  
+  If you only want to remove specific modifications, use the appropriate command instead:
+  - Use `/command reveal` to only unhide a command
+  - Use `/command register` to only restore an unregistered command
+  - Use `/command permission reset` to only remove a permission override
+</Callout>
 
-- `commander.admin` - Required to use the reset command
-
-## Wildcard Support
-
-Commander supports powerful wildcard patterns for bulk reset operations:
-
-### Wildcard Patterns
-
-- `*` - Matches any command name
-- `:*` - Matches any namespaced command (commands with colons)
-- `prefix:*` - Matches all commands with a specific namespace prefix
-- `*suffix` - Matches all commands ending with a specific suffix
-
-### Common Wildcard Examples
-
-```
-# Reset ALL commands (complete restore)
-/command reset *
-
-# Reset all vanilla Minecraft commands
-/command reset minecraft:*
-
-# Reset all Bukkit/Spigot commands
-/command reset bukkit:*
-
-# Reset all plugin commands (namespaced)
-/command reset *:*
-
-# Reset all commands starting with "admin"
-/command reset admin*
-
-# Reset all commands ending with "list"
-/command reset *list
-```
-
-### Wildcard Use Cases
-
-#### Complete Server Reset
-```
-# Reset everything to original state
-/command reset *
-```
-
-#### Plugin-Specific Reset
-```
-# Reset all commands from a specific plugin
-/command reset worldedit:*
-/command reset essentials:*
-/command reset luckperms:*
-```
-
-#### Category Reset
-```
-# Reset all administrative commands
-/command reset admin*
-/command reset *admin
-
-# Reset all utility commands
-/command reset *list
-/command reset *info
-```
-
-#### Namespace Management
-```
-# Reset all namespaced commands (usually plugin commands)
-/command reset *:*
-
-# Keep only vanilla commands modified
-/command reset bukkit:*
-```
-
-### ⚠️ Important Notes
-
-🚨 **COMPLETE RESET:** Using `/command reset *` will remove **ALL** Commander modifications from **ALL** commands on the server.
-
-🚨 **SECURITY IMPACT:** Resetting commands that were unregistered for security reasons will make them available again.
-
-🚨 **PERMISSION CHANGES:** Resetting will restore original permissions, which may be less restrictive than your current setup.
-
-💡 **BACKUP FIRST:** Consider using `/command save` before bulk reset operations to create a backup.
-
-💡 **SELECTIVE RESET:** Use specific wildcards (like `prefix:*`) instead of `*` when possible for more control.
-
-## Behavior
-
-### What Reset Does
-
-When you reset a command, Commander will:
-
-1. **Remove Hiding**: If the command was hidden, it becomes visible again
-2. **Restore Registration**: If the command was unregistered, it becomes available again
-3. **Remove Permission Override**: If a custom permission was set, the original permission is restored
-4. **Clear All Overrides**: Any and all Commander modifications are removed
-
-### What Reset Affects
-
-- **Hidden Commands**: Makes them visible in tab completion and help menus
-- **Unregistered Commands**: Makes them executable again by all players
-- **Permission Overrides**: Restores the original plugin permission or removes permission requirements
-- **All States**: Works regardless of the command's current state
-
-## Use Cases
-
-### Complete Command Restoration
-Reset a command that has multiple modifications:
-
-```
-# Suppose luckperms was hidden, had a permission override, and was unregistered
-/command reset luckperms
-# Now luckperms is completely back to its original state
-```
-
-### Troubleshooting
-Reset commands that are behaving unexpectedly:
-
-```
-# If a command isn't working as expected after multiple changes
-/command reset fly
-/command reset gamemode
-```
-
-### Starting Over
-Clear all modifications to start fresh:
-
-```
-# Remove all Commander changes from a command
-/command reset plugins
-/command reset version
-```
-
-### Plugin Updates
-Reset commands after plugin updates to ensure compatibility:
-
-```
-# After updating a plugin, reset its commands
-/command reset essentials
-/command reset eco
-```
-
-## Examples
-
-### Single Command Reset
-```
-/command reset fly
-```
-This will:
-- Show `fly` in tab completion if it was hidden
-- Make `fly` executable if it was unregistered
-- Restore the original permission if it was overridden
-
-### Multiple Command Resets
-```
-/command reset luckperms
-/command reset perms
-/command reset lp
-```
-Reset all LuckPerms-related commands to their original state.
-
-### Administrative Commands
-```
-/command reset op
-/command reset deop
-/command reset stop
-```
-Restore critical administrative commands to their default behavior.
-
-## Important Notes
-
-⚠️ **Warning:** Resetting a command will remove ALL Commander modifications. If you only want to remove specific modifications, use the appropriate command instead:
-- Use `/command reveal` to only unhide a command
-- Use `/command register` to only restore an unregistered command
-- Use `/command permission reset` to only remove a permission override
-
-⚠️ **Warning:** Resetting commands that were unregistered for security reasons may expose them to all players again.
-
-💡 **Tip:** Use `/command permission query` before resetting to see what modifications are currently applied to a command.
+<Callout type="warning">
+  Resetting commands that were unregistered for security reasons may expose them to all players again.
+</Callout>
 
 ## Configuration Changes
 
@@ -225,50 +55,8 @@ When you reset a command, Commander will:
 4. Update the permission overrides list
 5. Apply the changes immediately
 
-## Verification
-
-After resetting a command, you can verify its state:
-
-```
-# Check if the command is visible and working
-/fly
-
-# Check the permission (if any)
-/command permission query fly
-
-# Try tab completion to see if it appears
-/fly<TAB>
-```
-
 ## Tips
 
 - Use reset when you want to completely start over with a command
 - Consider the security implications of resetting unregistered commands
-- Use `/command save` after resetting to ensure configuration is persisted
 - Test the command after resetting to ensure it works as expected
-- Keep track of which commands you reset for documentation purposes
-
-## Common Scenarios
-
-### Accidental Modifications
-```
-# Oops! I accidentally hid the plugins command and set a wrong permission
-/command reset plugins
-# Now plugins is back to normal
-```
-
-### Testing Cleanup
-```
-# After testing various command modifications
-/command reset testcommand
-/command reset experimental
-# Clean slate for next test
-```
-
-### Security Review
-```
-# Review and reset commands that were over-secured
-/command reset help
-/command reset spawn
-# Make essential commands available again
-```

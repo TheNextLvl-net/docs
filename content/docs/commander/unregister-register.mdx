@@ -13,8 +13,7 @@ Unlike hiding, unregistered commands cannot be executed by anyone.
 ### Unregister a Command
 
 Usage: `/command unregister <command>`  
-Completely removes a command from the server.  
-_Supports wildcards for bulk operations._
+Completely removes a command from the server.
 
 **Examples:**
 ```
@@ -33,16 +32,16 @@ _Supports wildcards for bulk operations._
 /command unregister <aqua>"*:*"</aqua>
 ```
 
+<Callout type="warning">
+  Using `/command unregister "*"` will remove **ALL** commands from the server, including `/command` itself.  
+  For this reason the fallback command `/commander:command` is exempt from unregistering.  
+  _If you messed up, you can use `/commander:command register "*"` to restore all commands._
+</Callout>
+
 ### Register a Command
 
-```
-/command register <command>
-```
-Restores a previously unregistered command, making it available again.  
-_Supports wildcards for bulk operations._
-
-**Parameters:**
-- `<command>`: The command to register (without the `/` prefix). Supports wildcards.
+Usage: `/command register <command>`  
+Restores a previously unregistered command, making it available again.
 
 **Examples:**
 ```
@@ -58,71 +57,6 @@ _Supports wildcards for bulk operations._
 
 <gray># Register all namespaced commands</gray>
 /command register <aqua>"*:*"</aqua>
-```
-
-## Permissions
-
-- `commander.admin` - Required to use both unregister and register commands
-
-## Behavior
-
-### Unregistered Commands
-- Unregistered commands are **completely removed** from the server
-- Unregistered commands cannot be executed by anyone, including administrators
-- Unregistered commands don't appear in tab completion or help menus
-- The command configuration is saved to a JSON file
-
-### Registered Commands
-
-- Previously unregistered commands become fully functional again
-- All original permissions and behavior are restored
-- The command appears in tab completions again (unless hidden)
-
-## Wildcard Support
-
-Commander supports powerful wildcard patterns for bulk command operations:
-
-### Wildcard Patterns
-
-- `*` - Matches any command name
-- `:*` - Matches any namespaced command (commands with colons)
-- `prefix:*` - Matches all commands with a specific namespace prefix
-- `*suffix` - Matches all commands ending with a specific suffix
-
-<Callout type="warning">
-  Using `/command unregister "*"` will remove **ALL** commands from the server, including `/command` itself.  
-  For this reason the fallback command `/commander:command` is exempt from unregistering.  
-  _If you messed up, you can use `/commander:command register "*"` to restore all commands._
-</Callout>
-
-<Callout type="warning">
-  Wildcard operations affect many commands at once.  
-  Test carefully and consider using `/command save` before bulk operations.  
-  _To restore from a saved configuration, use `/command reload`._
-</Callout>
-
-### Common Wildcard Examples
-
-```
-<gray># Unregister ALL commands (use with caution!)</gray>
-/command unregister <aqua>"*"</aqua>
-
-<gray># Unregister all vanilla Minecraft commands</gray>
-/command unregister <aqua>"minecraft:*"</aqua>
-
-<gray># Unregister all Bukkit/Spigot/Paper commands</gray>
-/command unregister <aqua>"bukkit:*"</aqua>
-/command unregister <aqua>"spigot:*"</aqua>
-/command unregister <aqua>"paper:*"</aqua>
-
-<gray># Unregister all namespaced commands</gray>
-/command unregister <aqua>"*:*"</aqua>
-
-<gray># Unregister all commands starting with "admin"</gray>
-/command unregister <aqua>"admin*"</aqua>
-
-<gray># Unregister all commands ending with "list"</gray>
-/command unregister <aqua>"*list"</aqua>
 ```
 
 ## Use Cases

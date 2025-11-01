@@ -34,7 +34,7 @@ Clean up your command list, enhance security, and customize your server's comman
 ### Basic Usage
 
 The main command of Commander is `/command` (or `/commandv` on the proxy),  
-and requires the permission `commander.admin`:  
+and requires the permission `commander.admin`:
 
 ```
 <gray># Hide commands from players</gray>
@@ -92,6 +92,23 @@ This allows you to:
 - Add permissions to unrestricted commands
 - Change existing permissions
 - Create world-specific or group-specific command access
+
+## Wildcard Support
+
+Commander supports powerful wildcard patterns for bulk operations on commands:
+
+### Wildcard Patterns
+
+- `*` - Matches any command name
+- `*:*` - Matches any namespaced command (commands with colons)
+- `prefix:*` - Matches all commands with a specific namespace prefix
+- `*suffix` - Matches all commands ending with a specific suffix
+
+<Callout type="warning">
+  Wildcard operations affect many commands at once.  
+  Test carefully and consider using `/command save` before bulk operations.  
+  _To restore from a saved configuration, use `/command reload`._
+</Callout>
 
 ## Configuration Files
 
