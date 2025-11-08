@@ -1,0 +1,19 @@
+{
+  "root": true,
+  "title": "Portals",
+  "description": "Create and manage custom portals",
+  "icon": "BookMarked",
+  "pages": [
+    "---Links---",
+    "external:[Github][GitHub](https://github.com/TheNextLvl-net/portals)",
+    "external:[Download][Download](https://modrinth.com/project/R2dgUCYq#download)",
+    "external:[ChartLine][Metrics](https://bstats.org/plugin/bukkit/TheNextLvl%20Portals/27514)",
+    "external:[BookDown][Repository](https://repo.thenextlvl.net/#/releases/net/thenextlvl/portals)",
+    "---Introduction---",
+    "index",
+    "---Guide---",
+    "---For Developers---",
+    "api/repository",
+    "api/index"
+  ]
+}

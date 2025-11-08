@@ -1,20 +1,21 @@
 import { Card } from "fumadocs-ui/components/card"
+import type { LucideIcon } from "lucide-react"
 import {
+  Archive,
+  BrickWall,
+  Brush,
   Command,
   Globe,
-  Shield,
-  User,
-  Brush,
-  TextAlignStart,
-  Video,
-  Archive,
-  Landmark,
-  Wrench,
   Group,
-  BrickWall,
+  Landmark,
+  Shell,
+  Shield,
   ShieldAlert,
+  TextAlignStart,
+  User,
+  Video,
+  Wrench,
 } from "lucide-react"
-import type { LucideIcon } from "lucide-react"
 
 interface CardData {
   title: string
@@ -40,15 +41,21 @@ const featuredCards: CardData[] = [
     className: "h-48 group",
   },
   {
-    title: "Characters",
-    icon: User,
-    description: "A modern, fully featured npc plugin for paper servers",
-    href: "docs/characters",
+    title: "Portals",
+    icon: Shell,
+    description: "Create custom portals to travel between your worlds and servers",
+    href: "docs/portals",
     className: "h-48 group",
   },
 ]
 
 const otherCards: CardData[] = [
+  {
+    title: "Characters",
+    icon: User,
+    description: "A modern, fully featured npc plugin for paper servers",
+    href: "docs/characters",
+  },
   {
     title: "Tweaks",
     icon: Wrench,
