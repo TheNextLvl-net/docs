@@ -12,6 +12,11 @@
     "---Introduction---",
     "index",
     "---Guide---",
+    "creating-portals",
+    "portal-actions",
+    "managing-portals",
+    "access-control",
+    "permissions",
     "---For Developers---",
     "api/repository",
     "api/index"
