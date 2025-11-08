@@ -1,0 +1,54 @@
+---
+title: Permissions
+description: Portal command and entry permissions
+---
+
+# Permissions
+
+Portals uses a fine-grained permission system for command access and portal entry control.
+Command permissions follow a consistent pattern, while entry permissions are custom per-portal.
+
+## Command Permissions
+
+Command permissions control who can use portal management commands.  
+All command permissions follow the pattern: `portals.command.<subcommand>`
+
+### Permission List
+
+| Permission                   | Command              | Description             |
+|------------------------------|----------------------|-------------------------|
+| `portals.command.create`     | `/portal create`     | Create new portals      |
+| `portals.command.delete`     | `/portal delete`     | Delete existing portals |
+| `portals.command.list`       | `/portal list`       | List all portals        |
+| `portals.command.action`     | `/portal action`     | Set portal actions      |
+| `portals.command.redefine`   | `/portal redefine`   | Redefine portal bounds  |
+| `portals.command.cost`       | `/portal cost`       | Set portal entry fees   |
+| `portals.command.cooldown`   | `/portal cooldown`   | Set portal cooldowns    |
+| `portals.command.teleport`   | `/portal teleport`   | Teleport to portals     |
+| `portals.command.permission` | `/portal permission` | Set entry permissions   |
+
+<Callout type="info">
+  The `portals.command.action` permission grants access to all action types.  
+  There are no separate permissions for individual actions (teleport, connect, transfer, etc.).
+</Callout>
+
+## Entry Permissions
+
+Entry permissions are custom permissions set per-portal using `/portal permission`.  
+These permissions control who can use specific portals.
+
+### Setting Entry Permissions
+
+```
+<gray># Set custom entry permission</gray>
+/portal permission <aqua>vip-portal</aqua> <yellow>server.vip</yellow>
+
+<gray># Set admin-only portal</gray>
+/portal permission <aqua>admin-portal</aqua> <yellow>server.admin</yellow>
+
+<gray># Set donor portal</gray>
+/portal permission <aqua>donor-portal</aqua> <yellow>server.donor</yellow>
+```
+
+Entry permissions can be any permission string you choose.
+Use your permission plugin (like LuckPerms) to grant these permissions to players or groups.
