@@ -1,0 +1,169 @@
+---
+title: Portal Actions
+description: Configure what happens when players enter portals
+---
+
+# Portal Actions
+
+Portal actions define what happens when a player enters a portal.
+You can configure portals to teleport players, transfer them to other servers, execute commands, or link to other portals.
+
+## Command
+
+### Set Portal Action
+
+Set the action that occurs when a player enters the portal.  
+Usage: `/portal action <portal> <action> ...`
+
+## Available Actions
+
+### Teleport to Coordinates
+
+Teleports to specific coordinates in a world.  
+Usage: `/portal action <portal> teleport <world> [<position>] [<rotation>]`
+
+**Examples:**
+```
+<gray># Teleport to spawn coordinates</gray>
+/portal action <aqua>spawn-portal</aqua> teleport <yellow>minecraft:overworld</yellow>
+
+<gray># Teleport with specific location</gray>
+/portal action <aqua>spawn-portal</aqua> teleport <yellow>minecraft:overworld</yellow> <green>0 64 0</green>
+
+<gray># Teleport with rotation</gray>
+/portal action <aqua>nether-portal</aqua> teleport <yellow>minecraft:the_nether</yellow> <green>100 64 100</green> <light_purple>90 0</light_purple>
+```
+
+### Link to Another Portal
+
+Teleports to another portal's location.  
+Usage: `/portal action <portal> teleport-portal <target>`
+
+**Examples:**
+```
+<gray># Link portal-a to portal-b</gray>
+/portal action <aqua>portal-a</aqua> teleport-portal <yellow>portal-b</yellow>
+
+<gray># Create bidirectional link</gray>
+/portal action <aqua>portal-a</aqua> teleport-portal <yellow>portal-b</yellow>
+/portal action <aqua>portal-b</aqua> teleport-portal <yellow>portal-a</yellow>
+
+<gray># Create one-way portal network</gray>
+/portal action <aqua>hub</aqua> teleport-portal <yellow>zone-1</yellow>
+/portal action <aqua>zone-1</aqua> teleport-portal <yellow>zone-2</yellow>
+/portal action <aqua>zone-2</aqua> teleport-portal <yellow>hub</yellow>
+```
+
+### Random Teleport
+
+Teleports players to a random safe location within specified bounds or radius.  
+Usage: `/portal action <portal> teleport-random <world> (<from>|<center>) ...`
+
+**Examples:**
+```
+<gray># Random teleport within 1000 block radius around 0, 64, 0 with a 100 block height limit</gray>
+/portal action <aqua>random-portal</aqua> teleport-random <yellow>minecraft:overworld</yellow> <green>0 64 0</green> <light_purple>1000</light_purple> <gold>100</gold>
+
+<gray># Random teleport with custom bounds</gray>
+/portal action <aqua>random-portal</aqua> teleport-random <yellow>minecraft:overworld</yellow> <green>-1000 -64 -1000</green> <light_purple>1000 319 1000</light_purple>
+```
+
+<Callout type="info">
+  Random teleport locations are always evaluated for safety.  
+  Players will only be teleported to safe locations (solid ground, no lava, etc.).
+</Callout>
+
+### Connect to Network Server
+
+Connects players to another server in your BungeeCord/Velocity network.  
+Usage: `/portal action <portal> connect <server>`
+
+**Examples:**
+```
+<gray># Connect to lobby server</gray>
+/portal action <aqua>lobby-portal</aqua> connect <yellow>lobby</yellow>
+
+<gray># Connect to survival server</gray>
+/portal action <aqua>survival-portal</aqua> connect <yellow>survival</yellow>
+
+<gray># Connect to minigames server</gray>
+/portal action <aqua>games-portal</aqua> connect <yellow>minigames</yellow>
+```
+
+<Callout type="warning">
+  This action requires a BungeeCord or Velocity proxy setup.  
+  The server name must match the server name configured in your proxy.
+</Callout>
+
+### Transfer to External Server
+
+Transfers players to a server outside your proxy network using hostname and port.  
+Usage: `/portal action <portal> transfer <hostname> [<port>]`
+
+**Examples:**
+```
+<gray># Transfer to external server</gray>
+/portal action <aqua>transfer-portal</aqua> transfer <yellow>play.example.com</yellow>
+
+<gray># Transfer to local test server on port 25566</gray>
+/portal action <aqua>test-portal</aqua> transfer <yellow>localhost</yellow> <green>25566</green>
+
+<gray># Transfer to partner server</gray>
+/portal action <aqua>partner-portal</aqua> transfer <yellow>partner.example.net</yellow>
+```
+
+<Callout type="info">
+  This action transfers players to servers outside your proxy network.  
+  In order for this to work, the remote server must be configured to accept transfers.
+</Callout>
+
+### Run Command as Player
+
+Executes a command as the player who enters the portal.  
+Usage: `/portal action <portal> run-command <command>`
+
+**Examples:**
+```
+<gray># Join gungame</gray>
+/portal action <aqua>gungame-portal</aqua> run-command <yellow>gungame join</yellow>
+
+<gray># Join a bedwars game</gray>
+/portal action <aqua>bedwars-portal</aqua> run-command <yellow>bedwars join duos</yellow>
+```
+
+<Callout type="warning">
+  The command is executed as the player.  
+  The player must have permission to run the command.
+</Callout>
+
+### Run Console Command
+
+Executes a command from the console when a player enters the portal.  
+Usage: `/portal action <portal> run-console-command <command>`
+
+**Examples:**
+```
+<gray># Give player an item from console</gray>
+/portal action <aqua>reward-portal</aqua> run-console-command <yellow>give <player> diamond 1</yellow>
+
+<gray># Broadcast a message</gray>
+/portal action <aqua>event-portal</aqua> run-console-command <yellow>broadcast <player> entered the arena!</yellow>
+
+<gray># Add player to a team</gray>
+/portal action <aqua>team-portal</aqua> run-console-command <yellow>team join red <player></yellow>
+```
+
+<Callout type="info">
+  Use `<player>` as a placeholder for the player's name.
+</Callout>
+
+### Remove Action
+
+Removes the current action from a portal, making it inactive.  
+Usage: `/portal action <portal> remove`
+
+**Examples:**
+```
+<gray># Remove action from portal</gray>
+/portal action <aqua>spawn-portal</aqua> remove
+```
