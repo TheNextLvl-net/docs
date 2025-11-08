@@ -31,24 +31,3 @@ All command permissions follow the pattern: `portals.command.<subcommand>`
   The `portals.command.action` permission grants access to all action types.  
   There are no separate permissions for individual actions (teleport, connect, transfer, etc.).
 </Callout>
-
-## Entry Permissions
-
-Entry permissions are custom permissions set per-portal using `/portal permission`.  
-These permissions control who can use specific portals.
-
-### Setting Entry Permissions
-
-```
-<gray># Set custom entry permission</gray>
-/portal permission <aqua>vip-portal</aqua> <yellow>server.vip</yellow>
-
-<gray># Set admin-only portal</gray>
-/portal permission <aqua>admin-portal</aqua> <yellow>server.admin</yellow>
-
-<gray># Set donor portal</gray>
-/portal permission <aqua>donor-portal</aqua> <yellow>server.donor</yellow>
-```
-
-Entry permissions can be any permission string you choose.
-Use your permission plugin (like LuckPerms) to grant these permissions to players or groups.
