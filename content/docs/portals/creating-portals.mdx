@@ -1,0 +1,76 @@
+---
+title: Creating Portals
+description: Create and define portal regions
+---
+
+# Creating Portals
+
+Creating portals is the first step in building your portal network.
+You can create portals using WorldEdit selections or by manually specifying coordinates.
+
+## Commands
+
+### Create a Portal
+
+Usage: `/portal create <name> [<from>] <to> [<world>]`  
+Creates a new portal with the specified name and region.
+
+**With WorldEdit Selection:**
+```
+<gray># Get WorldEdit wand</gray>
+//wand
+
+<gray># Select two corners of the portal region</gray>
+<gray># Left-click first corner, right-click second corner</gray>
+
+<gray># Create the portal</gray>
+/portal create <aqua>my-portal</aqua>
+```
+
+**With Manual Coordinates:**
+```
+<gray># Create portal with specific bounds</gray>
+/portal create <aqua>spawn-portal</aqua> <yellow>0 64 0</yellow> <green>10 74 10</green> <light_purple>minecraft:overworld</light_purple>
+
+<gray># Create large portal area</gray>
+/portal create <aqua>hub-portal</aqua> <yellow>-5 60 -5</yellow> <green>5 70 5</green> <light_purple>farmworld:overworld</light_purple>
+
+<gray># Create vertical portal</gray>
+/portal create <aqua>wall-portal</aqua> <yellow>100 64 100</yellow> <green>105 74 100</green>
+```
+
+<Callout type="info">
+  If you have a WorldEdit selection active, you don't need to specify coordinates.  
+  If you don't have a selection, coordinates are required.
+</Callout>
+
+### Redefine Portal Bounds
+
+Usage: `/portal redefine <portal> [<from>] <to> [<world>]`  
+Changes the physical region of an existing portal.
+
+**With WorldEdit Selection:**
+```
+<gray># Select new portal region with WorldEdit</gray>
+//wand
+
+<gray># Redefine the portal</gray>
+/portal redefine <aqua>my-portal</aqua>
+```
+
+**With Manual Coordinates:**
+```
+<gray># Redefine portal with new bounds</gray>
+/portal redefine <aqua>spawn-portal</aqua> <yellow>0 64 0</yellow> <green>15 74 15</green> <light_purple>minecraft:overworld</light_purple>
+
+<gray># Make portal larger</gray>
+/portal redefine <aqua>hub-portal</aqua> <yellow>-10 60 -10</yellow> <green>10 70 10</green> <light_purple>farmworld:overworld</light_purple>
+
+<gray># Adjust portal position</gray>
+/portal redefine <aqua>wall-portal</aqua> <yellow>200 64 200</yellow> <green>205 74 200</green>
+```
+
+<Callout type="tip">
+  WorldEdit is optional but recommended for easier portal creation.  
+  You can always use manual coordinates if WorldEdit is not available.
+</Callout>
