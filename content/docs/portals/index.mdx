@@ -1,0 +1,149 @@
+---
+title: Overview
+description: Create and manage custom portals
+icon: BookMarked
+---
+
+# Portals
+
+Portals is a powerful Minecraft server plugin for **Folia** and **Paper**
+that allows you to create custom portals with advanced functionality.
+Create portals that teleport players across worlds,
+link to other portals, transfer players to different servers, or execute commands.
+
+## Features
+
+### Portal Actions
+
+- **Linked Portals**: Create bidirectional or one-way portals that connect to each other
+- **Coordinate Teleports**: Teleport players to specific coordinates across worlds
+- **Random Teleports**: Teleport players randomly within defined bounds or radius
+- **Server Transfers**: Transfer players to external servers (hostname + port)
+- **Network Connects**: Connect to servers within your BungeeCord/Velocity network
+- **Command Execution**: Run commands as the player or console when entering a portal
+
+### Access Control
+
+- **Entry Permissions**: Restrict portal access with custom permissions
+- **Entry Fees**: Charge players using **ServiceIO** or **Vault** economy integration
+- **Cooldowns**: Set cooldown periods between portal uses
+
+### Portal Creation
+
+- **WorldEdit Integration**: Use WorldEdit selections for easy portal creation
+- **Manual Bounds**: Define portal regions with coordinate arguments
+- **Flexible Regions**: Create portals of any shape and size
+
+## Quick Start
+
+### Basic Usage
+
+The main command of Portals is `/portal`,
+and requires the permission `portals.command.<subcommand>`:
+
+```
+<gray># Create a portal using WorldEdit selection</gray>
+/portal create <aqua>spawn-portal</aqua>
+
+<gray># Set the portal to teleport to spawn</gray>
+/portal action <aqua>spawn-portal</aqua> teleport <yellow>minecraft:overworld</yellow> <green>0 64 0</green> <light_purple>0 0</light_purple>
+
+<gray># Add a cooldown of 30 seconds</gray>
+/portal cooldown <aqua>spawn-portal</aqua> <yellow>30s</yellow>
+
+<gray># Set an entry fee of 100</gray>
+/portal cost <aqua>spawn-portal</aqua> <yellow>100</yellow>
+
+<gray># List all portals</gray>
+/portal list
+```
+
+### Common Scenarios
+
+#### Linked Portals
+
+Create two portals that link to each other:
+```
+<gray># Create first portal</gray>
+/portal create <aqua>portal-a</aqua>
+
+<gray># Create second portal</gray>
+/portal create <aqua>portal-b</aqua>
+
+<gray># Link portal-a to portal-b</gray>
+/portal action <aqua>portal-a</aqua> teleport-portal <yellow>portal-b</yellow>
+
+<gray># Link portal-b to portal-a (for bidirectional)</gray>
+/portal action <aqua>portal-b</aqua> teleport-portal <yellow>portal-a</yellow>
+```
+
+#### Random Teleport Portal
+
+Create a portal that teleports players randomly:
+```
+<gray># Create the portal</gray>
+/portal create <aqua>random-portal</aqua>
+
+<gray># Set random teleport with radius of 1000 blocks around 0, 64, 0 with a 100 block height limit</gray>
+/portal action <aqua>random-portal</aqua> teleport-random <yellow>minecraft:overworld</yellow> <green>0 64 0</green> <light_purple>1000</light_purple> <gold>100</gold>
+```
+
+#### Server Transfer Portal
+
+Connect players to another server in your network:
+```
+<gray># Create the portal</gray>
+/portal create <aqua>lobby-portal</aqua>
+
+<gray># Connect to lobby server (BungeeCord/Velocity)</gray>
+/portal action <aqua>lobby-portal</aqua> connect <yellow>lobby</yellow>
+```
+
+#### Premium Portal with Fee
+
+Create a portal with entry requirements:
+```
+<gray># Create the portal</gray>
+/portal create <aqua>vip-portal</aqua>
+
+<gray># Set entry fee</gray>
+/portal cost <aqua>vip-portal</aqua> <yellow>500</yellow>
+
+<gray># Set entry permission</gray>
+/portal permission <aqua>vip-portal</aqua> <yellow>server.vip</yellow>
+
+<gray># Set cooldown (60 seconds)</gray>
+/portal cooldown <aqua>vip-portal</aqua> <yellow>60s</yellow>
+```
+
+## Permission System
+
+### Command Permissions
+
+Portals uses fine-grained permissions following the pattern:
+- `portals.command.create` - Create portals
+- `portals.command.delete` - Delete portals
+- `portals.command.list` - List portals
+- `portals.command.action` - Set portal actions
+- `portals.command.redefine` - Redefine portal bounds
+- `portals.command.cost` - Set entry fees
+- `portals.command.cooldown` - Set cooldowns
+- `portals.command.teleport` - Teleport to portals
+- `portals.command.permission` - Set entry permissions
+
+### Entry Permissions
+
+Portal entry permissions are custom and set per-portal using `/portal permission`.
+
+## WorldEdit Integration
+
+Portals optionally integrates with WorldEdit for easier portal creation:
+
+1. Use `//wand` to get the WorldEdit selection tool
+2. Select the portal region by clicking two corners
+3. Run `/portal create <name>` to create the portal with your selection
+
+Alternatively, you can specify bounds manually:
+```
+/portal create <aqua>my-portal</aqua> <yellow>x1 y1 z1</yellow> <green>x2 y2 z2</green> <light_purple>world</light_purple>
+```

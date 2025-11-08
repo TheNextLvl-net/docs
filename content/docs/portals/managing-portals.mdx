@@ -1,0 +1,64 @@
+---
+title: Managing Portals
+description: List, delete, and teleport to portals
+---
+
+# Managing Portals
+
+Portal management commands allow you to view, delete, and navigate between your portals.  
+These commands help you maintain and organize your portal network.
+
+## Commands
+
+### List Portals
+
+Displays a list of all portals on the server.  
+Usage: `/portal list`
+
+<Callout type="tip">
+  You can click on the portal names in the output to teleport to them.
+</Callout>
+
+### Delete Portal
+
+Permanently removes a portal from the server.  
+Usage: `/portal delete <portal>`
+
+**Examples:**
+```
+<gray># Delete a specific portal</gray>
+/portal delete <aqua>old-portal</aqua>
+
+<gray># Remove unused portal</gray>
+/portal delete <aqua>test-portal</aqua>
+
+<gray># Clean up temporary portal</gray>
+/portal delete <aqua>event-portal</aqua>
+```
+
+<Callout type="warning">
+  Deleting a portal is permanent and cannot be undone.  
+  All portal settings (action, cost, cooldown, permission) will be lost.
+</Callout>
+
+### Teleport to Portal
+
+Teleports you to the specified portal's location.  
+Usage: `/portal teleport <portal>`
+
+**Examples:**
+```
+<gray># Teleport to a portal</gray>
+/portal teleport <aqua>spawn-portal</aqua>
+
+<gray># Quick navigation to portal</gray>
+/portal teleport <aqua>hub</aqua>
+
+<gray># Check portal location</gray>
+/portal teleport <aqua>zone-1</aqua>
+```
+
+<Callout type="info">
+  This command is for administrators to quickly navigate to portals.  
+  It does not trigger the portal's action.
+</Callout>

@@ -1,0 +1,100 @@
+---
+title: Access Control
+description: Manage portal permissions, costs, and cooldowns
+---
+
+# Access Control
+
+Access control allows you to restrict portal usage with permissions, entry fees, and cooldowns.  
+Create VIP portals, premium teleports, or prevent portal spam.
+
+## Commands
+
+### Set Entry Permission
+
+Sets a permission requirement for using the portal.  
+Usage: `/portal permission <portal> <permission>`
+
+**Examples:**
+```
+<gray># Require VIP permission</gray>
+/portal permission <aqua>vip-portal</aqua> <yellow>server.vip</yellow>
+
+<gray># Require admin permission</gray>
+/portal permission <aqua>admin-portal</aqua> <yellow>server.admin</yellow>
+
+<gray># Require custom permission</gray>
+/portal permission <aqua>premium-portal</aqua> <yellow>portals.premium</yellow>
+
+<gray># Require donor permission</gray>
+/portal permission <aqua>donor-portal</aqua> <yellow>server.donor</yellow>
+```
+
+<Callout type="info">
+  Players without the required permission will be denied entry.
+</Callout>
+
+### Set Entry Cost
+
+Sets an entry fee that players must pay to use the portal.  
+Usage: `/portal cost <portal> <amount>`
+
+**Examples:**
+```
+<gray># Set cost of 100</gray>
+/portal cost <aqua>spawn-portal</aqua> <yellow>100</yellow>
+
+<gray># Set cost of 500</gray>
+/portal cost <aqua>vip-portal</aqua> <yellow>500</yellow>
+
+<gray># Set cost of 1000</gray>
+/portal cost <aqua>premium-portal</aqua> <yellow>1000</yellow>
+
+<gray># Remove cost</gray>
+/portal cost <aqua>free-portal</aqua> <yellow>0</yellow>
+```
+
+<Callout type="warning">
+  Entry costs require Vault and an economy plugin to be installed.  
+  Economy must be enabled in the configuration file.
+</Callout>
+
+### Set Cooldown
+
+Sets a cooldown period between portal uses for each player.  
+Usage: `/portal cooldown <portal> <cooldown>`
+
+**Examples:**
+```
+<gray># Set 30 second cooldown</gray>
+/portal cooldown <aqua>spawn-portal</aqua> <yellow>30s</yellow>
+
+<gray># Set 60 second cooldown</gray>
+/portal cooldown <aqua>random-portal</aqua> <yellow>60s</yellow>
+
+<gray># Set 5 minute cooldown</gray>
+/portal cooldown <aqua>premium-portal</aqua> <yellow>300s</yellow>
+
+<gray># Remove cooldown</gray>
+/portal cooldown <aqua>instant-portal</aqua> <yellow>0</yellow>
+```
+
+<Callout type="info">
+  Cooldowns are per-player and prevent portal spam.
+</Callout>
+
+## Entry Denial
+
+When a player is denied entry to a portal, they will:
+
+1. Be pushed back from the portal (if knockback is enabled)
+2. Not be charged or put on cooldown
+
+Players can be denied for:
+- Missing required permission
+- Portal still on cooldown from previous use
+- Insufficient funds for entry fee
+
+<Callout type="info">
+  Knockback speed and whether knockback is enabled can be configured in the config file.
+</Callout>
