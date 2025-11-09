@@ -1,0 +1,57 @@
+---
+title: Configuration
+description: Configure Portals behavior, teleportation, and performance settings
+---
+
+# Configuration
+
+Portals provides configuration options to customize plugin behavior, teleportation mechanics, and performance settings.
+
+## Configuration File Location
+
+The main configuration file is located at: `plugins/Portals/config.json`  
+Translation files for customizing messages are located in: `plugins/Portals/translations/`
+
+<Callout type="info">
+  Configuration files are auto-generated with default values on first run.  
+  New options are automatically added when updating to newer versions.
+</Callout>
+
+## Configuration Options
+
+| Setting                 | Description                                                | Default |
+|-------------------------|------------------------------------------------------------|---------|
+| `allowCaveSpawns`       | Allow random teleports to consider caves as safe locations | `false` |
+| `entryCosts`            | Enable or disable portal entry costs globally              | `true`  |
+| `ignoreEntityMovement`  | Prevent non-player entities from interacting with portals  | `false` |
+| `pushbackSpeed`         | Speed of the pushback effect                               | `0.3`   |
+
+<Callout type="warn">
+  Setting `entryCosts` to `false` will disable **ALL** portal costs, regardless of individual portal settings.
+</Callout>
+
+### Entity Interaction Settings
+
+When enabled, only players can trigger portals.
+Mobs, minecarts, and other entities will not be able to interact with or teleport through portals.
+
+<Callout type="tip">
+  **Performance Optimization**: Enable this option on servers with many entities to improve performance.  
+  The performance gain depends on the number of entities on your server.
+</Callout>
+
+### Pushback Speed
+
+When an entity is denied portal entry (due to lack of permission, insufficient funds, or active cooldown), this setting controls the pushback behavior.
+
+**Speed Values:**
+- **`0.3`** - Slow pushback (default, recommended)
+- **`0.5`** - Slight pushback
+- **`1.0`** - Relatively fast pushback
+- **Higher values** - Faster pushback
+- **`0` or below** - Disables pushback entirely
+
+<Callout type="warn">
+  Disabling pushback may cause entities to get stuck at portal boundaries.  
+  It's recommended to use a low value like `0.3` or `0.5` for a better user experience.
+</Callout>

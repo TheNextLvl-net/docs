@@ -17,6 +17,7 @@
     "managing-portals",
     "access-control",
     "permissions",
+    "configuration",
     "---For Developers---",
     "api/repository",
     "api/index"
