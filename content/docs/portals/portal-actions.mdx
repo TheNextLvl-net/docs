@@ -57,10 +57,13 @@ Usage: `/portal action <portal> teleport-portal <target>`
 ### Random Teleport
 
 Teleports players to a random safe location within specified bounds or radius.  
-Usage: `/portal action <portal> teleport-random <world> (<from>|<center>) ...`
+Usage: `/portal action <portal> teleport-random <world> ([<from>]|[<center>]) ...`
 
 **Examples:**
 ```
+<gray># Random teleport without bounds</gray>
+/portal action <aqua>random-portal</aqua> teleport-random <yellow>minecraft:overworld</yellow>
+
 <gray># Random teleport within 1000 block radius around 0, 64, 0 with a 100 block height limit</gray>
 /portal action <aqua>random-portal</aqua> teleport-random <yellow>minecraft:overworld</yellow> <green>0 64 0</green> <light_purple>1000</light_purple> <gold>100</gold>
 
@@ -70,7 +73,8 @@ Usage: `/portal action <portal> teleport-random <world> (<from>|<center>) ...`
 
 <Callout type="info">
   Random teleport locations are always evaluated for safety.  
-  Players will only be teleported to safe locations (solid ground, no lava, etc.).
+  Players will only be teleported to safe locations (solid ground, no lava, etc.).  
+  If you want to enable cave spawns, set the `allowCaveSpawns` option to `true` in the config.
 </Callout>
 
 ### Connect to Network Server
