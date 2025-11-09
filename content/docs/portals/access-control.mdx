@@ -13,7 +13,7 @@ Create VIP portals, premium teleports, or prevent portal spam.
 ### Set Entry Permission
 
 Sets a permission requirement for using the portal.  
-Usage: `/portal permission <portal> <permission>`
+Usage: `/portal permission <portal> [<permission>]`
 
 **Examples:**
 ```
@@ -28,6 +28,9 @@ Usage: `/portal permission <portal> <permission>`
 
 <gray># Require donor permission</gray>
 /portal permission <aqua>donor-portal</aqua> <yellow>server.donor</yellow>
+
+<gray># See current permission</gray>
+/portal permission <aqua>admin-portal</aqua>
 ```
 
 <Callout type="info">
@@ -37,7 +40,7 @@ Usage: `/portal permission <portal> <permission>`
 ### Set Entry Cost
 
 Sets an entry fee that players must pay to use the portal.  
-Usage: `/portal cost <portal> <amount>`
+Usage: `/portal cost <portal> [<amount>]`
 
 **Examples:**
 ```
@@ -52,6 +55,9 @@ Usage: `/portal cost <portal> <amount>`
 
 <gray># Remove cost</gray>
 /portal cost <aqua>free-portal</aqua> <yellow>0</yellow>
+
+<gray># See current cost</gray>
+/portal cost <aqua>vip-portal</aqua>
 ```
 
 <Callout type="warning">
@@ -62,7 +68,7 @@ Usage: `/portal cost <portal> <amount>`
 ### Set Cooldown
 
 Sets a cooldown period between portal uses for each player.  
-Usage: `/portal cooldown <portal> <cooldown>`
+Usage: `/portal cooldown <portal> [<cooldown>]`
 
 **Examples:**
 ```
@@ -77,6 +83,9 @@ Usage: `/portal cooldown <portal> <cooldown>`
 
 <gray># Remove cooldown</gray>
 /portal cooldown <aqua>instant-portal</aqua> <yellow>0</yellow>
+
+<gray># See current cooldown</gray>
+/portal cooldown <aqua>spawn-portal</aqua>    
 ```
 
 <Callout type="info">
