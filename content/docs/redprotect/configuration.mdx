@@ -1,0 +1,31 @@
+---
+title: Configuration
+---
+
+# Configuration
+
+RedProtect's behavior can be fully customized through its configuration file.
+This page explains each configuration option in detail.
+
+## Configuration File
+
+The configuration file is located at `plugins/RedProtect/config.json`.
+
+## Configuration Options
+
+| Option                       | Description                                                                                                                           | Default |
+|------------------------------|---------------------------------------------------------------------------------------------------------------------------------------|---------|
+| `enable-area-protection`     | Whether area-based redstone clock protection is enabled.                                                                              | `true`  |
+| `enable-chunk-protection`    | Whether chunk-based redstone clock protection is enabled.                                                                             | `true`  |
+| `enable-plot-protection`     | Whether plot-based redstone clock protection is enabled.                                                                              | `true`  |
+| `print-messages-to-console`  | Whether redstone clock notifications are printed to the server console.                                                               | `true`  |
+| `lag-disable-redstone`       | Whether redstone is disabled server-wide when the TPS drops below the configured threshold.                                           | `true`  |
+| `disable-clocks`             | Whether redstone clocks are automatically disabled.                                                                                   | `true`  |
+| `disable-redstone-tps`       | The TPS threshold at which redstone should be disabled server-wide.                                                                   | `18`    |
+| `lag-detect-interval-millis` | The interval in milliseconds at which the plugin checks the server's TPS.                                                             | `1000`  |
+| `clock-disable-time-millis`  | How long a detected redstone clock should remain disabled, in milliseconds.                                                           | `10000` |
+| `region-update-limit`        | The number of block updates that must occur within a region during the detection interval before it's classified as a redstone clock. | `25000` |
+
+## Applying Changes
+
+After modifying the configuration file, restart your server for changes to take effect.
