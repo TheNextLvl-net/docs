@@ -4,4 +4,31 @@ description: Prevent redstone clocks that might lag the server
 icon: BookMarked
 ---
 
-Coming Soon!
+# RedProtect
+
+RedProtect is designed to prevent malicious redstone constructions that may cause lag on your Minecraft server.
+It monitors redstone activity and automatically disables problematic redstone clocks before they can impact server performance.
+
+## Features
+
+- **Plot-based redstone clock protection** - Protect individual plots from redstone clocks
+- **Area-based redstone clock protection** - Guard areas against redstone clocks
+- **Chunk-based redstone clock protection** - Monitor and protect entire chunks
+- **TPS-based redstone deactivation** - Automatically disable all redstone when server TPS drops
+
+## Supported Plugins
+
+RedProtect integrates with these protection plugins:
+
+- [PlotSquared](https://github.com/IntellectualSites/PlotSquared) - For plot-based protection
+- [Protect](https://github.com/TheNextLvl-net/protect) - For area-based protection
+
+## How It Works
+
+RedProtect monitors redstone activity across your server and tracks the number of block updates in specific regions
+(plots, areas, or chunks).
+When a region exceeds the configured update limit within the detection interval,
+RedProtect identifies it as a redstone clock and automatically disables it for a specified duration.
+
+Additionally, if your server's TPS drops below the configured threshold,
+RedProtect can automatically disable all redstone activity server-wide until performance recovers.
