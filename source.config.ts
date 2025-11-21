@@ -8,6 +8,9 @@ import {
 import { transformerCommandColor } from "./src/lib/command-transformer"
 import { remarkMdxMermaid } from "fumadocs-core/mdx-plugins"
 import { z } from "zod"
+import { lucideIconsPlugin } from "fumadocs-core/source/lucide-icons";
+import lastModified from 'fumadocs-mdx/plugins/last-modified';
+
 
 // You can customise Zod schemas for frontmatter and `meta.json` here
 // see https://fumadocs.vercel.app/docs/mdx/collections#define-docs
@@ -31,6 +34,7 @@ export const blogPosts = defineCollections({
 })
 
 export default defineConfig({
+  plugins: [lastModified()],
   mdxOptions: {
     rehypeCodeOptions: {
       themes: {
