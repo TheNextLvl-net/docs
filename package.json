@@ -38,7 +38,7 @@
   },
   "packageManager": "bun@1.2.20",
   "engines": {
-    "node": "22"
+    "node": "24"
   },
   "overrides": {
     "@types/react": "19.2.6",
