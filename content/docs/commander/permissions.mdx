@@ -5,14 +5,14 @@ description: Manage and override command permissions
 
 # Managing Permissions
 
-Command permission management allows you to override the default permissions of commands,
+Command permission management allows you to add permissions to commands,
 set new permissions on commands that originally had none, and query current permission settings.
 
 ## Commands
 
 ### Set Command Permission
 Usage: `/command permission set <command> <permission>`  
-Sets or overrides the permission required to execute a command.
+Adds a permission required to execute a command.
 
 **Examples:**
 ```
@@ -54,7 +54,7 @@ Displays the current permission setting for a command.
 
 ### Reset Command Permission
 Usage: `/command permission reset <command>`  
-Removes any permission override and restores the command's original permission.
+Removes any permission override.
 
 **Examples:**
 ```
@@ -71,31 +71,6 @@ Removes any permission override and restores the command's original permission.
 <gray># Reset all namespaced commands</gray>
 /command permission reset <aqua>"*:*"</aqua>
 ```
-
-### Unset Command Permission
-
-Usage: `/command permission unset <command>`  
-Removes the permission requirement from a command, making it usable by everyone.
-
-**Examples:**
-```
-<gray># Unset permission on specific commands</gray>
-/command permission unset <aqua>help</aqua>
-/command permission unset <aqua>rules</aqua>
-
-<gray># Unset permissions on all commands</gray>
-/command permission unset <aqua>"*"</aqua>
-
-<gray># Unset permissions on all bukkit namespaced commands</gray>
-/command permission unset <aqua>"bukkit:*"</aqua>
-
-<gray># Unset permissions on all namespaced commands</gray>
-/command permission unset <aqua>"*:*"</aqua>
-```
-
-<Callout type="warning">
-  Be careful when unsetting permissions from commands that should be restricted.
-</Callout>
 
 ## Use Cases
 
