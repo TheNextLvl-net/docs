@@ -4,42 +4,149 @@ description: World management plugin for modern Paper and Folia servers
 icon: BookMarked
 ---
 
-import { Command, Group, Blend, Link2, MessageCircleQuestionMark } from "lucide-react"
+# Worlds
 
-# Worlds [!toc]
+Worlds is the most powerful world management plugin, specifically designed for modern **Paper** and **Folia** servers.
+Create, manage, and customize unlimited worlds with advanced features like custom presets, world linking, and full Folia support.
 
-Worlds is the most powerful world management plugin, specifically designed for modern **Paper** and **Folia** servers.  
-It allows server administrators to easily create, manage, and customize multiple worlds within their Minecraft server.
+## Features
 
-Here are a few selected guides that will help you get started with Worlds
+### Advanced World Creation
 
-<Cards>
-  <Card
-    title="Frequently Asked Questions"
-    description="Frequently asked questions about Worlds"
-    href="./worlds/faq"
-    icon={<MessageCircleQuestionMark />}
-    target="_self"
-  />
-  <Card
-    title="Links"
-    description="Restore vanilla portal travel behavior"
-    href="./worlds/manage/links"
-    icon={<Link2 />}
-    target="_self"
-  />
-  <Card
-    title="PerWorlds"
-    description="Learn how to use PerWorlds (moved to a separate page)"
-    href="./perworlds"
-    icon={<Group />}
-    target="_self"
-  />
-  <Card
-    title="Command permissions"
-    description="A list of all world commands and their required permissions."
-    href="./worlds/manage/command-permissions"
-    icon={<Command />}
-    target="_self"
-  />
-</Cards>
+- **Custom Presets**: Create worlds with pre-configured settings using [world presets](/docs/worlds/presets)
+- **Multiple World Types**: Support for normal, flat, amplified, large biomes, single biome, and debug worlds
+- **Custom Generators**: Integration with third-party world generator plugins
+- **Flexible Configuration**: Control seeds, structures, bonus chests, hardcore mode, and more
+
+### World Management
+
+- **Load & Unload**: Dynamically load and unload worlds without server restart
+- **Import & Export**: Import existing worlds or clone worlds with custom settings
+- **Regenerate & Recreate**: Reset worlds or create modified versions with different settings
+- **Safe Deletion**: Confirmation flags prevent accidental world deletion
+
+### Portal Linking
+
+- **Vanilla Behavior**: Restore vanilla portal travel between custom dimensions
+- **Flexible Links**: Link overworld, nether, and end dimensions together
+- **Multi-World Support**: Create separate dimension sets for different game modes
+
+### Folia Compatibility
+
+- **Full Support**: Officially supports Folia servers (Minecraft 1.21.4+)
+- **Region Threading**: Works seamlessly with Folia's multi-threaded architecture
+- **Performance**: Optimized for both Paper and Folia environments
+
+<Callout type="info">
+  Worlds has officially supported Folia since version 2.1.0 (Minecraft 1.21.4).
+  Some limitations exist with nether portal linking on Folia, but end portals work perfectly.
+</Callout>
+
+## Quick Start
+
+### Basic Usage
+
+The main command is `/world`, which requires the permission `worlds.admin`:
+
+```
+<gray># Create a new world</gray>
+/world create <aqua>"Survival World"</aqua>
+
+<gray># Create a world with a preset</gray>
+/world create <aqua>"Void World"</aqua> preset <yellow>the-void</yellow>
+
+<gray># Teleport to a world</gray>
+/world teleport <aqua>worlds:survival_world</aqua>
+
+<gray># List all worlds</gray>
+/world list
+
+<gray># View world information</gray>
+/world info <aqua>worlds:survival_world</aqua>
+```
+
+### Common Scenarios
+
+#### Setting Up Multiple Worlds
+
+Create different worlds for various game modes:
+```
+/world create <aqua>"Survival"</aqua> type <yellow>normal</yellow>
+/world create <aqua>"Creative"</aqua> type <yellow>normal</yellow>
+/world create <aqua>"Skyblock"</aqua> preset <yellow>the-void</yellow>
+```
+
+#### Linking Dimensions
+
+Restore vanilla portal behavior between custom worlds:
+```
+<gray># Create linked dimensions</gray>
+/world create <aqua>"Farmworld"</aqua> type <yellow>normal</yellow> dimension <green>normal</green>
+/world create <aqua>"Farmworld Nether"</aqua> type <yellow>normal</yellow> dimension <green>nether</green>
+
+<gray># Link them together</gray>
+/world link create <aqua>worlds:farmworld</aqua> <yellow>worlds:farmworld_nether</yellow>
+```
+
+#### Using Custom Generators
+
+Create worlds with third-party generators:
+```
+/world create <aqua>"Plots"</aqua> generator <yellow>PlotSquared</yellow>
+```
+
+#### World Maintenance
+
+Manage world saves and backups:
+```
+<gray># Save all worlds</gray>
+/world save-all
+
+<gray># Disable auto-save for maintenance</gray>
+/world save-off
+<gray># Perform maintenance...</gray>
+/world save-all
+/world save-on
+```
+
+## World Presets
+
+Worlds includes a powerful preset system that allows you to create worlds with pre-configured settings.
+Presets can define world type, dimension, structures, and even flat world layer configurations.
+
+**Available Presets:**
+- Classic Flat
+- The Void
+- Water World
+- Desert
+- Snowy Kingdom
+- Redstone Ready
+- Tunneler's Dream
+- Bottomless Pit
+- And more...
+
+Learn how to use and create custom presets in the [Presets documentation](/docs/worlds/presets).
+
+## Permission System
+
+### Required Permissions
+
+- `worlds.admin` - Access to all world management commands
+- Individual command permissions like `worlds.command.create`, `worlds.command.teleport`, etc.
+
+### Permission Packs
+
+- `worlds.admin` - All world commands
+- `worlds.commands.link` - All link commands
+- `worlds.commands.save` - All save commands
+
+See the [Permissions page](/docs/worlds/permissions) for a complete list.
+
+## Use Cases
+
+- Create separate worlds for different game modes (survival, creative, minigames)
+- Set up farmworlds that reset periodically
+- Build custom dimension sets with linked portals
+- Import and manage worlds from other servers
+- Create testing environments with specific world settings
+- Optimize server performance by unloading unused worlds

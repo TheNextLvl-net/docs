@@ -1,0 +1,111 @@
+---
+title: Save Commands
+description: How to use world save commands
+---
+
+# Save Commands
+
+World save commands allow you to control when and how world data is saved to disk.
+
+## /world save
+
+Saves a specific world to disk.
+
+**Usage:** `/world save <world>`
+
+**Permission:** `worlds.command.save`
+
+<Callout type="info">
+  See the [Permissions page](/docs/worlds/permissions) for all command permissions.
+</Callout>
+
+### Example
+
+```
+/world save <aqua>worlds:my_world</aqua>
+```
+
+## /world save-all
+
+Saves all loaded worlds to disk.
+
+**Usage:** `/world save-all`
+
+**Permission:** `worlds.command.save-all`
+
+<Callout type="info">
+  This command is also available as a standalone command: `/save-all`
+</Callout>
+
+### Example
+
+```
+/world save-all
+```
+
+## /world save-off
+
+Disables automatic saving for all worlds. This prevents the server from automatically saving world data.
+
+**Usage:** `/world save-off`
+
+**Permission:** `worlds.command.save-off`
+
+<Callout type="warning">
+  Use this command with caution. Disabling auto-save can lead to data loss if the server crashes.
+  Make sure to manually save worlds regularly or re-enable auto-save when done.
+</Callout>
+
+<Callout type="info">
+  This command is also available as a standalone command: `/save-off`
+</Callout>
+
+### Example
+
+```
+/world save-off
+```
+
+## /world save-on
+
+Re-enables automatic saving for all worlds after it has been disabled with `/world save-off`.
+
+**Usage:** `/world save-on`
+
+**Permission:** `worlds.command.save-on`
+
+<Callout type="info">
+  This command is also available as a standalone command: `/save-on`
+</Callout>
+
+### Example
+
+```
+/world save-on
+```
+
+## Use Cases
+
+### Performance Optimization
+
+Disable auto-save during intensive operations:
+```
+/world save-off
+<gray># Perform intensive operations</gray>
+/world save-all
+/world save-on
+```
+
+### Backup Preparation
+
+Ensure all worlds are saved before creating a backup:
+```
+/world save-all
+```
+
+### Individual World Maintenance
+
+Save a specific world after making changes:
+```
+/world save <aqua>worlds:creative</aqua>
+```

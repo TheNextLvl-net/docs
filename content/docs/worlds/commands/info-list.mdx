@@ -1,0 +1,68 @@
+---
+title: World Info and List
+description: How to view world information and list all worlds
+---
+
+# World Info and List
+
+View detailed information about specific worlds or list all worlds on your server.
+
+## View world information
+
+The world info command displays detailed information about a specific world.
+
+**Usage:** `/world info [<world>]`
+
+**Permission:** `worlds.command.info`
+
+<Callout type="info">
+  See the [Permissions page](/docs/worlds/permissions) for all command permissions.
+</Callout>
+
+### Information Displayed
+
+The info command shows various details about the world, including:
+
+- **World Name** - The display name of the world
+- **World Key** - The unique identifier for the world
+- **Player Count** - Number of players currently in the world
+- **World Type** - The generation type (normal, flat, amplified, etc.)
+- **Dimension Type** - The dimension type (normal, nether, end)
+- **Generator** - The chunk generator being used (if custom)
+- **Seed** - The world seed used for generation
+- **Disk Size** - The size of the world on disk
+
+### Examples
+
+View information about a specific world:
+```
+/world info <aqua>worlds:survival</aqua>
+```
+
+View information about the world you're currently in:
+```
+/world info
+```
+
+## List all worlds
+
+The world list command displays all worlds currently loaded on the server.
+
+**Usage:** `/world list`
+
+**Permission:** `worlds.command.list`
+
+### Example
+
+List all worlds on the server:
+```
+/world list
+```
+
+<Callout type="info">
+  The list includes both worlds managed by Worlds and worlds created by other plugins.
+</Callout>
+
+<Callout type="tip">
+  World names in the list are clickable! Click on any world name to teleport directly to that world.
+</Callout>
