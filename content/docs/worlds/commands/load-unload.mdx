@@ -1,0 +1,53 @@
+---
+title: Loading and unloading worlds
+description: How to load and unload worlds.
+---
+
+# Loading and Unloading Worlds
+
+## Loading worlds
+
+**Usage:** `/world load <path>`
+
+**Permission:** `worlds.command.load`
+
+<Callout type="info">
+  See the [Permissions page](/docs/worlds/permissions) for all command permissions.
+</Callout>
+
+You can load existing worlds with the `/world load <path>` command.
+You can only load worlds that are managed by Worlds,
+if you want to load a world that is not managed by Worlds, [import](/docs/worlds/import) the world instead.
+
+<Callout type="tip">
+  The given path is relative to the server's world container folder which can be
+  [changed](/docs/worlds/faq#world-container).
+</Callout>
+
+### Example
+
+```
+/world load <aqua>MyWorld</aqua>
+```
+
+## Unloading worlds
+
+**Usage:** `/world unload <world> [<fallback>]`
+
+**Permission:** `worlds.command.unload`
+
+You can unload worlds with the `/world unload <world> [<fallback>]` command.  
+The fallback option allows you to specify a world to send players to, if they are currently in the world that is being unloaded.  
+If undefined, players will be sent to the default world (usually `minecraft:overworld`).
+
+### Example
+
+Unloading a world without a fallback:
+```
+/world unload <aqua>worlds:my_world</aqua>
+```
+
+Unloading a world and teleporting all players inside to a fallback world:
+```
+/world unload <aqua>worlds:my_world</aqua> <yellow>worlds:my_fallback_world</yellow>
+```

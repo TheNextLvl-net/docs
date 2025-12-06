@@ -1,0 +1,74 @@
+---
+title: World links
+description: Link your worlds to restore vanilla portal travel behavior
+---
+
+# World Links
+
+## What are world links?
+
+World links allow you to connect up to three worlds together, enabling players to travel between them as if they were part of the same world.
+This is aimed for restoring the vanilla portal travel behavior, where players can use Nether and End portals to travel between dimensions.
+
+<Callout type="info">
+  You can only link one of each dimension type together, so you can link one Overworld, one Nether,
+  and one End world.
+</Callout>
+
+<Callout type="error">
+  Links are not intended as a way to create custom portals, but rather to restore the original vanilla behavior.  
+  To create custom portals, use our plugin [Portals](/docs/portals).
+</Callout>
+
+## Creating world links
+
+**Usage:** `/world link create <world> <destination>`
+
+**Permission:** `worlds.command.link.create`
+
+<Callout type="info">
+  See the [Permissions page](/docs/worlds/permissions) for all command permissions.
+</Callout>
+
+To create a world link you need to have at least two worlds created.  
+You can create a link by using the command `/world link create <world> <destination>`.
+
+The `<world>` argument has to be a world of the dimension type `Overworld`.  
+The `<destination>` world must be a `Nether` or `End` dimension.
+
+## Example
+
+Linking an **Overworld** to a **Nether** world:
+
+```
+/world link create <aqua>farmworld:normal</aqua> <yellow>farmworld:nether</yellow>
+```
+
+Linking an **Overworld** to an **End** world:
+
+```
+/world link create <aqua>farmworld:normal</aqua> <yellow>farmworld:the_end</yellow>
+```
+
+## Removing world links
+
+**Usage:** `/world link remove <world> <destination>`
+
+**Permission:** `worlds.command.link.remove`
+
+Removing a world link is straightforward.  
+You can remove a link by using the command `/world link remove <world> <destination>`.
+
+## Example
+
+Removing the link between an **Overworld** and a **Nether** world:
+
+```
+/world link remove <aqua>farmworld:normal</aqua> <yellow>farmworld:nether</yellow>
+```
+
+Removing the link between an **Overworld** and an **End** world:
+
+```
+/world link remove <aqua>farmworld:normal</aqua> <yellow>farmworld:the_end</yellow>
+```

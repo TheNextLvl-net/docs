@@ -1,0 +1,45 @@
+---
+title: Delete a world
+description: How to use the world delete command.
+---
+
+# Delete a World
+
+**Usage:** `/world delete <world> [<flags>]`
+
+**Permission:** `worlds.command.delete`
+
+<Callout type="info">
+  See the [Permissions page](/docs/worlds/permissions) for all command permissions.
+</Callout>
+
+To delete a world you can use the `/world delete <world> [<flags>]` command.  
+This command will permanently delete the specified world, so use it with caution.
+
+<Callout type="error" title="Caution">
+
+Deleting a world is irreversible. Make sure to back up any important data before proceeding.  
+ The world's entire folder will be permanently deleted.
+
+</Callout>
+
+## Flags
+
+- `--confirm`: This flag is required to confirm the deletion of the world.
+  It is a safety measure to prevent accidental deletions.
+- `--schedule`: This flag schedules the deletion of the world to the server shutdown process.  
+  The deletion of `minecraft:overworld` can only be scheduled as it is required to always exist during runtime.
+
+## Examples
+
+To simply delete a world, you can use the following command:
+
+```
+/world delete <aqua>worlds:my_world</aqua> <yellow>--confirm</yellow>
+```
+
+To schedule the deletion of a world, you can use:
+
+```
+/world delete <aqua>minecraft:overworld</aqua> <yellow>--confirm --schedule</yellow>
+```

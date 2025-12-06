@@ -1,0 +1,51 @@
+---
+title: Regenerate a world
+description: How to use the world regenerate command.
+---
+
+# Regenerate a World
+
+**Usage:** `/world regenerate <world> [<flags>]`
+
+**Permission:** `worlds.command.regenerate`
+
+<Callout type="info">
+  See the [Permissions page](/docs/worlds/permissions) for all command permissions.
+</Callout>
+
+To regenerate a world you can use the `/world regenerate <world> [<flags>]` command.  
+This command will regenerate the specified world, so use it with caution.
+
+<Callout type="error" title="Caution">
+
+Regenerating a world is irreversible. Make sure to back up any important data before proceeding.  
+ The world's entire progress will be permanently deleted.
+
+</Callout>
+
+## Flags
+
+- `--confirm`: This flag is required to confirm the regeneration of the world.
+  It is a safety measure to prevent accidental regenerations.
+- `--schedule`: This flag schedules the regeneration of the world to the server shutdown process.  
+  The regeneration of `minecraft:overworld` can only be scheduled as it is required to always exist during runtime.
+- `--seed`: This flag allows you to reroll the world seed.  
+  This can be useful if you want to create a new world with the same name but a different seed.
+
+To simply regenerate a world, you can use the following command:
+
+```
+/world regenerate <aqua>worlds:my_world</aqua> <yellow>--confirm</yellow>
+```
+
+To regenerate a world and reroll its seed, you can use:
+
+```
+/world regenerate <aqua>citybuild:farmworld/nether</aqua> <yellow>--confirm --seed</yellow>
+```
+
+To schedule the regeneration of a world, you can use:
+
+```
+/world regenerate <aqua>minecraft:overworld</aqua> <yellow>--confirm --schedule</yellow>
+```

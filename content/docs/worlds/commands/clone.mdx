@@ -1,0 +1,43 @@
+---
+title: Clone a world
+description: How to use the world clone command.
+---
+
+# Clone a World
+
+**Usage:** `/world clone <world> [options...]`
+
+**Permission:** `worlds.command.clone`
+
+<Callout type="info">
+  See the [Permissions page](/docs/worlds/permissions) for all command permissions.
+</Callout>
+
+To clone a world you can use the `/world clone <world>` command.  
+This command creates a copy of the specified world, allowing you to work on a separate instance without affecting the original.  
+There are three options: `name`, `key`, and `full`.  
+If you don't specify any of these options, the cloned world will have an auto generated name and key, and the world data will be copied 1:1.
+
+<Callout type="info" title="Frequesntly asked questions">
+  [What does \<key\> stand for, in command arguments?](/docs/worlds/faq#key-argument)   
+</Callout>
+
+The `full` option defines whether the cloned world should be regenerated or an exact copy of the original world.
+
+Example on how to create an exact copy of a world:
+
+```
+/world clone <aqua>worlds:my_world</aqua>
+```
+
+Example on how to clone a world's generation settings (no world data, scoreboards, player data, etc.):
+
+```
+/world clone <aqua>worlds:my_world</aqua> full <yellow>false</yellow>
+```
+
+You can define the name and key of a cloned world by using the `name` and `key` options:
+
+```
+/world clone <aqua>worlds:my_world</aqua> name <yellow>"my world copy"</yellow> key <green>my_world_copy</green>
+```
