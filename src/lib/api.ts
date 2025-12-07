@@ -31,3 +31,24 @@ export async function lastEdit(page: Page): Promise<Date> {
 	});
 	return time ? time : new Date();
 }
+
+export async function lastEditFromPath(
+	filePath: string,
+): Promise<Date | undefined> {
+	const contentIndex = filePath.indexOf("content/");
+	if (contentIndex === -1) return undefined;
+
+	const relativePath = filePath.slice(contentIndex);
+	const time = await getGithubLastEdit({
+		owner: "TheNextLvl-net",
+		repo: "docs",
+		token: process.env.GITHUB_TOKEN
+			? `Bearer ${process.env.GITHUB_TOKEN}`
+			: undefined,
+		path: relativePath,
+	}).catch((error) => {
+		console.error("Error fetching last edit date:", error);
+		return undefined;
+	});
+	return time ? time : undefined;
+}
