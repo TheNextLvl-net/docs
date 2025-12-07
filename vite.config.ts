@@ -44,12 +44,7 @@ export default defineConfig({
 			},
 		}),
 		tailwindcss(),
-		tanstackStart({
-			sitemap: {
-				enabled: true,
-				host: process.env.VITE_PUBLIC_BASE_URL || "https://thenextlvl.net",
-			},
-		}),
+		tanstackStart(),
 		viteReact(),
 	],
 });
