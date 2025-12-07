@@ -12,7 +12,7 @@ export const baseOptions: BaseLayoutProps = {
 	nav: {
 		title: (
 			<>
-				<img src="/logo.png" alt="TheNextLvl" width={24} height={24} />
+				<img src="/logo.webp" alt="TheNextLvl" width={24} height={24} />
 				TheNextLvl
 			</>
 		),
