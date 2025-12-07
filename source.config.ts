@@ -35,7 +35,10 @@ export const blogPosts = defineCollections({
 
 export default defineConfig({
 	plugins: [
-		lastModified(),
+		lastModified({
+			versionControl:
+				process.env.NODE_ENV === "production" ? lastEditFromPath : "git",
+		}),
 	],
 	mdxOptions: {
 		rehypeCodeOptions: {
