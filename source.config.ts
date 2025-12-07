@@ -8,7 +8,7 @@ import {
 } from "fumadocs-mdx/config";
 import lastModified from "fumadocs-mdx/plugins/last-modified";
 import { z } from "zod";
-import { lastEditFromPath } from "@/lib/api";
+import { lastEditFromPath } from "./src/lib/api";
 import { transformerCommandColor } from "./src/lib/command-transformer";
 
 export const docs = defineDocs({
