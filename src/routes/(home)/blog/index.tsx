@@ -1,48 +1,32 @@
-"use client"
-
-import Link from "next/link"
+import { createFileRoute, Link } from "@tanstack/react-router"
 import { useState } from "react"
 import { BookOpen, Code, RotateCcw, FileText, File } from "lucide-react"
+import { getBlogPosts } from "@/lib/blog"
 
-type BlogPost = {
-  path: string
-  data: {
-    title: string
-    description?: string
-    category?: "devlog" | "updates" | "other"
-    date?: string | Date
-    url: string
-  }
+export const Route = createFileRoute("/(home)/blog/")({
+  component: RouteComponent,
+  loader: async () => await getBlogPosts(),
+})
+
+type Category = "devlog" | "updates" | "other"
+
+const categoryIcons: Record<string, React.ReactNode> = {
+  "All Posts": <BookOpen className="w-4 h-4" />,
+  devlog: <Code className="w-4 h-4" />,
+  updates: <RotateCcw className="w-4 h-4" />,
+  other: <FileText className="w-4 h-4" />,
 }
 
-type BlogSidebarProps = {
-  posts: BlogPost[]
-}
+function RouteComponent() {
+  const posts = Route.useLoaderData()
+  const [selectedCategory, setSelectedCategory] = useState("All Posts")
 
-export function BlogSidebar({ posts }: BlogSidebarProps) {
   const categories = [
     "All Posts",
     ...[...new Set(posts.map((post) => post.data.category))].filter(
-      (category): category is "devlog" | "updates" | "other" => Boolean(category),
+      (category): category is Category => Boolean(category),
     ),
   ]
-
-  const [selectedCategory, setSelectedCategory] = useState("All Posts")
-
-  const getCategoryIcon = (category: string) => {
-    switch (category) {
-      case "All Posts":
-        return <BookOpen className="w-4 h-4" />
-      case "devlog":
-        return <Code className="w-4 h-4" />
-      case "updates":
-        return <RotateCcw className="w-4 h-4" />
-      case "other":
-        return <FileText className="w-4 h-4" />
-      default:
-        return <File className="w-4 h-4" />
-    }
-  }
 
   const filteredPosts =
     selectedCategory === "All Posts"
@@ -70,7 +54,7 @@ export function BlogSidebar({ posts }: BlogSidebarProps) {
             <section className="space-y-4">
               {filteredPosts.map((post) => (
                 <Link
-                  href={post.data.url}
+                  to={post.url}
                   key={post.path}
                   className="group block rounded-lg border border-fd-border transition-colors hover:bg-fd-accent/10"
                 >
@@ -85,17 +69,15 @@ export function BlogSidebar({ posts }: BlogSidebarProps) {
                     )}
                     <div className="mt-4 flex flex-wrap items-center gap-3 text-xs uppercase tracking-wider text-fd-muted-foreground">
                       <span className="inline-flex items-center gap-2">
-                        {getCategoryIcon(post.data.category ?? "All Posts")}{" "}
+                        {categoryIcons[post.data.category ?? "other"] ?? (
+                          <File className="w-4 h-4" />
+                        )}{" "}
                         {post.data.category ?? "other"}
                       </span>
                       <div className="h-3 w-px bg-fd-border" />
                       <time>
                         {new Date(
-                          (typeof post.data.date === "string"
-                            ? post.data.date
-                            : post.data.date?.toISOString()) ??
-                            post.path.split("/").pop()?.replace(".mdx", "") ??
-                            "",
+                          post.data.lastModified ?? new Date().toISOString(),
                         ).toLocaleDateString("en-US", {
                           month: "long",
                           day: "numeric",
@@ -123,7 +105,7 @@ export function BlogSidebar({ posts }: BlogSidebarProps) {
                         selectedCategory === category ? "text-fd-foreground" : ""
                       }`}
                     >
-                      {getCategoryIcon(category)}
+                      {categoryIcons[category] ?? <File className="w-4 h-4" />}
                       {category}
                     </button>
                   ))}

@@ -1,10 +1,14 @@
-import type { ReactNode } from "react"
+import { createFileRoute, Outlet } from "@tanstack/react-router"
 import { HomeLayout } from "fumadocs-ui/layouts/home"
-import { baseOptions } from "@/app/layout.config"
-import { SiDiscord } from "@icons-pack/react-simple-icons"
+import { baseOptions } from "@/lib/layout.shared"
 import { RssIcon } from "lucide-react"
+import { SiDiscord } from "@icons-pack/react-simple-icons"
 
-export default function Layout({ children }: { children: ReactNode }) {
+export const Route = createFileRoute("/(home)")({
+  component: RouteComponent,
+})
+
+function RouteComponent() {
   return (
     <HomeLayout
       {...baseOptions}
@@ -23,7 +27,7 @@ export default function Layout({ children }: { children: ReactNode }) {
         },
       ]}
     >
-      {children}
+      <Outlet />
     </HomeLayout>
   )
 }

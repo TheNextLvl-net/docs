@@ -1,21 +1,26 @@
+import { createFileRoute } from "@tanstack/react-router"
 import { Card } from "fumadocs-ui/components/card"
 import type { LucideIcon } from "lucide-react"
 import {
-  Archive,
-  BrickWall,
-  Brush,
-  Command,
   Globe,
   Group,
-  Landmark,
   Shell,
+  User,
+  Wrench,
+  Archive,
+  Landmark,
   Shield,
   ShieldAlert,
   TextAlignStart,
-  User,
   Video,
-  Wrench,
+  Brush,
+  Command,
+  BrickWall,
 } from "lucide-react"
+
+export const Route = createFileRoute("/(home)/")({
+  component: RouteComponent,
+})
 
 interface CardData {
   title: string
@@ -128,7 +133,7 @@ const otherCards: CardData[] = [
   },
 ]
 
-export default function HomePage() {
+function RouteComponent() {
   return (
     <main className="container mx-auto my-12 space-y-10">
       <div className="space-y-1">

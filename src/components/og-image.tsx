@@ -1,34 +1,16 @@
-import { ImageResponse } from "next/og"
-import type { ReactElement, ReactNode } from "react"
-import type { ImageResponseOptions } from "next/dist/compiled/@vercel/og/types"
+const baseUrl = import.meta.env.VITE_PUBLIC_BASE_URL || "https://thenextlvl.net"
 
-interface GenerateProps {
-  title: ReactNode
-  description?: ReactNode
+interface OgImageProps {
+  title: string
+  description?: string
   primaryTextColor?: string
 }
 
-export function generateOGImage(options: GenerateProps & ImageResponseOptions): ImageResponse {
-  const { title, description, primaryTextColor, ...rest } = options
-
-  return new ImageResponse(
-    generate({
-      title,
-      description,
-      primaryTextColor,
-    }),
-    {
-      width: 1200,
-      height: 630,
-      ...rest,
-    },
-  )
-}
-
-export function generate({
-  primaryTextColor = "rgb(255,150,255)",
-  ...props
-}: GenerateProps): ReactElement {
+export function OgImage({
+  title,
+  description,
+  primaryTextColor = "rgb(240,240,240)",
+}: OgImageProps) {
   return (
     <div
       style={{
@@ -55,7 +37,7 @@ export function generate({
             fontSize: "76px",
           }}
         >
-          {props.title}
+          {title}
         </p>
         <p
           style={{
@@ -63,7 +45,7 @@ export function generate({
             color: "rgba(240,240,240,0.7)",
           }}
         >
-          {props.description}
+          {description}
         </p>
         <div
           style={{
@@ -75,14 +57,7 @@ export function generate({
             color: primaryTextColor,
           }}
         >
-          {process.env.NEXT_PUBLIC_BASE_URL && (
-            <img
-              src={`${process.env.NEXT_PUBLIC_BASE_URL}/logo.png`}
-              width="60"
-              height="60"
-              alt="Logo"
-            />
-          )}
+          <img src={`${baseUrl}/logo.png`} style={{ width: 60, height: 60 }} alt="Logo" />
           <p
             style={{
               fontSize: "46px",

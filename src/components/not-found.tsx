@@ -1,6 +1,6 @@
-import Link from "next/link"
+import { Link } from "@tanstack/react-router"
 
-export default function NotFound() {
+export function NotFound() {
   return (
     <main className="flex h-screen flex-col items-center justify-center text-center">
       <div className="space-y-4">
@@ -11,7 +11,7 @@ export default function NotFound() {
         <p className="text-lg text-muted-foreground">
           We couldn&apos;t find the page you were looking for.
         </p>
-        <Link href="/">Go back home</Link>
+        <Link to="/">Go back home</Link>
       </div>
     </main>
   )

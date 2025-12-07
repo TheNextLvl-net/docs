@@ -1,5 +1,4 @@
 import type { BaseLayoutProps } from "fumadocs-ui/layouts/shared"
-import Image from "next/image"
 import { SiDiscord } from "@icons-pack/react-simple-icons"
 import { RssIcon } from "lucide-react"
 /**
@@ -13,7 +12,7 @@ export const baseOptions: BaseLayoutProps = {
   nav: {
     title: (
       <>
-        <Image src="/logo.png" alt="TheNextLvl" width={24} height={24} />
+        <img src="/logo.png" alt="TheNextLvl" width={24} height={24} />
         TheNextLvl
       </>
     ),
