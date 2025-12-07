@@ -17,8 +17,8 @@ export function OgImage({
 			style={{
 				display: "flex",
 				flexDirection: "column",
-				width: "100%",
-				height: "100%",
+				width: "1200px",
+				height: "630px",
 				color: "white",
 				backgroundColor: "rgb(10,10,10)",
 			}}
@@ -29,25 +29,41 @@ export function OgImage({
 					flexDirection: "column",
 					width: "100%",
 					height: "100%",
-					padding: "4rem",
+					padding: "64px",
+					boxSizing: "border-box",
 				}}
 			>
-				<p
+				<div
 					style={{
-						fontWeight: 600,
-						fontSize: "76px",
+						display: "flex",
+						flexDirection: "column",
+						flex: 1,
 					}}
 				>
-					{title}
-				</p>
-				<p
-					style={{
-						fontSize: "48px",
-						color: "rgba(240,240,240,0.7)",
-					}}
-				>
-					{description}
-				</p>
+					<p
+						style={{
+							fontWeight: 600,
+							fontSize: "76px",
+							lineHeight: "1.1",
+							margin: 0,
+							marginBottom: description ? "24px" : "0",
+						}}
+					>
+						{title}
+					</p>
+					{description && (
+						<p
+							style={{
+								fontSize: "48px",
+								color: "rgba(240,240,240,0.7)",
+								lineHeight: "1.2",
+								margin: 0,
+							}}
+						>
+							{description}
+						</p>
+					)}
+				</div>
 				<div
 					style={{
 						display: "flex",
@@ -60,13 +76,18 @@ export function OgImage({
 				>
 					<img
 						src={`${baseUrl}/logo.png`}
-						style={{ width: 60, height: 60 }}
+						style={{
+							width: "60px",
+							height: "60px",
+							objectFit: "contain",
+						}}
 						alt="Logo"
 					/>
 					<p
 						style={{
 							fontSize: "46px",
 							fontWeight: 600,
+							margin: 0,
 						}}
 					>
 						TheNextLvl
