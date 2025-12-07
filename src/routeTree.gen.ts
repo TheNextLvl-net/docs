@@ -8,150 +8,150 @@
 // You should NOT make any changes in this file as it will be overwritten.
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
-import { Route as rootRouteImport } from "./routes/__root"
-import { Route as SitemapDotxmlRouteImport } from "./routes/sitemap[.]xml"
-import { Route as RssDotxmlRouteImport } from "./routes/rss[.]xml"
-import { Route as LlmsFullDottxtRouteImport } from "./routes/llms-full[.]txt"
-import { Route as homeRouteRouteImport } from "./routes/(home)/route"
-import { Route as homeIndexRouteImport } from "./routes/(home)/index"
-import { Route as LlmsDotmdxSplatRouteImport } from "./routes/llms[.]mdx.$"
-import { Route as DocsSplatRouteImport } from "./routes/docs/$"
-import { Route as DocsOgSplatRouteImport } from "./routes/docs-og/$"
-import { Route as ApiSearchRouteImport } from "./routes/api/search"
-import { Route as homeBlogIndexRouteImport } from "./routes/(home)/blog/index"
-import { Route as homeBlogSlugRouteImport } from "./routes/(home)/blog/$slug"
+import { Route as rootRouteImport } from './routes/__root'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as RssDotxmlRouteImport } from './routes/rss[.]xml'
+import { Route as LlmsFullDottxtRouteImport } from './routes/llms-full[.]txt'
+import { Route as homeRouteRouteImport } from './routes/(home)/route'
+import { Route as homeIndexRouteImport } from './routes/(home)/index'
+import { Route as LlmsDotmdxSplatRouteImport } from './routes/llms[.]mdx.$'
+import { Route as DocsSplatRouteImport } from './routes/docs/$'
+import { Route as DocsOgSplatRouteImport } from './routes/docs-og/$'
+import { Route as ApiSearchRouteImport } from './routes/api/search'
+import { Route as homeBlogIndexRouteImport } from './routes/(home)/blog/index'
+import { Route as homeBlogSlugRouteImport } from './routes/(home)/blog/$slug'
 
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
-  id: "/sitemap.xml",
-  path: "/sitemap.xml",
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
 const RssDotxmlRoute = RssDotxmlRouteImport.update({
-  id: "/rss.xml",
-  path: "/rss.xml",
+  id: '/rss.xml',
+  path: '/rss.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LlmsFullDottxtRoute = LlmsFullDottxtRouteImport.update({
-  id: "/llms-full.txt",
-  path: "/llms-full.txt",
+  id: '/llms-full.txt',
+  path: '/llms-full.txt',
   getParentRoute: () => rootRouteImport,
 } as any)
 const homeRouteRoute = homeRouteRouteImport.update({
-  id: "/(home)",
+  id: '/(home)',
   getParentRoute: () => rootRouteImport,
 } as any)
 const homeIndexRoute = homeIndexRouteImport.update({
-  id: "/",
-  path: "/",
+  id: '/',
+  path: '/',
   getParentRoute: () => homeRouteRoute,
 } as any)
 const LlmsDotmdxSplatRoute = LlmsDotmdxSplatRouteImport.update({
-  id: "/llms.mdx/$",
-  path: "/llms.mdx/$",
+  id: '/llms.mdx/$',
+  path: '/llms.mdx/$',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DocsSplatRoute = DocsSplatRouteImport.update({
-  id: "/docs/$",
-  path: "/docs/$",
+  id: '/docs/$',
+  path: '/docs/$',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DocsOgSplatRoute = DocsOgSplatRouteImport.update({
-  id: "/docs-og/$",
-  path: "/docs-og/$",
+  id: '/docs-og/$',
+  path: '/docs-og/$',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ApiSearchRoute = ApiSearchRouteImport.update({
-  id: "/api/search",
-  path: "/api/search",
+  id: '/api/search',
+  path: '/api/search',
   getParentRoute: () => rootRouteImport,
 } as any)
 const homeBlogIndexRoute = homeBlogIndexRouteImport.update({
-  id: "/blog/",
-  path: "/blog/",
+  id: '/blog/',
+  path: '/blog/',
   getParentRoute: () => homeRouteRoute,
 } as any)
 const homeBlogSlugRoute = homeBlogSlugRouteImport.update({
-  id: "/blog/$slug",
-  path: "/blog/$slug",
+  id: '/blog/$slug',
+  path: '/blog/$slug',
   getParentRoute: () => homeRouteRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
-  "/llms-full.txt": typeof LlmsFullDottxtRoute
-  "/rss.xml": typeof RssDotxmlRoute
-  "/sitemap.xml": typeof SitemapDotxmlRoute
-  "/api/search": typeof ApiSearchRoute
-  "/docs-og/$": typeof DocsOgSplatRoute
-  "/docs/$": typeof DocsSplatRoute
-  "/llms.mdx/$": typeof LlmsDotmdxSplatRoute
-  "/": typeof homeIndexRoute
-  "/blog/$slug": typeof homeBlogSlugRoute
-  "/blog": typeof homeBlogIndexRoute
+  '/llms-full.txt': typeof LlmsFullDottxtRoute
+  '/rss.xml': typeof RssDotxmlRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/api/search': typeof ApiSearchRoute
+  '/docs-og/$': typeof DocsOgSplatRoute
+  '/docs/$': typeof DocsSplatRoute
+  '/llms.mdx/$': typeof LlmsDotmdxSplatRoute
+  '/': typeof homeIndexRoute
+  '/blog/$slug': typeof homeBlogSlugRoute
+  '/blog': typeof homeBlogIndexRoute
 }
 export interface FileRoutesByTo {
-  "/llms-full.txt": typeof LlmsFullDottxtRoute
-  "/rss.xml": typeof RssDotxmlRoute
-  "/sitemap.xml": typeof SitemapDotxmlRoute
-  "/api/search": typeof ApiSearchRoute
-  "/docs-og/$": typeof DocsOgSplatRoute
-  "/docs/$": typeof DocsSplatRoute
-  "/llms.mdx/$": typeof LlmsDotmdxSplatRoute
-  "/": typeof homeIndexRoute
-  "/blog/$slug": typeof homeBlogSlugRoute
-  "/blog": typeof homeBlogIndexRoute
+  '/llms-full.txt': typeof LlmsFullDottxtRoute
+  '/rss.xml': typeof RssDotxmlRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/api/search': typeof ApiSearchRoute
+  '/docs-og/$': typeof DocsOgSplatRoute
+  '/docs/$': typeof DocsSplatRoute
+  '/llms.mdx/$': typeof LlmsDotmdxSplatRoute
+  '/': typeof homeIndexRoute
+  '/blog/$slug': typeof homeBlogSlugRoute
+  '/blog': typeof homeBlogIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
-  "/(home)": typeof homeRouteRouteWithChildren
-  "/llms-full.txt": typeof LlmsFullDottxtRoute
-  "/rss.xml": typeof RssDotxmlRoute
-  "/sitemap.xml": typeof SitemapDotxmlRoute
-  "/api/search": typeof ApiSearchRoute
-  "/docs-og/$": typeof DocsOgSplatRoute
-  "/docs/$": typeof DocsSplatRoute
-  "/llms.mdx/$": typeof LlmsDotmdxSplatRoute
-  "/(home)/": typeof homeIndexRoute
-  "/(home)/blog/$slug": typeof homeBlogSlugRoute
-  "/(home)/blog/": typeof homeBlogIndexRoute
+  '/(home)': typeof homeRouteRouteWithChildren
+  '/llms-full.txt': typeof LlmsFullDottxtRoute
+  '/rss.xml': typeof RssDotxmlRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/api/search': typeof ApiSearchRoute
+  '/docs-og/$': typeof DocsOgSplatRoute
+  '/docs/$': typeof DocsSplatRoute
+  '/llms.mdx/$': typeof LlmsDotmdxSplatRoute
+  '/(home)/': typeof homeIndexRoute
+  '/(home)/blog/$slug': typeof homeBlogSlugRoute
+  '/(home)/blog/': typeof homeBlogIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    | "/llms-full.txt"
-    | "/rss.xml"
-    | "/sitemap.xml"
-    | "/api/search"
-    | "/docs-og/$"
-    | "/docs/$"
-    | "/llms.mdx/$"
-    | "/"
-    | "/blog/$slug"
-    | "/blog"
+    | '/llms-full.txt'
+    | '/rss.xml'
+    | '/sitemap.xml'
+    | '/api/search'
+    | '/docs-og/$'
+    | '/docs/$'
+    | '/llms.mdx/$'
+    | '/'
+    | '/blog/$slug'
+    | '/blog'
   fileRoutesByTo: FileRoutesByTo
   to:
-    | "/llms-full.txt"
-    | "/rss.xml"
-    | "/sitemap.xml"
-    | "/api/search"
-    | "/docs-og/$"
-    | "/docs/$"
-    | "/llms.mdx/$"
-    | "/"
-    | "/blog/$slug"
-    | "/blog"
+    | '/llms-full.txt'
+    | '/rss.xml'
+    | '/sitemap.xml'
+    | '/api/search'
+    | '/docs-og/$'
+    | '/docs/$'
+    | '/llms.mdx/$'
+    | '/'
+    | '/blog/$slug'
+    | '/blog'
   id:
-    | "__root__"
-    | "/(home)"
-    | "/llms-full.txt"
-    | "/rss.xml"
-    | "/sitemap.xml"
-    | "/api/search"
-    | "/docs-og/$"
-    | "/docs/$"
-    | "/llms.mdx/$"
-    | "/(home)/"
-    | "/(home)/blog/$slug"
-    | "/(home)/blog/"
+    | '__root__'
+    | '/(home)'
+    | '/llms-full.txt'
+    | '/rss.xml'
+    | '/sitemap.xml'
+    | '/api/search'
+    | '/docs-og/$'
+    | '/docs/$'
+    | '/llms.mdx/$'
+    | '/(home)/'
+    | '/(home)/blog/$slug'
+    | '/(home)/blog/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -165,82 +165,82 @@ export interface RootRouteChildren {
   LlmsDotmdxSplatRoute: typeof LlmsDotmdxSplatRoute
 }
 
-declare module "@tanstack/react-router" {
+declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    "/sitemap.xml": {
-      id: "/sitemap.xml"
-      path: "/sitemap.xml"
-      fullPath: "/sitemap.xml"
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
       preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
-    "/rss.xml": {
-      id: "/rss.xml"
-      path: "/rss.xml"
-      fullPath: "/rss.xml"
+    '/rss.xml': {
+      id: '/rss.xml'
+      path: '/rss.xml'
+      fullPath: '/rss.xml'
       preLoaderRoute: typeof RssDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
-    "/llms-full.txt": {
-      id: "/llms-full.txt"
-      path: "/llms-full.txt"
-      fullPath: "/llms-full.txt"
+    '/llms-full.txt': {
+      id: '/llms-full.txt'
+      path: '/llms-full.txt'
+      fullPath: '/llms-full.txt'
       preLoaderRoute: typeof LlmsFullDottxtRouteImport
       parentRoute: typeof rootRouteImport
     }
-    "/(home)": {
-      id: "/(home)"
-      path: ""
-      fullPath: ""
+    '/(home)': {
+      id: '/(home)'
+      path: ''
+      fullPath: ''
       preLoaderRoute: typeof homeRouteRouteImport
       parentRoute: typeof rootRouteImport
     }
-    "/(home)/": {
-      id: "/(home)/"
-      path: "/"
-      fullPath: "/"
+    '/(home)/': {
+      id: '/(home)/'
+      path: '/'
+      fullPath: '/'
       preLoaderRoute: typeof homeIndexRouteImport
       parentRoute: typeof homeRouteRoute
     }
-    "/llms.mdx/$": {
-      id: "/llms.mdx/$"
-      path: "/llms.mdx/$"
-      fullPath: "/llms.mdx/$"
+    '/llms.mdx/$': {
+      id: '/llms.mdx/$'
+      path: '/llms.mdx/$'
+      fullPath: '/llms.mdx/$'
       preLoaderRoute: typeof LlmsDotmdxSplatRouteImport
       parentRoute: typeof rootRouteImport
     }
-    "/docs/$": {
-      id: "/docs/$"
-      path: "/docs/$"
-      fullPath: "/docs/$"
+    '/docs/$': {
+      id: '/docs/$'
+      path: '/docs/$'
+      fullPath: '/docs/$'
       preLoaderRoute: typeof DocsSplatRouteImport
       parentRoute: typeof rootRouteImport
     }
-    "/docs-og/$": {
-      id: "/docs-og/$"
-      path: "/docs-og/$"
-      fullPath: "/docs-og/$"
+    '/docs-og/$': {
+      id: '/docs-og/$'
+      path: '/docs-og/$'
+      fullPath: '/docs-og/$'
       preLoaderRoute: typeof DocsOgSplatRouteImport
       parentRoute: typeof rootRouteImport
     }
-    "/api/search": {
-      id: "/api/search"
-      path: "/api/search"
-      fullPath: "/api/search"
+    '/api/search': {
+      id: '/api/search'
+      path: '/api/search'
+      fullPath: '/api/search'
       preLoaderRoute: typeof ApiSearchRouteImport
       parentRoute: typeof rootRouteImport
     }
-    "/(home)/blog/": {
-      id: "/(home)/blog/"
-      path: "/blog"
-      fullPath: "/blog"
+    '/(home)/blog/': {
+      id: '/(home)/blog/'
+      path: '/blog'
+      fullPath: '/blog'
       preLoaderRoute: typeof homeBlogIndexRouteImport
       parentRoute: typeof homeRouteRoute
     }
-    "/(home)/blog/$slug": {
-      id: "/(home)/blog/$slug"
-      path: "/blog/$slug"
-      fullPath: "/blog/$slug"
+    '/(home)/blog/$slug': {
+      id: '/(home)/blog/$slug'
+      path: '/blog/$slug'
+      fullPath: '/blog/$slug'
       preLoaderRoute: typeof homeBlogSlugRouteImport
       parentRoute: typeof homeRouteRoute
     }
@@ -259,7 +259,9 @@ const homeRouteRouteChildren: homeRouteRouteChildren = {
   homeBlogIndexRoute: homeBlogIndexRoute,
 }
 
-const homeRouteRouteWithChildren = homeRouteRoute._addFileChildren(homeRouteRouteChildren)
+const homeRouteRouteWithChildren = homeRouteRoute._addFileChildren(
+  homeRouteRouteChildren,
+)
 
 const rootRouteChildren: RootRouteChildren = {
   homeRouteRoute: homeRouteRouteWithChildren,
@@ -275,9 +277,9 @@ export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
 
-import type { getRouter } from "./router.tsx"
-import type { createStart } from "@tanstack/react-start"
-declare module "@tanstack/react-start" {
+import type { getRouter } from './router.tsx'
+import type { createStart } from '@tanstack/react-start'
+declare module '@tanstack/react-start' {
   interface Register {
     ssr: true
     router: Awaited<ReturnType<typeof getRouter>>
