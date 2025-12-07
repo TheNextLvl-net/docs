@@ -1,143 +1,144 @@
 import type { ShikiTransformer, ThemedToken } from "@shikijs/types";
 import { getCommandColor } from "./command-colors";
 
-interface ColorContentRange {
+interface Range {
 	start: number;
 	end: number;
+}
+
+interface ColorRange extends Range {
 	color: string;
 }
 
-interface HideRange {
-	start: number;
-	end: number;
+interface ParsedRanges {
+	colors: ColorRange[];
+	hidden: Range[];
 }
 
-interface MetaRanges {
-	contents: ColorContentRange[];
-	hides: HideRange[];
-}
+const TAG_REGEX = /<([A-Za-z_+-]+)>([\s\S]*?)<\/\1>/g;
 
-function detectRanges(code: string): MetaRanges {
-	const contents: ColorContentRange[] = [];
-	const hides: HideRange[] = [];
+function parseColorTags(code: string): ParsedRanges {
+	const colors: ColorRange[] = [];
+	const hidden: Range[] = [];
 
-	const re = /<([A-Za-z_+-]+)>([\s\S]*?)<\/\1>/g;
-	let match: RegExpExecArray | null;
-	while (true) {
-		match = re.exec(code);
-		if (!match) break;
-		const [full, colorName] = match;
-		const openStart = match.index;
-		const openEnd = openStart + `<${colorName}>`.length;
-		const closeEnd = openStart + full.length;
-		const closeStart = closeEnd - `</${colorName}>`.length;
-		hides.push({ start: openStart, end: openEnd });
-		hides.push({ start: closeStart, end: closeEnd });
-		contents.push({ start: openEnd, end: closeStart, color: colorName });
+	for (const match of code.matchAll(TAG_REGEX)) {
+		const [full, tagName] = match;
+		const tagStart = match.index;
+		const openTagEnd = tagStart + `<${tagName}>`.length;
+		const closeTagStart = tagStart + full.length - `</${tagName}>`.length;
+		const closeTagEnd = tagStart + full.length;
+
+		hidden.push({ start: tagStart, end: openTagEnd });
+		hidden.push({ start: closeTagStart, end: closeTagEnd });
+		colors.push({ start: openTagEnd, end: closeTagStart, color: tagName });
 	}
 
-	return { contents, hides };
+	return { colors, hidden };
 }
 
-function splitTokenAtOffsets(
-	token: ThemedToken,
-	breakpoints: number[],
-): ThemedToken[] {
-	if (!breakpoints.length) return [token];
-	const local = Array.from(
-		new Set(
-			breakpoints.filter(
-				(bp) => bp > token.offset && bp < token.offset + token.content.length,
-			),
-		),
-	).sort((a, b) => a - b);
+function isWithinRange(token: ThemedToken, range: Range): boolean {
+	return (
+		range.start <= token.offset &&
+		token.offset + token.content.length <= range.end
+	);
+}
 
-	if (!local.length) return [token];
+function getBreakpoints(
+	ranges: ParsedRanges,
+	lineStart: number,
+	lineEnd: number,
+): number[] {
+	const points = new Set<number>();
+
+	for (const range of [...ranges.hidden, ...ranges.colors]) {
+		if (range.start > lineStart && range.start < lineEnd)
+			points.add(range.start);
+		if (range.end > lineStart && range.end < lineEnd) points.add(range.end);
+	}
+
+	return [...points].sort((a, b) => a - b);
+}
+
+function splitToken(token: ThemedToken, breakpoints: number[]): ThemedToken[] {
+	const localBreaks = breakpoints.filter(
+		(bp) => bp > token.offset && bp < token.offset + token.content.length,
+	);
+
+	if (!localBreaks.length) return [token];
 
 	const result: ThemedToken[] = [];
-	let last = 0;
-	for (const bp of local) {
-		const idx = bp - token.offset;
-		if (idx > last) {
+	let cursor = 0;
+
+	for (const bp of localBreaks) {
+		const splitIndex = bp - token.offset;
+		if (splitIndex > cursor) {
 			result.push({
 				...token,
-				content: token.content.slice(last, idx),
-				offset: token.offset + last,
+				content: token.content.slice(cursor, splitIndex),
+				offset: token.offset + cursor,
 			});
 		}
-		last = idx;
+		cursor = splitIndex;
 	}
-	if (last < token.content.length) {
+
+	if (cursor < token.content.length) {
 		result.push({
 			...token,
-			content: token.content.slice(last),
-			offset: token.offset + last,
+			content: token.content.slice(cursor),
+			offset: token.offset + cursor,
 		});
 	}
+
 	return result;
 }
 
+function applyColorToToken(
+	token: ThemedToken,
+	ranges: ParsedRanges,
+): ThemedToken {
+	const colorRange = ranges.colors.find((r) => isWithinRange(token, r));
+	if (!colorRange) return token;
+
+	const color = getCommandColor(colorRange.color);
+	if (!color) return token;
+
+	return {
+		...token,
+		htmlStyle: { ...(token.htmlStyle || {}), color },
+	};
+}
+
 export function transformerCommandColor(): ShikiTransformer {
-	const map = new WeakMap<object, MetaRanges>();
+	const rangeCache = new WeakMap<object, ParsedRanges>();
 
 	return {
 		name: "color-tags",
 		preprocess(code) {
-			const ranges = detectRanges(code);
 			const metaKey = (this as unknown as { meta?: object }).meta ?? {};
-			map.set(metaKey, ranges);
+			rangeCache.set(metaKey, parseColorTags(code));
 			return undefined;
 		},
 		tokens(lines) {
 			const metaKey = (this as unknown as { meta?: object }).meta ?? {};
-			const ranges = map.get(metaKey);
+			const ranges = rangeCache.get(metaKey);
 			if (!ranges) return lines;
 
 			return lines.map((line) => {
 				if (!line.length) return line;
 
-				const start = line[0];
-				const end = line[line.length - 1];
-				const lineStart = start.offset;
-				const lineEnd = end.offset + end.content.length;
+				const lineStart = line[0].offset;
+				const lastToken = line[line.length - 1];
+				const lineEnd = lastToken.offset + lastToken.content.length;
 
-				const bps: number[] = [];
-				for (const r of [...ranges.hides, ...ranges.contents]) {
-					if (r.start > lineStart && r.start < lineEnd) bps.push(r.start);
-					if (r.end > lineStart && r.end < lineEnd) bps.push(r.end);
-				}
+				const breakpoints = getBreakpoints(ranges, lineStart, lineEnd);
+				if (!breakpoints.length) return line;
 
-				if (!bps.length) return line;
-
-				const splitted = line.flatMap((t) => splitTokenAtOffsets(t, bps));
-
-				const styled: ThemedToken[] = splitted
-					.filter((seg) => {
-						return !ranges.hides.some(
-							(r) =>
-								r.start <= seg.offset &&
-								seg.offset + seg.content.length <= r.end,
-						);
-					})
-					.map((seg) => {
-						const contentRange = ranges.contents.find(
-							(r) =>
-								r.start <= seg.offset &&
-								seg.offset + seg.content.length <= r.end,
-						);
-						if (contentRange) {
-							const cfg = getCommandColor(contentRange.color);
-							if (cfg) {
-								return {
-									...seg,
-									htmlStyle: { ...(seg.htmlStyle || {}), color: cfg },
-								};
-							}
-						}
-						return seg;
-					});
-
-				return styled;
+				return line
+					.flatMap((token) => splitToken(token, breakpoints))
+					.filter(
+						(token) => !ranges.hidden.some((r) => isWithinRange(token, r)),
+					)
+					.map((token) => applyColorToToken(token, ranges));
 			});
 		},
 	};
