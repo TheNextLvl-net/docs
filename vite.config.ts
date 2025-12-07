@@ -18,6 +18,7 @@ export default defineConfig({
 		exclude: ["@takumi-rs/core"],
 	},
 	plugins: [
+		tsConfigPaths(),
 		mdx(MdxConfig),
 		nitro({
 			routeRules: {
@@ -43,7 +44,6 @@ export default defineConfig({
 			},
 		}),
 		tailwindcss(),
-		tsConfigPaths(),
 		tanstackStart({
 			sitemap: {
 				enabled: true,
