@@ -1,19 +1,19 @@
 {
-  "root": true,
-  "title": "Tweaks",
-  "description": "A convenient all-in-one solution",
-  "icon": "Wrench",
-  "pages": [
-    "---Links---",
-    "external:[Github][GitHub](https://github.com/TheNextLvl-net/tweaks)",
-    "external:[Download][Download](https://modrinth.com/project/HLkJsjy0#download)",
-    "external:[ChartLine][Metrics](https://bstats.org/plugin/bukkit/TheNextLvl%20Tweaks/19651)",
-    "---Introduction---",
-    "index",
-    "faq",
-    "---Guide---",
-    "commands",
-    "configuration",
-    "server-links"
-  ]
+	"root": true,
+	"title": "Tweaks",
+	"description": "A convenient all-in-one solution",
+	"icon": "Wrench",
+	"pages": [
+		"---Links---",
+		"external:[Github][GitHub](https://github.com/TheNextLvl-net/tweaks)",
+		"external:[Download][Download](https://modrinth.com/project/HLkJsjy0#download)",
+		"external:[ChartLine][Metrics](https://bstats.org/plugin/bukkit/TheNextLvl%20Tweaks/19651)",
+		"---Introduction---",
+		"index",
+		"faq",
+		"---Guide---",
+		"commands",
+		"configuration",
+		"server-links"
+	]
 }

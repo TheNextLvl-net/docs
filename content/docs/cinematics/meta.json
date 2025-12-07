@@ -1,20 +1,20 @@
 {
-  "root": true,
-  "title": "Cinematics",
-  "description": "Record and play in-game cinematics",
-  "icon": "Video",
-  "pages": [
-    "---Links---",
-    "external:[Github][GitHub](https://github.com/TheNextLvl-net/cinematics)",
-    "external:[Download][Download](https://modrinth.com/project/pde6oQ66#download)",
-    "external:[ChartLine][Metrics](https://bstats.org/plugin/bukkit/TheNextLvl%20Cinematics/27391)",
-    "external:[BookDown][Repository](https://repo.thenextlvl.net/#/releases/net/thenextlvl/cinematics)",
-    "---Introduction---",
-    "index",
-    "faq",
-    "---Guide---",
-    "---For Developers---",
-    "api/repository",
-    "api/index"
-  ]
+	"root": true,
+	"title": "Cinematics",
+	"description": "Record and play in-game cinematics",
+	"icon": "Video",
+	"pages": [
+		"---Links---",
+		"external:[Github][GitHub](https://github.com/TheNextLvl-net/cinematics)",
+		"external:[Download][Download](https://modrinth.com/project/pde6oQ66#download)",
+		"external:[ChartLine][Metrics](https://bstats.org/plugin/bukkit/TheNextLvl%20Cinematics/27391)",
+		"external:[BookDown][Repository](https://repo.thenextlvl.net/#/releases/net/thenextlvl/cinematics)",
+		"---Introduction---",
+		"index",
+		"faq",
+		"---Guide---",
+		"---For Developers---",
+		"api/repository",
+		"api/index"
+	]
 }

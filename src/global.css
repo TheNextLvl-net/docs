@@ -3,5 +3,5 @@
 @import "fumadocs-ui/css/preset.css";
 
 * {
-  border-radius: 0 !important;
+	border-radius: 0;
 }

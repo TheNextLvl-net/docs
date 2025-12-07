@@ -1,20 +1,20 @@
 {
-  "root": true,
-  "title": "Protect",
-  "description": "Create and manage protected areas",
-  "icon": "Shield",
-  "pages": [
-    "---Links---",
-    "external:[Github][GitHub](https://github.com/TheNextLvl-net/protect)",
-    "external:[Download][Download](https://modrinth.com/project/YNoH2pBx#download)",
-    "external:[ChartLine][Metrics](https://bstats.org/plugin/bukkit/TheNextLvl%20Protect/21712)",
-    "external:[BookDown][Repository](https://repo.thenextlvl.net/#/releases/net/thenextlvl/protect)",
-    "---Introduction---",
-    "index",
-    "faq",
-    "---Guide---",
-    "---For Developers---",
-    "api/repository",
-    "api/index"
-  ]
+	"root": true,
+	"title": "Protect",
+	"description": "Create and manage protected areas",
+	"icon": "Shield",
+	"pages": [
+		"---Links---",
+		"external:[Github][GitHub](https://github.com/TheNextLvl-net/protect)",
+		"external:[Download][Download](https://modrinth.com/project/YNoH2pBx#download)",
+		"external:[ChartLine][Metrics](https://bstats.org/plugin/bukkit/TheNextLvl%20Protect/21712)",
+		"external:[BookDown][Repository](https://repo.thenextlvl.net/#/releases/net/thenextlvl/protect)",
+		"---Introduction---",
+		"index",
+		"faq",
+		"---Guide---",
+		"---For Developers---",
+		"api/repository",
+		"api/index"
+	]
 }

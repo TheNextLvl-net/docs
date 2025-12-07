@@ -1,15 +1,15 @@
 {
-  "pages": [
-    "create",
-    "actions",
-    "attributes",
-    "skins",
-    "equipment",
-    "tag",
-    "goal",
-    "view-permission",
-    "delete",
-    "command-permissions",
-    "..."
-  ]
+	"pages": [
+		"create",
+		"actions",
+		"attributes",
+		"skins",
+		"equipment",
+		"tag",
+		"goal",
+		"view-permission",
+		"delete",
+		"command-permissions",
+		"..."
+	]
 }

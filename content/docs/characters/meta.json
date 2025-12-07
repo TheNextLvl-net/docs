@@ -1,21 +1,21 @@
 {
-  "root": true,
-  "title": "Characters",
-  "description": "Create and manage NPCs",
-  "icon": "User",
-  "pages": [
-    "---Links---",
-    "external:[Github][GitHub](https://github.com/TheNextLvl-net/characters)",
-    "external:[Download][Download](https://modrinth.com/project/oeBa7ep1#download)",
-    "external:[ChartLine][Metrics](https://bstats.org/plugin/bukkit/TheNextLvl%20Characters/24223)",
-    "external:[BookDown][Repository](https://repo.thenextlvl.net/#/releases/net/thenextlvl/characters)",
-    "---Introduction---",
-    "index",
-    "faq",
-    "---Guide---",
-    "manage",
-    "---For Developers---",
-    "api/repository",
-    "api/index"
-  ]
+	"root": true,
+	"title": "Characters",
+	"description": "Create and manage NPCs",
+	"icon": "User",
+	"pages": [
+		"---Links---",
+		"external:[Github][GitHub](https://github.com/TheNextLvl-net/characters)",
+		"external:[Download][Download](https://modrinth.com/project/oeBa7ep1#download)",
+		"external:[ChartLine][Metrics](https://bstats.org/plugin/bukkit/TheNextLvl%20Characters/24223)",
+		"external:[BookDown][Repository](https://repo.thenextlvl.net/#/releases/net/thenextlvl/characters)",
+		"---Introduction---",
+		"index",
+		"faq",
+		"---Guide---",
+		"manage",
+		"---For Developers---",
+		"api/repository",
+		"api/index"
+	]
 }

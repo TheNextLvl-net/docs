@@ -1,22 +1,22 @@
 {
-  "root": true,
-  "title": "ServiceIO",
-  "description": "A powerful and fast Vault replacement",
-  "icon": "Archive",
-  "pages": [
-    "---Links---",
-    "external:[Github][GitHub](https://github.com/TheNextLvl-net/service-io)",
-    "external:[Download][Download](https://modrinth.com/project/MNPyHOe7#download)",
-    "external:[ChartLine][Metrics](https://bstats.org/plugin/bukkit/TheNextLvl%20ServiceIO/23083)",
-    "external:[BookDown][Repository](https://repo.thenextlvl.net/#/releases/net/thenextlvl/services/service-io)",
-    "---Introduction---",
-    "index",
-    "faq",
-    "---Guide---",
-    "guide/placeholders",
-    "guide/compatibility",
-    "---For Developers---",
-    "api/repository",
-    "api/index"
-  ]
+	"root": true,
+	"title": "ServiceIO",
+	"description": "A powerful and fast Vault replacement",
+	"icon": "Archive",
+	"pages": [
+		"---Links---",
+		"external:[Github][GitHub](https://github.com/TheNextLvl-net/service-io)",
+		"external:[Download][Download](https://modrinth.com/project/MNPyHOe7#download)",
+		"external:[ChartLine][Metrics](https://bstats.org/plugin/bukkit/TheNextLvl%20ServiceIO/23083)",
+		"external:[BookDown][Repository](https://repo.thenextlvl.net/#/releases/net/thenextlvl/services/service-io)",
+		"---Introduction---",
+		"index",
+		"faq",
+		"---Guide---",
+		"guide/placeholders",
+		"guide/compatibility",
+		"---For Developers---",
+		"api/repository",
+		"api/index"
+	]
 }

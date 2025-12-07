@@ -1,17 +1,17 @@
 {
-  "pages": [
-    "create",
-    "clone",
-    "regenerate",
-    "recreate",
-    "import",
-    "load-unload",
-    "delete",
-    "links",
-    "backup",
-    "info-list",
-    "save",
-    "seed",
-    "teleport"
-  ]
+	"pages": [
+		"create",
+		"clone",
+		"regenerate",
+		"recreate",
+		"import",
+		"load-unload",
+		"delete",
+		"links",
+		"backup",
+		"info-list",
+		"save",
+		"seed",
+		"teleport"
+	]
 }

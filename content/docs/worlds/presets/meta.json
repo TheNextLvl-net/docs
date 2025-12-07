@@ -1,13 +1,13 @@
 {
-  "pages": [
-    "classic-flat",
-    "tunnelers-dream",
-    "water-world",
-    "overworld",
-    "snowy-kingdom",
-    "bottomless-pit",
-    "desert",
-    "redstone-ready",
-    "the-void"
-  ]
+	"pages": [
+		"classic-flat",
+		"tunnelers-dream",
+		"water-world",
+		"overworld",
+		"snowy-kingdom",
+		"bottomless-pit",
+		"desert",
+		"redstone-ready",
+		"the-void"
+	]
 }
