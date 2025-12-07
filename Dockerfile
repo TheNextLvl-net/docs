@@ -1,42 +1,24 @@
-FROM oven/bun:1.3.4-alpine AS base
+FROM oven/bun:1 AS base
+WORKDIR /app
 
 FROM base AS deps
-WORKDIR /app
+RUN apt-get update && apt-get install -y git && rm -rf /var/lib/apt/lists/*
+COPY package.json bun.lock source.config.ts tsconfig.json ./
+COPY src ./src
+RUN bun install --frozen-lockfile
 
-COPY package.json bun.lock* ./
-RUN bun install --frozen-lockfile --ignore-scripts
-RUN bun run postinstall || true
-
-
-FROM base AS builder
-RUN apk add --no-cache git
-WORKDIR /app
+FROM base AS build
+RUN apt-get update && apt-get install -y git && rm -rf /var/lib/apt/lists/*
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
-
-ENV NEXT_TELEMETRY_DISABLED=1
-
 RUN bun run build
 
-FROM base AS runner
-WORKDIR /app
-
-ENV NODE_ENV=production
-ENV NEXT_TELEMETRY_DISABLED=1
-
-RUN addgroup --system --gid 1001 nodejs
-RUN adduser --system --uid 1001 nextjs
-
-COPY --from=builder /app/public ./public
-
-COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
-COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
-
-USER nextjs
+FROM base AS runtime
+RUN apt-get update && apt-get install -y git && rm -rf /var/lib/apt/lists/*
+COPY --from=build /app/.output ./.output
+COPY --from=build /app/node_modules ./node_modules
+COPY --from=build /app/package.json ./
 
 EXPOSE 3000
+CMD ["bun", "run", ".output/server/index.mjs"]
 
-ENV PORT=3000
-
-ENV HOSTNAME="0.0.0.0"
-CMD ["bun", "run", "server.js"]

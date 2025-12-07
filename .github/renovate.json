@@ -1,13 +1,10 @@
 {
-  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "config:recommended",
-    ":disableDependencyDashboard"
-  ],
-    "packageRules": [
-      {
-        "matchPackageNames": ["fumadocs-*"],
-        "groupName": "fumadocs"
-        }
-    ]
+	"$schema": "https://docs.renovatebot.com/renovate-schema.json",
+	"extends": ["config:recommended", ":disableDependencyDashboard"],
+	"packageRules": [
+		{
+			"matchPackageNames": ["fumadocs-*"],
+			"groupName": "fumadocs"
+		}
+	]
 }

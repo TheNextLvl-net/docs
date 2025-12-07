@@ -20,6 +20,8 @@
 /build
 *.tsbuildinfo
 .open-next
+.tanstack
+.output
 
 # misc
 .DS_Store

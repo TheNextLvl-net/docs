@@ -1,20 +1,20 @@
 {
-  "root": true,
-  "title": "Economist",
-  "description": "Create and manage in-game economies",
-  "icon": "Landmark",
-  "pages": [
-    "---Links---",
-    "external:[Github][GitHub](https://github.com/TheNextLvl-net/economist)",
-    "external:[Download][Download](https://modrinth.com/project/VQ63EMAa#download)",
-    "external:[ChartLine][Metrics](https://bstats.org/plugin/bukkit/TheNextLvl%20Economist/23261)",
-    "external:[BookDown][Repository](https://repo.thenextlvl.net/#/releases/net/thenextlvl/economist)",
-    "---Introduction---",
-    "index",
-    "faq",
-    "---Guide---",
-    "---For Developers---",
-    "api/repository",
-    "api/index"
-  ]
+	"root": true,
+	"title": "Economist",
+	"description": "Create and manage in-game economies",
+	"icon": "Landmark",
+	"pages": [
+		"---Links---",
+		"external:[Github][GitHub](https://github.com/TheNextLvl-net/economist)",
+		"external:[Download][Download](https://modrinth.com/project/VQ63EMAa#download)",
+		"external:[ChartLine][Metrics](https://bstats.org/plugin/bukkit/TheNextLvl%20Economist/23261)",
+		"external:[BookDown][Repository](https://repo.thenextlvl.net/#/releases/net/thenextlvl/economist)",
+		"---Introduction---",
+		"index",
+		"faq",
+		"---Guide---",
+		"---For Developers---",
+		"api/repository",
+		"api/index"
+	]
 }

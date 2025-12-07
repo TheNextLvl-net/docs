@@ -1,23 +1,23 @@
 {
-  "root": true,
-  "title": "Worlds",
-  "description": "The most powerful world management plugin",
-  "icon": "Globe",
-  "pages": [
-    "---Links---",
-    "external:[Github][GitHub](https://github.com/TheNextLvl-net/worlds)",
-    "external:[Download][Download](https://modrinth.com/project/gBIw3Gvy#download)",
-    "external:[ChartLine][Metrics](https://bstats.org/plugin/bukkit/TheNextLvl%20Worlds/19652)",
-    "external:[BookDown][Repository](https://repo.thenextlvl.net/#/releases/net/thenextlvl/worlds)",
-    "---Introduction---",
-    "index",
-    "faq",
-    "---Guide---",
-    "commands",
-    "presets",
-    "permissions",
-    "---For Developers---",
-    "api/repository",
-    "api/index"
-  ]
+	"root": true,
+	"title": "Worlds",
+	"description": "The most powerful world management plugin",
+	"icon": "Globe",
+	"pages": [
+		"---Links---",
+		"external:[Github][GitHub](https://github.com/TheNextLvl-net/worlds)",
+		"external:[Download][Download](https://modrinth.com/project/gBIw3Gvy#download)",
+		"external:[ChartLine][Metrics](https://bstats.org/plugin/bukkit/TheNextLvl%20Worlds/19652)",
+		"external:[BookDown][Repository](https://repo.thenextlvl.net/#/releases/net/thenextlvl/worlds)",
+		"---Introduction---",
+		"index",
+		"faq",
+		"---Guide---",
+		"commands",
+		"presets",
+		"permissions",
+		"---For Developers---",
+		"api/repository",
+		"api/index"
+	]
 }

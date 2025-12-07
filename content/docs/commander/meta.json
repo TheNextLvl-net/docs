@@ -1,25 +1,25 @@
 {
-  "root": true,
-  "title": "Commander",
-  "description": "Manage command visibility and permissions",
-  "icon": "Command",
-  "pages": [
-    "---Links---",
-    "external:[Github][GitHub](https://github.com/TheNextLvl-net/commander)",
-    "external:[Download][Download](https://modrinth.com/project/USLuwMUi#download)",
-    "external:[ChartLine][Metrics](https://bstats.org/plugin/bukkit/TheNextLvl%20Commander/22782)",
-    "external:[BookDown][Repository](https://repo.thenextlvl.net/#/releases/net/thenextlvl/commander)",
-    "---Introduction---",
-    "index",
-    "faq",
-    "---Guide---",
-    "hide-reveal",
-    "unregister-register",
-    "permissions",
-    "reset",
-    "reload-save",
-    "---For Developers---",
-    "api/repository",
-    "api/index"
-  ]
+	"root": true,
+	"title": "Commander",
+	"description": "Manage command visibility and permissions",
+	"icon": "Command",
+	"pages": [
+		"---Links---",
+		"external:[Github][GitHub](https://github.com/TheNextLvl-net/commander)",
+		"external:[Download][Download](https://modrinth.com/project/USLuwMUi#download)",
+		"external:[ChartLine][Metrics](https://bstats.org/plugin/bukkit/TheNextLvl%20Commander/22782)",
+		"external:[BookDown][Repository](https://repo.thenextlvl.net/#/releases/net/thenextlvl/commander)",
+		"---Introduction---",
+		"index",
+		"faq",
+		"---Guide---",
+		"hide-reveal",
+		"unregister-register",
+		"permissions",
+		"reset",
+		"reload-save",
+		"---For Developers---",
+		"api/repository",
+		"api/index"
+	]
 }
