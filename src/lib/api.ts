@@ -18,13 +18,18 @@ export async function latestVersion(project: string): Promise<string> {
 }
 
 export async function lastEdit(page: Page): Promise<Date> {
+	const isBlog = page.url.startsWith("/blog");
+	const contentPath = isBlog
+		? `content/blog/${page.path}`
+		: `content/docs/${page.path}`;
+
 	const time = await getGithubLastEdit({
 		owner: "TheNextLvl-net",
 		repo: "docs",
 		token: process.env.GITHUB_TOKEN
 			? `Bearer ${process.env.GITHUB_TOKEN}`
 			: undefined,
-		path: `content/docs/${page.path}`,
+		path: contentPath,
 	}).catch((error) => {
 		console.error("Error fetching last edit date:", error);
 		return new Date();

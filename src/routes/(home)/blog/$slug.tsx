@@ -4,7 +4,6 @@ import { createServerFn } from "@tanstack/react-start";
 import { PathUtils } from "fumadocs-core/source";
 import type { TOCItemType } from "fumadocs-core/toc";
 import defaultMdxComponents from "fumadocs-ui/mdx";
-import { lastEdit } from "@/lib/api";
 import { blog } from "@/lib/source";
 
 export const Route = createFileRoute("/(home)/blog/$slug")({
@@ -24,15 +23,15 @@ const serverLoader = createServerFn({
 		const page = blog.getPage([slug]);
 		if (!page) throw notFound();
 
-		const editDate = await lastEdit(page);
-
+		const creationDate = page.data.date;
 		return {
 			path: page.path,
 			title: page.data.title,
 			description: page.data.description,
 			author: page.data.author,
 			lastModified:
-				editDate?.toISOString() ??
+				creationDate?.toISOString() ??
+				creationDate?.toISOString() ??
 				PathUtils.basename(page.path, PathUtils.extname(page.path)),
 		};
 	});

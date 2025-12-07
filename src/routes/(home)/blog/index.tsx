@@ -77,7 +77,7 @@ function RouteComponent() {
 											<div className="h-3 w-px bg-fd-border" />
 											<time>
 												{new Date(
-													post.data.lastModified ?? new Date().toISOString(),
+													post.data.date ?? new Date().toISOString(),
 												).toLocaleDateString("en-US", {
 													month: "long",
 													day: "numeric",

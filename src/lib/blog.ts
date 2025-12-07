@@ -6,8 +6,8 @@ export const getBlogPosts = createServerFn({
 	method: "GET",
 }).handler(async () => {
 	const posts = blog.getPages().sort((a, b) => {
-		const dateA = new Date(a.data.lastModified ?? 0);
-		const dateB = new Date(b.data.lastModified ?? 0);
+		const dateA = new Date(a.data.date ?? 0);
+		const dateB = new Date(b.data.date ?? 0);
 		return dateB.getTime() - dateA.getTime();
 	});
 
@@ -17,7 +17,7 @@ export const getBlogPosts = createServerFn({
 		data: {
 			title: post.data.title,
 			description: post.data.description,
-			lastModified: post.data.lastModified,
+			date: post.data.date,
 			author: post.data.author,
 			category: (post.data as { category?: string }).category,
 		},
@@ -37,7 +37,7 @@ export const getBlogPost = createServerFn({
 			data: {
 				title: page.data.title,
 				description: page.data.description,
-				lastModified: page.data.lastModified,
+				date: page.data.date,
 				author: page.data.author,
 			},
 		};

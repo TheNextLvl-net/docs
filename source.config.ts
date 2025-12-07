@@ -30,6 +30,7 @@ export const blogPosts = defineCollections({
 		author: z.string(),
 		category: z.enum(["devlog", "updates", "other"]),
 		keywords: z.string().array().optional(),
+		date: z.string().transform((val) => new Date(val)),
 	}),
 });
 
