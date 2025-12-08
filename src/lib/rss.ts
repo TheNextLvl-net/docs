@@ -1,5 +1,4 @@
 import { Feed } from "feed";
-import { lastEdit } from "@/lib/api";
 import { blog } from "@/lib/source";
 
 const baseUrl = "https://thenextlvl.net";
@@ -23,7 +22,7 @@ export async function getRSS() {
 			title: page.data.title,
 			description: page.data.description,
 			link: `${baseUrl}${page.url}`,
-			date: await lastEdit(page),
+			date: page.data.date,
 			author: [
 				{
 					name: page.data.author,
