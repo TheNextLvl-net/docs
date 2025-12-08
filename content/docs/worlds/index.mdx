@@ -135,7 +135,25 @@ Learn how to use and create custom presets in the [Presets documentation](/docs/
 - `worlds.commands.link` - All link commands
 - `worlds.commands.save` - All save commands
 
-See the [Permissions page](/docs/worlds/permissions) for a complete list.
+### World Entry Permissions
+
+World entry permissions allow you to control which players can enter specific worlds.  
+These permissions are **optional** — access is only denied if a player explicitly has the permission `worlds.enter.<key>` **revoked**.
+
+The `<key>` corresponds to the world's [key identifier](/docs/worlds/faq#key-argument). Examples:
+
+| World            | Key                          | Permission                                |
+|------------------|------------------------------|-------------------------------------------|
+| Overworld        | `minecraft:overworld`        | `worlds.enter.minecraft:overworld`        |
+| Farmworld        | `citybuild:farmworld`        | `worlds.enter.citybuild:farmworld`        |
+| Farmworld Nether | `citybuild:farmworld/nether` | `worlds.enter.citybuild:farmworld/nether` |
+
+<Callout type="error" title="Folia Limitation">
+  World entry permissions do **not** work on Folia servers.  
+  There are currently no workarounds due to how Folia handles region-based threading.
+</Callout>
+
+See the [Permissions page](/docs/worlds/permissions) for a complete list of all available permissions.
 
 ## Use Cases
 
