@@ -1,0 +1,94 @@
+---
+title: Why you should stop using Void Generator Plugins
+description: In this post I will talk about the downsides of using a void generator plugin for your Minecraft server and why you should consider alternatives.
+author: NonSwag
+category: other
+date: 12-08-2025
+keywords:
+  [
+    "minecraft plugins",
+    "plugin development",
+    "Worlds plugin",
+    "minecraft server tools",
+    "world generator plugin",
+    "void generator plugin",
+    "minecraft development"
+  ]
+---
+
+# What is wrong with using a Void Generator Plugin?
+
+I have often encountered the problem of corrupted worlds when using a Void Generator Plugin.  
+In case the world is transferred between servers or loaded in single player where the generator plugin is not available,
+Vanilla will pick up chunk generation where the generator cut off.  
+This causes the typical world corruption look many people are familiar with, a giant void surrounded by land.
+
+Another issue that bugs me is, most void generator plugins don't override the biome to be `minecraft:the_void`,
+nor spawn a proper [start platform](https://minecraft.wiki/w/Void_Start_Platform),
+or even set no spawn point, resulting you in plummeting to your death as soon as you enter the world.
+
+> But I can just ensure the plugin is always available.
+
+While that is a valid point, it is not always possible or practical.  
+When sharing worlds with others, you might not always have control over the plugin availability.  
+Also, imagine the plugin fails to load or gets disabled for some reason.  
+Then you are left with a corrupted world and no simple way to fix it.
+
+Furthermore, some Void Generator Plugins might not be compatible with all Minecraft servers or versions.
+
+# The Solution?
+
+Just use vanilla Minecraft! No plugins required, forward compatible, and works everywhere.
+
+Vanilla offers so-called [Flat world presets](https://minecraft.wiki/w/Superflat#Default_presets).  
+These presets allow you to create a world with a custom flat terrain.  
+You might be most familiar with the Classic Flat preset.
+
+The [Void](https://minecraft.wiki/w/The_Void) preset has been around since Minecraft 1.9
+_(specifically [15w37a](https://minecraft.wiki/w/Java_Edition_15w37a))_, so almost a decade.
+
+It spawns a proper [start platform](https://minecraft.wiki/w/Void_Start_Platform),
+making it easier to build on, and only consists of the `minecraft:the_void` biome,
+resulting in a less frustrating experience when first entering the world.
+
+> How do I create a Void world on my server without a void generator?
+
+## World management plugins
+
+You are probably already using one, and most serious world management plugins support creating worlds with custom presets
+_(also known as "generator settings")_.
+
+Our plugin [Worlds](/docs/worlds), allows you to use presets without any hassle.
+```
+/world create <aqua>"My void world"</aqua> preset <yellow>the-void</yellow>
+```
+
+With plugins like [Multiverse-Core](https://modrinth.com/project/3wmN97b8) this might be a little more complicated, but still possible.
+```
+/mv create <aqua>my_void_world normal --generator-settings {"biome":"minecraft:the_void","layers":[]}</aqua>
+```
+
+<Callout type="warn">
+  Multiverse-Core does not support custom generator settings on nether and end dimensions.  
+  _Worlds does not have this limitation ;)_
+</Callout>
+
+## Vanilla Minecraft settings
+
+If you don't have, or want to use, a world management plugin, you can use the generator settings directly inside the `server.properties` file.
+```properties
+generator-settings={"biome"\:"minecraft\:the_void","layers"\:[]}
+level-type=minecraft\:flat
+```
+
+<Callout type="warn">
+  The `generator-settings` approach only works for the overworld and only for new worlds.  
+  Also make sure to escape your colons and to set `level-type` to `minecraft:flat` as well.
+</Callout>
+
+## Singleplayer
+
+In Singleplayer, you can also select the Void preset from the world creation screen when creating a new Superflat world,
+by clicking the "Customize" button, selecting "Presets", choosing "The Void" and then "Use Preset" and "Done".
+
+You can also just upload singleplayer worlds to your server and every generator setting will be respected.
