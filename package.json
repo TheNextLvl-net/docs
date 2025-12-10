@@ -23,7 +23,7 @@
 		"fumadocs-core": "16.2.4",
 		"fumadocs-mdx": "14.1.0",
 		"fumadocs-ui": "16.2.4",
-		"lucide-react": "^0.556.0",
+		"lucide-react": "^0.557.0",
 		"mermaid": "^11.12.2",
 		"nitro": "^3.0.1-alpha.1",
 		"react": "^19.2.1",
