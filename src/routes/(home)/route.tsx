@@ -24,6 +24,7 @@ function RouteComponent() {
 					icon: <SiDiscord />,
 					text: "Discord",
 					url: "/discord",
+					external: true,
 				},
 			]}
 		>
