@@ -84,6 +84,10 @@ function RouteComponent() {
 													year: "numeric",
 												})}
 											</time>
+											<div className="h-3 w-px bg-fd-border" />
+											<span className="text-xs text-fd-muted-foreground">
+												{post.data.readingTime} min read
+											</span>
 										</div>
 									</article>
 								</Link>

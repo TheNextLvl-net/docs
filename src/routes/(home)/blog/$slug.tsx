@@ -23,6 +23,11 @@ const serverLoader = createServerFn({
 		const page = blog.getPage([slug]);
 		if (!page) throw notFound();
 
+		let wordCount = 0;
+		page.data.structuredData.contents.forEach((content) => {
+			wordCount += content.content.split(/\s+/).length;
+		});
+
 		const creationDate = page.data.date;
 		return {
 			path: page.path,
@@ -33,6 +38,7 @@ const serverLoader = createServerFn({
 				creationDate?.toISOString() ??
 				creationDate?.toISOString() ??
 				PathUtils.basename(page.path, PathUtils.extname(page.path)),
+			readingTime: Math.ceil(wordCount / 238),
 		};
 	});
 
@@ -118,6 +124,10 @@ function RouteComponent() {
 											year: "numeric",
 										})}
 									</time>
+									<div className="h-4 w-px bg-fd-muted-foreground" />
+									<span className="text-sm text-fd-muted-foreground">
+										{data.readingTime} min read
+									</span>
 								</div>
 							</div>
 						</div>
