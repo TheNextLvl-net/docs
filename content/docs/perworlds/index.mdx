@@ -4,48 +4,82 @@ description: Group and manage multiple worlds with ease.
 icon: BookMarked
 ---
 
-import { Command, Group, Blend, Link2, MessageCircleQuestionMark } from "lucide-react"
+# PerWorlds
 
-# PerWorlds [!toc]
+PerWorlds is a powerful per-world inventory plugin for **Paper** servers, allowing you to group multiple worlds together with separate inventories, advancements, statistics, gamerules, and much more.
 
-PerWorlds is a plugin that allows you to group multiple worlds together, each with its own unique settings and configurations.
-This also allows you to have **player data**, **inventories**, **gamerules**, and other settings that are specific to **each** world **group**.
+Think of it as a modern, feature-rich alternative to **Multiverse-Inventories** with significantly more options and flexibility.
 
-As a quick comparison, you can think of **PerWorlds** as **Multiverse Inventories** but with much more features and higher flexibility.
+## Features
 
-PerWorlds is designed to work seamlessly with [Worlds](/docs/worlds), but can also be used on its own.  
-It supports grouping worlds for separate inventories, advancements, statistics, gamerules, and more.  
-You can easily manage world groups, add or remove worlds, and configure options per group.
+### World Groups
 
-Here are a few selected guides that will help you get started with PerWorlds
+- **Flexible Grouping**: Group multiple worlds together to share player data
+- **Unlimited Groups**: Create as many world groups as you need
+- **Easy Management**: Add or remove worlds from groups at any time
+- **Group Spawns**: Set custom spawn points for each group
 
-<Cards>
-  <Card
-    title="Frequently Asked Questions"
-    description="Frequently asked questions about PerWorlds"
-    href="perworlds/faq"
-    icon={<MessageCircleQuestionMark />}
-    target="_self"
-  />
-  <Card
-    title="Managing Groups"
-    description="Create, delete, and manage world groups"
-    href="perworlds/manage/create"
-    icon={<Group />}
-    target="_self"
-  />
-  <Card
-    title="Group Options"
-    description="Configure what data is shared or separated per group"
-    href="perworlds/manage/options"
-    icon={<Blend />}
-    target="_self"
-  />
-  <Card
-    title="Command permissions"
-    description="A list of all PerWorlds commands and their required permissions."
-    href="perworlds/manage/command-permissions"
-    icon={<Command />}
-    target="_self"
-  />
-</Cards>
+### Per-Group Data Separation
+
+- **Inventories**: Separate player inventories per group
+- **Ender Chests**: Keep ender chest contents isolated per group
+- **Advancements**: Track advancements separately for each group
+- **Statistics**: Maintain separate statistics per group
+- **Experience**: Isolate XP and levels between groups
+- **Health & Hunger**: Separate survival states per group
+
+### Advanced Sync Options
+
+- **40+ Configurable Options**: Fine-tune exactly what data is synced per group
+- **Player States**: Control fly state, gamemode, potion effects, and more
+- **World Settings**: Sync gamerules, difficulty, time, weather, and world borders
+- **Messages**: Configure per-group chat, join/quit messages, and death messages
+- **Tab List**: Show only players in the same group
+
+### Seamless Integration
+
+- **Worlds Plugin**: Works seamlessly with [Worlds](/docs/worlds) (recommended for world management)
+- **Other World Managers**: Compatible with any world management plugin
+- **Purpur Support**: Extended ender chest rows are fully supported
+
+<Callout type="error">
+  PerWorlds does **not** support Folia due to API limitations.  
+  There are currently no plans to add Folia support.
+</Callout>
+
+## Quick Start
+
+### Basic Usage
+
+The main command is `/world group`, which requires the permission `perworlds.admin`:
+
+```
+<gray># Create a new world group</gray>
+/world group create <aqua>farmworld</aqua>
+
+<gray># Add worlds to the group</gray>
+/world group add <aqua>farmworld:normal</aqua> <yellow>farmworld</yellow>
+/world group add <aqua>farmworld:nether</aqua> <yellow>farmworld</yellow>
+/world group add <aqua>farmworld:the_end</aqua> <yellow>farmworld</yellow>
+
+<gray># List all groups</gray>
+/world group list
+
+<gray># View group information</gray>
+/world group info <aqua>farmworld</aqua>
+```
+
+#### Configuring Group Options
+
+Customize what data is synced for a specific group:
+
+```
+<gray># Disable inventory sync (players get empty inventory)</gray>
+/world group option inventory <aqua>farmworld</aqua> <yellow>false</yellow>
+
+<gray># Enable per-group chat</gray>
+/world group option chat <aqua>farmworld</aqua> <yellow>true</yellow>
+
+<gray># Query current option value</gray>
+/world group option gameMode <aqua>farmworld</aqua>
+```

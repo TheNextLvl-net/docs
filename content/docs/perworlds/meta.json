@@ -1,23 +1,26 @@
 {
-	"root": true,
-	"title": "PerWorlds",
-	"description": "The most versatile per-world plugin ever",
-	"icon": "Group",
-	"pages": [
-		"---Links---",
-		"external:[Github][GitHub](https://github.com/TheNextLvl-net/per-worlds)",
-		"external:[Download][Download](https://modrinth.com/project/lpfQmSV2#download)",
-		"external:[ChartLine][Metrics](https://bstats.org/plugin/bukkit/TheNextLvl%20PerWorlds/25295)",
-		"external:[BookDown][Repository](https://repo.thenextlvl.net/#/releases/net/thenextlvl/per-worlds)",
-		"---Introduction---",
-		"index",
-		"faq",
-		"---Guide---",
-		"manage",
-		"presets",
-		"per-worlds",
-		"---For Developers---",
-		"api/repository",
-		"api/index"
-	]
+  "root": true,
+  "title": "PerWorlds",
+  "description": "The most versatile per-world plugin ever",
+  "icon": "Group",
+  "pages": [
+    "---Links---",
+    "external:[Github][GitHub](https://github.com/TheNextLvl-net/per-worlds)",
+    "external:[Download][Download](https://modrinth.com/project/lpfQmSV2#download)",
+    "external:[ChartLine][Metrics](https://bstats.org/plugin/bukkit/TheNextLvl%20PerWorlds/25295)",
+    "external:[BookDown][Repository](https://repo.thenextlvl.net/#/releases/net/thenextlvl/per-worlds)",
+    "---Introduction---",
+    "index",
+    "faq",
+    "---Guide---",
+    "create",
+    "add",
+    "remove",
+    "options",
+    "delete",
+    "permissions",
+    "---For Developers---",
+    "api/repository",
+    "api/index"
+  ]
 }
