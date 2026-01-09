@@ -1,0 +1,34 @@
+---
+title: Automatic group creation
+description: How to automatically create groups for existing worlds.
+---
+
+To automatically create groups for all existing worlds, use the command `/world group auto`.
+This command has no arguments and uses a smart detection system to determine which worlds should be grouped together.
+
+The detection system analyzes world names and keys to automatically group worlds that belong together, such as overworld, nether, and end dimensions of the same world.
+
+## Behavior
+
+- **Non-destructive**: This command only affects worlds that aren't already in a group.  
+  Existing group assignments are preserved.
+- **Uses existing groups**: If a world has no group but a matching group already exists,  
+  it will be added to that existing group rather than creating a new one.
+- **Namespace-aware**: Worlds with similar names but different namespaces (keys)  
+  will not be grouped together.
+
+## Example
+
+Running the command:
+
+```
+/world group auto
+```
+
+This will automatically detect and group related worlds. For instance, if you have the following worlds:
+
+- `farmworld`
+- `farmworld_nether`
+- `farmworld_the_end`
+
+The command will automatically create a group called "farmworld" and add all three worlds to it.
