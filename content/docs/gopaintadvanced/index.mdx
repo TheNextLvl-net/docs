@@ -4,4 +4,105 @@ description: goPaint but on steroids
 icon: BookMarked
 ---
 
-Coming soon!
+# goPaintAdvanced
+
+goPaintAdvanced (gpa) is a high-performance fork of the **goPaint** plugin,
+designed to address the original's lack of maintenance, performance issues, and missing features.
+With full **FastAsyncWorldEdit** integration, survival-friendly editing, and modern optimizations,
+goPaintAdvanced delivers a vastly improved terrain painting experience.
+
+## Features
+
+### Performance & Compatibility
+
+- **FastAsyncWorldEdit Support**: Properly leverages FAWE's features and improvements over standard WorldEdit
+- **Insane Speed Improvements**: Faster algorithms and fully async editing for lag-free painting
+- **Modern Server Support**: Completely refactored legacy code for maintainability and compatibility
+- **Survival Friendly**: Edit support that works seamlessly in survival mode
+
+### Brushes & Painting
+
+- **All Original Brushes**: Every brush from goPaint is included and works as expected
+- **Underlay Brush**: New brush that only paints blocks with blocks above them
+- **Exposed Surface Mode**: Paints actual exposed blocks, unlike the original "visible" mode which only paints blocks in your line of sight
+- **WorldEdit Mask Support**: Use any WorldEdit mask, including complex ones (original only supported single block masks)
+
+### Configuration & Localization
+
+- **More Configuration Options**: Fine-tune the plugin to your needs
+- **Complete Localization**: Full l10n support for all messages and texts
+- **Proper Developer API**: Clean API for developers to extend functionality
+
+## Quick Start
+
+### Basic Usage
+
+The main command of goPaintAdvanced is `/gopaint` (or `/gp`),
+and provides expanded functionality over the original:
+
+```
+<gray># Open the goPaint GUI</gray>
+/gp menu
+
+<gray># Get the goPaint wand item</gray>
+/gp wand
+
+<gray># Toggle the brush on or off</gray>
+/gp toggle
+
+<gray># Change the brush size</gray>
+/gp size <aqua><size></aqua>
+
+<gray># Select a specific brush</gray>
+/gp brush <aqua><brush></aqua>
+
+<gray># Reload the configuration</gray>
+/gp reload
+```
+
+### Brush Settings Export/Import
+
+Save and share your brush configurations:
+```
+<gray># Export current brush settings to the item in hand</gray>
+/gp export
+
+<gray># Import brush settings from the held item into the GUI</gray>
+/gp import
+```
+
+## Commands
+
+| Command             | Description                          |
+|---------------------|--------------------------------------|
+| `/gp menu`          | Open the goPaint GUI                 |
+| `/gp wand`          | Receive the goPaint wand item        |
+| `/gp toggle`        | Enable or disable the brush          |
+| `/gp size <size>`   | Change the brush size                |
+| `/gp brush <brush>` | Select a specific brush              |
+| `/gp export`        | Export brush settings to held item   |
+| `/gp import`        | Import brush settings from held item |
+| `/gp reload`        | Reload the configuration             |
+
+## Surface Modes
+
+### Exposed Mode (New)
+
+The new **exposed** surface mode paints all blocks that are actually exposed to air,
+regardless of your viewing angle. This is the intuitive behavior most users expect.
+
+### Visible Mode (Original)
+
+The original **visible** mode only paints blocks directly in your line of sight.
+This can cause confusion when blocks that appear visible aren't painted due to
+the raycast check not hitting them.
+
+## Migrating from goPaint
+
+goPaintAdvanced is designed as a drop-in replacement for goPaint:
+
+- **Visual Compatibility**: The user interface remains mostly unchanged visually
+- **Command Compatibility**: Original commands still work (`/gp toggle`, `/gp size`, `/gp reload`)
+- **Feature Parity**: All original features are preserved and enhanced
+
+Simply replace goPaint with goPaintAdvanced and enjoy the improvements!
