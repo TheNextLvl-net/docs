@@ -1,0 +1,40 @@
+---
+title: Migrating player data
+description: How to set a migration group and move existing player data.
+---
+
+PerWorlds requires you to set a migration group before use. This tells the plugin which group
+to use when it first encounters a player.
+
+On existing servers, this moves player data (inventories, advancements, statistics, etc.)
+from Minecraft's default location into the specified group. On new servers without any
+player data yet, this step is still required — PerWorlds needs to know which group to use by default.
+
+**Usage:** `/world group migrate <group>`
+
+## Example
+
+If you want your existing player data to be moved to a group called "citybuild":
+
+```
+/world group migrate <aqua>citybuild</aqua>
+```
+
+From now on, whenever a player joins who has never been seen by PerWorlds before,
+their existing Minecraft data will automatically be moved into the "citybuild" group.
+
+## Important notes
+
+- **Always required**: This command must be run when setting up PerWorlds, regardless of whether
+  your server already has player data or is brand new.
+- **Only affects new players to PerWorlds**: The migration only applies to players who don't
+  already have data stored by PerWorlds. If PerWorlds has already saved data for a player,
+  their original Minecraft data won't be touched.
+- **Changing the migration group**: If you change the migration target to a different group later,
+  only players who haven't been seen by PerWorlds yet will have their data moved to the new group.
+  Players who already have PerWorlds data will keep their existing data.
+
+<Callout type="info">
+  Think of it this way: PerWorlds only migrates a player's data once — the first time it sees them.
+  After that, PerWorlds manages their data directly.
+</Callout>

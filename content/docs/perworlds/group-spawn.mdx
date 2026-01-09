@@ -1,0 +1,50 @@
+---
+title: Group spawn point
+description: How to set and remove spawn points for groups.
+---
+
+You can configure a custom spawn point for each group. The spawn point is used in the following situations:
+
+- **Respawning after death**: If the player has no valid respawn point (e.g., no bed or respawn anchor),
+  they will respawn at the group's spawn point.
+- **Group entry**: When a player enters a group for the first time and has no previous location saved,
+  or if teleportation to their previous location is disabled, they will be placed at the spawn point.
+- **Teleportation**: When using the `/world group teleport` command, players are teleported to the
+  group's spawn point (unless the last known location is used, see above).
+
+## Set a spawn point
+
+**Usage:** `/world group spawn set <group> [<world>] <position> [<rotation>]`
+
+| Argument   | Description                                               |
+|------------|-----------------------------------------------------------|
+| `group`    | The group to set the spawn point for.                     |
+| `world`    | The world where the spawn point is located.               |
+| `position` | The coordinates for the spawn point (x, y, z).            |
+| `rotation` | Optional. The rotation (yaw, pitch) the player will face. |
+
+### Example
+
+Set a spawn point for the "citybuild" group at coordinates 100, 64, 200 in the world "spawn":
+
+```
+/world group spawn set <aqua>citybuild</aqua> <aqua>spawn</aqua> <aqua>100 64 200</aqua>
+```
+
+With rotation (facing north):
+
+```
+/world group spawn set <aqua>citybuild</aqua> <aqua>spawn</aqua> <aqua>100 64 200</aqua> <aqua>180 0</aqua>
+```
+
+## Remove a spawn point
+
+**Usage:** `/world group spawn unset <group>`
+
+### Example
+
+Remove the spawn point for the "citybuild" group:
+
+```
+/world group spawn unset <aqua>citybuild</aqua>
+```
