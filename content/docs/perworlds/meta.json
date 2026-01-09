@@ -19,6 +19,7 @@
     "group-migrate",
     "group-info",
     "group-spawn",
+    "group-teleport",
     "remove",
     "options",
     "delete",

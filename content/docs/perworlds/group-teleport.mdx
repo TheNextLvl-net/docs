@@ -1,0 +1,24 @@
+---
+title: Teleport to a group
+description: How to teleport players to a group.
+---
+
+**Usage:** `/world group teleport <group> [<players>]`
+
+This command teleports a player to the specified group. The player will be placed at either
+their last known location in that group, or at the group's spawn point if no previous location
+exists or if teleportation to the previous location is disabled.
+
+## Examples
+
+Teleport yourself to the "citybuild" group:
+
+```
+/world group teleport <aqua>citybuild</aqua>
+```
+
+Teleport everyone to the "citybuild" group:
+
+```
+/world group teleport <aqua>citybuild</aqua> <yellow>@a</yellow>
+```
