@@ -25,6 +25,8 @@ To import an existing world, you can use the `/world import <path>` command.
 The import command also supports the following additional options:
 
 - `dimension` - Specifies the [dimension type](create#available-dimensions). Defaults to `normal`.
+- `directory` - Copies the given path to a new directory before importing.  
+  Useful for importing multiple dimensions from the same level.
 - `generator` - Specifies the world generator plugin to use for generating the world.
 - `key` - Sets the key for the world. Creates a key representation of the world name if not provided.
 - `name` - Sets the name for the world. If not provided, the world will be imported with its original name.
@@ -33,17 +35,43 @@ Options are specified as `option value` pairs, and can be used in any given orde
 
 ## Examples
 
+### Automatic import
+
+To import a world without any custom options, you can use:
+
+```
+/world import <aqua>Survival</aqua>
+```
+
+<Callout type="warning">
+  This tries to determine the world's dimension automatically.  
+  If the detection is wrong, you have to unload the world and reimport it with the correct dimension manually.
+</Callout>
+
+### Multiple Dimensions
+
+To import multiple dimensions from the same world level, you can use the `directory` option to copy each dimension to its own folder:
+
+```
+/world import <aqua>"New World"</aqua> key <yellow>new:world</yellow>
+/world import <aqua>"New World"</aqua> directory <green>"New World Nether"</green> dimension <green>nether</green> key <yellow>new:world/nether</yellow> name <yellow>"New World Nether"</yellow>
+/world import <aqua>"New World"</aqua> directory <green>"New World End"</green> dimension <green>end</green> key <yellow>new:world/end</yellow> name <yellow>"New World End"</yellow>
+```
+
+<Callout type="tip">
+  The `directory` option is particularly useful when you want to import a world whose `level.dat` is already managed by Worlds,
+  as it creates a copy instead of requiring manual file editing or restoring from a backup.
+</Callout>
+
+### Specific Dimension
+
 To import a specific dimension of a world, you can use the following command:
 
 ```
 /world import <aqua>End</aqua> key <yellow>worlds:end</yellow> dimension <green>end</green>
 ```
 
-To import a world with a specific generator, you can use the following command:
-
-```
-/world import <aqua>"My World"</aqua> generator <yellow>TheGeneratorPlugin</yellow>
-```
+### Different Name
 
 To import a world with a different name, you can use:
 
@@ -51,8 +79,10 @@ To import a world with a different name, you can use:
 /world import <aqua>"My World"</aqua> name <yellow>"New World Name"</yellow>
 ```
 
-To import a world without any custom options, you can use:
+### Custom Generator
+
+To import a world with a specific generator, you can use the following command:
 
 ```
-/world import <aqua>Survival</aqua>
+/world import <aqua>"My World"</aqua> generator <yellow>TheGeneratorPlugin</yellow>
 ```
