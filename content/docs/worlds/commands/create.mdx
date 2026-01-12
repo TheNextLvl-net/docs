@@ -30,6 +30,30 @@ Creating a new world with the default settings:
 /world create <aqua>"My New World"</aqua>
 ```
 
+## Using a flat world preset
+
+To generate a new world using an existing preset, use the command  
+`/world create <name> preset <preset> ...`
+
+World presets are a way to create worlds with specific settings.  
+Here you can find a list of [available presets](/docs/worlds/presets#available-presets).
+
+Want to learn how to create your own presets?  
+Check out the [Creating a world preset](/docs/worlds/presets) documentation.
+
+### Example
+
+Void world example:
+
+```
+/world create <aqua>"My Void World"</aqua> preset <yellow>the-void</yellow>
+```
+
+<Callout type="tip">
+  You can use the `the-void` preset instead of relying on a void generator plugin.  
+  Learn more about [why you should stop using void generator plugins](/blog/void-generator-plugins).
+</Callout>
+
 ## Using a world generator plugin
 
 To generate a new world using a custom generator, use the command  
@@ -65,25 +89,6 @@ Amplified world example:
 
 ```
 /world create <aqua>Amplified</aqua> type <yellow>amplified</yellow>
-```
-
-## Using a flat world preset
-
-To generate a new world using an existing preset, use the command  
-`/world create <name> preset <preset> ...`
-
-World presets are a way to create worlds with specific settings.  
-Here you can find a list of [available presets](/docs/worlds/presets#available-presets).
-
-Want to learn how to create your own presets?  
-Check out the [Creating a world preset](/docs/worlds/presets) documentation.
-
-### Example
-
-Void world example:
-
-```
-/world create <aqua>"My Void World"</aqua> preset <yellow>the-void</yellow>
 ```
 
 ## Additional options

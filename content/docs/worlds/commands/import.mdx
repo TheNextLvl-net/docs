@@ -30,8 +30,18 @@ The import command also supports the following additional options:
 - `generator` - Specifies the world generator plugin to use for generating the world.
 - `key` - Sets the key for the world. Creates a key representation of the world name if not provided.
 - `name` - Sets the name for the world. If not provided, the world will be imported with its original name.
+- `preset` - Specifies the [world preset](/docs/worlds/presets#available-presets) to use for generating the world.
 
 Options are specified as `option value` pairs, and can be used in any given order.
+
+<Callout type="warn">
+  The `preset` and `generator` options are mutually exclusive and cannot be combined.
+</Callout>
+
+<Callout type="tip">
+  You can use the `the-void` preset instead of relying on a void generator plugin.  
+  Learn more about [why you should stop using void generator plugins](/blog/void-generator-plugins).
+</Callout>
 
 ## Examples
 
@@ -85,4 +95,12 @@ To import a world with a specific generator, you can use the following command:
 
 ```
 /world import <aqua>"My World"</aqua> generator <yellow>TheGeneratorPlugin</yellow>
+```
+
+### Custom Preset
+
+To import a world with a specific preset, you can use the following command:
+
+```
+/world import <aqua>"My World"</aqua> preset <yellow>the-void</yellow>
 ```
