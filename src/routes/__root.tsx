@@ -56,10 +56,23 @@ function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
 	const analyticsDomain = import.meta.env.VITE_ANALYTICS_DOMAIN;
 	const analyticsUrl = import.meta.env.VITE_ANALYTICS_URL;
 
+	const faststatsEndpoint = import.meta.env.VITE_FASTSTATS_ENDPOINT;
+	const faststatsDomain = import.meta.env.VITE_FASTSTATS_SITEKEY;
+	const faststatsUrl = import.meta.env.VITE_FASTSTATS_SCRIPT_URL;
+
 	return (
 		<html lang="en">
 			<head>
 				<HeadContent />
+				{faststatsDomain && faststatsUrl && (
+					<script
+						defer
+						data-endpoint={faststatsEndpoint}
+						data-sitekey={faststatsDomain}
+						src={faststatsUrl}
+						id="faststats-script"
+					/>
+				)}
 				{analyticsDomain && analyticsUrl && (
 					<>
 						<script
