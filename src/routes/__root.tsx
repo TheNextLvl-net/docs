@@ -67,6 +67,7 @@ function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
 					<script
 						defer
 						data-sitekey={faststatsDomain}
+						data-trackErrors="true"
 						src={faststatsUrl}
 						id="faststats-script"
 					/>
