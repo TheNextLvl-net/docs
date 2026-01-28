@@ -2,7 +2,7 @@ name: Build Test
 
 on: [pull_request, push]
 
-env: 
+env:
   NEXT_PUBLIC_BASE_URL: https://thenextlvl.net
 
 jobs:
@@ -17,7 +17,9 @@ jobs:
       - run: bun run build
 
       - name: Upload Source Map
-        uses: faststats-dev/upload-sourcemap@v0.2
+        # This condition ensures the step only runs on the main branch
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+        uses: faststats-dev/upload-sourcemap@v0.3
         with:
           api-key: ${{ secrets.FASTSTATS_API_KEY }}
           dist-dir: .output/public/assets
