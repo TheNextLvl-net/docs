@@ -7,7 +7,6 @@ import viteReact from "@vitejs/plugin-react";
 import mdx from "fumadocs-mdx/vite";
 import { nitro } from "nitro/vite";
 import { defineConfig } from "vite";
-import tsConfigPaths from "vite-tsconfig-paths";
 import * as MdxConfig from "./source.config";
 
 export default defineConfig({
@@ -17,8 +16,13 @@ export default defineConfig({
 	optimizeDeps: {
 		exclude: ["@takumi-rs/core"],
 	},
+	resolve: {
+		tsconfigPaths: true,
+	},
+	build: {
+		sourcemap: true,
+	},
 	plugins: [
-		tsConfigPaths(),
 		mdx(MdxConfig),
 		nitro({
 			routeRules: {
@@ -38,10 +42,10 @@ export default defineConfig({
 					redirect: { to: "https://modrinth.com/organization/thenextlvl" },
 				},
 			},
-			externals: {
-				external: ["@takumi-rs/core"],
-				traceInclude: Object.keys(takumiPackageJson.optionalDependencies),
-			},
+			traceDeps: [
+				"@takumi-rs/core",
+				...Object.keys(takumiPackageJson.optionalDependencies),
+			],
 		}),
 		tailwindcss(),
 		tanstackStart(),
