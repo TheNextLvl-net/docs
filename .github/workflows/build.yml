@@ -17,7 +17,7 @@ jobs:
       - run: bun run build
 
       - name: Upload Source Map
-        uses: faststats-dev/upload-sourcemap@v0.1
+        uses: faststats-dev/upload-sourcemap@v0.2
         with:
           api-key: ${{ secrets.FASTSTATS_API_KEY }}
           dist-dir: .output/public/assets
