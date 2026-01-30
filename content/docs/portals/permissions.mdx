@@ -15,17 +15,20 @@ All command permissions follow the pattern: `portals.command.<subcommand>`
 
 ### Permission List
 
-| Permission                   | Command              | Description             |
-|------------------------------|----------------------|-------------------------|
-| `portals.command.create`     | `/portal create`     | Create new portals      |
-| `portals.command.delete`     | `/portal delete`     | Delete existing portals |
-| `portals.command.list`       | `/portal list`       | List all portals        |
-| `portals.command.action`     | `/portal action`     | Set portal actions      |
-| `portals.command.redefine`   | `/portal redefine`   | Redefine portal bounds  |
-| `portals.command.cost`       | `/portal cost`       | Set portal entry fees   |
-| `portals.command.cooldown`   | `/portal cooldown`   | Set portal cooldowns    |
-| `portals.command.teleport`   | `/portal teleport`   | Teleport to portals     |
-| `portals.command.permission` | `/portal permission` | Set entry permissions   |
+| Command                 | Permission                      | Description              |
+|-------------------------|---------------------------------|--------------------------|
+| `/portal action`        | `portals.command.action`        | Set portal actions       |
+| `/portal cooldown`      | `portals.command.cooldown`      | Set portal cooldowns     |
+| `/portal cost`          | `portals.command.cost`          | Set portal entry fees    |
+| `/portal create`        | `portals.command.create`        | Create new portals       |
+| `/portal debug paste`   | `portals.command.debug.paste`   | Upload a debug paste     |
+| `/portal debug verbose` | `portals.command.debug.verbose` | Toggle debug output      |
+| `/portal delete`        | `portals.command.delete`        | Delete existing portals  |
+| `/portal list`          | `portals.command.list`          | List all portals         |
+| `/portal permission`    | `portals.command.permission`    | Set entry permissions    |
+| `/portal redefine`      | `portals.command.redefine`      | Redefine portal bounds   |
+| `/portal teleport`      | `portals.command.teleport`      | Teleport to portals      |
+| `/portal warmup`        | `portals.command.warmup`        | Set portal warmup delays |
 
 <Callout type="info">
   The `portals.command.action` permission grants access to all action types.  
