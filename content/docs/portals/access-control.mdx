@@ -65,6 +65,31 @@ Usage: `/portal cost <portal> [<amount>]`
   Economy must be enabled in the configuration file.
 </Callout>
 
+### Set Warmup
+
+Sets a warmup duration that players must wait inside the portal before the action triggers.  
+Usage: `/portal warmup <portal> [<duration>]`
+
+**Examples:**
+```
+<gray># Set 3 second warmup</gray>
+/portal warmup <aqua>spawn-portal</aqua> <yellow>3s</yellow>
+
+<gray># Set 5 second warmup</gray>
+/portal warmup <aqua>premium-portal</aqua> <yellow>5s</yellow>
+
+<gray># Remove warmup</gray>
+/portal warmup <aqua>instant-portal</aqua> <yellow>0</yellow>
+
+<gray># See current warmup</gray>
+/portal warmup <aqua>spawn-portal</aqua>
+```
+
+<Callout type="info">
+  Players must remain inside the portal for the full warmup duration.  
+  Leaving the portal before the warmup completes will cancel the action.
+</Callout>
+
 ### Set Cooldown
 
 Sets a cooldown period between portal uses for each player.  
