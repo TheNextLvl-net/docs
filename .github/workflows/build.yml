@@ -19,7 +19,7 @@ jobs:
       - name: Upload Source Map
         # This condition ensures the step only runs on the main branch
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-        uses: faststats-dev/upload-sourcemap@v0.3
+        uses: faststats-dev/upload-sourcemap@v0.4
         with:
           api-key: ${{ secrets.FASTSTATS_API_KEY }}
           dist-dir: .output/public/assets
