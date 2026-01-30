@@ -1,0 +1,94 @@
+---
+title: Events
+description: Custom events to hook into portal interactions.
+---
+
+Portals provides custom events that allow developers to hook into portal interactions.
+
+## Portal Entry Events
+
+These events are fired when entities interact with portals.
+
+### PreEntityPortalEnterEvent
+
+Fired before an entity enters a portal and before any checks are performed.  
+Checks include permission, cooldown, and entry cost.  
+Canceling this event will prevent the entity from entering and using the portal.
+
+```java
+@EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
+public void onPrePortalEnter(PreEntityPortalEnterEvent event) {
+    Portal portal = event.getPortal();
+    Entity entity = event.getEntity();
+
+    // Prevent certain entities from using portals
+    if (entity.getType() == EntityType.CREEPER) {
+        event.setCancelled(true);
+    }
+}
+```
+
+### EntityPortalEnterEvent
+
+Fired when an entity enters a portal and all checks have succeeded.  
+Checks include permission, cooldown, and entry cost.  
+Canceling this event will prevent the entity from entering and using the portal.
+
+```java
+@EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
+public void onPortalEnter(EntityPortalEnterEvent event) {
+    Portal portal = event.getPortal();
+    Entity entity = event.getEntity();
+
+    entity.sendMessage("Entering portal: " + portal.getName());
+}
+```
+
+### EntityPortalExitEvent
+
+Fired when an entity exits a portal.
+
+```java
+@EventHandler(priority = EventPriority.MONITOR)
+public void onPortalExit(EntityPortalExitEvent event) {
+    Portal portal = event.getPortal();
+    Entity entity = event.getEntity();
+
+    entity.sendMessage("You left the portal: " + portal.getName());
+}
+```
+
+## Warmup Events
+
+Warmup events are fired when portals have a warmup duration configured.  
+These events allow you to track and modify warmup behavior.
+
+### EntityPortalWarmupEvent
+
+Fired when an entity enters a portal and begins the warmup period.
+
+```java
+@EventHandler(priority = EventPriority.MONITOR)
+public void onWarmupStart(EntityPortalWarmupEvent event) {
+    Portal portal = event.getPortal();
+    Entity entity = event.getEntity();
+    Duration warmup = event.getWarmup();
+
+    entity.sendMessage("Stay in the portal for " + warmup.getSeconds() + " seconds…");
+}
+```
+
+### EntityPortalWarmupCancelEvent
+
+Fired when a entity leaves the portal before the warmup completes, cancelling the pending action.
+
+```java
+@EventHandler(priority = EventPriority.MONITOR)
+public void onWarmupCancel(EntityPortalWarmupCancelEvent event) {
+    Portal portal = event.getPortal();
+    Entity entity = event.getEntity();
+    Duration remaining = event.getRemaining();
+
+    entity.sendMessage("You left the portal " + remaining.getSeconds() + " seconds early!");
+}
+```

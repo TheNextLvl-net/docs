@@ -1,0 +1,70 @@
+---
+title: API
+description: API documentation for the Portals plugin.
+---
+
+import { latestVersion } from "@/lib/api"
+export const version = await latestVersion("portals")
+export const javadocs = `https://repo.thenextlvl.net/javadoc/releases/net/thenextlvl/portals/${version}`
+
+Javadocs for the API can be found <a href={javadocs} target="_blank">here</a>.
+
+## Getting Started
+
+### PortalProvider
+
+The `PortalProvider` is the main interface for interacting with portals.  
+You can retrieve an instance using:
+
+```java
+PortalProvider provider = PortalProvider.provider();
+```
+
+The provider offers methods to manage portals:
+
+```java
+// Create a new portal
+Portal portal = provider.createPortal("my-portal", boundingBox);
+
+// Delete a portal
+provider.deletePortal(portal);
+
+// Get a portal by name
+Optional<Portal> portal = provider.getPortal("my-portal");
+
+// Get all portals
+Stream<Portal> portals = provider.getPortals();
+```
+
+### PortalConfig
+
+The `PortalConfig` provides a view of the plugin configuration.  
+You can retrieve an instance using:
+
+```java
+PortalConfig config = PortalConfig.config();
+```
+
+### BoundingBox
+
+A `BoundingBox` defines the physical region of a portal.  
+You can create one using:
+
+```java
+BoundingBox box = BoundingBox.of(world, minPosition, maxPosition);
+```
+
+### SelectionProvider
+
+The `SelectionProvider` provides selection functionality for players (e.g., WorldEdit selections).  
+It can also be extended to provide your own custom selection provider.
+
+An instance can be obtained via the Bukkit services manager if one is available:
+
+```java
+SelectionProvider selection = Bukkit.getServicesManager().load(SelectionProvider.class);
+if (selection != null) {
+    // Selection provider is available (e.g., WorldEdit is installed)
+    Optional<BoundingBox> box = selection.getSelection(player);
+}
+```

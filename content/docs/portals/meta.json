@@ -19,7 +19,8 @@
 		"permissions",
 		"configuration",
 		"---For Developers---",
-		"api/repository",
-		"api/index"
+		"repository",
+		"api/index",
+		"api/events"
 	]
 }
