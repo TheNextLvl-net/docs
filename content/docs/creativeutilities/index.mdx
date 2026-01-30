@@ -1,7 +1,41 @@
 ---
 title: Overview
-description: Utilities that help you building in creative mode
+description: Quality of life tools for builders and creative players
 icon: BookMarked
 ---
 
-Coming Soon!
+import { Settings, Terminal, Shield, Sparkles } from "lucide-react"
+
+CreativeUtilities provides a collection of quality of life features for builders and creative players,  
+including block physics toggles, custom GUIs, and convenient command shortcuts.
+
+<Cards>
+  <Card
+    title="Features"
+    description="Interactive features and gameplay tweaks"
+    href="/docs/creativeutilities/features"
+    icon={<Sparkles />}
+    target="_self"
+  />
+  <Card
+    title="Commands"
+    description="All available commands and their aliases"
+    href="/docs/creativeutilities/commands"
+    icon={<Terminal />}
+    target="_self"
+  />
+  <Card
+    title="Permissions"
+    description="Permission nodes for all features"
+    href="/docs/creativeutilities/permissions"
+    icon={<Shield />}
+    target="_self"
+  />
+  <Card
+    title="Configuration"
+    description="Configure block physics, redstone, weather and more"
+    href="/docs/creativeutilities/configuration"
+    icon={<Settings />}
+    target="_self"
+  />
+</Cards>

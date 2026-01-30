@@ -1,0 +1,40 @@
+---
+title: Configuration
+description: Configure block physics, redstone, weather and more
+---
+
+All configuration options are stored in a JSON file using kebab-case naming.
+
+## Options
+
+| Option                        | Description                                                                                             |
+|-------------------------------|---------------------------------------------------------------------------------------------------------|
+| `disable-explosions`          | Disable all explosions                                                                                  |
+| `disable-fading`              | Disable block fading (fire burning out, coral dying without water, etc.)                                |
+| `disable-gravity`             | Disable gravity for affected blocks (e.g., sand and gravel won't fall)                                  |
+| `disable-leaves-decay`        | Disable leaves decaying over time when not connected to a log                                           |
+| `disable-physics`             | Disable block physics (blocks like lanterns, ladders, and torches won't require adjacent block support) |
+| `disable-redstone`            | Disable redstone functionality                                                                          |
+| `disable-soil-trample`        | Disable farmland trampling                                                                              |
+| `disable-weather-changes`     | Disable weather changes in all worlds                                                                   |
+| `piston-sliming`              | Right-click a piston with a slime ball to convert it to a sticky piston                                 |
+| `fix-attack-speed`            | Allows faster block breaking                                                                            |
+| `prevent-dragon-egg-teleport` | Prevent dragon eggs from teleporting when right-clicked                                                 |
+
+## Example Configuration
+
+```json
+{
+  "disable-explosions": true,
+  "disable-fading": true,
+  "disable-gravity": false,
+  "disable-leaves-decay": true,
+  "disable-physics": false,
+  "disable-redstone": false,
+  "disable-soil-trample": true,
+  "disable-weather-changes": true,
+  "piston-sliming": true,
+  "fix-attack-speed": true,
+  "prevent-dragon-egg-teleport": true
+}
+```
