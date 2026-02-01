@@ -1,0 +1,145 @@
+---
+title: Notifications
+description: Configure sounds, messages, and titles for portal events
+---
+
+# Notifications
+
+Notifications allow you to customize the feedback players receive when interacting with portals.  
+Configure sounds, action bar messages, chat messages, and titles for various portal triggers.
+
+## Commands
+
+### List Notifications
+
+Displays all notifications configured for a portal.  
+Usage: `/portal notification list <portal> [<trigger>]`
+
+**Examples:**
+```
+<gray># List all notifications for a portal</gray>
+/portal notification list <aqua>spawn-portal</aqua>
+
+<gray># List notifications for a specific trigger</gray>
+/portal notification list <aqua>spawn-portal</aqua> <yellow>entry_success</yellow>
+```
+
+<Callout type="tip">
+  You can click on notification entries in the output to edit them.
+</Callout>
+
+### Set Notification
+
+Adds or updates a notification for a specific trigger.  
+Usage: `/portal notification set <portal> <trigger> (sound|actionbar|message|title)`
+
+#### Sound Notifications
+
+Play a sound when the trigger fires.  
+Usage: `/portal notification set <portal> <trigger> sound <sound> [<sound-source>]`
+
+**Examples:**
+```
+<gray># Play a simple sound on teleport success</gray>
+/portal notification set <aqua>spawn-portal</aqua> <yellow>teleport_success</yellow> sound <green>entity.enderman.teleport</green>
+
+<gray># Play a sound from a specific source</gray>
+/portal notification set <aqua>spawn-portal</aqua> <yellow>entry_success</yellow> sound <green>block.portal.trigger</green> <green>ambient</green>
+```
+
+#### Action Bar Notifications
+
+Display a message on the action bar.  
+Usage: `/portal notification set <portal> <trigger> actionbar <message>`
+
+**Examples:**
+```
+<gray># Show warmup message on action bar</gray>
+/portal notification set <aqua>spawn-portal</aqua> <yellow>entry_success</yellow> actionbar <green><gray>Teleporting in <warmup> seconds...</gray></green>
+```
+
+#### Chat Message Notifications
+
+Send a chat message to the player.  
+Usage: `/portal notification set <portal> <trigger> message <message>`
+
+**Examples:**
+```
+<gray># Send a message on successful teleport</gray>
+/portal notification set <aqua>spawn-portal</aqua> <yellow>teleport_success</yellow> message <green><gray>Welcome to spawn!</gray></green>
+
+<gray># Nag about interrupting the warmup</gray>
+/portal notification set <aqua>spawn-portal</aqua> <yellow>warmup_failure</yellow> message <green><red>You left the portal <remaining-warmup:'#.##'> seconds early</red></green>
+```
+
+#### Title Notifications
+
+Display a title and optional subtitle.  
+Usage: `/portal notification set <portal> <trigger> title <title> [<subtitle>] [<fade-in>] <stay> <fade-out>`
+
+**Examples:**
+```
+<gray># Show a simple title</gray>
+/portal notification set <aqua>spawn-portal</aqua> <yellow>teleport_success</yellow> title <green>"<gold>Welcome!</gold>"</green> <light_purple>"<gray>You arrived at spawn</gray>"</light_purple>
+
+<gray># Title with custom timing (fade-in, stay, fade-out)</gray>
+/portal notification set <aqua>vip-portal</aqua> <yellow>entry_success</yellow> title <green>"<aqua>VIP Portal</aqua>"</green> <light_purple>"<gray>Please wait...</gray>"</light_purple> <gold>.5s</gold> <aqua>3s</aqua> <yellow>.25s</yellow>
+```
+
+### Remove Notification
+
+Removes a specific notification from a portal trigger.  
+Usage: `/portal notification remove <portal> <trigger> <notification>`
+
+**Examples:**
+```
+<gray># Remove a sound notification</gray>
+/portal notification remove <aqua>spawn-portal</aqua> <yellow>entry_success</yellow> <green>sound</green>
+
+<gray># Remove a message notification</gray>
+/portal notification remove <aqua>spawn-portal</aqua> <yellow>teleport_success</yellow> <green>message</green>
+```
+
+## Triggers
+
+Notifications can be configured for the following portal events:
+
+| Trigger             | Description                                                          |
+|---------------------|----------------------------------------------------------------------|
+| `entry_failure`     | Portal entry was denied (insufficient funds, lacking permission)     |
+| `entry_success`     | Successfully entered the portal                                      |
+| `exit`              | Exited the portal                                                    |
+| `teleport_failure`  | Action failed (for custom implementations / future updates)          |
+| `teleport_success`  | Action succeeded (e.g., successfully teleported)                     |
+| `warmup_failure`    | Warmup was interrupted by entity leaving the portal                  |
+| `warmup_success`    | Warmup was fully awaited                                             |
+
+## Placeholders
+
+The following placeholders can be used in notification messages:
+
+| Placeholder            | Description                                                    |
+|------------------------|----------------------------------------------------------------|
+| `<cooldown>`           | The portal cooldown duration in seconds                        |
+| `<warmup>`             | The portal warmup duration in seconds                          |
+| `<remaining-cooldown>` | The entity's remaining cooldown for the portal in seconds      |
+| `<remaining-warmup>`   | The entity's remaining warmup for the portal in seconds        |
+| `<entity>`             | The entity's name                                              |
+| `<entry-cost>`         | The formatted entry cost of the portal                         |
+| `<permission>`         | The entry permission of the portal (or "undefined" if not set) |
+| `<portal>`             | The name of the portal                                         |
+
+<Callout type="tip">
+  Placeholders support formatting. For example, `<warmup:'#.##'>` formats the warmup to two decimal places.
+</Callout>
+
+## Migration from Previous Versions
+
+The `portal.warmup.start` translation message was removed in favor of this notification system.  
+To recreate the same behavior, add an `entry_success` message notification to your portals:
+
+`/portal notification set <portal> entry_success message <gray><blue>Portals</blue> <dark_gray>»</dark_gray> Do not leave the portal for <green><warmup:'#.##'></green> seconds…</gray>`
+
+<Callout type="info">
+  This new system provides more flexibility, allowing different messages per portal rather than a global translation.
+</Callout>
