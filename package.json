@@ -14,7 +14,7 @@
 		"@icons-pack/react-simple-icons": "^13.8.0",
 		"@shikijs/types": "^3.19.0",
 		"@tailwindcss/vite": "^4.1.17",
-		"@takumi-rs/core": "^0.66.0",
+		"@takumi-rs/core": "^0.67.0",
 		"@takumi-rs/image-response": "^0.67.0",
 		"@tanstack/react-router": "^1.140.0",
 		"@tanstack/react-start": "^1.140.0",
