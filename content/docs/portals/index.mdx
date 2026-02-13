@@ -99,6 +99,13 @@ Connect players to another server in your network:
 /portal action <aqua>lobby-portal</aqua> connect <yellow>lobby</yellow>
 ```
 
+<Callout type="warn">
+  If the `connect` action is not working on Velocity, make sure that `bungee-plugin-message-channel` is set
+  to `true` in your [`velocity.toml`](https://github.com/PaperMC/Velocity/blob/dev/3.0.0/proxy/src/main/resources/default-velocity.toml#L128).
+  This option is enabled by default, but if it has been set to `false`, the plugin messaging channel
+  used by the connect action will not be available.
+</Callout>
+
 #### Premium Portal with Fee
 
 Create a portal with entry requirements:
