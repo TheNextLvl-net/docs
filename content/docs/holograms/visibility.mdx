@@ -1,0 +1,72 @@
+---
+title: Visibility
+description: Control hologram, line, and page visibility with permissions
+---
+
+# Visibility
+
+Holograms supports fine-grained visibility control at the hologram, line, and page level.
+You can restrict who can see a hologram, individual lines, or specific pages using permissions.
+
+## Commands
+
+### Hologram View Permission
+
+Sets a permission required to see the entire hologram.  
+Usage: `/hologram view-permission <hologram> [<permission> | remove]`
+
+**Examples:**
+```
+<gray># Require VIP permission to see the hologram</gray>
+/hologram view-permission <aqua>vip-hologram</aqua> <yellow>server.vip</yellow>
+
+<gray># Require admin permission</gray>
+/hologram view-permission <aqua>admin-hologram</aqua> <yellow>server.admin</yellow>
+
+<gray># Remove the view permission</gray>
+/hologram view-permission <aqua>vip-hologram</aqua> <yellow>remove</yellow>
+
+<gray># View current permission</gray>
+/hologram view-permission <aqua>vip-hologram</aqua>
+```
+
+<Callout type="info">
+  Players without the required permission will not be able to see or interact with the hologram.
+</Callout>
+
+### Line View Permission
+
+Sets a permission required to see a specific line within a hologram.  
+Usage: `/hologram line view-permission <hologram> <line> [<permission> | remove]`
+
+**Examples:**
+```
+<gray># Require VIP permission to see line 1</gray>
+/hologram line view-permission <aqua>my-hologram</aqua> <yellow>1</yellow> <green>server.vip</green>
+
+<gray># Require donor permission to see line 3</gray>
+/hologram line view-permission <aqua>my-hologram</aqua> <yellow>3</yellow> <green>server.donor</green>
+
+<gray># Remove the view permission from line 1</gray>
+/hologram line view-permission <aqua>my-hologram</aqua> <yellow>1</yellow> <green>remove</green>
+
+<gray># View current permission on line 2</gray>
+/hologram line view-permission <aqua>my-hologram</aqua> <yellow>2</yellow>
+```
+
+### Page View Permission
+
+Sets a permission required to see a specific page within a paged line.  
+Usage: `/hologram page view-permission <hologram> <line> <page> [<permission> | remove]`
+
+**Examples:**
+```
+<gray># Require VIP permission to see page 1 of line 1</gray>
+/hologram page view-permission <aqua>my-hologram</aqua> <yellow>1</yellow> <green>1</green> <light_purple>server.vip</light_purple>
+
+<gray># Remove the view permission from page 2</gray>
+/hologram page view-permission <aqua>my-hologram</aqua> <yellow>1</yellow> <green>2</green> <light_purple>remove</light_purple>
+
+<gray># View current permission on page 1</gray>
+/hologram page view-permission <aqua>my-hologram</aqua> <yellow>1</yellow> <green>1</green>
+```

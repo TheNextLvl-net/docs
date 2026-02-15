@@ -1,0 +1,210 @@
+---
+title: Events
+description: Custom events to hook into hologram interactions.
+---
+
+Holograms provides custom events that allow developers to hook into hologram interactions.
+
+## Lifecycle Events
+
+These events are fired when holograms are created, deleted, loaded, or unloaded.
+
+### HologramCreateEvent
+
+Fired when a new hologram is created.
+
+```java
+@EventHandler(priority = EventPriority.MONITOR)
+public void onHologramCreate(HologramCreateEvent event) {
+    Hologram hologram = event.getHologram();
+
+    getLogger().info("Hologram created: " + hologram.getName());
+}
+```
+
+### HologramDeleteEvent
+
+Fired when a hologram is about to be deleted.  
+This event is cancellable.
+
+```java
+@EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
+public void onHologramDelete(HologramDeleteEvent event) {
+    Hologram hologram = event.getHologram();
+
+    // Prevent deletion of important holograms
+    if (hologram.getName().startsWith("protected-")) {
+        event.setCancelled(true);
+    }
+}
+```
+
+### HologramLoadEvent
+
+Fired when a hologram is loaded from storage.
+
+```java
+@EventHandler(priority = EventPriority.MONITOR)
+public void onHologramLoad(HologramLoadEvent event) {
+    Hologram hologram = event.getHologram();
+
+    getLogger().info("Hologram loaded: " + hologram.getName());
+}
+```
+
+### HologramUnloadEvent
+
+Fired when a hologram is unloaded from memory.
+
+```java
+@EventHandler(priority = EventPriority.MONITOR)
+public void onHologramUnload(HologramUnloadEvent event) {
+    Hologram hologram = event.getHologram();
+
+    getLogger().info("Hologram unloaded: " + hologram.getName());
+}
+```
+
+## Teleport Events
+
+### HologramTeleportEvent
+
+Fired when a hologram is teleported to a new location.  
+This event is cancellable and allows modifying the destination.
+
+```java
+@EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
+public void onHologramTeleport(HologramTeleportEvent event) {
+    Hologram hologram = event.getHologram();
+    Location from = event.getFrom();
+    Location to = event.getTo();
+
+    // Prevent cross-world teleportation
+    if (!from.getWorld().equals(to.getWorld())) {
+        event.setCancelled(true);
+        return;
+    }
+
+    // Modify the destination
+    event.setTo(to.add(0, 1, 0));
+}
+```
+
+## Line Events
+
+These events are fired when lines are added to or removed from holograms.
+
+### HologramLineAddEvent
+
+Fired when a line is added to a hologram.
+
+```java
+@EventHandler(priority = EventPriority.MONITOR)
+public void onLineAdd(HologramLineAddEvent event) {
+    Hologram hologram = event.getHologram();
+    HologramLine line = event.getLine();
+
+    getLogger().info("Line added to hologram: " + hologram.getName());
+}
+```
+
+### HologramLineRemoveEvent
+
+Fired when a line is removed from a hologram.
+
+```java
+@EventHandler(priority = EventPriority.MONITOR)
+public void onLineRemove(HologramLineRemoveEvent event) {
+    Hologram hologram = event.getHologram();
+    HologramLine line = event.getLine();
+
+    getLogger().info("Line removed from hologram: " + hologram.getName());
+}
+```
+
+## Viewer Events
+
+These events are fired when players are added to or removed from a hologram's viewer list.
+
+### HologramViewerAddEvent
+
+Fired when a viewer is added to a hologram.  
+This event is cancellable.
+
+```java
+@EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
+public void onViewerAdd(HologramViewerAddEvent event) {
+    Hologram hologram = event.getHologram();
+    UUID viewer = event.getViewer();
+
+    // Prevent certain viewers from being added
+    event.setCancelled(true);
+}
+```
+
+### HologramViewerRemoveEvent
+
+Fired when a viewer is removed from a hologram.  
+This event is cancellable.
+
+```java
+@EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
+public void onViewerRemove(HologramViewerRemoveEvent event) {
+    Hologram hologram = event.getHologram();
+    UUID viewer = event.getViewer();
+
+    // Prevent removing viewers from certain holograms
+    if (hologram.getName().equals("always-visible")) {
+        event.setCancelled(true);
+    }
+}
+```
+
+## Page Events
+
+These events are fired when pages are managed on paged hologram lines.
+
+### HologramPageAddEvent
+
+Fired when a page is added to a paged hologram line.
+
+```java
+@EventHandler(priority = EventPriority.MONITOR)
+public void onPageAdd(HologramPageAddEvent event) {
+    Hologram hologram = event.getHologram();
+
+    getLogger().info("Page added to hologram: " + hologram.getName());
+}
+```
+
+### HologramPageRemoveEvent
+
+Fired when a page is removed from a paged hologram line.
+
+```java
+@EventHandler(priority = EventPriority.MONITOR)
+public void onPageRemove(HologramPageRemoveEvent event) {
+    Hologram hologram = event.getHologram();
+
+    getLogger().info("Page removed from hologram: " + hologram.getName());
+}
+```
+
+### HologramPageChangeEvent
+
+Fired when a paged hologram line changes its active page for a player.  
+This event is cancellable.
+
+```java
+@EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
+public void onPageChange(HologramPageChangeEvent event) {
+    Hologram hologram = event.getHologram();
+    PagedHologramLine line = event.getLine();
+    Player player = event.getPlayer();
+    StaticHologramLine oldPage = event.getOldPage();
+    StaticHologramLine newPage = event.getNewPage();
+
+    // Prevent the page from changing
+    event.setCancelled(true);
+}
+```

@@ -1,0 +1,274 @@
+---
+title: Click Actions
+description: Configure actions triggered by clicking hologram lines
+---
+
+# Click Actions
+
+Click actions define what happens when a player interacts with a hologram line.
+You can add multiple actions to a single line, each with its own click type, and manage them with chances, cooldowns, costs, and permissions.
+
+## Click Types
+
+Each action requires a click type that determines how the player must interact:
+
+| Click Type | Description |
+|---|---|
+| `ANY_CLICK` | Any click type |
+| `ANY_LEFT_CLICK` | Any left click (normal or shift) |
+| `ANY_RIGHT_CLICK` | Any right click (normal or shift) |
+| `LEFT_CLICK` | Normal left click |
+| `RIGHT_CLICK` | Normal right click |
+| `SHIFT_CLICK` | Any click while sneaking |
+| `SHIFT_LEFT_CLICK` | Left click while sneaking |
+| `SHIFT_RIGHT_CLICK` | Right click while sneaking |
+
+## Adding Actions
+
+All action commands follow the pattern:  
+`/hologram line action add <hologram> <line> <action> <click-types> <type> <args>`
+
+The `<action>` parameter is a unique name you choose for the action (e.g., `greet`, `next`, `teleport-spawn`).
+
+### Connect to Server
+
+Connects the player to another server in your proxy network.  
+Usage: `/hologram line action add <hologram> <line> <action> <click-types> connect <server>`
+
+**Examples:**
+```
+<gray># Connect to lobby on any click</gray>
+/hologram line action add <aqua>my-hologram</aqua> <yellow>1</yellow> <green>lobby-connect</green> <light_purple>ANY_CLICK</light_purple> connect <gold>lobby</gold>
+
+<gray># Connect to survival on right click</gray>
+/hologram line action add <aqua>my-hologram</aqua> <yellow>1</yellow> <green>survival-connect</green> <light_purple>RIGHT_CLICK</light_purple> connect <gold>survival</gold>
+```
+
+### Cycle Page
+
+Cycles the page of a paged line by the specified amount.  
+Usage: `/hologram line action add <hologram> <line> <action> <click-types> cycle-page <amount>`
+
+**Examples:**
+```
+<gray># Cycle forward one page on right click</gray>
+/hologram line action add <aqua>my-hologram</aqua> <yellow>1</yellow> <green>next</green> <light_purple>ANY_RIGHT_CLICK</light_purple> cycle-page <gold>1</gold>
+
+<gray># Cycle backward one page on left click</gray>
+/hologram line action add <aqua>my-hologram</aqua> <yellow>1</yellow> <green>previous</green> <light_purple>ANY_LEFT_CLICK</light_purple> cycle-page <gold>-1</gold>
+```
+
+### Play Sound
+
+Plays a sound to the player.  
+Usage: `/hologram line action add <hologram> <line> <action> <click-types> play-sound <sound>`
+
+**Examples:**
+```
+<gray># Play a click sound on any click</gray>
+/hologram line action add <aqua>my-hologram</aqua> <yellow>1</yellow> <green>click-sound</green> <light_purple>ANY_CLICK</light_purple> play-sound <gold>minecraft:ui.button.click</gold>
+
+<gray># Play a level up sound on right click</gray>
+/hologram line action add <aqua>my-hologram</aqua> <yellow>1</yellow> <green>levelup-sound</green> <light_purple>RIGHT_CLICK</light_purple> play-sound <gold>minecraft:entity.player.levelup</gold>
+```
+
+### Run Command
+
+Executes a command as the player.  
+Usage: `/hologram line action add <hologram> <line> <action> <click-types> run-command <command>`
+
+**Examples:**
+```
+<gray># Run a command as the player on right click</gray>
+/hologram line action add <aqua>my-hologram</aqua> <yellow>1</yellow> <green>go-spawn</green> <light_purple>RIGHT_CLICK</light_purple> run-command <gold>spawn</gold>
+
+<gray># Open a menu on any click</gray>
+/hologram line action add <aqua>my-hologram</aqua> <yellow>1</yellow> <green>open-shop</green> <light_purple>ANY_CLICK</light_purple> run-command <gold>menu open shop</gold>
+```
+
+### Run Console Command
+
+Executes a command from the console.  
+Usage: `/hologram line action add <hologram> <line> <action> <click-types> run-console-command <command>`
+
+**Examples:**
+```
+<gray># Give player an item from console on right click</gray>
+/hologram line action add <aqua>my-hologram</aqua> <yellow>1</yellow> <green>give-diamond</green> <light_purple>RIGHT_CLICK</light_purple> run-console-command <gold>give <player> diamond 1</gold>
+
+<gray># Broadcast a message on any click</gray>
+/hologram line action add <aqua>my-hologram</aqua> <yellow>1</yellow> <green>broadcast</green> <light_purple>ANY_CLICK</light_purple> run-console-command <gold>broadcast <player> clicked!</gold>
+```
+
+<Callout type="info">
+  Use `<player>` as a placeholder for the player's name.
+</Callout>
+
+### Send Actionbar
+
+Sends an actionbar message to the player.  
+Usage: `/hologram line action add <hologram> <line> <action> <click-types> send-actionbar <message>`
+
+**Examples:**
+```
+<gray># Send an actionbar message on any click</gray>
+/hologram line action add <aqua>my-hologram</aqua> <yellow>1</yellow> <green>welcome</green> <light_purple>ANY_CLICK</light_purple> send-actionbar <gold>Welcome to the shop!</gold>
+```
+
+### Send Message
+
+Sends a chat message to the player.  
+Usage: `/hologram line action add <hologram> <line> <action> <click-types> send-message <message>`
+
+**Examples:**
+```
+<gray># Send a message on right click</gray>
+/hologram line action add <aqua>my-hologram</aqua> <yellow>1</yellow> <green>greet</green> <light_purple>RIGHT_CLICK</light_purple> send-message <gold>You clicked the hologram!</gold>
+```
+
+### Send Title
+
+Sends a title and subtitle to the player.  
+Usage: `/hologram line action add <hologram> <line> <action> <click-types> send-title <title> <subtitle>`
+
+**Examples:**
+```
+<gray># Send a title on any click</gray>
+/hologram line action add <aqua>my-hologram</aqua> <yellow>1</yellow> <green>welcome-title</green> <light_purple>ANY_CLICK</light_purple> send-title <gold>Welcome</gold> <gold>to the server!</gold>
+```
+
+### Set Page
+
+Sets the page of a paged line to a specific page number.  
+Usage: `/hologram line action add <hologram> <line> <action> <click-types> set-page <page>`
+
+**Examples:**
+```
+<gray># Set page to 1 on left click</gray>
+/hologram line action add <aqua>my-hologram</aqua> <yellow>1</yellow> <green>go-first</green> <light_purple>LEFT_CLICK</light_purple> set-page <gold>1</gold>
+
+<gray># Set page to 3 on right click</gray>
+/hologram line action add <aqua>my-hologram</aqua> <yellow>1</yellow> <green>go-third</green> <light_purple>RIGHT_CLICK</light_purple> set-page <gold>3</gold>
+```
+
+### Teleport
+
+Teleports the player to a specific location.  
+Usage: `/hologram line action add <hologram> <line> <action> <click-types> teleport <position> [<world>]`
+
+**Examples:**
+```
+<gray># Teleport to coordinates on right click</gray>
+/hologram line action add <aqua>my-hologram</aqua> <yellow>1</yellow> <green>to-spawn</green> <light_purple>RIGHT_CLICK</light_purple> teleport <gold>0 64 0</gold>
+
+<gray># Teleport to another world on any click</gray>
+/hologram line action add <aqua>my-hologram</aqua> <yellow>1</yellow> <green>to-nether</green> <light_purple>ANY_CLICK</light_purple> teleport <gold>100 64 100</gold> <gold>minecraft:the_nether</gold>
+```
+
+### Transfer
+
+Transfers the player to an external server.  
+Usage: `/hologram line action add <hologram> <line> <action> <click-types> transfer <hostname> [<port>]`
+
+**Examples:**
+```
+<gray># Transfer to external server on right click</gray>
+/hologram line action add <aqua>my-hologram</aqua> <yellow>1</yellow> <green>transfer-main</green> <light_purple>RIGHT_CLICK</light_purple> transfer <gold>play.example.com</gold>
+
+<gray># Transfer to server with custom port on any click</gray>
+/hologram line action add <aqua>my-hologram</aqua> <yellow>1</yellow> <green>transfer-test</green> <light_purple>ANY_CLICK</light_purple> transfer <gold>localhost</gold> <gold>25566</gold>
+```
+
+<Callout type="info">
+  The remote server must be configured to accept transfers.
+</Callout>
+
+## Managing Actions
+
+### Set Action Chance
+
+Sets the probability of an action triggering.  
+Usage: `/hologram line action chance <hologram> <line> <action> <chance>`
+
+**Examples:**
+```
+<gray># Set action to trigger 50% of the time</gray>
+/hologram line action chance <aqua>my-hologram</aqua> <yellow>1</yellow> <green>go-spawn</green> <light_purple>50</light_purple>
+
+<gray># Set action to always trigger</gray>
+/hologram line action chance <aqua>my-hologram</aqua> <yellow>1</yellow> <green>greet</green> <light_purple>100</light_purple>
+```
+
+### Set Action Cooldown
+
+Sets a cooldown period between action triggers for each player.  
+Usage: `/hologram line action cooldown <hologram> <line> <action> <cooldown>`
+
+**Examples:**
+```
+<gray># Set a 30 second cooldown</gray>
+/hologram line action cooldown <aqua>my-hologram</aqua> <yellow>1</yellow> <green>go-spawn</green> <light_purple>30s</light_purple>
+
+<gray># Set a 5 minute cooldown</gray>
+/hologram line action cooldown <aqua>my-hologram</aqua> <yellow>1</yellow> <green>give-diamond</green> <light_purple>5m</light_purple>
+```
+
+### Set Action Cost
+
+Sets an entry fee that players must pay to trigger the action.  
+Usage: `/hologram line action cost <hologram> <line> <action> <cost>`
+
+**Examples:**
+```
+<gray># Set action to cost 100</gray>
+/hologram line action cost <aqua>my-hologram</aqua> <yellow>1</yellow> <green>go-spawn</green> <light_purple>100</light_purple>
+
+<gray># Set action to cost 500</gray>
+/hologram line action cost <aqua>my-hologram</aqua> <yellow>1</yellow> <green>give-diamond</green> <light_purple>500</light_purple>
+```
+
+<Callout type="warn">
+  Action costs require **Vault** or **ServiceIO** along with a compatible economy plugin to be installed.
+</Callout>
+
+### Set Action Permission
+
+Sets a permission requirement for an action.  
+Usage: `/hologram line action permission <hologram> <line> <action> [<permission> | remove]`
+
+**Examples:**
+```
+<gray># Require VIP permission for an action</gray>
+/hologram line action permission <aqua>my-hologram</aqua> <yellow>1</yellow> <green>go-spawn</green> <light_purple>server.vip</light_purple>
+
+<gray># Remove permission from an action</gray>
+/hologram line action permission <aqua>my-hologram</aqua> <yellow>1</yellow> <green>go-spawn</green> <light_purple>remove</light_purple>
+
+<gray># View current permission for an action</gray>
+/hologram line action permission <aqua>my-hologram</aqua> <yellow>1</yellow> <green>go-spawn</green>
+```
+
+### List Actions
+
+Lists all actions on a hologram line.  
+Usage: `/hologram line action list <hologram> <line>`
+
+**Examples:**
+```
+<gray># List all actions on line 1</gray>
+/hologram line action list <aqua>my-hologram</aqua> <yellow>1</yellow>
+```
+
+### Remove an Action
+
+Removes an action from a hologram line.  
+Usage: `/hologram line action remove <hologram> <line> <action>`
+
+**Examples:**
+```
+<gray># Remove an action from line 1</gray>
+/hologram line action remove <aqua>my-hologram</aqua> <yellow>1</yellow> <green>go-spawn</green>
+
+<gray># Remove an action from line 2</gray>
+/hologram line action remove <aqua>my-hologram</aqua> <yellow>2</yellow> <green>greet</green>
+```

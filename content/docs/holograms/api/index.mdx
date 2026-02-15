@@ -1,0 +1,346 @@
+---
+title: API
+description: API documentation for the Holograms plugin.
+---
+
+import { latestVersion } from "@/lib/api"
+export const version = await latestVersion("holograms")
+export const javadocs = `https://repo.thenextlvl.net/javadoc/releases/net/thenextlvl/holograms/${version}`
+
+Javadocs for the API can be found <a href={javadocs} target="_blank">here</a>.
+
+## Getting Started
+
+### HologramProvider
+
+The `HologramProvider` is the main interface for managing holograms.  
+You can retrieve an instance using:
+
+```java
+HologramProvider provider = HologramProvider.instance();
+```
+
+The provider offers methods to manage holograms:
+
+```java
+// Create a new hologram (not yet spawned)
+Hologram hologram = provider.createHologram("my-hologram", location);
+
+// Create and spawn a hologram with a pre-spawn consumer
+Hologram hologram = provider.spawnHologram("my-hologram", location, hologram -> {
+    hologram.addTextLine().setUnparsedText("Hello!");
+});
+
+// Delete a hologram
+provider.deleteHologram(hologram);
+
+// Get a hologram by name
+Optional<Hologram> hologram = provider.getHologram("my-hologram");
+
+// Get all holograms
+Stream<Hologram> holograms = provider.getHolograms();
+
+// Get holograms in a specific world
+Stream<Hologram> holograms = provider.getHolograms(world);
+
+// Get holograms visible to a player
+Stream<Hologram> holograms = provider.getHolograms(player);
+
+// Get holograms in a chunk
+Stream<Hologram> holograms = provider.getHolograms(chunk);
+
+// Get holograms nearby a location (within radius)
+Stream<Hologram> nearby = provider.getHologramsNearby(location, 10);
+
+// Check if a hologram exists
+boolean exists = provider.hasHologram("my-hologram");
+
+// Check if an entity is part of a hologram
+boolean part = provider.isHologramPart(entity);
+
+// Get a hologram by one of its entities
+Optional<Hologram> hologram = provider.getHologram(entity);
+
+// Iterate over all holograms
+provider.forEachHologram(hologram -> {
+    // ...
+});
+```
+
+## Creating Holograms
+
+Create a hologram at a specific location:
+
+```java
+HologramProvider provider = HologramProvider.instance();
+
+// Create without spawning
+Hologram hologram = provider.createHologram("welcome", location);
+
+// Or create and spawn immediately
+Hologram hologram = provider.spawnHologram("welcome", location);
+```
+
+Once created, you can configure the hologram and add lines:
+
+```java
+// Make the hologram persistent (survives restarts) (this is default behavior)
+hologram.setPersistent(true);
+
+// Teleport the hologram
+hologram.teleportAsync(newLocation);
+```
+
+## Hologram Lines
+
+Holograms support multiple line types. Each line type has its own configuration options.
+
+### Text Lines
+
+Display text content with formatting options:
+
+```java
+TextHologramLine line = hologram.addTextLine();
+// Set text using MiniMessage format
+line.setUnparsedText("<gradient:blue:green>Hello World</gradient>");
+
+// Or set text using Component (Prefer to use #setUnparsedText() if possible)
+line.setText(Component.text("Hello World"));
+
+// Configure text properties
+line.setLineWidth(200);
+line.setBackgroundColor(Color.fromARGB(0, 0, 0, 0));
+line.setShadowed(true);
+line.setSeeThrough(false);
+line.setAlignment(TextDisplay.TextAlignment.CENTER);
+line.setTextOpacity(100); // Takes percentage value, calculation is done internally
+```
+
+### Block Lines
+
+Display block data as a hologram line:
+
+```java
+BlockHologramLine line = hologram.addBlockLine();
+line.setBlock(Material.DIAMOND_BLOCK.createBlockData());
+```
+
+### Item Lines
+
+Display items as hologram lines:
+
+```java
+ItemHologramLine line = hologram.addItemLine();
+line.setItemStack(new ItemStack(Material.DIAMOND_SWORD));
+
+// Display viewer's player head
+line.setPlayerHead(true);
+
+// Set item display transform
+line.setItemDisplayTransform(ItemDisplay.ItemDisplayTransform.FIXED);
+```
+
+### Entity Lines
+
+Display entities as hologram lines:
+
+```java
+EntityHologramLine line = hologram.addEntityLine(EntityType.ZOMBIE);
+
+// Configure entity display
+line.setScale(1.5);
+
+// Spawn entity offset by 2 blocks upward
+line.setOffset(new Vector3f(0, 2, 0));
+```
+
+### Paged Lines
+
+Display rotating content that cycles through pages:
+
+```java
+PagedHologramLine line = hologram.addPagedLine();
+
+// Add pages of different types
+line.addTextPage().setUnparsedText("Page 1");
+line.addTextPage().setUnparsedText("Page 2");
+line.addBlockPage().setBlock(Material.DIAMOND_BLOCK.createBlockData());
+line.addEntityPage(EntityType.CREEPER);
+
+// Configure paging behavior
+line.setInterval(Duration.ofSeconds(5));
+line.setRandomOrder(false);
+line.setPaused(false);
+```
+
+### Common Line Properties
+
+All static hologram lines support these properties:
+
+```java
+// Glowing effect
+line.setGlowing(true);
+line.setGlowColor(TextColor.color(255, 0, 0));
+
+// Billboard mode (how the line faces the player)
+line.setBillboard(Display.Billboard.CENTER);
+```
+
+Display hologram lines additionally support:
+
+```java
+// Transformation
+line.setTransformation(transformation);
+
+// View range
+line.setViewRange(48.0f);
+
+// Shadow
+line.setShadowRadius(0.0f);
+line.setShadowStrength(1.0f);
+
+// Brightness
+line.setBrightness(new Display.Brightness(15, 15));
+
+// Dimensions
+line.setDisplayWidth(0.0f);
+line.setDisplayHeight(0.0f);
+```
+
+### Managing Lines
+
+```java
+// Get a line by index
+Optional<HologramLine> line = hologram.getLine(0);
+
+// Get a line of a specific type
+Optional<TextHologramLine> textLine = hologram.getLine(0, TextHologramLine.class);
+
+// Remove a line
+hologram.removeLine(0);
+
+// Move a line to a different position
+hologram.moveLine(0, 2);
+
+// Swap two lines
+hologram.swapLines(0, 1);
+
+// Clear all lines
+hologram.clearLines();
+```
+
+## Click Actions
+
+Click actions allow holograms to respond to player interactions.
+
+### Creating Click Actions
+
+Create click actions using the factory and add them to lines:
+
+```java
+ClickActionFactory factory = ClickAction.factory();
+ActionTypes types = ActionTypes.types();
+
+// Create a click action that runs a command on right-click
+ClickAction<String> action = factory.create(
+        types.runCommand(),
+        EnumSet.of(ClickType.RIGHT),
+        "say Hello!"
+);
+
+// Add the action to a hologram line
+line.addAction("greet", action);
+
+// Configure action properties
+action.setCooldown(Duration.ofSeconds(5));
+action.setPermission("holograms.action.greet");
+action.setChance(100);
+action.setCost(0);
+```
+
+### Action Types
+
+Retrieve available action types:
+
+```java
+ActionTypes types = ActionTypes.types();
+```
+
+Built-in action types include:
+
+| Action Type         | Description                             |
+|---------------------|-----------------------------------------|
+| `sendActionbar`     | Send an actionbar message to the player |
+| `sendMessage`       | Send a chat message to the player       |
+| `transfer`          | Transfer the player to another server   |
+| `teleport`          | Teleport the player to a location       |
+| `playSound`         | Play a sound for the player             |
+| `runConsoleCommand` | Execute a command as the console        |
+| `runCommand`        | Execute a command as the player         |
+| `sendTitle`         | Send a title to the player              |
+| `connect`           | Connect to a BungeeCord/Velocity server |
+| `cyclePage`         | Cycle a paged line by a certain amount  |
+| `setPage`           | Set a specific page of a paged line     |
+
+### Click Types
+
+Available click types:
+
+```java
+ClickType.LEFT
+ClickType.RIGHT
+ClickType.SHIFT_LEFT
+ClickType.SHIFT_RIGHT
+```
+
+## Visibility & Viewers
+
+Control who can see a hologram:
+
+```java
+// Set a permission required to see the hologram
+hologram.setViewPermission("my.permission");
+Optional<String> permission = hologram.getViewPermission();
+
+// Toggle default visibility
+hologram.setVisibleByDefault(true);
+boolean visible = hologram.isVisibleByDefault();
+
+// Manage individual viewers (by UUID)
+hologram.addViewer(player.getUniqueId());
+hologram.removeViewer(player.getUniqueId());
+boolean isViewer = hologram.isViewer(player.getUniqueId());
+
+// Check if a player can see the hologram
+boolean canSee = hologram.canSee(player);
+
+// Spawn and despawn for specific players
+hologram.spawn(player);
+hologram.despawn(player);
+```
+
+## Image Components
+
+Render images as hologram text lines using map-style characters.
+
+### Static Images
+
+```java
+BufferedImage image = ImageIO.read(new File("image.png"));
+Component component = ImageComponent.read(image, 16);
+
+hologram.addTextLine(component);
+```
+
+### Animated Images (GIF)
+
+```java
+ImageComponent.Animated animated = ImageComponent.readAnimated(Path.of("animated.gif"), 16);
+Duration frameDelay = animated.getFrameDelay();
+Component[] frames = animated.getFrames();
+```
+
+## Events
+
+Holograms provides custom events for developers to hook into hologram interactions.  
+See the [Events](./events) page for full documentation and examples.

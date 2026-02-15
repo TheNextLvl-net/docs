@@ -1,0 +1,101 @@
+---
+title: Creating Holograms
+description: Create, delete, rename, and teleport holograms
+---
+
+# Creating Holograms
+
+Creating holograms is the first step in building your hologram setup.
+You can create holograms at your current location or at specific coordinates.
+
+## Commands
+
+### Create a Hologram
+
+Creates a new hologram with the specified name.  
+Usage: `/hologram create <name> [<position>] [<world>]`
+
+**Examples:**
+```
+<gray># Create a hologram at your location</gray>
+/hologram create <aqua>my-hologram</aqua>
+
+<gray># Create a hologram at specific coordinates</gray>
+/hologram create <aqua>spawn-hologram</aqua> <yellow>0 64 0</yellow>
+
+<gray># Create a hologram in a specific world</gray>
+/hologram create <aqua>nether-hologram</aqua> <yellow>100 64 100</yellow> <green>minecraft:the_nether</green>
+```
+
+<Callout type="info">
+  If no position is specified, the hologram will be created at your current location.
+</Callout>
+
+### Delete a Hologram
+
+Permanently removes a hologram from the server.  
+Usage: `/hologram delete <hologram>`
+
+**Examples:**
+```
+<gray># Delete a specific hologram</gray>
+/hologram delete <aqua>old-hologram</aqua>
+
+<gray># Remove unused hologram</gray>
+/hologram delete <aqua>test-hologram</aqua>
+```
+
+<Callout type="warning">
+  Deleting a hologram is permanent and cannot be undone.  
+  All lines, actions, and settings will be lost.
+</Callout>
+
+### Rename a Hologram
+
+Changes the name of an existing hologram.  
+Usage: `/hologram rename <hologram> <name>`
+
+**Examples:**
+```
+<gray># Rename a hologram</gray>
+/hologram rename <aqua>old-name</aqua> <yellow>new-name</yellow>
+
+<gray># Give a hologram a more descriptive name</gray>
+/hologram rename <aqua>test</aqua> <yellow>shop-display</yellow>
+```
+
+### List Holograms
+
+Displays a list of all holograms on the server.  
+Usage: `/hologram list`
+
+### Teleport
+
+Teleports you to a hologram, or moves a hologram to a new location.  
+Usage: `/hologram teleport <hologram> [<position> [<world>]] | [<target>]`
+
+**Teleport to a Hologram:**
+```
+<gray># Teleport yourself to a hologram</gray>
+/hologram teleport <aqua>spawn-hologram</aqua>
+```
+
+**Move a Hologram to Coordinates:**
+```
+<gray># Move a hologram to specific coordinates</gray>
+/hologram teleport <aqua>my-hologram</aqua> <yellow>0 64 0</yellow>
+
+<gray># Move a hologram to coordinates in a specific world</gray>
+/hologram teleport <aqua>my-hologram</aqua> <yellow>100 64 100</yellow> <green>minecraft:the_nether</green>
+```
+
+**Move a Hologram to an Entity:**
+```
+<gray># Move a hologram to a player or entity</gray>
+/hologram teleport <aqua>my-hologram</aqua> <yellow>Notch</yellow>
+```
+
+<Callout type="info">
+  When no position or target is specified, the command teleports you to the hologram.  
+  When a position or target is provided, the hologram is moved instead.
+</Callout>

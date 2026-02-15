@@ -1,0 +1,228 @@
+---
+title: Paged Lines
+description: Manage paged hologram lines with multiple pages of content
+---
+
+# Paged Lines
+
+Paged lines allow a single hologram line to cycle through multiple pages of content.
+Each page can display different text, blocks, items, or entities, and pages can be configured
+to automatically cycle at a set interval.
+
+## Managing Pages
+
+### Add a Page
+
+Adds a new page to the end of a paged line.  
+Usage: `/hologram page add <hologram> <line> block|entity|item|text <value>`
+
+**Examples:**
+```
+<gray># Add a text page</gray>
+/hologram page add <aqua>my-hologram</aqua> <yellow>1</yellow> text <green>Page One</green>
+
+<gray># Add a block page</gray>
+/hologram page add <aqua>my-hologram</aqua> <yellow>1</yellow> block <green>diamond_block</green>
+
+<gray># Add an item page</gray>
+/hologram page add <aqua>my-hologram</aqua> <yellow>1</yellow> item <green>golden_apple</green>
+
+<gray># Add an entity page</gray>
+/hologram page add <aqua>my-hologram</aqua> <yellow>1</yellow> entity <green>minecraft:pig</green>
+```
+
+### Insert a Page
+
+Inserts a page at a specific position in a paged line.  
+Usage: `/hologram page insert <hologram> <line> <page> block|entity|item|text <value>`
+
+**Examples:**
+```
+<gray># Insert a text page at position 1</gray>
+/hologram page insert <aqua>my-hologram</aqua> <yellow>1</yellow> <green>1</green> text <light_purple>New First Page</light_purple>
+
+<gray># Insert a block page at position 2</gray>
+/hologram page insert <aqua>my-hologram</aqua> <yellow>1</yellow> <green>2</green> block <light_purple>gold_block</light_purple>
+```
+
+### Remove a Page
+
+Removes a page from a paged line.  
+Usage: `/hologram page remove <hologram> <line> <page>`
+
+**Examples:**
+```
+<gray># Remove page 1</gray>
+/hologram page remove <aqua>my-hologram</aqua> <yellow>1</yellow> <green>1</green>
+
+<gray># Remove page 3</gray>
+/hologram page remove <aqua>my-hologram</aqua> <yellow>1</yellow> <green>3</green>
+```
+
+### Clear All Pages
+
+Removes all pages from a paged line.  
+Usage: `/hologram page clear <hologram> <line>`
+
+**Examples:**
+```
+<gray># Clear all pages from line 1</gray>
+/hologram page clear <aqua>my-hologram</aqua> <yellow>1</yellow>
+```
+
+### Move a Page
+
+Moves a page from one position to another.  
+Usage: `/hologram page move <hologram> <line> <from> <to>`
+
+**Examples:**
+```
+<gray># Move page 1 to position 3</gray>
+/hologram page move <aqua>my-hologram</aqua> <yellow>1</yellow> <green>1</green> <light_purple>3</light_purple>
+
+<gray># Move page 4 to position 2</gray>
+/hologram page move <aqua>my-hologram</aqua> <yellow>1</yellow> <green>4</green> <light_purple>2</light_purple>
+```
+
+### Swap Pages
+
+Swaps the positions of two pages.  
+Usage: `/hologram page swap <hologram> <line> <first> <second>`
+
+**Examples:**
+```
+<gray># Swap pages 1 and 3</gray>
+/hologram page swap <aqua>my-hologram</aqua> <yellow>1</yellow> <green>1</green> <light_purple>3</light_purple>
+
+<gray># Swap pages 2 and 5</gray>
+/hologram page swap <aqua>my-hologram</aqua> <yellow>1</yellow> <green>2</green> <light_purple>5</light_purple>
+```
+
+### List Pages
+
+Lists all pages of a paged line.  
+Usage: `/hologram page list <hologram> <line>`
+
+**Examples:**
+```
+<gray># List all pages of line 1</gray>
+/hologram page list <aqua>my-hologram</aqua> <yellow>1</yellow>
+```
+
+## Page Settings
+
+### Interval
+
+Sets the automatic page cycle interval.  
+Usage: `/hologram page settings <hologram> <line> interval <interval>`
+
+**Examples:**
+```
+<gray># Set page cycle interval to 5 seconds</gray>
+/hologram page settings <aqua>my-hologram</aqua> <yellow>1</yellow> interval <green>5s</green>
+
+<gray># Set page cycle interval to 1 minute</gray>
+/hologram page settings <aqua>my-hologram</aqua> <yellow>1</yellow> interval <green>60s</green>
+```
+
+### Pause
+
+Pauses or resumes automatic page cycling.  
+Usage: `/hologram page settings <hologram> <line> pause <paused>`
+
+**Examples:**
+```
+<gray># Pause page cycling</gray>
+/hologram page settings <aqua>my-hologram</aqua> <yellow>1</yellow> pause <green>true</green>
+
+<gray># Resume page cycling</gray>
+/hologram page settings <aqua>my-hologram</aqua> <yellow>1</yellow> pause <green>false</green>
+```
+
+### Random
+
+Toggles random page order instead of sequential cycling.  
+Usage: `/hologram page settings <hologram> <line> random <random>`
+
+**Examples:**
+```
+<gray># Enable random page order</gray>
+/hologram page settings <aqua>my-hologram</aqua> <yellow>1</yellow> random <green>true</green>
+
+<gray># Use sequential page order</gray>
+/hologram page settings <aqua>my-hologram</aqua> <yellow>1</yellow> random <green>false</green>
+```
+
+## Page Editing
+
+Pages support all the same edit commands as regular lines.  
+Usage: `/hologram page edit <hologram> <line> <page> <property> <value>`
+
+**Examples:**
+```
+<gray># Set the alignment of page 1</gray>
+/hologram page edit <aqua>my-hologram</aqua> <yellow>1</yellow> <green>1</green> alignment <light_purple>center</light_purple>
+
+<gray># Set the scale of page 2</gray>
+/hologram page edit <aqua>my-hologram</aqua> <yellow>1</yellow> <green>2</green> scale <light_purple>2</light_purple>
+
+<gray># Enable glowing on page 1</gray>
+/hologram page edit <aqua>my-hologram</aqua> <yellow>1</yellow> <green>1</green> glowing <light_purple>true</light_purple>
+
+<gray># Set billboard mode on page 3</gray>
+/hologram page edit <aqua>my-hologram</aqua> <yellow>1</yellow> <green>3</green> billboard <light_purple>center</light_purple>
+```
+
+<Callout type="info">
+  See [Editing Lines](/docs/holograms/editing-lines) for the full list of edit properties.
+</Callout>
+
+## Page Actions
+
+Pages support the same click actions as regular lines.  
+Usage: `/hologram page action add <hologram> <line> <page> <action> <click-types> <type> <args>`
+
+**Examples:**
+```
+<gray># Add a command action to page 1</gray>
+/hologram page action add <aqua>my-hologram</aqua> <yellow>1</yellow> <green>1</green> <light_purple>go-spawn</light_purple> any-click run-command <gold>spawn</gold>
+
+<gray># Add a message action to page 2</gray>
+/hologram page action add <aqua>my-hologram</aqua> <yellow>1</yellow> <green>2</green> <light_purple>greet</light_purple> right-click send-message <gold>Hello!</gold>
+```
+
+Page action management commands follow the same pattern:
+```
+<gray># Set action chance on page 1</gray>
+/hologram page action chance <aqua>my-hologram</aqua> <yellow>1</yellow> <green>1</green> <light_purple>go-spawn</light_purple> 0.5
+
+<gray># Set action cooldown on page 2</gray>
+/hologram page action cooldown <aqua>my-hologram</aqua> <yellow>1</yellow> <green>2</green> <light_purple>greet</light_purple> 30s
+
+<gray># List actions on page 1</gray>
+/hologram page action list <aqua>my-hologram</aqua> <yellow>1</yellow> <green>1</green>
+
+<gray># Remove action from page 1</gray>
+/hologram page action remove <aqua>my-hologram</aqua> <yellow>1</yellow> <green>1</green> <light_purple>go-spawn</light_purple>
+```
+
+<Callout type="info">
+  See [Click Actions](/docs/holograms/click-actions) for the full list of action types and management commands.
+</Callout>
+
+## Page View Permissions
+
+You can restrict the visibility of individual pages.  
+Usage: `/hologram page view-permission <hologram> <line> <page> [<permission> | remove]`
+
+**Examples:**
+```
+<gray># Set a view permission on page 1</gray>
+/hologram page view-permission <aqua>my-hologram</aqua> <yellow>1</yellow> <green>1</green> <light_purple>server.vip</light_purple>
+
+<gray># Remove the view permission from page 2</gray>
+/hologram page view-permission <aqua>my-hologram</aqua> <yellow>1</yellow> <green>2</green> <light_purple>remove</light_purple>
+
+<gray># View current permission on page 1</gray>
+/hologram page view-permission <aqua>my-hologram</aqua> <yellow>1</yellow> <green>1</green>
+```

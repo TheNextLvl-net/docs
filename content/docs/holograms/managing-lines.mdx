@@ -1,0 +1,118 @@
+---
+title: Managing Lines
+description: Add, insert, remove, move, and swap hologram lines
+---
+
+# Managing Lines
+
+Hologram lines are the building blocks of your holograms.
+Each line can display text, blocks, items, entities, or paged content.
+
+## Commands
+
+### Add a Line
+
+Adds a new line to the end of a hologram.  
+Usage: `/hologram line add <hologram> block|entity|item|text|paged <value>`
+
+**Examples:**
+```
+<gray># Add a text line</gray>
+/hologram line add <aqua>my-hologram</aqua> text <yellow>Hello World!</yellow>
+
+<gray># Add a block line</gray>
+/hologram line add <aqua>my-hologram</aqua> block <yellow>diamond_block</yellow>
+
+<gray># Add an item line</gray>
+/hologram line add <aqua>my-hologram</aqua> item <yellow>diamond_sword</yellow>
+
+<gray># Add an entity line</gray>
+/hologram line add <aqua>my-hologram</aqua> entity <yellow>minecraft:pig</yellow>
+
+<gray># Add an empty paged line</gray>
+/hologram line add <aqua>my-hologram</aqua> paged
+```
+
+### Insert a Line
+
+Inserts a new line at a specific position in the hologram.  
+Usage: `/hologram line insert <hologram> <line> block|entity|item|text|paged <value>`
+
+**Examples:**
+```
+<gray># Insert a text line at position 1</gray>
+/hologram line insert <aqua>my-hologram</aqua> <yellow>1</yellow> text <green>New First Line</green>
+
+<gray># Insert a block line at position 3</gray>
+/hologram line insert <aqua>my-hologram</aqua> <yellow>3</yellow> block <green>gold_block</green>
+
+<gray># Insert an item line at position 2</gray>
+/hologram line insert <aqua>my-hologram</aqua> <yellow>2</yellow> item <green>emerald</green>
+```
+
+### Remove a Line
+
+Removes a line from the hologram.  
+Usage: `/hologram line remove <hologram> <line>`
+
+**Examples:**
+```
+<gray># Remove line 1</gray>
+/hologram line remove <aqua>my-hologram</aqua> <yellow>1</yellow>
+
+<gray># Remove line 3</gray>
+/hologram line remove <aqua>my-hologram</aqua> <yellow>3</yellow>
+```
+
+<Callout type="warning">
+  Removing a line is permanent and cannot be undone.  
+  All line settings, actions, and pages will be lost.
+</Callout>
+
+### Move a Line
+
+Moves a line from one position to another within the hologram.  
+Usage: `/hologram line move <hologram> <from> <to>`
+
+**Examples:**
+```
+<gray># Move line 1 to position 3</gray>
+/hologram line move <aqua>my-hologram</aqua> <yellow>1</yellow> <green>3</green>
+
+<gray># Move line 5 to position 2</gray>
+/hologram line move <aqua>my-hologram</aqua> <yellow>5</yellow> <green>2</green>
+```
+
+### Swap Lines
+
+Swaps the positions of two lines in the hologram.  
+Usage: `/hologram line swap <hologram> <first> <second>`
+
+**Examples:**
+```
+<gray># Swap lines 1 and 3</gray>
+/hologram line swap <aqua>my-hologram</aqua> <yellow>1</yellow> <green>3</green>
+
+<gray># Swap lines 2 and 5</gray>
+/hologram line swap <aqua>my-hologram</aqua> <yellow>2</yellow> <green>5</green>
+```
+
+### Set Line Type
+
+Changes the type and content of an existing line.  
+Usage: `/hologram line edit <hologram> <line> set block|entity|item|text|paged <value>`
+
+**Examples:**
+```
+<gray># Change a line to display a block</gray>
+/hologram line edit <aqua>my-hologram</aqua> <yellow>1</yellow> set block <green>emerald_block</green>
+
+<gray># Change a line to display text</gray>
+/hologram line edit <aqua>my-hologram</aqua> <yellow>2</yellow> set text <green>Updated Text</green>
+
+<gray># Change a line to display an item</gray>
+/hologram line edit <aqua>my-hologram</aqua> <yellow>1</yellow> set item <green>golden_apple</green>
+
+<gray># Change a line to a paged line</gray>
+/hologram line edit <aqua>my-hologram</aqua> <yellow>3</yellow> set paged
+```

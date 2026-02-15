@@ -4,4 +4,136 @@ description: Create and manage holograms
 icon: BookMarked
 ---
 
-Coming soon!
+# Holograms
+
+Holograms is a powerful Minecraft server plugin for **Folia** and **Paper**
+that allows you to create and manage fully customizable holograms.
+Display text, blocks, items, entities, images, and animated content
+with support for click actions, visibility control, and persistence.
+
+## Features
+
+### Line Types
+
+- **Text Lines**: Display formatted text with customizable width, alignment, shadow, and background
+- **Block Lines**: Display any block type as a hologram line
+- **Item Lines**: Display items and player heads with configurable display transforms
+- **Entity Lines**: Display entity models with adjustable scale and offset
+- **Paged Lines**: Cycle through multiple pages of content with configurable intervals
+
+### Click Actions
+
+- **Commands**: Run commands as the player or console on click
+- **Messages**: Send chat messages, actionbar messages, or titles
+- **Teleportation**: Teleport or transfer players to other locations or servers
+- **Sounds**: Play sounds on interaction
+- **Page Control**: Cycle or set pages on paged hologram lines
+
+### Visibility Control
+
+- **Permissions**: Restrict hologram visibility with custom permissions
+- **Default Visibility**: Toggle whether holograms are visible by default
+- **Individual Viewers**: Add or remove specific players as viewers
+
+### Image Support
+
+- **Static Images**: Render images as text-based hologram lines
+- **Animated GIFs**: Display animated GIFs as paged hologram lines
+
+### Persistence
+
+- **Persistent Holograms**: Mark holograms as persistent to survive server restarts
+- **Automatic Loading**: Persistent holograms are automatically loaded on startup
+
+## Quick Start
+
+### Basic Usage
+
+The main command of Holograms is `/hologram`,
+and requires the permission `holograms.command.<subcommand>`:
+
+```
+<gray># Create a hologram at your location</gray>
+/hologram create <aqua>my-hologram</aqua>
+
+<gray># Add a text line</gray>
+/hologram line add <aqua>my-hologram</aqua> text <yellow>Hello World!</yellow>
+
+<gray># Add a block line</gray>
+/hologram line add <aqua>my-hologram</aqua> block <yellow>diamond_block</yellow>
+
+<gray># Add an item line</gray>
+/hologram line add <aqua>my-hologram</aqua> item <yellow>diamond_sword</yellow>
+
+<gray># Add an empty paged line</gray>
+/hologram line add <aqua>my-hologram</aqua> paged
+
+<gray># List all holograms</gray>
+/hologram list
+
+<gray># Teleport to a hologram</gray>
+/hologram teleport <aqua>my-hologram</aqua>
+
+<gray># Delete a hologram</gray>
+/hologram delete <aqua>my-hologram</aqua>
+```
+
+### Common Scenarios
+
+#### Text Hologram
+
+Create a hologram with multiple text lines:
+```
+<gray># Create the hologram</gray>
+/hologram create <aqua>welcome</aqua>
+
+<gray># Add text lines</gray>
+/hologram line add <aqua>welcome</aqua> text <yellow>Welcome to the Server!</yellow>
+/hologram line add <aqua>welcome</aqua> text <yellow>Enjoy your stay</yellow>
+```
+
+#### Item Hologram
+
+Create a hologram displaying an item:
+```
+<gray># Create the hologram</gray>
+/hologram create <aqua>shop-item</aqua>
+
+<gray># Add an item line</gray>
+/hologram line add <aqua>shop-item</aqua> item <yellow>diamond_sword</yellow>
+
+<gray># Add a label below</gray>
+/hologram line add <aqua>shop-item</aqua> text <yellow>Legendary Sword - 500 Coins</yellow>
+```
+
+#### Paged Hologram
+
+Create a hologram with rotating content:
+```
+<gray># Create the hologram</gray>
+/hologram create <aqua>announcements</aqua>
+
+<gray># Add a paged line</gray>
+/hologram line add <aqua>announcements</aqua> paged
+
+<gray># Add pages to line 1</gray>
+/hologram page add <aqua>announcements</aqua> <yellow>1</yellow> text <green>Server Rules</green>
+/hologram page add <aqua>announcements</aqua> <yellow>1</yellow> text <green>Upcoming Events</green>
+/hologram page add <aqua>announcements</aqua> <yellow>1</yellow> text <green>Latest News</green>
+```
+
+## Permission System
+
+### Command Permissions
+
+Holograms uses fine-grained permissions following the pattern:
+- `holograms.command.create` - Create holograms
+- `holograms.command.delete` - Delete holograms
+- `holograms.command.list` - List holograms
+- `holograms.command.rename` - Rename holograms
+- `holograms.command.teleport` - Teleport to or move holograms
+- `holograms.command.view-permission` - Set hologram view permissions
+- `holograms.command.translation` - Manage translations
+- `holograms.command.line` - Manage hologram lines
+- `holograms.command.page` - Manage paged lines
+- `holograms.command.action.add` - Add click actions

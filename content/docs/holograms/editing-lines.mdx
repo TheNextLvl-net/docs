@@ -1,0 +1,370 @@
+---
+title: Editing Lines
+description: Edit hologram line properties and display settings
+---
+
+# Editing Lines
+
+Each hologram line has a variety of properties that can be customized.
+These commands let you fine-tune the appearance and behavior of individual lines.
+
+All edit commands follow the pattern:  
+`/hologram line edit <hologram> <line> <property> <value>`
+
+## Text Editing
+
+### Alignment
+
+Sets the text alignment of a line.  
+Usage: `/hologram line edit <hologram> <line> alignment <alignment>`
+
+**Examples:**
+```
+<gray># Center-align text</gray>
+/hologram line edit <aqua>my-hologram</aqua> <yellow>1</yellow> alignment <green>CENTER</green>
+
+<gray># Left-align text</gray>
+/hologram line edit <aqua>my-hologram</aqua> <yellow>1</yellow> alignment <green>LEFT</green>
+
+<gray># Right-align text</gray>
+/hologram line edit <aqua>my-hologram</aqua> <yellow>1</yellow> alignment <green>RIGHT</green>
+```
+
+### Append Text
+
+Appends text to the end of a line.  
+Usage: `/hologram line edit <hologram> <line> append <text>`
+
+**Examples:**
+```
+<gray># Append text to a line</gray>
+/hologram line edit <aqua>my-hologram</aqua> <yellow>1</yellow> append <green> - Updated!</green>
+
+<gray># Add a suffix</gray>
+/hologram line edit <aqua>my-hologram</aqua> <yellow>2</yellow> append <green> [NEW]</green>
+```
+
+<Callout type="info">
+  Text lines support line breaks using the `<br>` and `<newline>` tags.
+</Callout>
+
+### Prepend Text
+
+Prepends text to the beginning of a line.  
+Usage: `/hologram line edit <hologram> <line> prepend <text>`
+
+**Examples:**
+```
+<gray># Prepend text to a line</gray>
+/hologram line edit <aqua>my-hologram</aqua> <yellow>1</yellow> prepend <green>[!] </green>
+
+<gray># Add a prefix</gray>
+/hologram line edit <aqua>my-hologram</aqua> <yellow>2</yellow> prepend <green>★ </green>
+```
+
+### Replace Text
+
+Replaces text within a line.  
+Usage: `/hologram line edit <hologram> <line> replace <old> <new>`
+
+**Examples:**
+```
+<gray># Replace text in a line</gray>
+/hologram line edit <aqua>my-hologram</aqua> <yellow>1</yellow> replace <green>Hello</green> <light_purple>Welcome</light_purple>
+
+<gray># Fix a typo</gray>
+/hologram line edit <aqua>my-hologram</aqua> <yellow>2</yellow> replace <green>Wrold</green> <light_purple>World</light_purple>
+```
+
+### Opacity
+
+Sets the text opacity of a line.  
+Usage: `/hologram line edit <hologram> <line> opacity <percent>`
+
+**Examples:**
+```
+<gray># Set text opacity to 50%</gray>
+/hologram line edit <aqua>my-hologram</aqua> <yellow>1</yellow> opacity <green>50</green>
+
+<gray># Make text fully opaque</gray>
+/hologram line edit <aqua>my-hologram</aqua> <yellow>1</yellow> opacity <green>100</green>
+```
+
+### Shadowed
+
+Toggles text shadow on a line.  
+Usage: `/hologram line edit <hologram> <line> shadowed <boolean>`
+
+**Examples:**
+```
+<gray># Enable text shadow</gray>
+/hologram line edit <aqua>my-hologram</aqua> <yellow>1</yellow> shadowed <green>true</green>
+
+<gray># Disable text shadow</gray>
+/hologram line edit <aqua>my-hologram</aqua> <yellow>1</yellow> shadowed <green>false</green>
+```
+
+### See Through
+
+Toggles whether text can be seen through blocks.  
+Usage: `/hologram line edit <hologram> <line> see-through <boolean>`
+
+**Examples:**
+```
+<gray># Enable see-through</gray>
+/hologram line edit <aqua>my-hologram</aqua> <yellow>1</yellow> see-through <green>true</green>
+
+<gray># Disable see-through</gray>
+/hologram line edit <aqua>my-hologram</aqua> <yellow>1</yellow> see-through <green>false</green>
+```
+
+### Default Background
+
+Toggles the default background on a text line.  
+Usage: `/hologram line edit <hologram> <line> default-background <boolean>`
+
+**Examples:**
+```
+<gray># Enable default background</gray>
+/hologram line edit <aqua>my-hologram</aqua> <yellow>1</yellow> default-background <green>true</green>
+
+<gray># Disable default background</gray>
+/hologram line edit <aqua>my-hologram</aqua> <yellow>1</yellow> default-background <green>false</green>
+```
+
+### Background Color
+
+Sets the background color of a text line.  
+Usage: `/hologram line edit <hologram> <line> background-color <color>`
+
+**Examples:**
+```
+<gray># Set a black background</gray>
+/hologram line edit <aqua>my-hologram</aqua> <yellow>1</yellow> background-color <green>#000000</green>
+
+<gray># Set a semi-transparent red background</gray>
+/hologram line edit <aqua>my-hologram</aqua> <yellow>1</yellow> background-color <green>#80FF0000</green>
+```
+
+<Callout type="warn">
+  If changing the background color has no visible effect, make sure `default-background` is set to `false`.  
+  The default background overrides any custom background color.
+</Callout>
+
+## Images in Text Lines
+
+Text lines support rendering images using the `<image>` tag.  
+The image is resolved from a file path or URL and rendered as colored block characters.
+
+Usage: `<image:'source'>`  or `<image:'source':'height'>`
+
+The `source` can be a local file path or a URL (`http://` / `https://`).  
+The `height` parameter controls how many lines tall the image is rendered (defaults to `8`).
+
+Images are cached for 30 minutes after first load.
+
+**Examples:**
+```
+<gray># Display an image from a URL</gray>
+/hologram line edit <aqua>my-hologram</aqua> <yellow>1</yellow> set text <green><image:'https://example.com/logo.png'></green>
+
+<gray># Display an image from a local file</gray>
+/hologram line edit <aqua>my-hologram</aqua> <yellow>1</yellow> set text <green><image:'/path/to/image.png'></green>
+
+<gray># Display an image with a custom height of 16 lines</gray>
+/hologram line edit <aqua>my-hologram</aqua> <yellow>1</yellow> set text <green><image:'https://example.com/logo.png':'16'></green>
+```
+
+<Callout type="info">
+  The image tag can be combined with other text and MiniMessage tags in the same line.
+</Callout>
+
+## Display Properties
+
+### Billboard
+
+Sets the billboard mode of a line, controlling how it faces the player.  
+Usage: `/hologram line edit <hologram> <line> billboard <billboard>`
+
+**Examples:**
+```
+<gray># Face the player at all times</gray>
+/hologram line edit <aqua>my-hologram</aqua> <yellow>1</yellow> billboard <green>CENTER</green>
+
+<gray># Only rotate horizontally</gray>
+/hologram line edit <aqua>my-hologram</aqua> <yellow>1</yellow> billboard <green>VERTICAL</green>
+
+<gray># Only rotate vertically</gray>
+/hologram line edit <aqua>my-hologram</aqua> <yellow>1</yellow> billboard <green>HORIZONTAL</green>
+
+<gray># Fixed rotation</gray>
+/hologram line edit <aqua>my-hologram</aqua> <yellow>1</yellow> billboard <green>FIXED</green>
+```
+
+### Brightness
+
+Sets the brightness of a line.  
+Usage: `/hologram line edit <hologram> <line> brightness <block> <sky>`
+
+**Examples:**
+```
+<gray># Set full brightness</gray>
+/hologram line edit <aqua>my-hologram</aqua> <yellow>1</yellow> brightness <green>15</green> <light_purple>15</light_purple>
+
+<gray># Set low brightness</gray>
+/hologram line edit <aqua>my-hologram</aqua> <yellow>1</yellow> brightness <green>5</green> <light_purple>5</light_purple>
+```
+
+### Glow Color
+
+Sets the glow color of a line.  
+Usage: `/hologram line edit <hologram> <line> glow-color <color>`
+
+**Examples:**
+```
+<gray># Set glow color to red</gray>
+/hologram line edit <aqua>my-hologram</aqua> <yellow>1</yellow> glow-color <green>#FF0000</green>
+
+<gray># Set glow color to gold</gray>
+/hologram line edit <aqua>my-hologram</aqua> <yellow>1</yellow> glow-color <green>#FFD700</green>
+```
+
+### Glowing
+
+Toggles the glowing effect on a line.  
+Usage: `/hologram line edit <hologram> <line> glowing <boolean>`
+
+**Examples:**
+```
+<gray># Enable glowing</gray>
+/hologram line edit <aqua>my-hologram</aqua> <yellow>1</yellow> glowing <green>true</green>
+
+<gray># Disable glowing</gray>
+/hologram line edit <aqua>my-hologram</aqua> <yellow>1</yellow> glowing <green>false</green>
+```
+
+### Interpolation Delay
+
+Sets the interpolation delay in ticks.  
+Usage: `/hologram line edit <hologram> <line> interpolation-delay <ticks>`
+
+**Examples:**
+```
+<gray># Set interpolation delay to 0 ticks</gray>
+/hologram line edit <aqua>my-hologram</aqua> <yellow>1</yellow> interpolation-delay <green>0</green>
+
+<gray># Set interpolation delay to 10 ticks</gray>
+/hologram line edit <aqua>my-hologram</aqua> <yellow>1</yellow> interpolation-delay <green>10</green>
+```
+
+### Interpolation Duration
+
+Sets the interpolation duration in ticks.  
+Usage: `/hologram line edit <hologram> <line> interpolation-duration <ticks>`
+
+**Examples:**
+```
+<gray># Set interpolation duration to 20 ticks (1 second)</gray>
+/hologram line edit <aqua>my-hologram</aqua> <yellow>1</yellow> interpolation-duration <green>20</green>
+
+<gray># Set interpolation duration to 60 ticks (3 seconds)</gray>
+/hologram line edit <aqua>my-hologram</aqua> <yellow>1</yellow> interpolation-duration <green>60</green>
+```
+
+### Teleport Duration
+
+Sets the teleport duration in ticks.  
+Usage: `/hologram line edit <hologram> <line> teleport-duration <ticks>`
+
+**Examples:**
+```
+<gray># Set teleport duration to 0 ticks</gray>
+/hologram line edit <aqua>my-hologram</aqua> <yellow>1</yellow> teleport-duration <green>0</green>
+
+<gray># Set teleport duration to 10 ticks</gray>
+/hologram line edit <aqua>my-hologram</aqua> <yellow>1</yellow> teleport-duration <green>10</green>
+```
+
+### Transformation
+
+Sets how an item line is displayed, changing the way the item is rendered.  
+This only applies to item lines.  
+Usage: `/hologram line edit <hologram> <line> transformation [<transformation>]`
+
+Available transformations:
+
+| Transformation | Description |
+|---|---|
+| `NONE` | No transformation applied |
+| `FIXED` | Rendered as a fixed item (default) |
+| `GROUND` | Rendered like an item dropped on the ground |
+| `GUI` | Rendered like an item in a GUI/inventory slot |
+| `HEAD` | Rendered like an item worn on the head |
+| `FIRSTPERSON_LEFTHAND` | Rendered as held in first-person left hand |
+| `FIRSTPERSON_RIGHTHAND` | Rendered as held in first-person right hand |
+| `THIRDPERSON_LEFTHAND` | Rendered as held in third-person left hand |
+| `THIRDPERSON_RIGHTHAND` | Rendered as held in third-person right hand |
+
+**Examples:**
+```
+<gray># Render like an item in a GUI</gray>
+/hologram line edit <aqua>my-hologram</aqua> <yellow>1</yellow> transformation <green>gui</green>
+
+<gray># Render like a drop on the ground</gray>
+/hologram line edit <aqua>my-hologram</aqua> <yellow>1</yellow> transformation <green>ground</green>
+
+<gray># Render like an item on the head</gray>
+/hologram line edit <aqua>my-hologram</aqua> <yellow>1</yellow> transformation <green>head</green>
+
+<gray># View current transformation</gray>
+/hologram line edit <aqua>my-hologram</aqua> <yellow>1</yellow> transformation
+```
+
+### Scale
+
+Sets the scale of a line.  
+Usage: `/hologram line edit <hologram> <line> scale <x> [<y> <z>]`
+
+Providing a single value scales all axes uniformly.
+
+**Examples:**
+```
+<gray># Double the size uniformly</gray>
+/hologram line edit <aqua>my-hologram</aqua> <yellow>1</yellow> scale <green>2</green>
+
+<gray># Scale each axis individually</gray>
+/hologram line edit <aqua>my-hologram</aqua> <yellow>1</yellow> scale <green>2</green> <green>1</green> <green>0.5</green>
+
+<gray># Half the size uniformly</gray>
+/hologram line edit <aqua>my-hologram</aqua> <yellow>1</yellow> scale <green>0.5</green>
+```
+
+### Offset
+
+Sets the positional offset of a line.  
+Usage: `/hologram line edit <hologram> <line> offset <x> <y> <z>`
+
+**Examples:**
+```
+<gray># Offset a line upward</gray>
+/hologram line edit <aqua>my-hologram</aqua> <yellow>1</yellow> offset <green>0</green> <light_purple>1.5</light_purple> <gold>0</gold>
+
+<gray># Offset a line to the side</gray>
+/hologram line edit <aqua>my-hologram</aqua> <yellow>1</yellow> offset <green>2</green> <light_purple>0</light_purple> <gold>0</gold>
+```
+
+## Special Properties
+
+### Player Head
+
+Toggles whether an item line displays as a player head.  
+Usage: `/hologram line edit <hologram> <line> player-head <boolean>`
+
+**Examples:**
+```
+<gray># Enable player head display</gray>
+/hologram line edit <aqua>my-hologram</aqua> <yellow>1</yellow> player-head <green>true</green>
+
+<gray># Disable player head display</gray>
+/hologram line edit <aqua>my-hologram</aqua> <yellow>1</yellow> player-head <green>false</green>
+```

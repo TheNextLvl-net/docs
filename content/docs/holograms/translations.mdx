@@ -1,0 +1,53 @@
+---
+title: Translations
+description: Manage translations for multilingual hologram text
+---
+
+# Translations
+
+Holograms supports translations for displaying text in the viewer's language.
+Translation keys can be used inside hologram text lines and are automatically
+resolved per-player based on their client language.
+
+## Commands
+
+### Add a Translation
+
+Adds or updates a translation key with a value.  
+Usage: `/hologram translation add <key> <locale> <value>`
+
+**Examples:**
+```
+<gray># Add a translation entry for English</gray>
+/hologram translation add <aqua>welcome.message</aqua> <yellow>English</yellow> <green>Welcome to the server!</green>
+
+<gray># Add a translation entry for German</gray>
+/hologram translation add <aqua>welcome.message</aqua> <yellow>German</yellow> <green>Willkommen auf dem Server!</green>
+
+<gray># Add another translation entry for Spanish</gray>
+/hologram translation add <aqua>shop.title</aqua> <yellow>Spanish</yellow> <green>Tienda del Servidor</green>
+```
+
+### List Translations
+
+Displays a list of all translation entries.  
+Usage: `/hologram translation list`
+
+### Reload Translations
+
+Reloads all translations from disk.  
+Usage: `/hologram translation reload`
+
+### Remove a Translation
+
+Removes a translation entry by key.  
+Usage: `/hologram translation remove <key> <locale>`
+
+**Examples:**
+```
+<gray># Remove a translation entry for English</gray>
+/hologram translation remove <aqua>welcome.message</aqua> <yellow>English</yellow>
+
+<gray># Remove another translation entry for Spanish</gray>
+/hologram translation remove <aqua>shop.title</aqua> <yellow>Spanish</yellow>
+```

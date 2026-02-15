@@ -1,20 +1,29 @@
 {
-	"root": true,
-	"title": "Holograms",
-	"description": "Create and manage holograms",
-	"icon": "TextAlignStart",
-	"pages": [
-		"---Links---",
-		"external:[Github][GitHub](https://github.com/TheNextLvl-net/holograms)",
-		"external:[Download][Download](https://modrinth.com/project/yWs5IQBz#download)",
-		"external:[ChartLine][Metrics](https://faststats.dev/project/holograms)",
-		"external:[BookDown][Repository](https://repo.thenextlvl.net/#/releases/net/thenextlvl/holograms)",
-		"---Introduction---",
-		"index",
-		"faq",
-		"---Guide---",
-		"---For Developers---",
-		"api/repository",
-		"api/index"
-	]
+  "root": true,
+  "title": "Holograms",
+  "description": "Create and manage holograms",
+  "icon": "TextAlignStart",
+  "pages": [
+    "---Links---",
+    "external:[Github][GitHub](https://github.com/TheNextLvl-net/holograms)",
+    "external:[Download][Download](https://modrinth.com/project/yWs5IQBz#download)",
+    "external:[ChartLine][Metrics](https://faststats.dev/project/holograms)",
+    "external:[BookDown][Repository](https://repo.thenextlvl.net/#/releases/net/thenextlvl/holograms)",
+    "---Introduction---",
+    "index",
+    "faq",
+    "---Guide---",
+    "creating-holograms",
+    "managing-lines",
+    "editing-lines",
+    "click-actions",
+    "paged-lines",
+    "visibility",
+    "translations",
+    "permissions",
+    "---For Developers---",
+    "api/repository",
+    "api/index",
+    "api/events"
+  ]
 }
