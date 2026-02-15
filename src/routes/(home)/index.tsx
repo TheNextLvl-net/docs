@@ -59,7 +59,7 @@ const otherCards: CardData[] = [
 	{
 		title: "Holograms",
 		icon: TextAlignStart,
-		description: "A modern hologram plugin using the new display api",
+		description: "The most advanced hologram plugin for Minecraft",
 		href: "docs/holograms",
 		className: "group",
 	},
