@@ -57,6 +57,13 @@ const featuredCards: CardData[] = [
 
 const otherCards: CardData[] = [
 	{
+		title: "Holograms",
+		icon: TextAlignStart,
+		description: "A modern hologram plugin using the new display api",
+		href: "docs/holograms",
+		className: "group",
+	},
+	{
 		title: "Characters",
 		icon: User,
 		description: "A modern, fully featured npc plugin for paper servers",
@@ -110,13 +117,6 @@ const otherCards: CardData[] = [
 		icon: Command,
 		description: "Remove, hide or change or query permissions of commands",
 		href: "docs/commander",
-		className: "group",
-	},
-	{
-		title: "Holograms",
-		icon: TextAlignStart,
-		description: "A modern hologram plugin using the new display api",
-		href: "docs/holograms",
 		className: "group",
 	},
 	{
