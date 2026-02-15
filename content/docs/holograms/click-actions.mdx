@@ -12,16 +12,16 @@ You can add multiple actions to a single line, each with its own click type, and
 
 Each action requires a click type that determines how the player must interact:
 
-| Click Type | Description |
-|---|---|
-| `ANY_CLICK` | Any click type |
-| `ANY_LEFT_CLICK` | Any left click (normal or shift) |
-| `ANY_RIGHT_CLICK` | Any right click (normal or shift) |
-| `LEFT_CLICK` | Normal left click |
-| `RIGHT_CLICK` | Normal right click |
-| `SHIFT_CLICK` | Any click while sneaking |
-| `SHIFT_LEFT_CLICK` | Left click while sneaking |
-| `SHIFT_RIGHT_CLICK` | Right click while sneaking |
+| Click Type          | Description                       |
+|---------------------|-----------------------------------|
+| `any-click`         | Any click type                    |
+| `any-left-click`    | Any left click (normal or shift)  |
+| `any-right-click`   | Any right click (normal or shift) |
+| `left-click`        | Normal left click                 |
+| `right-click`       | Normal right click                |
+| `shift-click`       | Any click while sneaking          |
+| `shift-left-click`  | Left click while sneaking         |
+| `shift-right-click` | Right click while sneaking        |
 
 ## Adding Actions
 
@@ -38,24 +38,28 @@ Usage: `/hologram line action add <hologram> <line> <action> <click-types> conne
 **Examples:**
 ```
 <gray># Connect to lobby on any click</gray>
-/hologram line action add <aqua>my-hologram</aqua> <yellow>1</yellow> <green>lobby-connect</green> <light_purple>ANY_CLICK</light_purple> connect <gold>lobby</gold>
+/hologram line action add <aqua>my-hologram</aqua> <yellow>1</yellow> <green>lobby-connect</green> <light_purple>any-click</light_purple> connect <gold>lobby</gold>
 
 <gray># Connect to survival on right click</gray>
-/hologram line action add <aqua>my-hologram</aqua> <yellow>1</yellow> <green>survival-connect</green> <light_purple>RIGHT_CLICK</light_purple> connect <gold>survival</gold>
+/hologram line action add <aqua>my-hologram</aqua> <yellow>1</yellow> <green>survival-connect</green> <light_purple>right-click</light_purple> connect <gold>survival</gold>
 ```
 
 ### Cycle Page
 
 Cycles the page of a paged line by the specified amount.  
-Usage: `/hologram line action add <hologram> <line> <action> <click-types> cycle-page <amount>`
+Optionally target a different hologram and line.  
+Usage: `/hologram line action add <hologram> <line> <action> <click-types> cycle-page [<target> <target-line>] [<amount>]`
 
 **Examples:**
 ```
 <gray># Cycle forward one page on right click</gray>
-/hologram line action add <aqua>my-hologram</aqua> <yellow>1</yellow> <green>next</green> <light_purple>ANY_RIGHT_CLICK</light_purple> cycle-page <gold>1</gold>
+/hologram line action add <aqua>my-hologram</aqua> <yellow>1</yellow> <green>next</green> <light_purple>right-click</light_purple> cycle-page <gold>1</gold>
 
 <gray># Cycle backward one page on left click</gray>
-/hologram line action add <aqua>my-hologram</aqua> <yellow>1</yellow> <green>previous</green> <light_purple>ANY_LEFT_CLICK</light_purple> cycle-page <gold>-1</gold>
+/hologram line action add <aqua>my-hologram</aqua> <yellow>1</yellow> <green>previous</green> <light_purple>left-click</light_purple> cycle-page <gold>-1</gold>
+
+<gray># Cycle the page of a different hologram's line on right click</gray>
+/hologram line action add <aqua>my-hologram</aqua> <yellow>1</yellow> <green>next-other</green> <light_purple>right-click</light_purple> cycle-page <gold>other-hologram</gold> <gold>2</gold> <gold>1</gold>
 ```
 
 ### Play Sound
@@ -66,10 +70,10 @@ Usage: `/hologram line action add <hologram> <line> <action> <click-types> play-
 **Examples:**
 ```
 <gray># Play a click sound on any click</gray>
-/hologram line action add <aqua>my-hologram</aqua> <yellow>1</yellow> <green>click-sound</green> <light_purple>ANY_CLICK</light_purple> play-sound <gold>minecraft:ui.button.click</gold>
+/hologram line action add <aqua>my-hologram</aqua> <yellow>1</yellow> <green>click-sound</green> <light_purple>any-click</light_purple> play-sound <gold>minecraft:ui.button.click</gold>
 
 <gray># Play a level up sound on right click</gray>
-/hologram line action add <aqua>my-hologram</aqua> <yellow>1</yellow> <green>levelup-sound</green> <light_purple>RIGHT_CLICK</light_purple> play-sound <gold>minecraft:entity.player.levelup</gold>
+/hologram line action add <aqua>my-hologram</aqua> <yellow>1</yellow> <green>levelup-sound</green> <light_purple>right-click</light_purple> play-sound <gold>minecraft:entity.player.levelup</gold>
 ```
 
 ### Run Command
@@ -80,10 +84,10 @@ Usage: `/hologram line action add <hologram> <line> <action> <click-types> run-c
 **Examples:**
 ```
 <gray># Run a command as the player on right click</gray>
-/hologram line action add <aqua>my-hologram</aqua> <yellow>1</yellow> <green>go-spawn</green> <light_purple>RIGHT_CLICK</light_purple> run-command <gold>spawn</gold>
+/hologram line action add <aqua>my-hologram</aqua> <yellow>1</yellow> <green>go-spawn</green> <light_purple>right-click</light_purple> run-command <gold>spawn</gold>
 
 <gray># Open a menu on any click</gray>
-/hologram line action add <aqua>my-hologram</aqua> <yellow>1</yellow> <green>open-shop</green> <light_purple>ANY_CLICK</light_purple> run-command <gold>menu open shop</gold>
+/hologram line action add <aqua>my-hologram</aqua> <yellow>1</yellow> <green>open-shop</green> <light_purple>any-click</light_purple> run-command <gold>menu open shop</gold>
 ```
 
 ### Run Console Command
@@ -94,10 +98,10 @@ Usage: `/hologram line action add <hologram> <line> <action> <click-types> run-c
 **Examples:**
 ```
 <gray># Give player an item from console on right click</gray>
-/hologram line action add <aqua>my-hologram</aqua> <yellow>1</yellow> <green>give-diamond</green> <light_purple>RIGHT_CLICK</light_purple> run-console-command <gold>give <player> diamond 1</gold>
+/hologram line action add <aqua>my-hologram</aqua> <yellow>1</yellow> <green>give-diamond</green> <light_purple>right-click</light_purple> run-console-command <gold>give <player> diamond 1</gold>
 
 <gray># Broadcast a message on any click</gray>
-/hologram line action add <aqua>my-hologram</aqua> <yellow>1</yellow> <green>broadcast</green> <light_purple>ANY_CLICK</light_purple> run-console-command <gold>broadcast <player> clicked!</gold>
+/hologram line action add <aqua>my-hologram</aqua> <yellow>1</yellow> <green>broadcast</green> <light_purple>any-click</light_purple> run-console-command <gold>broadcast <player> clicked!</gold>
 ```
 
 <Callout type="info">
@@ -112,7 +116,7 @@ Usage: `/hologram line action add <hologram> <line> <action> <click-types> send-
 **Examples:**
 ```
 <gray># Send an actionbar message on any click</gray>
-/hologram line action add <aqua>my-hologram</aqua> <yellow>1</yellow> <green>welcome</green> <light_purple>ANY_CLICK</light_purple> send-actionbar <gold>Welcome to the shop!</gold>
+/hologram line action add <aqua>my-hologram</aqua> <yellow>1</yellow> <green>welcome</green> <light_purple>any-click</light_purple> send-actionbar <gold>Welcome to the shop!</gold>
 ```
 
 ### Send Message
@@ -123,7 +127,7 @@ Usage: `/hologram line action add <hologram> <line> <action> <click-types> send-
 **Examples:**
 ```
 <gray># Send a message on right click</gray>
-/hologram line action add <aqua>my-hologram</aqua> <yellow>1</yellow> <green>greet</green> <light_purple>RIGHT_CLICK</light_purple> send-message <gold>You clicked the hologram!</gold>
+/hologram line action add <aqua>my-hologram</aqua> <yellow>1</yellow> <green>greet</green> <light_purple>right-click</light_purple> send-message <gold>You clicked the hologram!</gold>
 ```
 
 ### Send Title
@@ -134,21 +138,25 @@ Usage: `/hologram line action add <hologram> <line> <action> <click-types> send-
 **Examples:**
 ```
 <gray># Send a title on any click</gray>
-/hologram line action add <aqua>my-hologram</aqua> <yellow>1</yellow> <green>welcome-title</green> <light_purple>ANY_CLICK</light_purple> send-title <gold>Welcome</gold> <gold>to the server!</gold>
+/hologram line action add <aqua>my-hologram</aqua> <yellow>1</yellow> <green>welcome-title</green> <light_purple>any-click</light_purple> send-title <gold>Welcome</gold> <gold>to the server!</gold>
 ```
 
 ### Set Page
 
 Sets the page of a paged line to a specific page number.  
-Usage: `/hologram line action add <hologram> <line> <action> <click-types> set-page <page>`
+Optionally target a different hologram and line.  
+Usage: `/hologram line action add <hologram> <line> <action> <click-types> set-page [<target> <target-line>] [<target-page>]`
 
 **Examples:**
 ```
 <gray># Set page to 1 on left click</gray>
-/hologram line action add <aqua>my-hologram</aqua> <yellow>1</yellow> <green>go-first</green> <light_purple>LEFT_CLICK</light_purple> set-page <gold>1</gold>
+/hologram line action add <aqua>my-hologram</aqua> <yellow>1</yellow> <green>go-first</green> <light_purple>left-click</light_purple> set-page <gold>1</gold>
 
 <gray># Set page to 3 on right click</gray>
-/hologram line action add <aqua>my-hologram</aqua> <yellow>1</yellow> <green>go-third</green> <light_purple>RIGHT_CLICK</light_purple> set-page <gold>3</gold>
+/hologram line action add <aqua>my-hologram</aqua> <yellow>1</yellow> <green>go-third</green> <light_purple>right-click</light_purple> set-page <gold>3</gold>
+
+<gray># Set the page of a different hologram's line on right click</gray>
+/hologram line action add <aqua>my-hologram</aqua> <yellow>1</yellow> <green>set-other</green> <light_purple>right-click</light_purple> set-page <gold>other-hologram</gold> <gold>2</gold> <gold>1</gold>
 ```
 
 ### Teleport
@@ -159,10 +167,10 @@ Usage: `/hologram line action add <hologram> <line> <action> <click-types> telep
 **Examples:**
 ```
 <gray># Teleport to coordinates on right click</gray>
-/hologram line action add <aqua>my-hologram</aqua> <yellow>1</yellow> <green>to-spawn</green> <light_purple>RIGHT_CLICK</light_purple> teleport <gold>0 64 0</gold>
+/hologram line action add <aqua>my-hologram</aqua> <yellow>1</yellow> <green>to-spawn</green> <light_purple>right-click</light_purple> teleport <gold>0 64 0</gold>
 
 <gray># Teleport to another world on any click</gray>
-/hologram line action add <aqua>my-hologram</aqua> <yellow>1</yellow> <green>to-nether</green> <light_purple>ANY_CLICK</light_purple> teleport <gold>100 64 100</gold> <gold>minecraft:the_nether</gold>
+/hologram line action add <aqua>my-hologram</aqua> <yellow>1</yellow> <green>to-nether</green> <light_purple>any-click</light_purple> teleport <gold>100 64 100</gold> <gold>minecraft:the_nether</gold>
 ```
 
 ### Transfer
@@ -173,10 +181,10 @@ Usage: `/hologram line action add <hologram> <line> <action> <click-types> trans
 **Examples:**
 ```
 <gray># Transfer to external server on right click</gray>
-/hologram line action add <aqua>my-hologram</aqua> <yellow>1</yellow> <green>transfer-main</green> <light_purple>RIGHT_CLICK</light_purple> transfer <gold>play.example.com</gold>
+/hologram line action add <aqua>my-hologram</aqua> <yellow>1</yellow> <green>transfer-main</green> <light_purple>right-click</light_purple> transfer <gold>play.example.com</gold>
 
 <gray># Transfer to server with custom port on any click</gray>
-/hologram line action add <aqua>my-hologram</aqua> <yellow>1</yellow> <green>transfer-test</green> <light_purple>ANY_CLICK</light_purple> transfer <gold>localhost</gold> <gold>25566</gold>
+/hologram line action add <aqua>my-hologram</aqua> <yellow>1</yellow> <green>transfer-test</green> <light_purple>any-click</light_purple> transfer <gold>localhost</gold> <gold>25566</gold>
 ```
 
 <Callout type="info">

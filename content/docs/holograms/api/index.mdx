@@ -282,6 +282,32 @@ Built-in action types include:
 | `cyclePage`         | Cycle a paged line by a certain amount  |
 | `setPage`           | Set a specific page of a paged line     |
 
+#### Page Change Actions
+
+The `cyclePage` and `setPage` action types use a `PageChange` value that specifies the target hologram, line, and page:
+
+```java
+ActionTypes types = ActionTypes.types();
+ClickActionFactory factory = ClickAction.factory();
+
+// Cycle the current line's page forward by 1
+ClickAction<PageChange> cycle = factory.create(
+        types.cyclePage(),
+        EnumSet.of(ClickType.RIGHT),
+        new PageChange(hologram, hologram.getLineIndex(line), 1)
+);
+
+// Set a specific page on a different hologram's line
+ClickAction<PageChange> setPage = factory.create(
+        types.setPage(),
+        EnumSet.of(ClickType.LEFT),
+        new PageChange(targetHologram, 2, 0) // line index 2, page index 0
+);
+
+line.addAction("next-page", cycle);
+line.addAction("go-first", setPage);
+```
+
 ### Click Types
 
 Available click types:
