@@ -21,13 +21,13 @@ Usage: `/hologram line edit <hologram> <line> alignment <alignment>`
 **Examples:**
 ```
 <gray># Center-align text</gray>
-/hologram line edit <aqua>my-hologram</aqua> <yellow>1</yellow> alignment <green>CENTER</green>
+/hologram line edit <aqua>my-hologram</aqua> <yellow>1</yellow> alignment <green>center</green>
 
 <gray># Left-align text</gray>
-/hologram line edit <aqua>my-hologram</aqua> <yellow>1</yellow> alignment <green>LEFT</green>
+/hologram line edit <aqua>my-hologram</aqua> <yellow>1</yellow> alignment <green>left</green>
 
 <gray># Right-align text</gray>
-/hologram line edit <aqua>my-hologram</aqua> <yellow>1</yellow> alignment <green>RIGHT</green>
+/hologram line edit <aqua>my-hologram</aqua> <yellow>1</yellow> alignment <green>right</green>
 ```
 
 ### Append Text
@@ -189,16 +189,16 @@ Usage: `/hologram line edit <hologram> <line> billboard <billboard>`
 **Examples:**
 ```
 <gray># Face the player at all times</gray>
-/hologram line edit <aqua>my-hologram</aqua> <yellow>1</yellow> billboard <green>CENTER</green>
+/hologram line edit <aqua>my-hologram</aqua> <yellow>1</yellow> billboard <green>center</green>
 
 <gray># Only rotate horizontally</gray>
-/hologram line edit <aqua>my-hologram</aqua> <yellow>1</yellow> billboard <green>VERTICAL</green>
+/hologram line edit <aqua>my-hologram</aqua> <yellow>1</yellow> billboard <green>vertical</green>
 
 <gray># Only rotate vertically</gray>
-/hologram line edit <aqua>my-hologram</aqua> <yellow>1</yellow> billboard <green>HORIZONTAL</green>
+/hologram line edit <aqua>my-hologram</aqua> <yellow>1</yellow> billboard <green>horizontal</green>
 
 <gray># Fixed rotation</gray>
-/hologram line edit <aqua>my-hologram</aqua> <yellow>1</yellow> billboard <green>FIXED</green>
+/hologram line edit <aqua>my-hologram</aqua> <yellow>1</yellow> billboard <green>fixed</green>
 ```
 
 ### Brightness
@@ -293,17 +293,17 @@ Usage: `/hologram line edit <hologram> <line> transformation [<transformation>]`
 
 Available transformations:
 
-| Transformation | Description |
-|---|---|
-| `NONE` | No transformation applied |
-| `FIXED` | Rendered as a fixed item (default) |
-| `GROUND` | Rendered like an item dropped on the ground |
-| `GUI` | Rendered like an item in a GUI/inventory slot |
-| `HEAD` | Rendered like an item worn on the head |
-| `FIRSTPERSON_LEFTHAND` | Rendered as held in first-person left hand |
-| `FIRSTPERSON_RIGHTHAND` | Rendered as held in first-person right hand |
-| `THIRDPERSON_LEFTHAND` | Rendered as held in third-person left hand |
-| `THIRDPERSON_RIGHTHAND` | Rendered as held in third-person right hand |
+| Transformation          | Description                                   |
+|-------------------------|-----------------------------------------------|
+| `none`                  | No transformation applied                     |
+| `fixed`                 | Rendered as a fixed item (default)            |
+| `ground`                | Rendered like an item dropped on the ground   |
+| `gui`                   | Rendered like an item in a GUI/inventory slot |
+| `head`                  | Rendered like an item worn on the head        |
+| `firstperson_lefthand`  | Rendered as held in first-person left hand    |
+| `firstperson_righthand` | Rendered as held in first-person right hand   |
+| `thirdperson_lefthand`  | Rendered as held in third-person left hand    |
+| `thirdperson_righthand` | Rendered as held in third-person right hand   |
 
 **Examples:**
 ```
