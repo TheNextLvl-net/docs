@@ -99,3 +99,21 @@ Usage: `/hologram teleport <hologram> [<position> [<world>]] | [<target>]`
   When no position or target is specified, the command teleports you to the hologram.  
   When a position or target is provided, the hologram is moved instead.
 </Callout>
+
+### Clone a Hologram
+
+Creates a copy of an existing hologram with a new name at your current location.  
+Usage: `/hologram clone <hologram> <name>`
+
+**Examples:**
+```
+<gray># Clone a hologram</gray>
+/hologram clone <aqua>my-hologram</aqua> <yellow>my-hologram-copy</yellow>
+
+<gray># Clone a hologram with a new name</gray>
+/hologram clone <aqua>shop-display</aqua> <yellow>shop-display-2</yellow>
+```
+
+<Callout type="info">
+  The cloned hologram will be placed at your current location with all lines, actions, and settings copied from the original.
+</Callout>

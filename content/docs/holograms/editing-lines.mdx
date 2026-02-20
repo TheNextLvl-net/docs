@@ -320,6 +320,113 @@ Available transformations:
 /hologram line edit <aqua>my-hologram</aqua> <yellow>1</yellow> transformation
 ```
 
+### Display Height
+
+Sets the display height of a display line.  
+Usage: `/hologram line edit <hologram> <line> display-height [<height>]`
+
+**Examples:**
+```
+<gray># Set display height</gray>
+/hologram line edit <aqua>my-hologram</aqua> <yellow>1</yellow> display-height <green>2.5</green>
+
+<gray># View current display height</gray>
+/hologram line edit <aqua>my-hologram</aqua> <yellow>1</yellow> display-height
+```
+
+### Left Rotation
+
+Sets the left rotation of a display line using quaternion values.  
+Usage: `/hologram line edit <hologram> <line> left-rotation [<x> <y> <z> [<w>]]`
+
+**Examples:**
+```
+<gray># Set left rotation</gray>
+/hologram line edit <aqua>my-hologram</aqua> <yellow>1</yellow> left-rotation <green>0</green> <light_purple>0.7</light_purple> <gold>0</gold> <dark_aqua>0.7</dark_aqua>
+
+<gray># Set left rotation without w (defaults to 1)</gray>
+/hologram line edit <aqua>my-hologram</aqua> <yellow>1</yellow> left-rotation <green>0</green> <light_purple>0</light_purple> <gold>0</gold>
+
+<gray># View current left rotation</gray>
+/hologram line edit <aqua>my-hologram</aqua> <yellow>1</yellow> left-rotation
+```
+
+### Right Rotation
+
+Sets the right rotation of a display line using quaternion values.  
+Usage: `/hologram line edit <hologram> <line> right-rotation [<x> <y> <z> [<w>]]`
+
+**Examples:**
+```
+<gray># Set right rotation</gray>
+/hologram line edit <aqua>my-hologram</aqua> <yellow>1</yellow> right-rotation <green>0</green> <light_purple>0.7</light_purple> <gold>0</gold> <dark_aqua>0.7</dark_aqua>
+
+<gray># View current right rotation</gray>
+/hologram line edit <aqua>my-hologram</aqua> <yellow>1</yellow> right-rotation
+```
+
+### Line Width
+
+Sets the maximum line width of a text line before wrapping.  
+Usage: `/hologram line edit <hologram> <line> line-width [<width> | reset]`
+
+**Examples:**
+```
+<gray># Set line width to 200</gray>
+/hologram line edit <aqua>my-hologram</aqua> <yellow>1</yellow> line-width <green>200</green>
+
+<gray># Reset line width to default</gray>
+/hologram line edit <aqua>my-hologram</aqua> <yellow>1</yellow> line-width <green>reset</green>
+
+<gray># View current line width</gray>
+/hologram line edit <aqua>my-hologram</aqua> <yellow>1</yellow> line-width
+```
+
+### Shadow Radius
+
+Sets the shadow radius of a display line.  
+Usage: `/hologram line edit <hologram> <line> shadow-radius [<radius>]`
+
+**Examples:**
+```
+<gray># Set shadow radius</gray>
+/hologram line edit <aqua>my-hologram</aqua> <yellow>1</yellow> shadow-radius <green>5</green>
+
+<gray># View current shadow radius</gray>
+/hologram line edit <aqua>my-hologram</aqua> <yellow>1</yellow> shadow-radius
+```
+
+### Shadow Strength
+
+Sets the shadow strength of a display line.  
+Usage: `/hologram line edit <hologram> <line> shadow-strength [<strength>]`
+
+**Examples:**
+```
+<gray># Set shadow strength</gray>
+/hologram line edit <aqua>my-hologram</aqua> <yellow>1</yellow> shadow-strength <green>0.5</green>
+
+<gray># View current shadow strength</gray>
+/hologram line edit <aqua>my-hologram</aqua> <yellow>1</yellow> shadow-strength
+```
+
+### View Range
+
+Sets the view range of a display line as a percentage (0–100).  
+Usage: `/hologram line edit <hologram> <line> view-range [<range>]`
+
+**Examples:**
+```
+<gray># Set view range to 50%</gray>
+/hologram line edit <aqua>my-hologram</aqua> <yellow>1</yellow> view-range <green>50</green>
+
+<gray># Set view range to maximum</gray>
+/hologram line edit <aqua>my-hologram</aqua> <yellow>1</yellow> view-range <green>100</green>
+
+<gray># View current view range</gray>
+/hologram line edit <aqua>my-hologram</aqua> <yellow>1</yellow> view-range
+```
+
 ### Scale
 
 Sets the scale of a line.  

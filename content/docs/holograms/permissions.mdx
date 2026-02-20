@@ -15,86 +15,94 @@ All command permissions follow the pattern: `holograms.command.<subcommand>`
 
 ### General Permissions
 
-| Command | Permission | Description |
-|---|---|---|
-| `/hologram` | `holograms.command` | Base command permission |
-| `/hologram create` | `holograms.command.create` | Create new holograms |
-| `/hologram delete` | `holograms.command.delete` | Delete existing holograms |
-| `/hologram list` | `holograms.command.list` | List all holograms |
-| `/hologram rename` | `holograms.command.rename` | Rename holograms |
-| `/hologram teleport` | `holograms.command.teleport` | Teleport to or move holograms |
+| Command                     | Permission                          | Description                   |
+|-----------------------------|-------------------------------------|-------------------------------|
+| `/hologram`                 | `holograms.command`                 | Base command permission       |
+| `/hologram create`          | `holograms.command.create`          | Create new holograms          |
+| `/hologram delete`          | `holograms.command.delete`          | Delete existing holograms     |
+| `/hologram list`            | `holograms.command.list`            | List all holograms            |
+| `/hologram rename`          | `holograms.command.rename`          | Rename holograms              |
+| `/hologram clone`           | `holograms.command.clone`           | Clone existing holograms      |
+| `/hologram teleport`        | `holograms.command.teleport`        | Teleport to or move holograms |
 | `/hologram view-permission` | `holograms.command.view-permission` | Set hologram view permissions |
-| `/hologram translation` | `holograms.command.translation` | Manage translations |
+| `/hologram translation`     | `holograms.command.translation`     | Manage translations           |
 
 ### Line Permissions
 
-| Command | Permission | Description |
-|---|---|---|
-| `/hologram line add` | `holograms.command.line.add` | Add lines to holograms |
-| `/hologram line insert` | `holograms.command.line.insert` | Insert lines at specific positions |
-| `/hologram line remove` | `holograms.command.line.remove` | Remove lines from holograms |
-| `/hologram line move` | `holograms.command.line.move` | Move lines within holograms |
-| `/hologram line swap` | `holograms.command.line.swap` | Swap line positions |
-| `/hologram line edit` | `holograms.command.line.edit` | Edit line properties |
-| `/hologram line action` | `holograms.command.line.action` | Manage line click actions |
-| `/hologram line view-permission` | `holograms.command.line.view-permission` | Set line view permissions |
+| Command                          | Permission                               | Description                        |
+|----------------------------------|------------------------------------------|------------------------------------|
+| `/hologram line add`             | `holograms.command.line.add`             | Add lines to holograms             |
+| `/hologram line insert`          | `holograms.command.line.insert`          | Insert lines at specific positions |
+| `/hologram line remove`          | `holograms.command.line.remove`          | Remove lines from holograms        |
+| `/hologram line move`            | `holograms.command.line.move`            | Move lines within holograms        |
+| `/hologram line swap`            | `holograms.command.line.swap`            | Swap line positions                |
+| `/hologram line edit`            | `holograms.command.line.edit`            | Edit line properties               |
+| `/hologram line action`          | `holograms.command.line.action`          | Manage line click actions          |
+| `/hologram line view-permission` | `holograms.command.line.view-permission` | Set line view permissions          |
 
 ### Line Edit Permissions
 
 Each line edit property has its own sub-permission under `holograms.command.line.edit.<property>`:
 
-| Property | Permission |
-|---|---|
-| `alignment` | `holograms.command.line.edit.alignment` |
-| `append` | `holograms.command.line.edit.append` |
-| `background-color` | `holograms.command.line.edit.background-color` |
-| `billboard` | `holograms.command.line.edit.billboard` |
-| `brightness` | `holograms.command.line.edit.brightness` |
-| `default-background` | `holograms.command.line.edit.default-background` |
-| `glow-color` | `holograms.command.line.edit.glow-color` |
-| `glowing` | `holograms.command.line.edit.glowing` |
-| `interpolation-delay` | `holograms.command.line.edit.interpolation-delay` |
+| Property                 | Permission                                           |
+|--------------------------|------------------------------------------------------|
+| `alignment`              | `holograms.command.line.edit.alignment`              |
+| `append`                 | `holograms.command.line.edit.append`                 |
+| `background-color`       | `holograms.command.line.edit.background-color`       |
+| `billboard`              | `holograms.command.line.edit.billboard`              |
+| `brightness`             | `holograms.command.line.edit.brightness`             |
+| `default-background`     | `holograms.command.line.edit.default-background`     |
+| `display-height`         | `holograms.command.line.edit.display-height`         |
+| `glow-color`             | `holograms.command.line.edit.glow-color`             |
+| `glowing`                | `holograms.command.line.edit.glowing`                |
+| `interpolation-delay`    | `holograms.command.line.edit.interpolation-delay`    |
 | `interpolation-duration` | `holograms.command.line.edit.interpolation-duration` |
-| `offset` | `holograms.command.line.edit.offset` |
-| `opacity` | `holograms.command.line.edit.opacity` |
-| `player-head` | `holograms.command.line.edit.player-head` |
-| `prepend` | `holograms.command.line.edit.prepend` |
-| `replace` | `holograms.command.line.edit.replace` |
-| `scale` | `holograms.command.line.edit.scale` |
-| `see-through` | `holograms.command.line.edit.see-through` |
-| `set` | `holograms.command.line.edit.set` |
-| `shadowed` | `holograms.command.line.edit.shadowed` |
-| `teleport-duration` | `holograms.command.line.edit.teleport-duration` |
-| `transformation` | `holograms.command.line.edit.transformation` |
+| `left-rotation`          | `holograms.command.line.edit.left-rotation`          |
+| `line-width`             | `holograms.command.line.edit.line-width`             |
+| `offset`                 | `holograms.command.line.edit.offset`                 |
+| `opacity`                | `holograms.command.line.edit.opacity`                |
+| `player-head`            | `holograms.command.line.edit.player-head`            |
+| `prepend`                | `holograms.command.line.edit.prepend`                |
+| `replace`                | `holograms.command.line.edit.replace`                |
+| `right-rotation`         | `holograms.command.line.edit.right-rotation`         |
+| `scale`                  | `holograms.command.line.edit.scale`                  |
+| `see-through`            | `holograms.command.line.edit.see-through`            |
+| `set`                    | `holograms.command.line.edit.set`                    |
+| `shadow-radius`          | `holograms.command.line.edit.shadow-radius`          |
+| `shadow-strength`        | `holograms.command.line.edit.shadow-strength`        |
+| `shadowed`               | `holograms.command.line.edit.shadowed`               |
+| `teleport-duration`      | `holograms.command.line.edit.teleport-duration`      |
+| `transformation`         | `holograms.command.line.edit.transformation`         |
+| `view-range`             | `holograms.command.line.edit.view-range`             |
 
 ### Page Permissions
 
-| Command | Permission | Description |
-|---|---|---|
-| `/hologram page add` | `holograms.command.page.add` | Add pages to paged lines |
-| `/hologram page insert` | `holograms.command.page.insert` | Insert pages at specific positions |
-| `/hologram page remove` | `holograms.command.page.remove` | Remove pages from paged lines |
-| `/hologram page clear` | `holograms.command.page.clear` | Clear all pages from a paged line |
-| `/hologram page move` | `holograms.command.page.move` | Move pages within paged lines |
-| `/hologram page swap` | `holograms.command.page.swap` | Swap page positions |
-| `/hologram page edit` | `holograms.command.page.edit` | Edit page properties |
-| `/hologram page action` | `holograms.command.page.action` | Manage page click actions |
-| `/hologram page settings` | `holograms.command.page.settings` | Configure page settings |
-| `/hologram page view-permission` | `holograms.command.page.view-permission` | Set page view permissions |
-| `/hologram page list` | `holograms.command.page.list` | List pages of a paged line |
+| Command                          | Permission                               | Description                        |
+|----------------------------------|------------------------------------------|------------------------------------|
+| `/hologram page add`             | `holograms.command.page.add`             | Add pages to paged lines           |
+| `/hologram page insert`          | `holograms.command.page.insert`          | Insert pages at specific positions |
+| `/hologram page remove`          | `holograms.command.page.remove`          | Remove pages from paged lines      |
+| `/hologram page clear`           | `holograms.command.page.clear`           | Clear all pages from a paged line  |
+| `/hologram page move`            | `holograms.command.page.move`            | Move pages within paged lines      |
+| `/hologram page swap`            | `holograms.command.page.swap`            | Swap page positions                |
+| `/hologram page edit`            | `holograms.command.page.edit`            | Edit page properties               |
+| `/hologram page action`          | `holograms.command.page.action`          | Manage page click actions          |
+| `/hologram page settings`        | `holograms.command.page.settings`        | Configure page settings            |
+| `/hologram page view-permission` | `holograms.command.page.view-permission` | Set page view permissions          |
+| `/hologram page list`            | `holograms.command.page.list`            | List pages of a paged line         |
 
 ### Page Settings Permissions
 
-| Setting | Permission |
-|---|---|
+| Setting    | Permission                                 |
+|------------|--------------------------------------------|
 | `interval` | `holograms.command.page.settings.interval` |
-| `pause` | `holograms.command.page.settings.pause` |
-| `random` | `holograms.command.page.settings.random` |
+| `pause`    | `holograms.command.page.settings.pause`    |
+| `random`   | `holograms.command.page.settings.random`   |
 
 ### Action Permissions
 
-| Command | Permission | Description |
-|---|---|---|
+| Command                     | Permission                     | Description       |
+|-----------------------------|--------------------------------|-------------------|
 | `/hologram line action add` | `holograms.command.action.add` | Add click actions |
 
 ## View Permissions
@@ -102,14 +110,14 @@ Each line edit property has its own sub-permission under `holograms.command.line
 View permissions are custom permissions set per-hologram, per-line, or per-page.
 They control which players can see the hologram content.
 
-| Scope | Command | Description |
-|---|---|---|
-| Hologram | `/hologram view-permission <hologram> <permission>` | Restrict entire hologram visibility |
-| Line | `/hologram line view-permission <hologram> <line> <permission>` | Restrict specific line visibility |
-| Page | `/hologram page view-permission <hologram> <line> <page> <permission>` | Restrict specific page visibility |
+| Scope    | Command                                                                | Description                         |
+|----------|------------------------------------------------------------------------|-------------------------------------|
+| Hologram | `/hologram view-permission <hologram> <permission>`                    | Restrict entire hologram visibility |
+| Line     | `/hologram line view-permission <hologram> <line> <permission>`        | Restrict specific line visibility   |
+| Page     | `/hologram page view-permission <hologram> <line> <page> <permission>` | Restrict specific page visibility   |
 
 <Callout type="info">
-  View permissions are custom strings you define.  
-  Players must have the specified permission to see the hologram, line, or page.  
-  See [Visibility](/docs/holograms/visibility) for usage details.
+    View permissions are custom strings you define.
+    Players must have the specified permission to see the hologram, line, or page.
+    See [Visibility](/docs/holograms/visibility) for usage details.
 </Callout>

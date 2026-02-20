@@ -160,6 +160,28 @@ public void onViewerRemove(HologramViewerRemoveEvent event) {
 }
 ```
 
+## Interaction Events
+
+### PlayerHologramInteractEvent
+
+Fired when a player interacts with a hologram line.  
+This event is cancellable – canceling it will prevent all click actions from being invoked.
+
+```java
+@EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
+public void onHologramInteract(PlayerHologramInteractEvent event) {
+    Hologram hologram = event.getHologram();
+    HologramLine line = event.getLine();
+    Player player = event.getPlayer();
+    ClickType clickType = event.getClickType();
+
+    // Prevent interaction with certain holograms
+    if (hologram.getName().startsWith("locked-")) {
+        event.setCancelled(true);
+    }
+}
+```
+
 ## Page Events
 
 These events are fired when pages are managed on paged hologram lines.
