@@ -71,6 +71,11 @@ function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
 						id="faststats-script"
 					/>
 				)}
+				<script
+					defer
+					src="https://cloud.umami.is/script.js"
+					data-website-id="6e1bc69b-f426-420f-a8d9-f8f3f70e5e04"
+				></script>
 			</head>
 			<body>
 				<RootProvider>{children}</RootProvider>
