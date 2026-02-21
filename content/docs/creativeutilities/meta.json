@@ -1,19 +1,19 @@
 {
-  "root": true,
-  "title": "CreativeUtilities",
-  "description": "Quality of life tools for builders",
-  "icon": "BrickWall",
-  "pages": [
-    "---Links---",
-    "external:[Github][GitHub](https://github.com/TheNextLvl-net/creative-utilities)",
-    "external:[Download][Download](https://modrinth.com/project/zAcZq5oV#download)",
-    "external:[ChartLine][Metrics](https://bstats.org/plugin/bukkit/TheNextLvl%20CreativeUtilities/22858)",
-    "---Introduction---",
-    "index",
-    "---Guide---",
-    "features",
-    "commands",
-    "permissions",
-    "configuration"
-  ]
+	"root": true,
+	"title": "CreativeUtilities",
+	"description": "Quality of life tools for builders",
+	"icon": "BrickWall",
+	"pages": [
+		"---Links---",
+		"external:[Github][GitHub](https://github.com/TheNextLvl-net/creative-utilities)",
+		"external:[Download][Download](https://modrinth.com/project/zAcZq5oV#download)",
+		"external:[ChartLine][Metrics](https://bstats.org/plugin/bukkit/TheNextLvl%20CreativeUtilities/22858)",
+		"---Introduction---",
+		"index",
+		"---Guide---",
+		"features",
+		"commands",
+		"permissions",
+		"configuration"
+	]
 }
