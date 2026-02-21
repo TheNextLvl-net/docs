@@ -20,6 +20,7 @@
     "group-info",
     "group-spawn",
     "group-teleport",
+    "group-clone",
     "remove",
     "options",
     "delete",

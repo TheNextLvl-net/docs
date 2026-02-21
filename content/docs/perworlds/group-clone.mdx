@@ -1,0 +1,24 @@
+---
+title: Cloning a group
+description: How to clone an existing group's data and options into a new group.
+---
+
+To clone a world group, use the command `/world group clone <group> <name>`.
+This creates a new group with the same data and options as the source group.
+
+## What gets cloned
+
+All group data and options are copied to the new group,
+e.g. difficulty, time, weather, gamerules, enabled state, and more.
+
+## What does not get cloned
+
+Group-specific data like spawn location, player data, or member worlds is **not** copied.
+
+## Example
+
+Cloning a group called "citybuild" into a new group called "farmworld":
+
+```
+/world group clone <aqua>citybuild</aqua> <yellow>farmworld</yellow>
+```
