@@ -53,9 +53,6 @@ function RootComponent() {
 }
 
 function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
-	const analyticsDomain = import.meta.env.VITE_ANALYTICS_DOMAIN;
-	const analyticsUrl = import.meta.env.VITE_ANALYTICS_URL;
-
 	const faststatsDomain = import.meta.env.VITE_FASTSTATS_SITEKEY;
 	const faststatsUrl = import.meta.env.VITE_FASTSTATS_SCRIPT_URL;
 
@@ -73,23 +70,6 @@ function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
 						src={faststatsUrl}
 						id="faststats-script"
 					/>
-				)}
-				{analyticsDomain && analyticsUrl && (
-					<>
-						<script
-							defer
-							data-domain={analyticsDomain}
-							src={analyticsUrl}
-							id="plausible-script"
-						/>
-						<script
-							// biome-ignore lint/security/noDangerouslySetInnerHtml: <Plausible docs say to do this>
-							dangerouslySetInnerHTML={{
-								__html: `window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments) }`,
-							}}
-							id="plausible-window"
-						/>
-					</>
 				)}
 			</head>
 			<body>
