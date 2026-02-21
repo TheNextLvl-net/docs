@@ -1,0 +1,31 @@
+---
+title: Importing data from other plugins
+description: How to import existing group and player data from other plugins.
+---
+
+PerWorlds can import existing data from other per-world plugins, making it easy to switch
+without losing your setup or player data.
+
+**Usage:** `/world group import <provider>`
+
+## Supported plugins
+
+| Plugin                 | Status      |
+|------------------------|-------------|
+| Multiverse-Inventories | ✅ Supported |
+| My_Worlds              | 🚧 Planned  |
+
+## Example
+
+Importing data from Multiverse-Inventories:
+
+```
+/world group import <aqua>Multiverse-Inventories</aqua>
+```
+
+This will import groups, player inventories, ender chests, stats, and other player data
+from Multiverse-Inventories into PerWorlds.
+
+<Callout type="warn">
+  Only one import can run at a time. Wait for the current import to finish before starting another.
+</Callout>

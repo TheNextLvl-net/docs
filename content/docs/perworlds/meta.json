@@ -17,6 +17,7 @@
 		"add",
 		"group-auto",
 		"group-migrate",
+		"group-import",
 		"group-info",
 		"group-spawn",
 		"group-teleport",
