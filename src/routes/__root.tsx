@@ -58,30 +58,32 @@ function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
 
 	return (
 		<html lang="en">
-		<head>
-			<HeadContent/>
-			{faststatsDomain && faststatsUrl && (
+			<head>
+				<HeadContent />
+				{faststatsDomain && faststatsUrl && (
+					<script
+						defer
+						data-sitekey={faststatsDomain}
+						data-trackErrors="true"
+						data-webVitals="true"
+						data-replay="true"
+						src={faststatsUrl}
+						id="faststats-script"
+					/>
+				)}
 				<script
-					defer
-					data-sitekey={faststatsDomain}
-					data-trackErrors="true"
-					data-webVitals="true"
-					data-replay="true"
-					src={faststatsUrl}
-					id="faststats-script"
-				/>
-			)}
-			<script
-				src="https://cdn.databuddy.cc/databuddy.js"
-				data-client-id="07b2cf02-d140-40e2-afe6-68deb1dea8a2"
-				crossOrigin="anonymous"
-				async
-			></script>
-		</head>
-		<body>
-		<RootProvider>{children}</RootProvider>
-		<Scripts/>
-		</body>
+					src="https://cdn.databuddy.cc/databuddy.js"
+					data-client-id="07b2cf02-d140-40e2-afe6-68deb1dea8a2"
+					crossOrigin="anonymous"
+					data-track-performance
+					data-track-web-vitals
+					async
+				></script>
+			</head>
+			<body>
+				<RootProvider>{children}</RootProvider>
+				<Scripts />
+			</body>
 		</html>
 	);
 }
