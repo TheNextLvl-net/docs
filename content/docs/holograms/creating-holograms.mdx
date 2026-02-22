@@ -13,7 +13,7 @@ You can create holograms at your current location or at specific coordinates.
 ### Create a Hologram
 
 Creates a new hologram with the specified name.  
-Usage: `/hologram create <name> [<position>] [<world>]`
+Usage: `/hologram create <name> [<position>] [<rotation>] [<world>]`
 
 **Examples:**
 ```
@@ -23,8 +23,11 @@ Usage: `/hologram create <name> [<position>] [<world>]`
 <gray># Create a hologram at specific coordinates</gray>
 /hologram create <aqua>spawn-hologram</aqua> <yellow>0 64 0</yellow>
 
+<gray># Create a hologram with custom yaw and pitch</gray>
+/hologram create <aqua>angled-hologram</aqua> <yellow>0 64 0</yellow> <green>90 15</green>
+
 <gray># Create a hologram in a specific world</gray>
-/hologram create <aqua>nether-hologram</aqua> <yellow>100 64 100</yellow> <green>minecraft:the_nether</green>
+/hologram create <aqua>nether-hologram</aqua> <yellow>100 64 100</yellow> <green>180 0</green> <dark_purple>minecraft:the_nether</dark_purple>
 ```
 
 <Callout type="info">
@@ -72,7 +75,7 @@ Usage: `/hologram list`
 ### Teleport
 
 Teleports you to a hologram, or moves a hologram to a new location.  
-Usage: `/hologram teleport <hologram> [<position> [<world>]] | [<target>]`
+Usage: `/hologram teleport <hologram> (<position> [<rotation>] [<world>] | <target>)`
 
 **Teleport to a Hologram:**
 ```
@@ -82,11 +85,17 @@ Usage: `/hologram teleport <hologram> [<position> [<world>]] | [<target>]`
 
 **Move a Hologram to Coordinates:**
 ```
+<gray># Move a hologram to a player or entity</gray>
+/hologram teleport <aqua>my-hologram</aqua> <yellow>Notch</yellow>
+
 <gray># Move a hologram to specific coordinates</gray>
 /hologram teleport <aqua>my-hologram</aqua> <yellow>0 64 0</yellow>
 
+<gray># Move a hologram and set yaw/pitch</gray>
+/hologram teleport <aqua>my-hologram</aqua> <yellow>0 64 0</yellow> <green>90 15</green>
+
 <gray># Move a hologram to coordinates in a specific world</gray>
-/hologram teleport <aqua>my-hologram</aqua> <yellow>100 64 100</yellow> <green>minecraft:the_nether</green>
+/hologram teleport <aqua>my-hologram</aqua> <yellow>100 64 100</yellow> <green>180 0</green> <dark_purple>minecraft:the_nether</dark_purple>
 ```
 
 **Move a Hologram to an Entity:**
