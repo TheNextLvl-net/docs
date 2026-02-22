@@ -58,29 +58,30 @@ function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
 
 	return (
 		<html lang="en">
-			<head>
-				<HeadContent />
-				{faststatsDomain && faststatsUrl && (
-					<script
-						defer
-						data-sitekey={faststatsDomain}
-						data-trackErrors="true"
-						data-webVitals="true"
-						data-replay="true"
-						src={faststatsUrl}
-						id="faststats-script"
-					/>
-				)}
+		<head>
+			<HeadContent/>
+			{faststatsDomain && faststatsUrl && (
 				<script
 					defer
-					src="https://cloud.umami.is/script.js"
-					data-website-id="6e1bc69b-f426-420f-a8d9-f8f3f70e5e04"
-				></script>
-			</head>
-			<body>
-				<RootProvider>{children}</RootProvider>
-				<Scripts />
-			</body>
+					data-sitekey={faststatsDomain}
+					data-trackErrors="true"
+					data-webVitals="true"
+					data-replay="true"
+					src={faststatsUrl}
+					id="faststats-script"
+				/>
+			)}
+			<script
+				src="https://cdn.databuddy.cc/databuddy.js"
+				data-client-id="07b2cf02-d140-40e2-afe6-68deb1dea8a2"
+				crossOrigin="anonymous"
+				async
+			></script>
+		</head>
+		<body>
+		<RootProvider>{children}</RootProvider>
+		<Scripts/>
+		</body>
 		</html>
 	);
 }
