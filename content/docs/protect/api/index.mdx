@@ -1,17 +1,35 @@
 ---
 title: API
-description: Start integrating with Protect's API
+description: Services and core entry points of the Protect API
 icon: Code
 ---
 
 # API Overview
 
-Protect exposes an API module for interacting with areas, flags, and related events.  
-Core services are registered through Bukkit's `ServicesManager`.
+Protect exposes service-based APIs through Bukkit's `ServicesManager`.  
+You can query protection checks, manage areas, and work with custom flags.
 
-## Access the Protection Service
+## Available Services
+
+- `ProtectionService` - granular access control (`canPlace`, `canDestroy`, `canInteract`, `canEnter`, `canLeave`, ...)
+- `AreaProvider` - area lookup by world, location, entity, or name
+- `AreaService` - create/delete regionized areas and register wrappers/adapters
+- `FlagRegistry` - register and query custom flags
+
+## Access a Service
+
+Use `ServiceManager#load` to access a service.
 
 ```java
 ProtectionService service = Bukkit.getServicesManager().load(ProtectionService.class);
-boolean canBuild = service.canPlace(player, location);
+if (service != null) {
+    boolean canBuild = service.canPlace(player, location);
+}
 ```
+
+## Events
+
+Protect emits extensive Bukkit events for area lifecycle, flag changes,
+members/ownership, player transitions, region updates, and schematics.
+
+See [Events](/docs/protect/api/events) for the complete event reference.

@@ -1,0 +1,79 @@
+---
+title: Events
+description: Complete Protect API event reference
+icon: Bell
+---
+
+# Events
+
+Protect emits Bukkit events for most area mutations and player-area interactions.
+Most mutation events are cancellable and expose mutable target values.
+
+## Area Lifecycle
+
+| Event             | Cancellable | Notes                                 |
+|-------------------|-------------|---------------------------------------|
+| `AreaCreateEvent` | No          | Fired when a new area is created      |
+| `AreaLoadEvent`   | No          | Fired when an existing area is loaded |
+| `AreaDeleteEvent` | Yes         | Cancel to prevent deletion            |
+
+## Flag Events
+
+| Event                    | Cancellable | Notes                                               |
+|--------------------------|-------------|-----------------------------------------------------|
+| `AreaFlagChangeEvent<T>` | Yes         | Cancel to block change; supports `setNewState(...)` |
+| `AreaFlagResetEvent<T>`  | Yes         | Cancel to block reset                               |
+| `AreaProtectEvent`       | Yes         | Triggered by `/area protect`                        |
+
+## Inheritance and Priority
+
+| Event                     | Cancellable | Notes                                                         |
+|---------------------------|-------------|---------------------------------------------------------------|
+| `AreaParentChangeEvent`   | Yes         | Cancel to block parent updates; supports `setParent(...)`     |
+| `AreaPriorityChangeEvent` | Yes         | Cancel to block priority updates; supports `setPriority(...)` |
+
+## Ownership and Members
+
+| Event                   | Cancellable | Notes                                                    |
+|-------------------------|-------------|----------------------------------------------------------|
+| `AreaOwnerChangeEvent`  | Yes         | Cancel to block owner update; supports `setOwner(...)`   |
+| `AreaMemberAddEvent`    | Yes         | Cancel to block member add; supports `setMember(...)`    |
+| `AreaMemberRemoveEvent` | Yes         | Cancel to block member remove; supports `setMember(...)` |
+
+## Player Area Movement
+
+| Event                       | Cancellable | Notes                                                        |
+|-----------------------------|-------------|--------------------------------------------------------------|
+| `PlayerAreaEnterEvent`      | Yes         | Cancel to prevent entering an area                           |
+| `PlayerAreaLeaveEvent`      | Yes         | Cancel to prevent leaving an area                            |
+| `PlayerAreaTransitionEvent` | Yes         | Contains previous + next area (`getPrevious()`, `getArea()`) |
+
+## Region and Schematic
+
+| Event                                 | Cancellable | Notes                                                     |
+|---------------------------------------|-------------|-----------------------------------------------------------|
+| `AreaRedefineEvent<T extends Region>` | Yes         | Cancel to block region changes; supports `setRegion(...)` |
+| `AreaSchematicLoadEvent`              | Yes         | Cancel to block schematic load                            |
+| `AreaSchematicLoadedEvent`            | No          | Fired after successful schematic load                     |
+| `AreaSchematicDeleteEvent`            | Yes         | Cancel to block schematic deletion                        |
+
+## Listener Examples
+
+```java
+@EventHandler(ignoreCancelled = true)
+public void onAreaEnter(PlayerAreaEnterEvent event) {
+    event.getPlayer().sendMessage(Component.text("Entering " + event.getArea().getName()));
+}
+
+@EventHandler
+public void onFlagChange(AreaFlagChangeEvent<Boolean> event) {
+    if (event.getFlag().key().asString().equals("protect:explosions")) {
+        event.setNewState(false); // force explosions off
+    }
+}
+```
+
+<Callout type="warn">
+  Calling the same mutating API again from inside the corresponding listener  
+  (for example `setParent`, `setPriority`, `addMember`, `delete`) can cause recursive loops.
+</Callout>
