@@ -20,7 +20,7 @@
 		"permissions",
 		"configuration",
 		"---For Developers---",
-		"repository",
+		"api/repository",
 		"api/index",
 		"api/events"
 	]
