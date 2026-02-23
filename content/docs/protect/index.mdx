@@ -4,4 +4,68 @@ description: Create and manage protected areas
 icon: BookMarked
 ---
 
-Coming soon!
+# Protect
+
+Protect is a lightweight modern alternative to WorldGuard.
+It lets you define protected areas, assign owners and members,
+configure granular flags, and organize complex setups with area groups and priorities.
+
+## Requirements
+
+- Required dependency: `FastAsyncWorldEdit`
+- Optional integration: `Nexo`
+
+## Features
+
+### Area Management
+
+- **Area Creation**: Create protected areas from your current WorldEdit selection
+- **Hierarchy**: Define parent-child relationships between areas
+- **Priority System**: Resolve overlap behavior with configurable priorities
+- **Selection Utilities**: Re-select or redefine existing area bounds
+
+### Protection Controls
+
+- **Boolean Flags**: Toggle core behavior like entering, leaving, damage, redstone, and physics
+- **Protection Flags**: Control interactions such as placing, breaking, attacking, and explosions
+- **Message Flags**: Show greetings and farewell text via chat, actionbar, or title
+- **Environment Flags**: Override local time and weather in areas
+
+### Team and Ownership
+
+- **Owners**: Assign and transfer ownership of areas
+- **Members**: Grant trusted players access inside protected areas
+- **Area Groups**: Combine multiple regions into a logical group for easier management
+
+### Utility Commands
+
+- **Teleport**: Quickly jump to an area
+- **Schematics**: Save, load, or delete area schematics
+- **Inspection**: List, inspect, and query area and flag details
+
+## Quick Start
+
+Protect is managed with the `/area` command family.
+
+```
+<gray># Select two corners with WorldEdit first</gray>
+//pos1
+//pos2
+
+<gray># Create an area from your selection</gray>
+/area create <aqua>spawn</aqua>
+
+<gray># Configure protection flags</gray>
+/area flag set <aqua>protect:interact</aqua> <yellow>false</yellow> <green>spawn</green>
+/area flag set <aqua>protect:place</aqua> <yellow>false</yellow> <green>spawn</green>
+/area flag set <aqua>protect:destroy</aqua> <yellow>false</yellow> <green>spawn</green>
+
+<gray># Add a member</gray>
+/area members add <aqua>spawn</aqua> <yellow>Notch</yellow>
+```
+
+## Next Steps
+
+- See [Commands](/docs/protect/commands) for the full `/area` command reference
+- See [Flags](/docs/protect/flags) for all available flags and value types
+- See [Permissions](/docs/protect/permissions) for command permissions and permission packs

@@ -1,0 +1,35 @@
+---
+title: Frequently Asked Questions
+icon: MessageCircleQuestionMark
+description: Frequently Asked Questions about Protect
+---
+
+import { Accordion, Accordions } from "fumadocs-ui/components/accordion"
+
+<Accordions type="single">
+  <Accordion title="Which server software is supported?" id="supported-software">
+    Protect is built for modern **Paper** servers.  
+    Folia support is planned for future releases.
+  </Accordion>
+  <Accordion title="Do I need WorldEdit to use Protect?" id="worldedit">
+    You can use Protect without WorldEdit for many operations,
+    but area creation and region editing workflows are much easier with WorldEdit selections.
+
+    Commands like `/area select` and `/area group select` require `worldedit.selection.pos`.
+  </Accordion>
+  <Accordion title="How do area priorities work?" id="priority">
+    Priority determines which area wins when multiple areas overlap.
+    Use `/area priority <area> [<priority>]` to view or change it.
+  </Accordion>
+  <Accordion title="What is the difference between owner and members?" id="owner-members">
+    Owners are the primary controllers of an area.
+    Members are trusted players added for access without transferring ownership.
+
+    Use `/area owner set` and `/area owner remove` to manage ownership,
+    and `/area members add`, `/area members list`, and `/area members remove` for members.
+  </Accordion>
+  <Accordion title="How can I quickly apply default protections to an area?" id="quick-protect">
+    Use `/area protect <area>` to add or update an area's protection setup.
+    You can remove this setup again using `/area protect <area> remove`.
+  </Accordion>
+</Accordions>

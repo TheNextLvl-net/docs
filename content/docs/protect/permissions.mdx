@@ -1,0 +1,150 @@
+---
+title: Permissions
+description: Command permissions and permission packs
+---
+
+# Permissions
+
+Protect provides both individual command permissions and bundled permission packs.
+Use permission packs for role-based setups, or assign granular `protect.command.area.*`
+nodes for fine-tuned permission control.
+
+## Command Permissions
+
+Most commands are gated by `protect.command.area.*` permissions.
+
+| Command                                  | Permission                              |
+|------------------------------------------|-----------------------------------------|
+| `/area create <name> [<priority>]`       | `protect.command.area.create`           |
+| `/area delete <area>`                    | `protect.command.area.delete`           |
+| `/area flag info [flag] (area)`          | `protect.command.area.flag.info`        |
+| `/area flag list [<provider>]`           | `protect.command.area.flag.list`        |
+| `/area flag reset <flag> [<area>]`       | `protect.command.area.flag.reset`       |
+| `/area flag set <flag> <value> [<area>]` | `protect.command.area.flag.set`         |
+| `/area group add <group> [<name>]`       | `protect.command.area.group.add`        |
+| `/area group create <area>`              | `protect.command.area.group.create`     |
+| `/area group delete <group>`             | `protect.command.area.group.delete`     |
+| `/area group list [<group>]`             | `protect.command.area.group.list`       |
+| `/area group redefine <group> <region>`  | `protect.command.area.group.redefine`   |
+| `/area group remove <group> <region>`    | `protect.command.area.group.remove`     |
+| `/area group select <group> <region>`    | `worldedit.selection.pos`               |
+| `/area info [<area>]`                    | `protect.command.area.info`             |
+| `/area list`                             | `protect.command.area.list`             |
+| `/area members add <area> <players>`     | `protect.command.area.members.add`      |
+| `/area members list [<area>]`            | `protect.command.area.members.list`     |
+| `/area members remove <player>`          | `protect.command.area.members.remove`   |
+| `/area owner remove <player>`            | `protect.command.area.owner.remove`     |
+| `/area owner set <area> <player>`        | `protect.command.area.owner.set`        |
+| `/area parent remove <area>`             | `protect.command.area.parent.remove`    |
+| `/area parent set <area> <parent>`       | `protect.command.area.parent.set`       |
+| `/area priority <area> [<priority>]`     | `protect.command.area.priority`         |
+| `/area protect <area> [remove]`          | `protect.command.area.protect`          |
+| `/area redefine <area>`                  | `protect.command.area.redefine`         |
+| `/area schematic delete <area>`          | `protect.command.area.schematic.delete` |
+| `/area schematic load <area>`            | `protect.command.area.schematic.load`   |
+| `/area schematic save <area>`            | `protect.command.area.schematic.save`   |
+| `/area select <area>`                    | `worldedit.selection.pos`               |
+| `/area teleport <area>`                  | `protect.command.area.teleport`         |
+
+## Permission Packs
+
+Permission packs are bundles that simplify role setup.
+
+### `protect.admin`
+
+Allows players to manage all areas and bypass all restrictions.
+
+```
+protect.bypass.admin
+protect.command.area.create
+protect.command.area.delete
+protect.command.area.info
+protect.command.area.list
+protect.command.area.priority
+protect.commands.area.flag
+protect.commands.area.group
+protect.commands.area.members
+protect.commands.area.owner
+protect.commands.area.parent
+protect.commands.area.schematic
+```
+
+### `protect.bypass.admin`
+
+Allows players to bypass any restriction.
+
+```
+protect.bypass.attack
+protect.bypass.destroy
+protect.bypass.enter
+protect.bypass.entity-interact
+protect.bypass.entity-shear
+protect.bypass.interact
+protect.bypass.leave
+protect.bypass.physical-interact
+protect.bypass.place
+protect.bypass.trample
+```
+
+### `protect.commands.area.flag`
+
+Allows players to manage area flags.
+
+```
+protect.command.area.flag.info
+protect.command.area.flag.list
+protect.command.area.flag.reset
+protect.command.area.flag.set
+protect.command.area.protect
+```
+
+### `protect.commands.area.group`
+
+Allows players to manage area groups.
+
+```
+protect.command.area.group.add
+protect.command.area.group.create
+protect.command.area.group.delete
+protect.command.area.group.list
+protect.command.area.group.redefine
+protect.command.area.group.remove
+```
+
+### `protect.commands.area.members`
+
+Allows players to manage area members.
+
+```
+protect.command.area.members.add
+protect.command.area.members.list
+protect.command.area.members.remove
+```
+
+### `protect.commands.area.owner`
+
+Allows players to manage area owners.
+
+```
+protect.command.area.owner.remove
+protect.command.area.owner.set
+```
+
+### `protect.commands.area.parent`
+
+Allows players to manage area parents.
+
+```
+protect.command.area.parent.remove
+protect.command.area.parent.set
+```
+
+### `protect.commands.area.schematic`
+
+Allows players to manage area schematics.
+
+```
+protect.command.area.schematic.delete
+protect.command.area.schematic.load
+protect.command.area.schematic.save
+```

@@ -13,6 +13,9 @@
 		"index",
 		"faq",
 		"---Guide---",
+		"commands",
+		"flags",
+		"permissions",
 		"---For Developers---",
 		"api/repository",
 		"api/index"

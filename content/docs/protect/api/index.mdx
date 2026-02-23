@@ -1,0 +1,17 @@
+---
+title: API
+description: Start integrating with Protect's API
+icon: Code
+---
+
+# API Overview
+
+Protect exposes an API module for interacting with areas, flags, and related events.  
+Core services are registered through Bukkit's `ServicesManager`.
+
+## Access the Protection Service
+
+```java
+ProtectionService service = Bukkit.getServicesManager().load(ProtectionService.class);
+boolean canBuild = service.canPlace(player, location);
+```

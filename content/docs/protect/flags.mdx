@@ -1,0 +1,88 @@
+---
+title: Flags
+description: Area flag types and behavior
+---
+
+# Flags
+
+Protect flags define what can happen inside an area.  
+Use `/area flag set <flag> <value> [<area>]` to set a value,  
+and `/area flag reset <flag> [<area>]` to clear one.
+
+## Message and Environment Flags
+
+| Flag                          | Description                           | Value                |
+|-------------------------------|---------------------------------------|----------------------|
+| `protect:farewell`            | Message sent when leaving an area     | MiniMessage String   |
+| `protect:farewell_actionbar`  | Actionbar shown when leaving an area  | MiniMessage String   |
+| `protect:farewell_title`      | Title sent when leaving an area       | MiniMessage String   |
+| `protect:greetings`           | Message sent when entering an area    | MiniMessage String   |
+| `protect:greetings_actionbar` | Actionbar shown when entering an area | MiniMessage String   |
+| `protect:greetings_title`     | Title sent when entering an area      | MiniMessage String   |
+| `protect:time`                | Override time inside an area          | Integer              |
+| `protect:weather`             | Override weather inside an area       | `DOWNFALL` / `CLEAR` |
+
+## Boolean Flags
+
+| Flag                                 | Description                                                     |
+|--------------------------------------|-----------------------------------------------------------------|
+| `protect:enter`                      | Allows or denies entrance                                       |
+| `protect:leave`                      | Allows or denies exit                                           |
+| `protect:damage`                     | Controls whether damage can be applied                          |
+| `protect:entity_item_drop`           | Controls whether entities can drop items                        |
+| `protect:entity_item_pickup`         | Controls whether entities can pickup items                      |
+| `protect:game_events`                | Controls whether sculk sensors can pick up game events (sounds) |
+| `protect:gravity`                    | Enables or disables gravity                                     |
+| `protect:hunger`                     | Controls whether hunger is applied                              |
+| `protect:liquid_flow`                | Enables or disables liquid flow                                 |
+| `protect:natural_entity_spawn`       | Controls whether entities can naturally spawn                   |
+| `protect:notify_failed_interactions` | Enables or disables failed-interaction messages                 |
+| `protect:physics`                    | Enables or disables physics                                     |
+| `protect:redstone`                   | Enables or disables redstone                                    |
+
+## Protection Flags
+
+| Flag                                 | Description                                                                  |
+|--------------------------------------|------------------------------------------------------------------------------|
+| `protect:armor_stand_manipulate`     | Allows or denies armor stand manipulations                                   |
+| `protect:block_absorb`               | Controls whether sponges can absorb water                                    |
+| `protect:block_burning`              | Controls whether blocks can burn                                             |
+| `protect:block_drying`               | Controls whether blocks can dry out (farmland)                               |
+| `protect:block_fading`               | Controls whether blocks can fade away (ice/snow melting, coral fading)       |
+| `protect:block_fertilize`            | Controls whether blocks can be fertilized                                    |
+| `protect:block_forming`              | Controls whether blocks can randomly form (like snow or ice)                 |
+| `protect:block_growth`               | Controls whether blocks can grow (like wheat or carrots)                     |
+| `protect:block_igniting`             | Controls whether blocks can ignite (like fire spread or lightning strikes)   |
+| `protect:block_moisturising`         | Controls whether blocks can moisturise (farmland)                            |
+| `protect:block_spread`               | Controls whether blocks can spread (like grass or fire)                      |
+| `protect:cauldron_evaporation`       | Controls whether cauldrons can evaporate from biome dryness                  |
+| `protect:cauldron_extinguish_entity` | Controls whether cauldrons can extinguish flaming entities                   |
+| `protect:crop_trample`               | Allows or denies crop trampling                                              |
+| `protect:destroy`                    | Allows or denies destroying objects (like blocks or entities)                |
+| `protect:entity_attack_entity`       | Controls whether entities can attack other entities                          |
+| `protect:entity_attack_player`       | Controls whether entities can attack players                                 |
+| `protect:entity_interact`            | Allows or denies interaction with entities (like merchant trading)           |
+| `protect:entity_shear`               | Allows or denies shearing entities (like sheep or snow golems)               |
+| `protect:explosions`                 | Controls whether explosions can do block damage                              |
+| `protect:interact`                   | Allows or denies block interactions (like opening chests or doors)           |
+| `protect:leaves_decay`               | Controls whether leaves can decay                                            |
+| `protect:natural_cauldron_fill`      | Controls whether cauldrons can fill naturally (rain or dripstone)            |
+| `protect:physical_interact`          | Allows or denies physical interactions (like pressure plates or drip leaves) |
+| `protect:place`                      | Allows or denies placing objects (like blocks or entities)                   |
+| `protect:player_attack_entity`       | Controls whether players can attack entities                                 |
+| `protect:player_attack_player`       | Controls whether players can attack players                                  |
+| `protect:player_item_drop`           | Controls whether players can drop items                                      |
+
+## Examples
+
+```
+<gray># Deny placing and breaking blocks in area "spawn"</gray>
+/area flag set <aqua>protect:place</aqua> <yellow>false</yellow> <green>spawn</green>
+/area flag set <aqua>protect:destroy</aqua> <yellow>false</yellow> <green>spawn</green>
+
+<gray># Set a greeting message</gray>
+/area flag set <aqua>protect:greetings</aqua> <yellow>"<bold>Welcome to spawn!</bold>"</yellow> <green>spawn</green>
+
+<gray># Reset one flag back to default behavior</gray>
+/area flag reset <aqua>protect:greetings</aqua> <yellow>spawn</yellow>
+```

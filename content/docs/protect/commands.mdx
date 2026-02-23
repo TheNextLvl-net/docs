@@ -1,0 +1,74 @@
+---
+title: Commands
+description: Full `/area` command reference
+---
+
+# Commands
+
+Protect commands are organized under `/area`.  
+Most commands work on existing areas and require matching `protect.command.area.*` permissions.
+
+## Area Commands
+
+| Command                                  | Description                                       | Permission                            |
+|------------------------------------------|---------------------------------------------------|---------------------------------------|
+| `/area create <name> [<priority>]`       | Create new areas                                  | `protect.command.area.create`         |
+| `/area delete <area>`                    | Delete existing areas                             | `protect.command.area.delete`         |
+| `/area info [<area>]`                    | Query information about specific areas            | `protect.command.area.info`           |
+| `/area list`                             | List all areas                                    | `protect.command.area.list`           |
+| `/area priority <area> [<priority>]`     | View or change the priority of areas              | `protect.command.area.priority`       |
+| `/area protect <area> [remove]`          | Add, update, or remove the protection of an area  | `protect.command.area.protect`        |
+| `/area redefine <area>`                  | Redefine the region of an existing area           | `protect.command.area.redefine`       |
+| `/area select <area>`                    | (WorldEdit) select the region of an existing area | `worldedit.selection.pos`             |
+| `/area teleport <area>`                  | Teleport yourself to an area                      | `protect.command.area.teleport`       |
+
+## Flag Commands
+
+| Command                                  | Description                     | Permission                        |
+|------------------------------------------|---------------------------------|-----------------------------------|
+| `/area flag info [flag] (area)`          | Query information about flags   | `protect.command.area.flag.info`  |
+| `/area flag list [<provider>]`           | List all existing area flags    | `protect.command.area.flag.list`  |
+| `/area flag reset <flag> [<area>]`       | Reset specified flags of areas  | `protect.command.area.flag.reset` |
+| `/area flag set <flag> <value> [<area>]` | Change specified flags of areas | `protect.command.area.flag.set`   |
+
+## Group Commands
+
+| Command                                 | Description                               | Permission                              |
+|-----------------------------------------|-------------------------------------------|-----------------------------------------|
+| `/area group add <group> [<name>]`      | Add your current selection to a group     | `protect.command.area.group.add`        |
+| `/area group create <area>`             | Create a group from an area               | `protect.command.area.group.create`     |
+| `/area group delete <group>`            | Delete a group (does not delete the area) | `protect.command.area.group.delete`     |
+| `/area group list [<group>]`            | List all groups or regions of a group     | `protect.command.area.group.list`       |
+| `/area group redefine <group> <region>` | Redefine a region inside a group          | `protect.command.area.group.redefine`   |
+| `/area group remove <group> <region>`   | Remove a region from a group              | `protect.command.area.group.remove`     |
+| `/area group select <group> <region>`   | Select a region inside a group            | `worldedit.selection.pos`               |
+
+## Member Commands
+
+| Command                              | Description                  | Permission                            |
+|--------------------------------------|------------------------------|---------------------------------------|
+| `/area members add <area> <players>` | Add members to an area       | `protect.command.area.members.add`    |
+| `/area members list [<area>]`        | List all members of an area  | `protect.command.area.members.list`   |
+| `/area members remove <player>`      | Remove a member from an area | `protect.command.area.members.remove` |
+
+## Owner and Parent Commands
+
+| Command                            | Description                  | Permission                           |
+|------------------------------------|------------------------------|--------------------------------------|
+| `/area owner set <area> <player>`  | Set the owner of an area     | `protect.command.area.owner.set`     |
+| `/area owner remove <player>`      | Remove the owner of an area  | `protect.command.area.owner.remove`  |
+| `/area parent set <area> <parent>` | Set the parent of an area    | `protect.command.area.parent.set`    |
+| `/area parent remove <area>`       | Remove the parent of an area | `protect.command.area.parent.remove` |
+
+## Schematic Commands
+
+| Command                         | Description                | Permission                              |
+|---------------------------------|----------------------------|-----------------------------------------|
+| `/area schematic save <area>`   | Save an area's schematic   | `protect.command.area.schematic.save`   |
+| `/area schematic load <area>`   | Load an area's schematic   | `protect.command.area.schematic.load`   |
+| `/area schematic delete <area>` | Delete an area's schematic | `protect.command.area.schematic.delete` |
+
+<Callout type="info">
+  Commands like `/area create`, `/area redefine`, and `/area group add`
+  use your current WorldEdit selection.
+</Callout>
