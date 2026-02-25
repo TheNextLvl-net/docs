@@ -10,6 +10,7 @@
 		"external:[ChartLine][Metrics](https://faststats.dev/project/gopaintadvanced)",
 		"external:[BookDown][Repository](https://repo.thenextlvl.net/#/releases/net/thenextlvl/gopaint)",
 		"---Introduction---",
-		"index"
+		"index",
+		"comparison"
 	]
 }
