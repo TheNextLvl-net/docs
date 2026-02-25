@@ -1,0 +1,103 @@
+---
+title: Plugin Comparison
+description: How PerWorlds compares to other per-world inventory plugins
+icon: GitCompareArrows
+---
+
+# Plugin Comparison
+
+This page provides an objective comparison between **PerWorlds** and other per-world inventory plugins for Minecraft servers.
+
+<Callout type="info" title="Disclaimer">
+  This comparison was researched to the best of our ability.  
+  If you find any inaccuracies, please [open an issue](https://github.com/TheNextLvl-net/docs/issues/new) so we can correct them.
+</Callout>
+
+## Overview
+
+| Feature                  | [PerWorlds](https://modrinth.com/project/lpfQmSV2) | [Multiverse-Inventories](https://github.com/Multiverse/Multiverse-Inventories) | [MyWorlds](https://github.com/bergerhealer/MyWorlds) |
+|--------------------------|----------------------------------------------------|--------------------------------------------------------------------------------|------------------------------------------------------|
+| **Server Software**      | Paper                                              | Bukkit, Spigot, Paper                                                          | Bukkit, Spigot, Paper                                |
+| **Folia Support**        | ❌                                                  | ❌                                                                              | ❌                                                    |
+| **MC Versions**          | 1.21.1 – latest                                    | 1.13 – latest                                                                  | 1.8 – latest                                         |
+| **World Groups**         | ✅                                                  | ✅                                                                              | ✅                                                    |
+| **Open Source**          | ✅ GPL-3.0                                          | ✅ BSD-3                                                                        | ✅ MIT                                                |
+| **Actively Maintained**  | ✅                                                  | ✅                                                                              | ✅                                                    |
+| **Standalone**           | ✅                                                  | ❌ Requires Multiverse-Core                                                     | ⚠️ Requires BKCommonLib                              |
+| **Developer API**        | ✅                                                  | ✅                                                                              | ❌                                                    |
+| **Configurable Options** | 48                                                 | ~23                                                                            | limited                                              |
+
+## Data Separation
+
+What player data can be separated per world group.
+
+| Data                       | [PerWorlds](https://modrinth.com/project/lpfQmSV2) | [Multiverse-Inventories](https://github.com/Multiverse/Multiverse-Inventories) | [MyWorlds](https://github.com/bergerhealer/MyWorlds) |
+|----------------------------|----------------------------------------------------|--------------------------------------------------------------------------------|------------------------------------------------------|
+| **Inventory**              | ✅                                                  | ✅                                                                              | ✅                                                    |
+| **Ender Chest**            | ✅                                                  | ✅                                                                              | ❌                                                    |
+| **Experience**             | ✅                                                  | ✅                                                                              | ❌                                                    |
+| **Health**                 | ✅                                                  | ✅                                                                              | ❌                                                    |
+| **Hunger / Saturation**    | ✅                                                  | ✅                                                                              | ❌                                                    |
+| **Potion Effects**         | ✅                                                  | ✅                                                                              | ❌                                                    |
+| **Advancements**           | ✅                                                  | ⚠️ Optional                                                                    | ❌                                                    |
+| **Statistics**             | ✅                                                  | ⚠️ Optional                                                                    | ❌                                                    |
+| **Recipes**                | ✅                                                  | ⚠️ Optional                                                                    | ❌                                                    |
+| **Last Location**          | ✅                                                  | ⚠️ Optional                                                                    | ✅                                                    |
+| **Bed / Respawn Location** | ✅                                                  | ✅                                                                              | ❌                                                    |
+| **Last Death Location**    | ✅                                                  | ❌                                                                              | ❌                                                    |
+| **Game Mode**              | ✅                                                  | ❌                                                                              | ❌                                                    |
+| **Fly State / Speed**      | ✅                                                  | ❌                                                                              | ❌                                                    |
+| **Walk Speed**             | ✅                                                  | ❌                                                                              | ❌                                                    |
+| **Attributes**             | ✅                                                  | ❌                                                                              | ❌                                                    |
+| **Score**                  | ✅                                                  | ❌                                                                              | ❌                                                    |
+| **Hotbar Slot**            | ✅                                                  | ❌                                                                              | ❌                                                    |
+
+## World Settings
+
+Per-group world settings that apply to all worlds in a group.
+
+| Setting          | [PerWorlds](https://modrinth.com/project/lpfQmSV2) | [Multiverse-Inventories](https://github.com/Multiverse/Multiverse-Inventories) | [MyWorlds](https://github.com/bergerhealer/MyWorlds) |
+|------------------|----------------------------------------------------|--------------------------------------------------------------------------------|------------------------------------------------------|
+| **Game Rules**   | ✅                                                  | ❌                                                                              | ❌                                                    |
+| **Difficulty**   | ✅                                                  | ❌                                                                              | ❌                                                    |
+| **Time**         | ✅                                                  | ❌                                                                              | ❌                                                    |
+| **Weather**      | ✅                                                  | ❌                                                                              | ❌                                                    |
+| **World Border** | ✅                                                  | ❌                                                                              | ❌                                                    |
+
+## Messaging & Visibility
+
+Per-group chat and player visibility features.
+
+| Feature                  | [PerWorlds](https://modrinth.com/project/lpfQmSV2) | [Multiverse-Inventories](https://github.com/Multiverse/Multiverse-Inventories) | [MyWorlds](https://github.com/bergerhealer/MyWorlds) |
+|--------------------------|----------------------------------------------------|--------------------------------------------------------------------------------|------------------------------------------------------|
+| **Per-Group Chat**       | ✅                                                  | ❌                                                                              | ⚠️ Via permissions                                   |
+| **Per-Group Tab List**   | ✅                                                  | ❌                                                                              | ❌                                                    |
+| **Join Messages**        | ✅                                                  | ❌                                                                              | ❌                                                    |
+| **Quit Messages**        | ✅                                                  | ❌                                                                              | ❌                                                    |
+| **Death Messages**       | ✅                                                  | ❌                                                                              | ❌                                                    |
+| **Advancement Messages** | ✅                                                  | ❌                                                                              | ❌                                                    |
+
+## Additional Player State
+
+Niche player state data that can be separated per group.
+
+| State                    | [PerWorlds](https://modrinth.com/project/lpfQmSV2) | [Multiverse-Inventories](https://github.com/Multiverse/Multiverse-Inventories) | [MyWorlds](https://github.com/bergerhealer/MyWorlds) |
+|--------------------------|----------------------------------------------------|--------------------------------------------------------------------------------|------------------------------------------------------|
+| **Absorption**           | ✅                                                  | ❌                                                                              | ❌                                                    |
+| **Arrows in Body**       | ✅                                                  | ❌                                                                              | ❌                                                    |
+| **Bee Stingers in Body** | ✅                                                  | ❌                                                                              | ❌                                                    |
+| **End Credits**          | ✅                                                  | ❌                                                                              | ❌                                                    |
+| **Fall Distance**        | ✅                                                  | ✅                                                                              | ❌                                                    |
+| **Fire Ticks**           | ✅                                                  | ✅                                                                              | ❌                                                    |
+| **Freeze Ticks**         | ✅                                                  | ❌                                                                              | ❌                                                    |
+| **Gliding**              | ✅                                                  | ❌                                                                              | ❌                                                    |
+| **Invulnerability**      | ✅                                                  | ❌                                                                              | ❌                                                    |
+| **Portal Cooldown**      | ✅                                                  | ❌                                                                              | ❌                                                    |
+| **Remaining Air**        | ✅                                                  | ✅                                                                              | ❌                                                    |
+| **Velocity**             | ✅                                                  | ❌                                                                              | ❌                                                    |
+| **Visual Fire**          | ✅                                                  | ❌                                                                              | ❌                                                    |
+| **Warden Spawn Tracker** | ✅                                                  | ❌                                                                              | ❌                                                    |
+
+<Callout type="info" title="Legend">
+  ✅ Supported — ❌ Not supported — ⚠️ Partial or conditional support
+</Callout>
