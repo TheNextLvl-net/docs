@@ -1,6 +1,6 @@
 services:
   docs:
-    image: ghcr.io/TheNextLvl-net/docs:latest
+    image: ghcr.io/thenextlvl-net/docs:latest
     restart: unless-stopped
     ports:
       - "80:3000"
