@@ -34,5 +34,7 @@ jobs:
         with:
           push: true
           tags: ghcr.io/thenextlvl-net/docs:latest
+          build-args: |
+            PAT_GITHUB=${{ secrets.PAT_GITHUB }}
           cache-from: type=gha
           cache-to: type=gha,mode=max

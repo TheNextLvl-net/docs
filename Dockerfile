@@ -1,6 +1,8 @@
 FROM oven/bun:1.3.10-slim AS builder
 WORKDIR /app
 COPY . .
+ARG PAT_GITHUB
+ENV PAT_GITHUB=$PAT_GITHUB
 RUN bun install --production
 RUN bun run build
 
