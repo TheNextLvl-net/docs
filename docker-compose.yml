@@ -8,10 +8,11 @@ services:
     networks:
       - cloudflared
     healthcheck:
-      test: ["CMD", "bun", "-e", "await fetch('http://localhost:3000').then(r => { if (!r.ok) process.exit(1) })"]
+      test: ["CMD", "curl", "-f", "http://localhost:3000"]
       interval: 30s
       timeout: 5s
       retries: 3
+      start_period: 5s
 
 networks:
   cloudflared:
