@@ -1,0 +1,74 @@
+---
+title: Plugin Comparison
+description: How Commander compares to plugin hiding alternatives
+icon: GitCompareArrows
+---
+
+# Plugin Comparison
+
+This page provides an objective comparison between **Commander** and various plugin hiding alternatives.
+
+<Callout type="info" title="Disclaimer">
+  This comparison was researched to the best of our ability.  
+  If you find any inaccuracies, please [open an issue](https://github.com/TheNextLvl-net/docs/issues/new) so we can correct them.
+</Callout>
+
+<Callout type="warn" title="Commander is not a plugin hider">
+  Commander is designed to **manage commands** – cleaning up tab completion, configuring permissions,
+  and removing commands that don't belong on your server. It is **not** designed to hide which plugins you run.
+
+  By understanding your server and intentionally curating which commands are visible, executable, and permitted,
+  Commander happens to be far more effective at controlling command exposure than any dedicated "plugin hider" ever could.
+  Dedicated plugin hiders only block surface-level commands like `/plugins` without understanding your server's actual
+  command landscape, leaving countless other ways to discover your plugins.
+
+  Commander requires thought and configuration – it is not plug-and-play.
+  But that is exactly why it works.
+</Callout>
+
+## Major Alternatives
+
+| Feature                   | [Commander](https://modrinth.com/project/USLuwMUi) | [Plugin Hide](https://www.spigotmc.org/resources/68767/) | [Plugin Hide Pro](https://builtbybit.com/resources/29296/) | [AdvancedPlHide](https://modrinth.com/plugin/advancedplhide) | [Hide Plugins](https://modrinth.com/plugin/hide-plugins) |
+|---------------------------|----------------------------------------------------|----------------------------------------------------------|------------------------------------------------------------|--------------------------------------------------------------|----------------------------------------------------------|
+| **Server Software**       | Paper, Folia, Velocity                             | Spigot, Paper                                            | Spigot, Paper, BungeeCord, Velocity                        | Spigot, Paper, BungeeCord, Velocity                          | Paper, Folia                                             |
+| **Folia Support**         | ✅                                                  | ❌                                                        | ✅                                                          | ❌                                                            | ✅                                                        |
+| **Proxy Support**         | ✅ Velocity                                         | ❌                                                        | ✅ BungeeCord, Velocity                                     | ✅ BungeeCord, Velocity                                       | ❌                                                        |
+| **MC Versions**           | 1.19 – latest                                      | 1.13 – latest                                            | varies                                                     | 1.8 – latest                                                 | 1.19 – latest                                            |
+| **Open Source**           | ✅ GPL-3.0                                          | ❌ ARR                                                    | ❌ ARR                                                      | ✅ GPL-3.0                                                    | ✅ MIT                                                    |
+| **Free**                  | ✅                                                  | ✅                                                        | ❌ $8.99                                                    | ✅                                                            | ✅                                                        |
+| **Actively Maintained**   | ✅                                                  | ✅                                                        | ✅                                                          | ✅                                                            | ✅                                                        |
+| **Localization**          | ✅                                                  | ❌                                                        | ❌                                                          | ❌                                                            | ❌                                                        |
+| **External Dependencies** | None                                               | None                                                     | None                                                       | ⚠️ ProtocolLib on Spigot                                     | None                                                     |
+
+## Other Alternatives
+
+| Feature                   | [Commander](https://modrinth.com/project/USLuwMUi) | [AntiPluginsCommand](https://modrinth.com/plugin/antipluginscommand) | [Simple Plugin Hider](https://modrinth.com/plugin/simple-plugin-hider) | [PluginHiderPlus](https://www.spigotmc.org/resources/51583/) | [HideAndCustomPlugins](https://dev.bukkit.org/projects/hideandcustomplugins) |
+|---------------------------|----------------------------------------------------|----------------------------------------------------------------------|------------------------------------------------------------------------|--------------------------------------------------------------|------------------------------------------------------------------------------|
+| **Server Software**       | Paper, Folia, Velocity                             | Bukkit, Spigot, Paper                                                | Bukkit, Spigot, Paper                                                  | Bukkit, Spigot                                               | Bukkit                                                                       |
+| **Folia Support**         | ✅                                                  | ❌                                                                    | ❌                                                                      | ❌                                                            | ❌                                                                            |
+| **Proxy Support**         | ✅ Velocity                                         | ❌                                                                    | ❌                                                                      | ❌                                                            | ❌                                                                            |
+| **MC Versions**           | 1.19 – latest                                      | 1.21.4                                                               | 1.13 – latest                                                          | 1.8 – 1.15                                                   | legacy                                                                       |
+| **Open Source**           | ✅ GPL-3.0                                          | ⚠️                                                                   | ✅ Apache-2.0                                                           | ❌ ARR                                                        | ✅ GPL                                                                        |
+| **Free**                  | ✅                                                  | ✅                                                                    | ✅                                                                      | ✅                                                            | ✅                                                                            |
+| **Actively Maintained**   | ✅                                                  | ⚠️                                                                   | ✅                                                                      | ❌                                                            | ❌                                                                            |
+| **External Dependencies** | None                                               | None                                                                 | None                                                                   | ProtocolLib                                                  | ProtocolLib                                                                  |
+
+## Capabilities
+
+| Feature                      | [Commander](https://modrinth.com/project/USLuwMUi) | [Plugin Hide](https://www.spigotmc.org/resources/68767/) | [Plugin Hide Pro](https://builtbybit.com/resources/29296/) | [AdvancedPlHide](https://modrinth.com/plugin/advancedplhide) | [Hide Plugins](https://modrinth.com/plugin/hide-plugins) |
+|------------------------------|----------------------------------------------------|----------------------------------------------------------|------------------------------------------------------------|--------------------------------------------------------------|----------------------------------------------------------|
+| **Hide from Tab Completion** | ✅                                                  | ✅                                                        | ✅                                                          | ✅                                                            | ✅                                                        |
+| **Block Command Execution**  | ✅ Via permission overrides                         | ✅                                                        | ✅                                                          | ❌ Tab only                                                   | ✅                                                        |
+| **Unregister Commands**      | ✅                                                  | ❌                                                        | ❌                                                          | ❌                                                            | ❌                                                        |
+| **Permission Overrides**     | ✅                                                  | ❌                                                        | ❌                                                          | ❌                                                            | ❌                                                        |
+| **Wildcard Patterns**        | ✅                                                  | ❌                                                        | ❌                                                          | ❌                                                            | ❌                                                        |
+| **Group System**             | ❌                                                  | ✅                                                        | ✅                                                          | ✅                                                            | ❌                                                        |
+| **Subcommand Control**       | ❌                                                  | ❌                                                        | ✅                                                          | ❌                                                            | ❌                                                        |
+| **Fake /pl Response**        | ❌                                                  | ✅                                                        | ✅                                                          | ❌                                                            | ❌                                                        |
+| **OP Protection**            | ❌                                                  | ✅                                                        | ❌                                                          | ❌                                                            | ❌                                                        |
+| **Custom Deny Message**      | ❌                                                  | ✅                                                        | ✅                                                          | ❌                                                            | ✅                                                        |
+| **Developer API**            | ✅                                                  | ❌                                                        | ❌                                                          | ❌                                                            | ❌                                                        |
+
+<Callout type="info" title="Legend">
+  ✅ Supported — ❌ Not supported — ⚠️ Partial or conditional support
+</Callout>
