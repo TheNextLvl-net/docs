@@ -13,6 +13,7 @@ services:
       timeout: 5s
       retries: 3
       start_period: 5s
+      start_interval: 1s
 
 networks:
   cloudflared:
