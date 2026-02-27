@@ -1,8 +1,7 @@
 FROM oven/bun:1.3.10-slim AS builder
 WORKDIR /app
-COPY package.json bun.lock ./
-RUN bun install --production
 COPY . .
+RUN bun install --production
 RUN bun run build
 
 FROM oven/bun:1.3.10-slim
