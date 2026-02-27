@@ -1,6 +1,13 @@
 name: Build Test
 
-on: [pull_request, push]
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+concurrency:
+  group: build-${{ github.ref }}
+  cancel-in-progress: true
 
 env:
   NEXT_PUBLIC_BASE_URL: https://thenextlvl.net
@@ -13,7 +20,12 @@ jobs:
       - uses: oven-sh/setup-bun@v2
         with:
           bun-version: latest
-      - run: bun install
+      - uses: actions/cache@v4
+        with:
+          path: ~/.bun/install/cache
+          key: bun-${{ runner.os }}-${{ hashFiles('bun.lock') }}
+          restore-keys: bun-${{ runner.os }}-
+      - run: bun install --frozen-lockfile
       - run: bun run build
 
       - name: Upload Source Map
