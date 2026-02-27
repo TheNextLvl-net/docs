@@ -2,10 +2,14 @@ services:
   docs:
     image: ghcr.io/thenextlvl-net/docs:latest
     restart: unless-stopped
-    ports:
-      - "80:3000"
+    networks:
+      - cloudflared
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:3000"]
       interval: 30s
       timeout: 5s
       retries: 3
+
+networks:
+  cloudflared:
+    external: true
