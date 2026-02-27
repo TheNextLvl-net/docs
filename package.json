@@ -12,7 +12,7 @@
 	},
 	"dependencies": {
 		"@icons-pack/react-simple-icons": "^13.8.0",
-		"@shikijs/types": "^3.19.0",
+		"@shikijs/types": "^4.0.0",
 		"@tailwindcss/vite": "^4.1.17",
 		"@takumi-rs/core": "^0.68.0",
 		"@takumi-rs/image-response": "^0.69.0",

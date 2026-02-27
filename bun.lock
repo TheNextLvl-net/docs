@@ -6,7 +6,7 @@
       "name": "thenextlvl-docs",
       "dependencies": {
         "@icons-pack/react-simple-icons": "^13.8.0",
-        "@shikijs/types": "^3.19.0",
+        "@shikijs/types": "^4.0.0",
         "@tailwindcss/vite": "^4.1.17",
         "@takumi-rs/core": "^0.68.0",
         "@takumi-rs/image-response": "^0.69.0",
@@ -426,7 +426,7 @@
 
     "@shikijs/transformers": ["@shikijs/transformers@3.22.0", "", { "dependencies": { "@shikijs/core": "3.22.0", "@shikijs/types": "3.22.0" } }, "sha512-E7eRV7mwDBjueLF6852n2oYeJYxBq3NSsDk+uyruYAXONv4U8holGmIrT+mPRJQ1J1SNOH6L8G19KRzmBawrFw=="],
 
-    "@shikijs/types": ["@shikijs/types@3.19.0", "", { "dependencies": { "@shikijs/vscode-textmate": "^10.0.2", "@types/hast": "^3.0.4" } }, "sha512-Z2hdeEQlzuntf/BZpFG8a+Fsw9UVXdML7w0o3TgSXV3yNESGon+bs9ITkQb3Ki7zxoXOOu5oJWqZ2uto06V9iQ=="],
+    "@shikijs/types": ["@shikijs/types@4.0.0", "", { "dependencies": { "@shikijs/vscode-textmate": "^10.0.2", "@types/hast": "^3.0.4" } }, "sha512-LCnfBTtQKNtJyc1qMShZr2dJt1uxNI6pI0/YTc2DSNET91aUvnMGHUHsucVCC5AJVcv5XyBqk2NgYRwd20EjbA=="],
 
     "@shikijs/vscode-textmate": ["@shikijs/vscode-textmate@10.0.2", "", {}, "sha512-83yeghZ2xxin3Nj8z1NMd/NCuca+gsYXswywDy5bHvwlWL8tpTQmzGeUuHd9FC3E/SBEMvzJRwWEOz5gGes9Qg=="],
 
