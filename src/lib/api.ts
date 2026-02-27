@@ -26,8 +26,8 @@ export async function lastEdit(page: Page): Promise<Date> {
 	const time = await getGithubLastEdit({
 		owner: "TheNextLvl-net",
 		repo: "docs",
-		token: process.env.GITHUB_TOKEN
-			? `Bearer ${process.env.GITHUB_TOKEN}`
+		token: process.env.PAT_GITHUB
+			? `Bearer ${process.env.PAT_GITHUB}`
 			: undefined,
 		path: contentPath,
 	}).catch((error) => {
@@ -47,8 +47,8 @@ export async function lastEditFromPath(
 	const time = await getGithubLastEdit({
 		owner: "TheNextLvl-net",
 		repo: "docs",
-		token: process.env.GITHUB_TOKEN
-			? `Bearer ${process.env.GITHUB_TOKEN}`
+		token: process.env.PAT_GITHUB
+			? `Bearer ${process.env.PAT_GITHUB}`
 			: undefined,
 		path: relativePath,
 	}).catch((error) => {
