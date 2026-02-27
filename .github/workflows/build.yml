@@ -10,7 +10,7 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  NEXT_PUBLIC_BASE_URL: https://thenextlvl.net
+  VITE_BASE_URL: https://thenextlvl.net
 
 jobs:
   build-and-start:
@@ -25,7 +25,7 @@ jobs:
           path: ~/.bun/install/cache
           key: bun-${{ runner.os }}-${{ hashFiles('bun.lock') }}
           restore-keys: bun-${{ runner.os }}-
-      - run: bun install --frozen-lockfile
+      - run: bun install
       - run: bun run build
 
       - name: Upload Source Map
