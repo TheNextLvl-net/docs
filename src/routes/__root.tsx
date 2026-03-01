@@ -6,12 +6,19 @@ import {
 	Outlet,
 	Scripts,
 } from "@tanstack/react-router";
+import { createServerFn } from "@tanstack/react-start";
 import { RootProvider } from "fumadocs-ui/provider/tanstack";
 import type { ReactNode } from "react";
 import { NotFound } from "@/components/not-found";
 import globalCss from "./../global.css?url";
 
+const getAnalyticsConfig = createServerFn({ method: "GET" }).handler(() => ({
+	sitekey: process.env.VITE_FASTSTATS_SITEKEY,
+	scriptUrl: process.env.VITE_FASTSTATS_SCRIPT_URL,
+}));
+
 export const Route = createRootRoute({
+	loader: () => getAnalyticsConfig(),
 	head: () => ({
 		meta: [
 			{
@@ -53,8 +60,8 @@ function RootComponent() {
 }
 
 function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
-	const faststatsDomain = import.meta.env.VITE_FASTSTATS_SITEKEY;
-	const faststatsUrl = import.meta.env.VITE_FASTSTATS_SCRIPT_URL;
+	const { sitekey: faststatsDomain, scriptUrl: faststatsUrl } =
+		Route.useLoaderData();
 
 	return (
 		<html lang="en">

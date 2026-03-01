@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { source } from "@/lib/source";
 
 export async function getSitemap() {
-	const baseUrl = import.meta.env.VITE_PUBLIC_BASE_URL;
+	const baseUrl = process.env.VITE_PUBLIC_BASE_URL;
 	const url = (path: string): string => new URL(path, baseUrl).toString();
 
 	const staticPages: Array<{

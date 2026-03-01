@@ -1,5 +1,5 @@
 const baseUrl =
-	import.meta.env.VITE_PUBLIC_BASE_URL || "https://thenextlvl.net";
+	process.env.VITE_PUBLIC_BASE_URL || "https://thenextlvl.net";
 
 interface OgImageProps {
 	title: string;

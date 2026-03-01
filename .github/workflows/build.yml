@@ -10,7 +10,7 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  VITE_BASE_URL: https://thenextlvl.net
+  VITE_PUBLIC_BASE_URL: https://thenextlvl.net
 
 jobs:
   build-and-start:
