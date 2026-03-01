@@ -3,14 +3,16 @@ name: Build Test
 on:
   pull_request:
   push:
-    branches: [main]
+    branches: [ main ]
 
 concurrency:
   group: build-${{ github.ref }}
   cancel-in-progress: true
 
 env:
-  VITE_BASE_URL: https://thenextlvl.net
+  VITE_PUBLIC_BASE_URL: https://thenextlvl.net
+  VITE_FASTSTATS_SCRIPT_URL: https://faststats.dev/script.js
+  VITE_FASTSTATS_SITEKEY: afe13ffcfce9ea60d8fc944b903cd605
 
 jobs:
   build-and-start:
