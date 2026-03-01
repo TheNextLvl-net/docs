@@ -36,5 +36,8 @@ jobs:
           tags: ghcr.io/thenextlvl-net/docs:latest
           build-args: |
             PAT_GITHUB=${{ secrets.PAT_GITHUB }}
+            VITE_PUBLIC_BASE_URL=https://thenextlvl.net
+            VITE_FASTSTATS_SCRIPT_URL=https://faststats.dev/script.js
+            VITE_FASTSTATS_SITEKEY=afe13ffcfce9ea60d8fc944b903cd605
           cache-from: type=gha
           cache-to: type=gha,mode=max
