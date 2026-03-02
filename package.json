@@ -11,6 +11,7 @@
 		"format": "biome check --write \"**/*.{ts,tsx,md}\""
 	},
 	"dependencies": {
+		"@faststats/sourcemap-uploader-plugin": "^0.2.0",
 		"@icons-pack/react-simple-icons": "^13.8.0",
 		"@shikijs/types": "^4.0.0",
 		"@tailwindcss/vite": "^4.1.17",

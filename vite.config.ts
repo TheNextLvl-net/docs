@@ -1,3 +1,4 @@
+import sourcemapsPlugin from "@faststats/sourcemap-uploader-plugin";
 import tailwindcss from "@tailwindcss/vite";
 import takumiPackageJson from "@takumi-rs/core/package.json" with {
 	type: "json",
@@ -24,6 +25,10 @@ export default defineConfig({
 	},
 	plugins: [
 		mdx(MdxConfig),
+		sourcemapsPlugin.vite({
+			deleteAfterUpload: true,
+			authToken: process.env.FASTSTATS_UPLOAD_TOKEN,
+		}),
 		nitro({
 			routeRules: {
 				"/discord": {
