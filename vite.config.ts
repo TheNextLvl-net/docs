@@ -28,6 +28,7 @@ export default defineConfig({
 		sourcemapsPlugin.vite({
 			deleteAfterUpload: true,
 			authToken: process.env.FASTSTATS_UPLOAD_TOKEN,
+			enabled: process.env.GITHUB_REF_NAME === "main",
 		}),
 		nitro({
 			routeRules: {
