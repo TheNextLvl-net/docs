@@ -1,8 +1,5 @@
 import sourcemapsPlugin from "@faststats/sourcemap-uploader-plugin";
 import tailwindcss from "@tailwindcss/vite";
-import takumiPackageJson from "@takumi-rs/core/package.json" with {
-	type: "json",
-};
 import { tanstackStart } from "@tanstack/react-start/plugin/vite";
 import viteReact from "@vitejs/plugin-react";
 import mdx from "fumadocs-mdx/vite";
@@ -48,10 +45,7 @@ export default defineConfig({
 					redirect: { to: "https://modrinth.com/organization/thenextlvl" },
 				},
 			},
-			traceDeps: [
-				"@takumi-rs/core",
-				...Object.keys(takumiPackageJson.optionalDependencies),
-			],
+			traceDeps: ["@takumi-rs/core"],
 		}),
 		tailwindcss(),
 		tanstackStart(),
