@@ -5,7 +5,7 @@
     "": {
       "name": "thenextlvl-docs",
       "dependencies": {
-        "@faststats/sourcemap-uploader-plugin": "^0.2.0",
+        "@faststats/sourcemap-uploader-plugin": "0.2.1",
         "@icons-pack/react-simple-icons": "^13.8.0",
         "@shikijs/types": "^4.0.0",
         "@tailwindcss/vite": "^4.1.17",
@@ -187,7 +187,7 @@
 
     "@esbuild/win32-x64": ["@esbuild/win32-x64@0.27.3", "", { "os": "win32", "cpu": "x64" }, "sha512-4uJGhsxuptu3OcpVAzli+/gWusVGwZZHTlS63hh++ehExkVT8SgiEf7/uC/PclrPPkLhZqGgCTjd0VWLo6xMqA=="],
 
-    "@faststats/sourcemap-uploader-plugin": ["@faststats/sourcemap-uploader-plugin@0.2.0", "", { "dependencies": { "unplugin": "^3.0.0" }, "peerDependencies": { "typescript": "^5.9.2" } }, "sha512-lwD5HzcWYiCcqt7B9Z34O5clj91EVJo3jKEX+wiRRTzHEOt7zZ6oPmA3nUe2XmRtrfmlX2pxVIGusWySu1PbZw=="],
+    "@faststats/sourcemap-uploader-plugin": ["@faststats/sourcemap-uploader-plugin@0.2.1", "", { "dependencies": { "unplugin": "^3.0.0" }, "peerDependencies": { "typescript": "^5.9.3" } }, "sha512-Cln0kp/1zWsHTZTbTdwCGnR6Rr/xuSvOztPmfJJXj2iD8OtrO2ZKzsc4zxhroJNxwubkXjAQlaYeA/dZ7k/tuQ=="],
 
     "@floating-ui/core": ["@floating-ui/core@1.7.3", "", { "dependencies": { "@floating-ui/utils": "^0.2.10" } }, "sha512-sGnvb5dmrJaKEZ+LDIpguvdX3bDlEllmv4/ClQ9awcmCZrlx5jQyyMWFM5kBI+EyNOCDDiKk8il0zeuX3Zlg/w=="],
 
