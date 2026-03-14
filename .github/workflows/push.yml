@@ -41,5 +41,6 @@ jobs:
             VITE_FASTSTATS_SCRIPT_URL=https://faststats.dev/script.js
             VITE_FASTSTATS_SITEKEY=afe13ffcfce9ea60d8fc944b903cd605
             GITHUB_REF_NAME=${{ github.ref_name }}
+            GITHUB_SHA=${{ github.sha }}
           cache-from: type=gha
           cache-to: type=gha,mode=max

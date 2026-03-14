@@ -1,4 +1,4 @@
-import sourcemapsPlugin from "@faststats/sourcemap-uploader-plugin";
+import sourcemapsPlugin from "@faststats/sourcemap-uploader-plugin/vite";
 import tailwindcss from "@tailwindcss/vite";
 import { tanstackStart } from "@tanstack/react-start/plugin/vite";
 import viteReact from "@vitejs/plugin-react";
@@ -22,7 +22,7 @@ export default defineConfig({
 	},
 	plugins: [
 		mdx(MdxConfig),
-		sourcemapsPlugin.vite({
+		sourcemapsPlugin({
 			deleteAfterUpload: true,
 			authToken: process.env.FASTSTATS_UPLOAD_TOKEN,
 			enabled: process.env.GITHUB_REF_NAME === "main",
