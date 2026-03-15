@@ -1,5 +1,6 @@
 /// <reference types="vite/client" />
 
+import { Analytics } from "@faststats/react";
 import {
 	createRootRoute,
 	HeadContent,
@@ -61,14 +62,11 @@ function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
 			<head>
 				<HeadContent />
 				{faststatsDomain && faststatsUrl && (
-					<script
-						defer
-						data-sitekey={faststatsDomain}
-						data-trackErrors="true"
-						data-webVitals="true"
-						data-replay="true"
-						src={faststatsUrl}
-						id="faststats-script"
+					<Analytics
+						siteKey={faststatsDomain}
+						trackErrors={true}
+						trackReplay={true}
+						trackWebVitals={true}
 					/>
 				)}
 				<script
