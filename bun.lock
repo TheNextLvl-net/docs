@@ -5,7 +5,7 @@
     "": {
       "name": "thenextlvl-docs",
       "dependencies": {
-        "@faststats/react": "0.0.4",
+        "@faststats/react": "0.1.1",
         "@icons-pack/react-simple-icons": "^13.8.0",
         "@shikijs/types": "^4.0.0",
         "@takumi-rs/image-response": "^0.73.0",
@@ -183,11 +183,11 @@
 
     "@esbuild/win32-x64": ["@esbuild/win32-x64@0.27.3", "", { "os": "win32", "cpu": "x64" }, "sha512-4uJGhsxuptu3OcpVAzli+/gWusVGwZZHTlS63hh++ehExkVT8SgiEf7/uC/PclrPPkLhZqGgCTjd0VWLo6xMqA=="],
 
-    "@faststats/react": ["@faststats/react@0.0.4", "", { "dependencies": { "@faststats/web": "^0.0.4" }, "peerDependencies": { "react": ">=18" } }, "sha512-JvRysXTAiQU201Me67liyFnZpNLrO0spcADQdXklDUctm+oMGt7a2NZp6KscabXTzTYP0Cxk0GE0HY/flXN9ZQ=="],
+    "@faststats/react": ["@faststats/react@0.1.1", "", { "dependencies": { "@faststats/web": "^0.1.1" }, "peerDependencies": { "react": ">=18" } }, "sha512-yIfHoAI0PXsAtOchuEq/iIeOCPjfKnVnd034s06V+JJOuBvyLNy8dbZiUwiPcHq7ex/hghi+tZj3+b08al/B4w=="],
 
     "@faststats/sourcemap-uploader-plugin": ["@faststats/sourcemap-uploader-plugin@0.3.1", "", { "dependencies": { "unplugin": "^3.0.0" }, "peerDependencies": { "typescript": "^5.9.3" } }, "sha512-uMnbYC1BDqMEJfI8aCuJ9hiefRgel0rcNcxe1chsSin4vQ2itP4u62cPG3Z4VcW1BLQKoF9UmEgRo3xjuAv8Sw=="],
 
-    "@faststats/web": ["@faststats/web@0.0.4", "", { "dependencies": { "@rrweb/rrweb-plugin-console-record": "^2.0.0-alpha.20", "rrweb": "^2.0.0-alpha.4", "rrweb-snapshot": "^2.0.0-alpha.4", "web-vitals": "^5.1.0" } }, "sha512-gbysIpoM1vnCWByHPUR7ThzLucew4fHQteg3smgKiQ8Ic4tRRMyFHAVb7xyOGUtEMDxXgh5NfHPCF0bzbtfd6w=="],
+    "@faststats/web": ["@faststats/web@0.1.1", "", { "dependencies": { "@rrweb/rrweb-plugin-console-record": "^2.0.0-alpha.20", "rrweb": "^2.0.0-alpha.4", "rrweb-snapshot": "^2.0.0-alpha.4", "web-vitals": "^5.1.0" } }, "sha512-tcijklsfGG5bVG0/6JcZBo6sxm1myMxRn+NuscqzI/c0mu7SPFcznv3boxkas8nDcKxW48+XNqJ5+EPkovF6oQ=="],
 
     "@floating-ui/core": ["@floating-ui/core@1.7.3", "", { "dependencies": { "@floating-ui/utils": "^0.2.10" } }, "sha512-sGnvb5dmrJaKEZ+LDIpguvdX3bDlEllmv4/ClQ9awcmCZrlx5jQyyMWFM5kBI+EyNOCDDiKk8il0zeuX3Zlg/w=="],
 
