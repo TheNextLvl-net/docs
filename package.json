@@ -11,7 +11,7 @@
 		"format": "biome check --write \"**/*.{ts,tsx,md}\""
 	},
 	"dependencies": {
-		"@faststats/react": "0.0.3",
+		"@faststats/react": "0.0.4",
 		"@icons-pack/react-simple-icons": "^13.8.0",
 		"@shikijs/types": "^4.0.0",
 		"@takumi-rs/image-response": "^0.73.0",
