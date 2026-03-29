@@ -5,7 +5,7 @@
     "": {
       "name": "thenextlvl-docs",
       "dependencies": {
-        "@faststats/react": "0.1.4",
+        "@faststats/react": "0.1.5",
         "@icons-pack/react-simple-icons": "^13.8.0",
         "@shikijs/types": "^4.0.0",
         "@takumi-rs/image-response": "^0.73.0",
@@ -183,11 +183,11 @@
 
     "@esbuild/win32-x64": ["@esbuild/win32-x64@0.27.3", "", { "os": "win32", "cpu": "x64" }, "sha512-4uJGhsxuptu3OcpVAzli+/gWusVGwZZHTlS63hh++ehExkVT8SgiEf7/uC/PclrPPkLhZqGgCTjd0VWLo6xMqA=="],
 
-    "@faststats/react": ["@faststats/react@0.1.4", "", { "dependencies": { "@faststats/web": "^0.1.4" }, "peerDependencies": { "react": ">=18" } }, "sha512-AiwRu+ndwma+SApZ5BhLajiWwxFb6/pCZFCvCuIcBHFdbg9xl3JDaIzr8fQymO9r98CI8q0sITuTyzZ4g+jySg=="],
+    "@faststats/react": ["@faststats/react@0.1.5", "", { "dependencies": { "@faststats/web": "^0.1.5" }, "peerDependencies": { "react": ">=18" } }, "sha512-V14eDF3LC+xK8TqMCj+UnFlIf0PVHHdU6uFt1HQ+kkPWPWfgF6m0yHB3SwceT6hkANyBXCenCgnL+hWBmWmAtA=="],
 
     "@faststats/sourcemap-uploader-plugin": ["@faststats/sourcemap-uploader-plugin@0.3.2", "", { "dependencies": { "unplugin": "^3.0.0" }, "peerDependencies": { "typescript": "^5.9.3" } }, "sha512-49BHtgi/vfryPAnNpjOSXow+RQM5gOU7UvnJI4B642Hm+NEolm0G+xG3xhtWlN2adWe7plI63BpmmfENAOMlng=="],
 
-    "@faststats/web": ["@faststats/web@0.1.4", "", { "dependencies": { "@rrweb/rrweb-plugin-console-record": "^2.0.0-alpha.20", "@rrweb/rrweb-plugin-sequential-id-record": "^2.0.0-alpha.20", "rrweb": "^2.0.0-alpha.4", "rrweb-snapshot": "^2.0.0-alpha.4", "web-vitals": "^5.1.0" } }, "sha512-zcTKCQHR4I5+TNdYjfWawAWfCDZvpAHPr2mP3EKEI/AvO61spr4p4ID66xp+zogMqjbNjJM48Q/Knde1YD9/iQ=="],
+    "@faststats/web": ["@faststats/web@0.1.5", "", { "dependencies": { "@rrweb/rrweb-plugin-console-record": "^2.0.0-alpha.20", "@rrweb/rrweb-plugin-sequential-id-record": "^2.0.0-alpha.20", "rrweb": "^2.0.0-alpha.4", "rrweb-snapshot": "^2.0.0-alpha.4", "web-vitals": "^5.1.0" } }, "sha512-/MkYIg2nxu6p+Ex4l8eSd7NFvjhaC0/s5EXfuQQ5TPZrNzx3HLxbIqbtMOxerZaML83GduIP5Y0fPbjn8GOhdQ=="],
 
     "@floating-ui/core": ["@floating-ui/core@1.7.3", "", { "dependencies": { "@floating-ui/utils": "^0.2.10" } }, "sha512-sGnvb5dmrJaKEZ+LDIpguvdX3bDlEllmv4/ClQ9awcmCZrlx5jQyyMWFM5kBI+EyNOCDDiKk8il0zeuX3Zlg/w=="],
 
