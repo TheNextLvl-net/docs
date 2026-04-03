@@ -29,7 +29,7 @@
 		"tailwindcss": "^4.1.17"
 	},
 	"devDependencies": {
-		"@faststats/sourcemap-uploader-plugin": "0.3.2",
+		"@faststats/sourcemap-uploader-plugin": "0.4.0",
 		"@vitejs/plugin-react": "^6.0.0",
 		"@tailwindcss/vite": "^4.1.17",
 		"@biomejs/biome": "2.4.10",
