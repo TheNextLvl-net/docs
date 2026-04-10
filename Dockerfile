@@ -1,4 +1,4 @@
-FROM oven/bun:1.3.11-slim AS builder
+FROM oven/bun:1.3.12-slim AS builder
 WORKDIR /app
 COPY . .
 ARG PAT_GITHUB
@@ -16,7 +16,7 @@ ENV VITE_PUBLIC_BASE_URL=$VITE_PUBLIC_BASE_URL
 RUN bun install --frozen-lockfile
 RUN bun run build
 
-FROM oven/bun:1.3.11-slim
+FROM oven/bun:1.3.12-slim
 RUN apt-get update && apt-get install -y --no-install-recommends curl && rm -rf /var/lib/apt/lists/*
 WORKDIR /app
 COPY --from=builder /app/.output /app/.output
