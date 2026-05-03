@@ -5,7 +5,15 @@ description: How to use the world create command.
 
 # Create a New World
 
-**Usage:** `/world create <name> [options...]`
+**Usage:**
+
+```
+/world create <key>
+/world create <key> generator <generator> [<options>]
+/world create <key> type <type> [<options>]
+/world create <key> type flat <preset> [<options>]
+/world create <key> type single-biome <biome> [<options>]
+```
 
 **Permission:** `worlds.command.create`
 
@@ -13,9 +21,9 @@ description: How to use the world create command.
   See the [Permissions page](/docs/worlds/permissions) for all command permissions.
 </Callout>
 
-You can create new worlds with the `/world create <name>` command.  
-There are three main options: `generator`, `type`, and `preset`.  
-If you don't specify any of these options, the default world settings will be used.
+You can create new worlds with the `/world create <key>` command.
+The key is the required first argument and identifies the world in commands, and the server registry.
+If you do not specify a generator or type, the default world settings are used.
 
 <Callout type="info" title="Frequently asked questions">
   [What does \<key\> stand for, in command arguments?](/docs/worlds/faq#key-argument)   
@@ -27,13 +35,13 @@ If you don't specify any of these options, the default world settings will be us
 Creating a new world with the default settings:
 
 ```
-/world create <aqua>"My New World"</aqua>
+/world create <aqua>example:survival</aqua>
 ```
 
 ## Using a flat world preset
 
-To generate a new world using an existing preset, use the command  
-`/world create <name> preset <preset> ...`
+To generate a new flat world using an existing preset, use the command  
+`/world create <key> type flat <preset> ...`
 
 World presets are a way to create worlds with specific settings.  
 Here you can find a list of [available presets](/docs/worlds/presets#available-presets).
@@ -46,7 +54,7 @@ Check out the [Creating a world preset](/docs/worlds/presets) documentation.
 Void world example:
 
 ```
-/world create <aqua>"My Void World"</aqua> preset <yellow>the-void</yellow>
+/world create <aqua>example:void</aqua> type <yellow>flat</yellow> <green>the-void</green>
 ```
 
 <Callout type="tip">
@@ -57,7 +65,7 @@ Void world example:
 ## Using a world generator plugin
 
 To generate a new world using a custom generator, use the command  
-`/world create <name> generator <generator> ...`  
+`/world create <key> generator <generator> ...`  
 The generator argument takes the name of the plugin that provides the custom chunk generator or biome provider.
 
 ### Example
@@ -65,13 +73,13 @@ The generator argument takes the name of the plugin that provides the custom chu
 PlotSquared generation example:
 
 ```
-/world create <aqua>city</aqua> generator <yellow>PlotSquared</yellow>
+/world create <aqua>city:plots</aqua> generator <yellow>PlotSquared</yellow>
 ```
 
 ## Defining the world type
 
 To generate a new world using a predefined world type, use the command  
-`/world create <name> type <type> ...`
+`/world create <key> type <type> ...`
 
 World types denote the type of world you want to create.  
 The following types are available:
@@ -83,12 +91,15 @@ The following types are available:
 - `single-biome` (previously `minecraft:fixed`) - [Uses one specified biome everywhere.](https://minecraft.wiki/w/Dimension_definition#fixed)
 - `debug` (previously `minecraft:debug`) - [Debug all block states.](https://minecraft.wiki/w/Dimension_definition#debug)
 
+`flat` requires a preset argument, for example `type flat the-void`.  
+`single-biome` requires a biome key argument, for example `type single-biome minecraft:plains`.
+
 ### Example
 
-Amplified world example:
+Single-biome world example:
 
 ```
-/world create <aqua>Amplified</aqua> type <yellow>amplified</yellow>
+/world create <aqua>single_biome:deep_dark</aqua> type single-biome <yellow>minecraft:deep_dark</yellow>
 ```
 
 ## Additional options
@@ -96,9 +107,8 @@ Amplified world example:
 All of the above commands also support the following additional options:
 
 - `bonus-chest` - Controls whether a bonus chest is generated in the world. Defaults to `false`.
-- `dimension` - Specifies the [dimension type](#available-dimensions). Defaults to `normal`.
+- `dimension` - Specifies the [dimension type](#available-dimensions). Defaults to `minecraft:overworld`.
 - `hardcore` - If set to `true`, the world will be created in hardcore mode. Defaults to `false`.
-- `key` - Sets the key for the world. Creates a key representation of the world name if not provided.
 - `seed` - Sets the world seed. If not provided, a random seed will be used.
 - `structures` - Controls whether structures generate in the world. Defaults to `true`.
 
@@ -109,25 +119,28 @@ Options are specified as `option value` pairs, and can be used in any given orde
 Creating a normal world with structures disabled, a bonus chest, and a specific seed:
 
 ```
-/world create <aqua>"A cool new world"</aqua> type <yellow>normal</yellow> structures <green>false</green> bonus-chest <light_purple>true</light_purple> seed <gold>123456789</gold>
+/world create <aqua>example:survival</aqua> type <yellow>normal</yellow> structures <green>false</green> bonus-chest <light_purple>true</light_purple> seed <gold>123456789</gold>
 ```
 
-Creating a nether world with a specificified key:
+Creating a nether world:
 
 ```
-/world create <aqua>"My Nether World"</aqua> type <yellow>normal</yellow> dimension <green>nether</green> key <light_purple>citybuild:farmworld/nether</light_purple>
+/world create <aqua>example:nether</aqua> type <yellow>normal</yellow> dimension <green>the_nether</green> seed <gold>12345</gold> structures <green>true</green>
 ```
 
-To create a default world without any custom options, you can use:
+Creating flat and custom generator worlds:
 
 ```
-/world create <aqua>"My Default World"</aqua>
+/world create <aqua>example:void</aqua> type <yellow>flat</yellow> <green>the-void</green>
+/world create <aqua>example:custom</aqua> generator <yellow>MyGenerator</yellow> seed <gold>12345</gold>
 ```
 
 ## Available Dimensions
 
-There are following dimensions types:
+There are following standard dimensions types:
 
-- `normal` (previously `minecraft:overworld`) - [The primary dimension.](https://minecraft.wiki/w/Overworld)
-- `nether` (previously `minecraft:the_nether`) - [The Nether dimension.](https://minecraft.wiki/w/The_Nether)
-- `end` (previously `minecraft:the_end`) - [The End dimension.](https://minecraft.wiki/w/The_End)
+- `minecraft:overworld` - [The primary dimension.](https://minecraft.wiki/w/Overworld)
+- `minecraft:the_nether` - [The Nether dimension.](https://minecraft.wiki/w/The_Nether)
+- `minecraft:the_end` - [The End dimension.](https://minecraft.wiki/w/The_End)
+
+Datapacks can add new dimensions as well.

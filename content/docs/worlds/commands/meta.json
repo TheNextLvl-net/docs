@@ -7,7 +7,6 @@
 		"import",
 		"load-unload",
 		"delete",
-		"links",
 		"backup",
 		"info-list",
 		"save",

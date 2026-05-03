@@ -26,8 +26,7 @@ import { Accordion, Accordions } from "fumadocs-ui/components/accordion"
   >
     > ClassNotFoundException, NoSuchFieldError, InvocationTargetException, NullPointerException
     
-    If you receive one of these errors on startup, it most likely means that your **server** version is **outdated**.   
-    If you are running [Folia](https://github.com/PaperMC/Folia), make sure to use the most up to date branch.   
+    If you receive one of these errors on startup, it most likely means that your **server** version is **outdated**.  
     If you are running Paper, make sure to use the latest build from their [website](https://papermc.io/downloads/paper).
     
     <span className="text-sm italic">
@@ -43,14 +42,6 @@ import { Accordion, Accordions } from "fumadocs-ui/components/accordion"
     Support is constantly improving and there are currently no major limitations.
 
     The only known limitation is that world entry permissions do **not** work.
-  </Accordion>
-  <Accordion 
-    title="How do World Links work?"
-    id="links"
-  >
-    World **Links** only **restore** vanilla behavior for **portal travel** between 2 or 3 dimensions.   
-    Links can only link one **overworld** to one **nether** and/or one **end** dimension.   
-    _This feature is not intended to be used for custom portals._
   </Accordion>
   <Accordion 
     title="Will Worlds ever support older Minecraft versions?"
@@ -74,7 +65,7 @@ import { Accordion, Accordions } from "fumadocs-ui/components/accordion"
       Hybrids that try to support both mods and plugins are completely unsupported and will most likely not work.
     </Callout>
     <Callout type="warn" title="Warning">
-      Some forks of Folia might cause problems in certain situations.<br/>
+      Unsupported server forks might cause problems in certain situations.<br/>
       For reference see [#8](https://github.com/Edenor-Minecraft/Foldenor/issues/8) and [#98](https://github.com/LuminolMC/Luminol/issues/98)
     </Callout>
 
@@ -113,14 +104,13 @@ import { Accordion, Accordions } from "fumadocs-ui/components/accordion"
 
   </Accordion>
   <Accordion 
-    title="I want to update from v1 to v2, what do I have to consider?"
+    title="I want to update from v3 to v4, what do I have to consider?"
     id="upgrade-v2"
   >
-    Before upgrading to v2, you should delete the entire `plugins/Worlds` folder and all `*.image` files
-    in your server directory since these files are no longer used.
-    After cleaning up, you'll need to import your worlds using   
-    `/world import <world> [<key>] [<dimension>] [<generator>]`   
-    and recreate world links using `/world link create <source> <destination>`
+    You have to re-import your worlds using  
+    `/world import <world> [<key>] [<dimension>] [<generator>]`  
+    This is due to a major change in the world folder format as of 26.1.  
+    Check out the [plugin data migration guide](/blog/plugin-data-migration-26-1).
   </Accordion>
   <Accordion 
     title="What does <key> stand for, in command arguments?"

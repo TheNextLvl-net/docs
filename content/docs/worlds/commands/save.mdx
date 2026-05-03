@@ -5,107 +5,94 @@ description: How to use world save commands
 
 # Save Commands
 
-World save commands allow you to control when and how world data is saved to disk.
+World save commands control when and how world data is saved to disk.
 
 ## /world save
 
-Saves a specific world to disk.
+Saves one world.
 
-**Usage:** `/world save <world>`
+**Usage:**
+
+```
+/world save <world>
+/world save <world> flush
+```
 
 **Permission:** `worlds.command.save`
 
-<Callout type="info">
-  See the [Permissions page](/docs/worlds/permissions) for all command permissions.
-</Callout>
+Adding `flush` requests a flushed save.
 
 ### Example
 
 ```
-/world save <aqua>worlds:my_world</aqua>
+/world save <aqua>example:survival</aqua>
+/world save <aqua>example:survival</aqua> flush
 ```
 
 ## /world save-all
 
-Saves all loaded worlds to disk.
+Saves all loaded worlds.
 
-**Usage:** `/world save-all`
+**Usage:**
+
+```
+/world save-all
+/world save-all flush
+```
 
 **Permission:** `worlds.command.save-all`
 
-<Callout type="info">
-  This command is also available as a standalone command: `/save-all`
-</Callout>
-
-### Example
-
-```
-/world save-all
-```
+The top-level `/save-all` command mirrors `/world save-all`.
 
 ## /world save-off
 
-Disables automatic saving for all worlds. This prevents the server from automatically saving world data.
+Disables autosave.
 
-**Usage:** `/world save-off`
+**Usage:**
+
+```
+/world save-off
+/world save-off <world>
+```
 
 **Permission:** `worlds.command.save-off`
 
+Without a world, autosave is disabled for all worlds.
+With a world, autosave is disabled for that world only.
+
 <Callout type="warning">
-  Use this command with caution. Disabling auto-save can lead to data loss if the server crashes.
-  Make sure to manually save worlds regularly or re-enable auto-save when done.
+  Disabling auto-save can lead to data loss if the server crashes. Save manually or re-enable auto-save when done.
 </Callout>
-
-<Callout type="info">
-  This command is also available as a standalone command: `/save-off`
-</Callout>
-
-### Example
-
-```
-/world save-off
-```
 
 ## /world save-on
 
-Re-enables automatic saving for all worlds after it has been disabled with `/world save-off`.
+Enables autosave.
 
-**Usage:** `/world save-on`
+**Usage:**
+
+```
+/world save-on
+/world save-on <world>
+```
 
 **Permission:** `worlds.command.save-on`
 
-<Callout type="info">
-  This command is also available as a standalone command: `/save-on`
-</Callout>
+Without a world, autosave is enabled for all worlds.
+With a world, autosave is enabled for that world only.
+The top-level `/save-on` and `/save-off` commands mirror the matching `/world ...` commands.
 
-### Example
+## Linked Minecraft Permissions
 
-```
-/world save-on
-```
+These Worlds permissions include the matching Minecraft command permissions:
 
-## Use Cases
+- `worlds.command.save-all` -> `minecraft.command.save-all`
+- `worlds.command.save-off` -> `minecraft.command.save-off`
+- `worlds.command.save-on` -> `minecraft.command.save-on`
 
-### Performance Optimization
+## Permission Packs
 
-Disable auto-save during intensive operations:
-```
-/world save-off
-<gray># Perform intensive operations</gray>
-/world save-all
-/world save-on
-```
-
-### Backup Preparation
-
-Ensure all worlds are saved before creating a backup:
-```
-/world save-all
-```
-
-### Individual World Maintenance
-
-Save a specific world after making changes:
-```
-/world save <aqua>worlds:creative</aqua>
-```
+- `worlds.commands.save`
+- `worlds.command.save`
+- `worlds.command.save-all`
+- `worlds.command.save-off`
+- `worlds.command.save-on`
