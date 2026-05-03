@@ -5,94 +5,80 @@ description: How to use world teleport and spawn commands
 
 # Teleport Commands
 
-Teleport commands allow you to move players between worlds and manage spawn points.
+Teleport commands move entities between worlds and manage spawn points.
 
 ## /world teleport
 
-Teleports entities to a specific world, optionally at a specific position.
+Teleports entities to a world.
 
-**Usage:** `/world teleport <world> [<entities>] [<position>]`
+**Usage:**
+
+```
+/world teleport <world>
+/world teleport <world> <entities>
+/world teleport <world> <entities> <position>
+```
 
 **Permission:** `worlds.command.teleport`
 
-<Callout type="info">
-  See the [Permissions page](/docs/worlds/permissions) for all command permissions.
-</Callout>
+Without `<entities>`, the sender is teleported.  
+Without `<position>`, entities are teleported to the target world's spawn.  
+With `<position>`, entities are teleported to that position in the target world.
 
-### Arguments
+Player entry can be restricted with per-world entry permissions:
 
-- `<world>` - The target world to teleport to
-- `[<entities>]` - One or more entities to teleport (players, mobs, etc.). If not specified, teleports the command executor
-- `[<position>]` - The coordinates to teleport to in the target world (x y z). If not specified, uses the world's spawn point
+```
+worlds.enter.<world-key>
+```
+
+Example:
+
+```
+worlds.enter.example:survival
+```
 
 ### Examples
 
-Teleport yourself to a world:
 ```
-/world teleport <aqua>worlds:survival</aqua>
-```
-
-Teleport yourself to specific coordinates in a world:
-```
-/world teleport <aqua>worlds:survival</aqua> <yellow>@s</yellow> <green>100 64 -200</green>
-```
-
-Teleport a specific player to a world:
-```
-/world teleport <aqua>worlds:creative</aqua> <yellow>PlayerName</yellow>
-```
-
-Teleport a player to specific coordinates:
-```
-/world teleport <aqua>worlds:creative</aqua> <yellow>PlayerName</yellow> <green>0 100 0</green>
-```
-
-Teleport multiple entities:
-```
-/world teleport <aqua>worlds:lobby</aqua> <yellow>@a[distance=..10]</yellow>
-```
-
-Teleport all nearby entities to coordinates:
-```
-/world teleport <aqua>worlds:survival</aqua> <yellow>@e[distance=..5]</yellow> <green>50 70 50</green>
+/world teleport <aqua>example:survival</aqua>
+/world teleport <aqua>example:creative</aqua> <yellow>PlayerName</yellow>
+/world teleport <aqua>example:creative</aqua> <yellow>PlayerName</yellow> <green>0 100 0</green>
 ```
 
 ## /world spawn
 
-Teleport yourself to the spawn point of your current world.
+Teleports yourself to the spawn point of your current world.
 
 **Usage:** `/world spawn`
 
 **Permission:** `worlds.command.spawn`
 
-### Examples
-
-Teleport to the spawn point of your current world:
-```
-/world spawn
-```
-
 ## /world setspawn
 
-Sets the spawn point of your current world to a specific location.
+Sets the spawn point of your current world.
 
-**Usage:** `/world setspawn [<position>] [<rotation>]`
+**Usage:**
 
-**Permission:** `worlds.command.setspawn`
+```
+/world setspawn
+/world setspawn <position>
+/world setspawn <position> <rotation>
+/setworldspawn
+/setworldspawn <position>
+/setworldspawn <position> <rotation>
+```
+
+**Worlds permission:** `worlds.command.setspawn`
+
+The command checks `minecraft.command.setworldspawn`.  
+`worlds.command.setspawn` exists as a Worlds permission node, and grants or includes `minecraft.command.setworldspawn`.  
+Server owners can grant either the Worlds node if their permission system expands children, or the Minecraft permission directly.
 
 ### Examples
 
-Set spawn point for your current world at your current location:
 ```
 /world setspawn
-```
-
-Set spawn point for your current world at specific coordinates:
-```
 /world setspawn <aqua>0 100 0</aqua>
-```
-
-Set spawn point for your current world with specific rotation:
-```
 /world setspawn <aqua>0 100 0</aqua> <yellow>45 0</yellow>
+/setworldspawn <aqua>0 100 0</aqua>
 ```

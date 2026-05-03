@@ -7,11 +7,12 @@ import { File, Folder, Files } from "fumadocs-ui/components/files"
 
 Presets are a way to create custom flat world configurations in Worlds.
 
-Presets are stored under the `Worlds/presets` directory in your plugins folder.  
+Presets are stored under `plugins/Worlds/presets/<preset>.json`.  
 Each preset is a JSON file that defines the properties of the flat world.
 
 Preset specifications are based on the [Minecraft Wiki](https://minecraft.wiki/w/Superflat#Multiplayer).
 
+- `name`: The preset name.
 - `biome`: The [Biome ID](https://minecraft.wiki/w/Biome#Java_Edition) of the world
 - `lakes`: Whether lava lakes will be generated in the world.
 - `features`: Whether the world will have features such as ores.
@@ -64,3 +65,12 @@ The following [vanilla presets](https://minecraft.wiki/w/Superflat#Default_prese
     </Folder>
   </Folder>
 </Files>
+
+## Usage
+
+Use presets with the `type flat <preset>` create syntax:
+
+```
+/world create <aqua>example:void</aqua> type flat <yellow>the-void</yellow>
+/world create <aqua>example:redstone</aqua> type flat <yellow>redstone-ready</yellow>
+```

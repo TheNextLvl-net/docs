@@ -13,153 +13,112 @@ Create, manage, and customize unlimited worlds with advanced features like custo
 
 ### Advanced World Creation
 
-- **Custom Presets**: Create worlds with pre-configured settings using [world presets](/docs/worlds/presets)
+- **Custom Presets**: Create flat worlds with pre-configured settings using [world presets](/docs/worlds/presets)
 - **Multiple World Types**: Support for normal, flat, amplified, large biomes, single biome, and debug worlds
 - **Custom Generators**: Integration with third-party world generator plugins
-- **Flexible Configuration**: Control seeds, structures, bonus chests, hardcore mode, and more
+- **Flexible Configuration**: Control seeds, structures, bonus chests, hardcore mode, and dimensions
 
 ### World Management
 
 - **Load & Unload**: Dynamically load and unload worlds without server restart
-- **Import & Export**: Import existing worlds or clone worlds with custom settings
+- **Import & Clone**: Import existing worlds or clone worlds with custom settings
 - **Regenerate & Recreate**: Reset worlds or create modified versions with different settings
+- **Backups**: Create, list, restore, delete, and prune world backups
 - **Safe Deletion**: Confirmation flags prevent accidental world deletion
-
-### Portal Linking
-
-- **Vanilla Behavior**: Restore vanilla portal travel between custom dimensions
-- **Flexible Links**: Link overworld, nether, and end dimensions together
-- **Multi-World Support**: Create separate dimension sets for different game modes
-
-### Folia Compatibility
-
-- **Full Support**: Officially supports Folia servers (Minecraft 1.21.4+)
-- **Region Threading**: Works seamlessly with Folia's multi-threaded architecture
-- **Performance**: Optimized for both Paper and Folia environments
 
 ## Quick Start
 
-### Basic Usage
-
-The main command is `/world`, which requires the permission `worlds.admin`:
+The main command is `/world`, which requires the permission `worlds.command`.
 
 ```
 <gray># Create a new world</gray>
-/world create <aqua>"Survival World"</aqua>
+/world create <aqua>example:survival</aqua>
 
-<gray># Create a world with a preset</gray>
-/world create <aqua>"Void World"</aqua> preset <yellow>the-void</yellow>
+<gray># Create a flat void world</gray>
+/world create <aqua>example:void</aqua> type flat <yellow>the-void</yellow>
 
 <gray># Teleport to a world</gray>
-/world teleport <aqua>worlds:survival_world</aqua>
+/world teleport <aqua>example:survival</aqua>
+
+<gray># Back up the current world</gray>
+/world backup create
 
 <gray># List all worlds</gray>
 /world list
-
-<gray># View world information</gray>
-/world info <aqua>worlds:survival_world</aqua>
 ```
 
-### Common Scenarios
+## Common Scenarios
 
-#### Setting Up Multiple Worlds
+### Setting Up Multiple Worlds
 
-Create different worlds for various game modes:
 ```
-/world create <aqua>"Survival"</aqua> type <yellow>normal</yellow>
-/world create <aqua>"Creative"</aqua> type <yellow>normal</yellow>
-/world create <aqua>"Skyblock"</aqua> preset <yellow>the-void</yellow>
+/world create <aqua>example:survival</aqua> type <yellow>normal</yellow>
+/world create <aqua>example:skyblock</aqua> type flat <yellow>the-void</yellow>
 ```
 
-#### Linking Dimensions
+### Custom Dimensions
 
-Restore vanilla portal behavior between custom worlds:
 ```
-<gray># Create linked dimensions</gray>
-/world create <aqua>"Farmworld"</aqua> type <yellow>normal</yellow> dimension <green>normal</green>
-/world create <aqua>"Farmworld Nether"</aqua> type <yellow>normal</yellow> dimension <green>nether</green>
-
-<gray># Link them together</gray>
-/world link create <aqua>worlds:farmworld</aqua> <yellow>worlds:farmworld_nether</yellow>
+/world create <aqua>example:farmworld</aqua> type normal dimension <yellow>minecraft:overworld</yellow>
+/world create <aqua>example:nether</aqua> type normal dimension <yellow>minecraft:the_nether</yellow>
+/world create <aqua>example:end</aqua> type normal dimension <yellow>minecraft:the_end</yellow>
 ```
 
-#### Using Custom Generators
+### Using Custom Generators
 
-Create worlds with third-party generators:
 ```
-/world create <aqua>"Plots"</aqua> generator <yellow>PlotSquared</yellow>
+/world create <aqua>example:plots</aqua> generator <yellow>PlotSquared</yellow>
 ```
 
-#### World Maintenance
+### World Maintenance
 
-Manage world saves and backups:
 ```
 <gray># Save all worlds</gray>
 /world save-all
 
+<gray># Back up all loaded worlds</gray>
+/world backup create *
+
 <gray># Disable auto-save for maintenance</gray>
 /world save-off
-<gray># Perform maintenance...</gray>
-/world save-all
+/world save-all flush
 /world save-on
 ```
 
 ## World Presets
 
-Worlds includes a powerful preset system that allows you to create worlds with pre-configured settings.
-Presets can define structures, biomes, and flat world layer configurations.
+Worlds includes a preset system for flat world layer configurations.
+Built-in preset identifiers include:
 
-**Available Presets:**
-- Classic Flat
-- The Void
-- Water World
-- Desert
-- Snowy Kingdom
-- Redstone Ready
-- Tunneler's Dream
-- Bottomless Pit
-- And more...
+- `bottomless-pit`
+- `classic-flat`
+- `desert`
+- `overworld`
+- `redstone-ready`
+- `snowy-kingdom`
+- `the-void`
+- `tunnelers-dream`
+- `water-world`
 
 Learn how to use and create custom presets in the [Presets documentation](/docs/worlds/presets).
 
 ## Permission System
 
-### Required Permissions
-
-- `worlds.admin` - Access to all world management commands
-- Individual command permissions like `worlds.command.create`, `worlds.command.teleport`, etc.
-
-### Permission Packs
-
-- `worlds.admin` - All world commands
-- `worlds.commands.link` - All link commands
+- `worlds.admin` - Access to all current world command permissions
 - `worlds.commands.save` - All save commands
+- `worlds.commands.backup` - All backup commands
+- Individual command permissions like `worlds.command.create`, `worlds.command.teleport`, and `worlds.command.backup.create`
 
-### World Entry Permissions
-
-World entry permissions allow you to control which players can enter specific worlds.  
-These permissions are **optional** – access is only denied if a player explicitly does **not** have the permission `worlds.enter.<key>`.
-
-The `<key>` corresponds to the world's [key identifier](/docs/worlds/faq#key-argument). Examples:
-
-| World            | Key                          | Permission                                |
-|------------------|------------------------------|-------------------------------------------|
-| Overworld        | `minecraft:overworld`        | `worlds.enter.minecraft:overworld`        |
-| Farmworld        | `citybuild:farmworld`        | `worlds.enter.citybuild:farmworld`        |
-| Farmworld Nether | `citybuild:farmworld/nether` | `worlds.enter.citybuild:farmworld/nether` |
-
-<Callout type="error" title="Folia Limitation">
-  World entry permissions do **not** work on Folia servers.  
-  There are currently no workarounds due to how Folia handles region-based threading.
-</Callout>
+World entry permissions use the format `worlds.enter.<world-key>`.
+For example, `worlds.enter.example:survival`.
 
 See the [Permissions page](/docs/worlds/permissions) for a complete list of all available permissions.
 
 ## Use Cases
 
-- Create separate worlds for different game modes (survival, creative, minigames)
+- Create separate worlds for different game modes
 - Set up farmworlds that reset periodically
-- Build custom dimension sets with linked portals
 - Import and manage worlds from other servers
 - Create testing environments with specific world settings
+- Back up worlds before maintenance or updates
 - Optimize server performance by unloading unused worlds

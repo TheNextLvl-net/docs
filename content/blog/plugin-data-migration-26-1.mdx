@@ -1,0 +1,63 @@
+---
+title: Migrating plugin data to the new world directory format
+description: How to migrate world-related plugin data after upgrading from Minecraft 1.21.11 or older to 26.1 or newer.
+author: NonSwag
+category: updates
+date: 05-03-2026
+keywords:
+  [
+    "minecraft plugins",
+    "plugin development",
+    "minecraft server tools",
+    "plugin data migration",
+    "world data migration",
+    "minecraft 26.1",
+    "minecraft development"
+  ]
+---
+
+# Plugin Data Migration Guide
+
+Minecraft 26.1 introduced a new world directory format.  
+If a plugin stores world-related data inside the directory of each corresponding world, upgrading from Minecraft 1.21.11 or older to 26.1 or newer may require a manual migration.
+
+This can affect plugin data such as portals, holograms, areas, or other files that were stored directly in an old world folder.
+
+Before upgrading your server: **__MAKE BACKUPS!!!__**  
+This is **always** important, but **especially this time!**
+
+<Callout type="warn" title="Back up your server first">
+  This migration moves plugin data between world directories.  
+  Without a working backup, you may lose almost everything.
+</Callout>
+
+## Migration steps
+
+1. **BACK UP YOUR SERVER.** This is a hard requirement or you may lose _almost_ everything.
+2. Update your server jar to the latest build. At the time of writing, that is `26.1.2`.
+3. Start your server and wait 30 seconds. You will see a big warning about making backups.
+4. Stop your server again.
+5. Open the `world` folder of your updated server in one file explorer window, and the `world` folder from your backup in another.
+6. The `world` folder of your updated server might still contain old plugin data folders you can remove, for example `portals`, `holograms`, `areas`, or similar plugin-specific folders.
+7. Check the new and old world folder names below, then open the matching folders in both file explorer windows.
+8. Copy the plugin data folder or folders from the backup world into the updated world's `data` folder.
+9. Repeat steps 7 and 8 until you have covered all of your worlds.
+10. Start your updated server and verify that the data is recognized correctly and nothing is missing.
+
+You can also follow the video for a visual walkthrough of the process.
+
+<video controls src="/migration-guide.mp4" />
+
+## New vs old world folder names
+
+These are only the default folder names. If you previously configured a different world name in your `server.properties`, your old folder name will be different.
+
+| New folder | Old folder |
+| --- | --- |
+| `dimensions/minecraft/overworld` | `world` |
+| `dimensions/minecraft/the_end` | `world_the_end` |
+| `dimensions/minecraft/the_nether` | `world_nether` |
+
+If you have trouble with the migration process, feel free to ask for help in our [Discord](/discord).
+
+P.S. **MAKE BACKUPS!!!** _As many as you can. The more, the better._

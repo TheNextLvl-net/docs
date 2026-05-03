@@ -5,60 +5,70 @@ description: A list of all world commands and their required permissions.
 
 # Command Permissions
 
-This page lists all available world commands and their required permissions.
+This page lists all current Worlds permissions.
 
-## Individual permissions
+## Permission Groups
 
-| Command            | Permission                 |
-|--------------------|----------------------------|
-| /seed              | worlds.command.seed        |
-| /save-all          | worlds.command.save-all    |
-| /save-off          | worlds.command.save-off    |
-| /save-on           | worlds.command.save-on     |
-| /world backup      | worlds.command.backup      |
-| /world clone       | worlds.command.clone       |
-| /world create      | worlds.command.create      |
-| /world delete      | worlds.command.delete      |
-| /world import      | worlds.command.import      |
-| /world info        | worlds.command.info        |
-| /world link list   | worlds.command.link.list   |
-| /world link create | worlds.command.link.create |
-| /world link remove | worlds.command.link.remove |
-| /world list        | worlds.command.list        |
-| /world load        | worlds.command.load        |
-| /world recreate    | worlds.command.recreate    |
-| /world regenerate  | worlds.command.regenerate  |
-| /world save        | worlds.command.save        |
-| /world save-all    | worlds.command.save-all    |
-| /world save-off    | worlds.command.save-off    |
-| /world save-on     | worlds.command.save-on     |
-| /world setspawn    | worlds.command.setspawn    |
-| /world spawn       | worlds.command.spawn       |
-| /world teleport    | worlds.command.teleport    |
-| /world unload      | worlds.command.unload      |
+| Permission              | Description                                                      |
+|-------------------------|------------------------------------------------------------------|
+| `worlds.admin`          | Grants access to all current world command permissions.          |
+| `worlds.commands.save`  | Grants access to all save commands.                              |
+| `worlds.commands.backup` | Grants access to all backup commands.                            |
 
-## Permission packs
+## Command Permissions
 
-| Commands                                                               | Permission           |
-|------------------------------------------------------------------------|----------------------|
-| /world \*                                                              | worlds.admin         |
-| /world link \*                                                         | worlds.commands.link |
-| /world save<br/>/world save-all<br/>/world save-off<br/>/world save-on | worlds.commands.save |
+| Command              | Permission                         |
+|----------------------|------------------------------------|
+| /world               | `worlds.command`                   |
+| /world backup        | `worlds.command.backup`            |
+| /world backup create | `worlds.command.backup.create`     |
+| /world backup delete | `worlds.command.backup.delete`     |
+| /world backup list   | `worlds.command.backup.list`       |
+| /world backup prune  | `worlds.command.backup.prune`      |
+| /world backup restore | `worlds.command.backup.restore`    |
+| /world clone         | `worlds.command.clone`             |
+| /world create        | `worlds.command.create`            |
+| /world delete        | `worlds.command.delete`            |
+| /world import        | `worlds.command.import`            |
+| /world info          | `worlds.command.info`              |
+| /world list          | `worlds.command.list`              |
+| /world load          | `worlds.command.load`              |
+| /world recreate      | `worlds.command.recreate`          |
+| /world regenerate    | `worlds.command.regenerate`        |
+| /world save          | `worlds.command.save`              |
+| /world save-all      | `worlds.command.save-all`          |
+| /world save-off      | `worlds.command.save-off`          |
+| /world save-on       | `worlds.command.save-on`           |
+| /world setspawn      | `worlds.command.setspawn`          |
+| /world spawn         | `worlds.command.spawn`             |
+| /world teleport      | `worlds.command.teleport`          |
+| /world unload        | `worlds.command.unload`            |
+
+## Linked Minecraft Permissions
+
+Some Worlds permissions grant or include Minecraft command permissions:
+
+| Worlds permission           | Minecraft permission                |
+|-----------------------------|-------------------------------------|
+| `worlds.command.save-all`   | `minecraft.command.save-all`        |
+| `worlds.command.save-off`   | `minecraft.command.save-off`        |
+| `worlds.command.save-on`    | `minecraft.command.save-on`         |
+| `worlds.command.setspawn`   | `minecraft.command.setworldspawn`   |
+
+For `/setworldspawn`, the command checks `minecraft.command.setworldspawn`.
+Server owners can grant `worlds.command.setspawn` if their permission system expands children, or grant `minecraft.command.setworldspawn` directly.
 
 ## World Entry Permissions
 
-World entry permissions allow you to control which players can enter specific worlds.  
-These permissions are **optional** – access is only denied if a player explicitly does **not** have the permission `worlds.enter.<key>`.
+World entry permissions allow you to control which players can enter specific worlds.
+The permission format is:
 
-The `<key>` corresponds to the world's [key identifier](/docs/worlds/faq#key-argument). Examples:
+```
+worlds.enter.<world-key>
+```
 
-| World            | Key                          | Permission                                |
-|------------------|------------------------------|-------------------------------------------|
-| Overworld        | `minecraft:overworld`        | `worlds.enter.minecraft:overworld`        |
-| Farmworld        | `citybuild:farmworld`        | `worlds.enter.citybuild:farmworld`        |
-| Farmworld Nether | `citybuild:farmworld/nether` | `worlds.enter.citybuild:farmworld/nether` |
+Example:
 
-<Callout type="error" title="Folia Limitation">
-  World entry permissions do **not** work on Folia servers.  
-  There are currently no workarounds due to how Folia handles region-based threading.
-</Callout>
+```
+worlds.enter.example:survival
+```

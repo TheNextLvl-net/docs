@@ -13,59 +13,122 @@ Javadocs for the API can be found <a href={javadocs} target="_blank"> here</a>.
 
 ## Getting Started
 
-To get started with the API, you have to retrieve the <a href={docsClass.replace("%s", "WorldsProvider")} target="\_blank">WorldsProvider</a>
-from the service manager:
+Use <a href={docsClass.replace("%s", "WorldsAccess")} target="_blank">WorldsAccess</a> as the entry point for the Worlds API:
 
 ```java
-WorldsProvider provider = Bukkit.getServiceManager().load(WorldsProvider.class);
+WorldsAccess access = WorldsAccess.access();
 ```
+
+The access object exposes the current world, level, dimension, clone, backup, and registry operations.
+
+Common access methods:
+
+- `getWorldRegistry()` - returns the `WorldRegistry`
+- `customDimensions()` - returns all registered custom dimensions
+- `getDimension(World)` - resolves a world's `Dimension`
+- `listLevels()` - lists all known level directories
+- `load(Key)` - loads a world by key
+- `create(Level)` - creates a world
+- `unload(World, boolean)` - unloads a world
+- `save(World, boolean)` - saves a world, optionally flushing
+- `clone(World, boolean)` - clones a world
+- `clone(World, Consumer<Level.Builder>, boolean)` - clones and customizes the target level
+- `delete(World)` - deletes a world
+- `regenerate(World)` - regenerates a world
 
 ## Creating a World
 
-To create a world, you can use the <a href={docsClass.replace("%s", "level/Level.Builder")} target="\_blank">Level.Builder</a>
-which offers a fluent API to configure the world:
+Worlds are identified by `Key`s. Create a <a href={docsClass.replace("%s", "Level")} target="_blank">Level</a>
+with `Level.builder(Key)` and call `create()`:
 
 ```java
-Level level = provider.levelBuilder(Path.of("New World (1)")) // the path the world will be stored at
-        .key(Key.key("worlds", "my_new_world")) // world key (used by client and server to identify worlds)
-        .name("My New World") // the user friendly name for the world
-        .seed(9873425983045299341L) // the world seed
-        .spawnChunkRadius(2) // the spawn chunk radius
-        .hardcore(false) // whether the world is in hardcore mode
-        .bonusChest(true) // generate a starter chest at spawn
-        .structures(false) // control if structures generate
-        .preset(Presets.THE_VOID) // define a flat world preset (aka. world settings)
-        .generator(Generator.of(provider, "PlotSquared")) // define a custom generator
-        .generatorType(GeneratorType.SINGLE_BIOME) // set the generator type (aka. world type)
-        .levelStem(LevelStem.OVERWORLD) // set the level stem (aka. environment)
+import net.kyori.adventure.key.Key;
+import net.thenextlvl.worlds.Level;
+import net.thenextlvl.worlds.WorldsAccess;
+import net.thenextlvl.worlds.generator.GeneratorType;
+
+var access = WorldsAccess.access();
+
+var level = Level.builder(Key.key("example", "survival"))
+        .generatorType(GeneratorType.NORMAL)
+        .seed(12345L)
+        .structures(true)
         .build();
 
-level.createAsync().thenAccept(world -> {
-    // world created successfully
-}).exceptionally(throwable -> {
-    // world creation failed
-    return null;
-});
+level.create();
+```
+
+You can also pass the level to the access entry point:
+
+```java
+WorldsAccess.access().create(level);
+```
+
+To change the target key while configuring a level, use `Level.Builder#key(Key)`.
+
+### Configured Generator Types
+
+Flat worlds use a preset:
+
+```java
+import net.kyori.adventure.key.Key;
+import net.thenextlvl.worlds.Level;
+import net.thenextlvl.worlds.generator.GeneratorType;
+import net.thenextlvl.worlds.preset.Preset;
+
+Level.builder(Key.key("example", "void"))
+        .generatorType(GeneratorType.FLAT.with(Preset.THE_VOID))
+        .build()
+        .create();
+```
+
+Single-biome worlds use a biome key:
+
+```java
+import net.kyori.adventure.key.Key;
+import net.thenextlvl.worlds.Level;
+import net.thenextlvl.worlds.generator.GeneratorType;
+
+Level.builder(Key.key("example", "plains"))
+        .generatorType(GeneratorType.SINGLE_BIOME.with(Key.key("minecraft", "plains")))
+        .build()
+        .create();
 ```
 
 ## Cloning a World
 
-Cloning a world was never easier. You can use the <a href={docsClass.replace("%s.html", "view/LevelView.html#cloneAsync(org.bukkit.World,java.util.function.Consumer,boolean)")} target="\_blank">LevelView#cloneAsync</a>
-method.
+Use `WorldsAccess.access().clone(...)` to clone loaded worlds. Set `full` to `true` to include region data and other world contents, or `false` to clone only the level metadata.
 
 ```java
-boolean full = true; // whether to fully clone including regions, entities..., or only the level.dat
+import net.kyori.adventure.key.Key;
+import net.thenextlvl.worlds.WorldsAccess;
 
-CompletableFuture<World> future = provider.levelView().cloneAsync(world, builder -> {
-    // optionally configure the cloned world
-    builder.key(Key.key("worlds", "my_cloned_world")); // set the key for the cloned world
-    builder.name("My Cloned World"); // set the name for the cloned world
-}, full);
+boolean full = true;
 
-future.thenAccept(clone -> {
-    // cloned world created successfully
-}).exceptionally(throwable -> {
-    // cloning failed
-    return null;
-});
+WorldsAccess.access().clone(world, full);
 ```
+
+Customize the cloned level with a builder consumer:
+
+```java
+import net.kyori.adventure.key.Key;
+import net.thenextlvl.worlds.WorldsAccess;
+
+boolean full = true;
+
+WorldsAccess.access().clone(world, builder -> {
+    builder.key(Key.key("example", "survival_copy"));
+}, full);
+```
+
+## Backups
+
+Backups are handled through the current backup API. Use the backup provider to create, restore, delete, and list world backups.
+
+The backup API covers:
+
+- creating backups for one world or all loaded worlds
+- creating named backups
+- listing backups globally or for a specific world
+- restoring a specific backup or the latest backup
+- deleting a backup

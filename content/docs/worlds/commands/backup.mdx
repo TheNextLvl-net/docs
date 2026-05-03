@@ -5,13 +5,18 @@ description: How to create, manage, and restore world backups
 
 # Backup Commands
 
-World backup commands allow you to create, manage, and restore backups of your worlds.
+World backup commands allow you to create, list, restore, delete, and prune backups.
 
 ## /world backup create
 
 Creates a backup of one or more worlds.
 
-**Usage:** `/world backup create <world> [<name>]`
+**Usage:**
+
+```
+/world backup create *
+/world backup create [<world>] [<name>]
+```
 
 **Permission:** `worlds.command.backup.create`
 
@@ -19,41 +24,40 @@ Creates a backup of one or more worlds.
   See the [Permissions page](/docs/worlds/permissions) for all command permissions.
 </Callout>
 
-### Arguments
-
-- `<world>` - The world to backup, or `*` to backup all worlds
-- `[<name>]` - Optional custom name for the backup. If not specified, uses the pattern `yyyy-MM-dd_HH-mm-ss.zip`
-
-### Backup Location
-
-Backups are stored in the backup folder, which can be configured using:
-1. Environment variable: `WORLDS_BACKUP_FOLDER`
-2. System property: `worlds.backup.folder`
-3. Default location: `…/backups/<world-name>/`
-
-For example, backups for a world named "myworld" would be stored in `…/backups/myworld/` by default.
-The default location is relative to the server's world container folder which can be [changed](/docs/worlds/faq#world-container).
+`create` without a world backs up the sender's current world.
+`create <world>` backs up one world.
+`create <world> <name>` creates a named backup.
+`create *` backs up all loaded worlds.
 
 ### Examples
 
-Create a backup with automatic timestamp name:
 ```
-/world backup create <aqua>worlds:survival</aqua>
-```
-
-Create a backup with a custom name:
-```
-/world backup create <aqua>worlds:survival</aqua> <yellow>pre-update-backup</yellow>
-```
-
-Backup all worlds at once:
-```
+/world backup create
+/world backup create <aqua>example:survival</aqua>
+/world backup create <aqua>example:survival</aqua> <yellow>pre-update</yellow>
 /world backup create *
 ```
 
-Backup all worlds with a custom name:
+## /world backup list
+
+Lists backups.
+
+**Usage:**
+
 ```
-/world backup create * <aqua>weekly-backup</aqua>
+/world backup list [<world>]
+```
+
+**Permission:** `worlds.command.backup.list`
+
+`list` lists backups for all worlds.
+`list <world>` lists backups for one world.
+
+### Examples
+
+```
+/world backup list
+/world backup list <aqua>example:survival</aqua>
 ```
 
 ## /world backup delete
@@ -64,120 +68,67 @@ Deletes a specific backup.
 
 **Permission:** `worlds.command.backup.delete`
 
-### Arguments
-
-- `<world>` - The world whose backup you want to delete
-- `<backup>` - The name of the backup to delete
-
 ### Example
 
-Delete a specific backup:
 ```
-/world backup delete <aqua>worlds:survival</aqua> <yellow>2024-01-15_14-30-00.zip</yellow>
-```
-
-## /world backup list
-
-Lists all backups for a world, sorted by age from most recent to oldest.
-
-**Usage:** `/world backup list <world>`
-
-**Permission:** `worlds.command.backup.list`
-
-### Arguments
-
-- `<world>` - The world whose backups you want to list
-
-### Information Displayed
-
-The list command shows for each backup:
-
-- **Backup Name** - The name of the backup file
-- **Age** - How long ago the backup was created
-- **Size** - The size of the backup on disk
-
-<Callout type="tip">
-  Backup entries in the list are interactive! Hover over a backup to see quick actions, and click to quickly restore or delete backups.
-</Callout>
-
-### Example
-
-List all backups for a world:
-```
-/world backup list <aqua>worlds:survival</aqua>
+/world backup delete <aqua>example:survival</aqua> <yellow>pre-update.zip</yellow>
 ```
 
 ## /world backup restore
 
 Restores a world from a backup.
 
-**Usage:** `/world backup restore <world> <backup>`
+**Usage:**
+
+```
+/world backup restore <world> <backup> [--confirm]
+/world backup restore <world> latest [--confirm]
+```
 
 **Permission:** `worlds.command.backup.restore`
 
-### Arguments
-
-- `<world>` - The world to restore
-- `<backup>` - The backup to restore from, or `latest` to restore the most recent backup
+`latest` restores the newest backup for that world.  
+Restoring is destructive, so the command requires `--confirm`.
 
 ### Examples
 
-Restore the most recent backup:
 ```
-/world backup restore <aqua>worlds:survival</aqua> <yellow>latest</yellow>
-```
-
-Restore a specific backup:
-```
-/world backup restore <aqua>worlds:survival</aqua> <yellow>pre-update-backup.zip</yellow>
+/world backup restore <aqua>example:survival</aqua> <yellow>latest</yellow> --confirm
+/world backup restore <aqua>example:survival</aqua> <yellow>pre-update.zip</yellow> --confirm
 ```
 
 <Callout type="warning">
-  Restoring a backup will replace the current world data. Make sure to create a backup of the current state before restoring if needed.
+  Restoring a backup replaces the current world data. Create a backup first if you need to keep the current state.
 </Callout>
 
-## Use Cases
+## /world backup prune
 
-### Regular Backups
+Deletes backups older than the provided duration.
 
-Create automated backups before major changes:
+**Usage:** `/world backup prune <age>`
+
+**Permission:** `worlds.command.backup.prune`
+
+### Example
+
 ```
-/world backup create <aqua>worlds:survival</aqua> <yellow>before-event</yellow>
-```
-
-### Disaster Recovery
-
-Restore a world after corruption or unwanted changes:
-```
-<gray># List available backups</gray>
-/world backup list <aqua>worlds:survival</aqua>
-<gray># Restore the most recent backup</gray>
-/world backup restore <aqua>worlds:survival</aqua> <yellow>latest</yellow>
+/world backup prune <yellow>30d</yellow>
 ```
 
-### Server Maintenance
+## Backup Location
 
-Backup all worlds before a server update:
-```
-/world backup create * <aqua>pre-1.21-update</aqua>
-```
+Backups are stored in the backup folder, which can be configured using:
 
-### Cleanup Old Backups
+1. Environment variable: `WORLDS_BACKUP_FOLDER`
+2. System property: `worlds.backup.folder`
+3. Default location: `.../backups/<world-name>/`
 
-Remove outdated backups to save disk space:
-```
-<gray># List backups to find old ones</gray>
-/world backup list <aqua>worlds:survival</aqua>
-<gray># Delete specific old backups</gray>
-/world backup delete <aqua>worlds:survival</aqua> <yellow>2023-12-01_10-00-00</yellow>
-```
+## Permissions
 
-### Testing and Experimentation
-
-Create a backup before testing new features:
-```
-/world backup create <aqua>worlds:creative</aqua> <yellow>before-testing</yellow>
-<gray># Test your changes...</gray>
-<gray># Restore if needed</gray>
-/world backup restore <aqua>worlds:creative</aqua> <yellow>before-testing</yellow>
-```
+- `worlds.commands.backup`
+- `worlds.command.backup`
+- `worlds.command.backup.create`
+- `worlds.command.backup.delete`
+- `worlds.command.backup.list`
+- `worlds.command.backup.prune`
+- `worlds.command.backup.restore`
