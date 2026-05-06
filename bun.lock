@@ -5,7 +5,7 @@
     "": {
       "name": "thenextlvl-docs",
       "dependencies": {
-        "@faststats/react": "0.2.11",
+        "@faststats/react": "0.2.12",
         "@icons-pack/react-simple-icons": "^13.8.0",
         "@shikijs/types": "^4.0.0",
         "@takumi-rs/image-response": "^1.0.0",
@@ -183,11 +183,11 @@
 
     "@esbuild/win32-x64": ["@esbuild/win32-x64@0.28.0", "", { "os": "win32", "cpu": "x64" }, "sha512-pEl1bO9mfAmIC+tW5btTmrKaujg3zGtUmWNdCw/xs70FBjwAL3o9OEKNHvNmnyylD6ubxUERiEhdsL0xBQ9efw=="],
 
-    "@faststats/react": ["@faststats/react@0.2.11", "", { "dependencies": { "@faststats/web": "^0.2.11" }, "peerDependencies": { "react": ">=18" } }, "sha512-dD09v8p1OP6v1a/lzxRprK9O9UIkJUa5E0/u0SQeQq8xHvOJa3ScykI55fzSILVXltcBN5vztcJ5u/KUs3PZIQ=="],
+    "@faststats/react": ["@faststats/react@0.2.12", "", { "dependencies": { "@faststats/web": "^0.2.12" }, "peerDependencies": { "react": ">=18" } }, "sha512-B1fen2UK/SBQkwisJ7bzB5BxZMazmBkYo/nXLuMcHovrLX0XaooBz/7RaIzYRjo3FlAzgssDN0rE7Lv8S2gSZg=="],
 
     "@faststats/sourcemap-uploader-plugin": ["@faststats/sourcemap-uploader-plugin@0.4.0", "", { "dependencies": { "unplugin": "^3.0.0" }, "peerDependencies": { "typescript": "^5.9.3 || ^6.0.0" } }, "sha512-FLhksGJLZeG29IpmP8DM3LsE0eE7qyv9AC4XB7y+SUJ/O7psQDMVb2saHuK7Aw1bFmLR8riFuCHdhqDre2WhVw=="],
 
-    "@faststats/web": ["@faststats/web@0.2.11", "", { "dependencies": { "@rrweb/rrweb-plugin-console-record": "^2.0.0-alpha.20", "@rrweb/rrweb-plugin-sequential-id-record": "^2.0.0-alpha.20", "@rrweb/types": "^2.0.0-alpha.20", "rrweb": "^2.0.0-alpha.4", "rrweb-snapshot": "^2.0.0-alpha.4", "web-vitals": "^5.1.0" } }, "sha512-PqeWo7KROL9NvK0XMEl1MaJzpjaR108ZLUFQEw/aMFq1VDrU31+/yPErqg4KCmB2qp7Pe1xeObWHmJDi4O53sg=="],
+    "@faststats/web": ["@faststats/web@0.2.12", "", { "dependencies": { "@rrweb/rrweb-plugin-console-record": "^2.0.0-alpha.20", "@rrweb/rrweb-plugin-sequential-id-record": "^2.0.0-alpha.20", "@rrweb/types": "^2.0.0-alpha.20", "rrweb": "^2.0.0-alpha.4", "rrweb-snapshot": "^2.0.0-alpha.4", "web-vitals": "^5.1.0" } }, "sha512-fdrVTMpwlnB3EZBtn9LBdZT55yxwIaG1r4mnSFVaHIncIL9WF2YzTlUXkh5jVjw4Kth9a7e9/GQ2fwUOjH4iXA=="],
 
     "@floating-ui/core": ["@floating-ui/core@1.7.3", "", { "dependencies": { "@floating-ui/utils": "^0.2.10" } }, "sha512-sGnvb5dmrJaKEZ+LDIpguvdX3bDlEllmv4/ClQ9awcmCZrlx5jQyyMWFM5kBI+EyNOCDDiKk8il0zeuX3Zlg/w=="],
 
