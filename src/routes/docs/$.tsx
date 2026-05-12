@@ -97,6 +97,7 @@ const serverLoader = createServerFn({
 
 const clientLoader = browserCollections.docs.createClientLoader({
 	component({ toc, frontmatter, lastModified, default: MDX }) {
+		// biome-ignore lint/correctness/useHookAtTopLevel: <false positive>
 		const data = Route.useLoaderData();
 		return (
 			<DocsPage toc={toc}>

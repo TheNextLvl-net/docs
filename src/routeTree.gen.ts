@@ -86,7 +86,7 @@ export interface FileRoutesByFullPath {
   '/llms.mdx/$': typeof LlmsDotmdxSplatRoute
   '/': typeof homeIndexRoute
   '/blog/$slug': typeof homeBlogSlugRoute
-  '/blog': typeof homeBlogIndexRoute
+  '/blog/': typeof homeBlogIndexRoute
 }
 export interface FileRoutesByTo {
   '/llms-full.txt': typeof LlmsFullDottxtRoute
@@ -126,7 +126,7 @@ export interface FileRouteTypes {
     | '/llms.mdx/$'
     | '/'
     | '/blog/$slug'
-    | '/blog'
+    | '/blog/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/llms-full.txt'
@@ -233,7 +233,7 @@ declare module '@tanstack/react-router' {
     '/(home)/blog/': {
       id: '/(home)/blog/'
       path: '/blog'
-      fullPath: '/blog'
+      fullPath: '/blog/'
       preLoaderRoute: typeof homeBlogIndexRouteImport
       parentRoute: typeof homeRouteRoute
     }
