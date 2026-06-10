@@ -131,11 +131,10 @@ const clientLoader = browserCollections.docs.createClientLoader({
 function Page() {
 	const data = Route.useLoaderData();
 	const { pageTree } = useFumadocsLoader(data);
-	const Content = clientLoader.getComponent(data.path);
 
 	return (
 		<DocsLayout {...baseOptions} tree={pageTree}>
-			<Content />
+			{clientLoader.useContent(data.path)}
 		</DocsLayout>
 	);
 }

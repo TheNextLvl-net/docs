@@ -83,7 +83,6 @@ const clientLoader = browserCollections.blogPosts.createClientLoader({
 
 function RouteComponent() {
 	const data = Route.useLoaderData();
-	const Content = clientLoader.getComponent(data.path);
 
 	return (
 		<>
@@ -137,7 +136,7 @@ function RouteComponent() {
 
 			<main className="container mx-auto px-4 py-10">
 				<div className="mx-auto max-w-7xl">
-					<Content />
+					{clientLoader.useContent(data.path)}
 				</div>
 			</main>
 		</>

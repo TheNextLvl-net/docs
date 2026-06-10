@@ -1,4 +1,3 @@
-import { notFound } from "@tanstack/react-router";
 import { createServerFn } from "@tanstack/react-start";
 import { blog } from "@/lib/source";
 
@@ -31,28 +30,3 @@ export const getBlogPosts = createServerFn({
 		};
 	});
 });
-
-export const getBlogPost = createServerFn({
-	method: "GET",
-})
-	.inputValidator((slug: string) => slug)
-	.handler(async ({ data: slug }) => {
-		const page = blog.getPage([slug]);
-		if (!page) throw notFound();
-
-		let wordCount = 0;
-		page.data.structuredData.contents.forEach((content) => {
-			wordCount += content.content.split(/\s+/).length;
-		});
-
-		return {
-			path: page.path,
-			data: {
-				title: page.data.title,
-				description: page.data.description,
-				date: page.data.date,
-				author: page.data.author,
-				readingTime: Math.ceil(wordCount / 238),
-			},
-		};
-	});
