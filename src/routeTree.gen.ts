@@ -18,6 +18,7 @@ import { Route as LlmsDotmdxSplatRouteImport } from './routes/llms[.]mdx.$'
 import { Route as DocsSplatRouteImport } from './routes/docs/$'
 import { Route as DocsOgSplatRouteImport } from './routes/docs-og/$'
 import { Route as ApiSearchRouteImport } from './routes/api/search'
+import { Route as homeErrorRouteImport } from './routes/(home)/error'
 import { Route as homeBlogIndexRouteImport } from './routes/(home)/blog/index'
 import { Route as homeBlogSlugRouteImport } from './routes/(home)/blog/$slug'
 
@@ -65,6 +66,11 @@ const ApiSearchRoute = ApiSearchRouteImport.update({
   path: '/api/search',
   getParentRoute: () => rootRouteImport,
 } as any)
+const homeErrorRoute = homeErrorRouteImport.update({
+  id: '/error',
+  path: '/error',
+  getParentRoute: () => homeRouteRoute,
+} as any)
 const homeBlogIndexRoute = homeBlogIndexRouteImport.update({
   id: '/blog/',
   path: '/blog/',
@@ -80,6 +86,7 @@ export interface FileRoutesByFullPath {
   '/llms-full.txt': typeof LlmsFullDottxtRoute
   '/rss.xml': typeof RssDotxmlRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/error': typeof homeErrorRoute
   '/api/search': typeof ApiSearchRoute
   '/docs-og/$': typeof DocsOgSplatRoute
   '/docs/$': typeof DocsSplatRoute
@@ -92,6 +99,7 @@ export interface FileRoutesByTo {
   '/llms-full.txt': typeof LlmsFullDottxtRoute
   '/rss.xml': typeof RssDotxmlRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/error': typeof homeErrorRoute
   '/api/search': typeof ApiSearchRoute
   '/docs-og/$': typeof DocsOgSplatRoute
   '/docs/$': typeof DocsSplatRoute
@@ -106,6 +114,7 @@ export interface FileRoutesById {
   '/llms-full.txt': typeof LlmsFullDottxtRoute
   '/rss.xml': typeof RssDotxmlRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/(home)/error': typeof homeErrorRoute
   '/api/search': typeof ApiSearchRoute
   '/docs-og/$': typeof DocsOgSplatRoute
   '/docs/$': typeof DocsSplatRoute
@@ -120,6 +129,7 @@ export interface FileRouteTypes {
     | '/llms-full.txt'
     | '/rss.xml'
     | '/sitemap.xml'
+    | '/error'
     | '/api/search'
     | '/docs-og/$'
     | '/docs/$'
@@ -132,6 +142,7 @@ export interface FileRouteTypes {
     | '/llms-full.txt'
     | '/rss.xml'
     | '/sitemap.xml'
+    | '/error'
     | '/api/search'
     | '/docs-og/$'
     | '/docs/$'
@@ -145,6 +156,7 @@ export interface FileRouteTypes {
     | '/llms-full.txt'
     | '/rss.xml'
     | '/sitemap.xml'
+    | '/(home)/error'
     | '/api/search'
     | '/docs-og/$'
     | '/docs/$'
@@ -230,6 +242,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiSearchRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/(home)/error': {
+      id: '/(home)/error'
+      path: '/error'
+      fullPath: '/error'
+      preLoaderRoute: typeof homeErrorRouteImport
+      parentRoute: typeof homeRouteRoute
+    }
     '/(home)/blog/': {
       id: '/(home)/blog/'
       path: '/blog'
@@ -248,12 +267,14 @@ declare module '@tanstack/react-router' {
 }
 
 interface homeRouteRouteChildren {
+  homeErrorRoute: typeof homeErrorRoute
   homeIndexRoute: typeof homeIndexRoute
   homeBlogSlugRoute: typeof homeBlogSlugRoute
   homeBlogIndexRoute: typeof homeBlogIndexRoute
 }
 
 const homeRouteRouteChildren: homeRouteRouteChildren = {
+  homeErrorRoute: homeErrorRoute,
   homeIndexRoute: homeIndexRoute,
   homeBlogSlugRoute: homeBlogSlugRoute,
   homeBlogIndexRoute: homeBlogIndexRoute,
