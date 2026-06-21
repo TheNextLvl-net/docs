@@ -2,10 +2,10 @@
 
 import { Analytics } from "@faststats/react";
 import {
-	createRootRoute,
-	HeadContent,
-	Outlet,
-	Scripts,
+    createRootRoute,
+    HeadContent,
+    Outlet,
+    Scripts,
 } from "@tanstack/react-router";
 import { RootProvider } from "fumadocs-ui/provider/tanstack";
 import type { ReactNode } from "react";
@@ -64,9 +64,9 @@ function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
 				{faststatsDomain && faststatsUrl && (
 					<Analytics
 						siteKey={faststatsDomain}
-						trackErrors={true}
-						trackReplay={true}
-						trackWebVitals={true}
+						errorTracking={{enabled: true}}
+						sessionReplays={{enabled: true}}
+						webVitals={{enabled: true}}
 					/>
 				)}
 				<script
