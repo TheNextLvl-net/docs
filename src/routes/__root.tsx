@@ -2,10 +2,10 @@
 
 import { Analytics } from "@faststats/react";
 import {
-    createRootRoute,
-    HeadContent,
-    Outlet,
-    Scripts,
+	createRootRoute,
+	HeadContent,
+	Outlet,
+	Scripts,
 } from "@tanstack/react-router";
 import { RootProvider } from "fumadocs-ui/provider/tanstack";
 import type { ReactNode } from "react";
@@ -54,19 +54,16 @@ function RootComponent() {
 }
 
 function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
-	const faststatsDomain = import.meta.env.VITE_FASTSTATS_SITEKEY;
-	const faststatsUrl = import.meta.env.VITE_FASTSTATS_SCRIPT_URL;
-
 	return (
 		<html lang="en">
 			<head>
 				<HeadContent />
-				{faststatsDomain && faststatsUrl && (
+				{import.meta.env.VITE_FASTSTATS_SITEKEY && (
 					<Analytics
-						siteKey={faststatsDomain}
-						errorTracking={{enabled: true}}
-						sessionReplays={{enabled: true}}
-						webVitals={{enabled: true}}
+						siteKey={import.meta.env.VITE_FASTSTATS_SITEKEY}
+						errorTracking={{ enabled: true }}
+						sessionReplays={{ enabled: true }}
+						webVitals={{ enabled: true }}
 					/>
 				)}
 				<script
