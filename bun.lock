@@ -24,7 +24,7 @@
       },
       "devDependencies": {
         "@biomejs/biome": "2.4.16",
-        "@faststats/sourcemap-uploader-plugin": "0.4.0",
+        "@faststats/sourcemap-uploader-plugin": "0.5.0",
         "@tailwindcss/vite": "^4.3.0",
         "@types/bun": "^1.3.13",
         "@types/mdx": "^2.0.13",
@@ -153,7 +153,7 @@
 
     "@faststats/react": ["@faststats/react@0.4.2", "", { "dependencies": { "@faststats/web": "^0.4.2" }, "peerDependencies": { "react": ">=18" } }, "sha512-NfC3QVwETdz7tsUvUF0J/czNpyUX1O5an+8RziCl+5Lm8DcH4n0GKzgTrGQJAMzVX1Y9kv8ly4cTbnCgzjKV7Q=="],
 
-    "@faststats/sourcemap-uploader-plugin": ["@faststats/sourcemap-uploader-plugin@0.4.0", "", { "dependencies": { "unplugin": "^3.0.0" }, "peerDependencies": { "typescript": "^5.9.3 || ^6.0.0" } }, "sha512-FLhksGJLZeG29IpmP8DM3LsE0eE7qyv9AC4XB7y+SUJ/O7psQDMVb2saHuK7Aw1bFmLR8riFuCHdhqDre2WhVw=="],
+    "@faststats/sourcemap-uploader-plugin": ["@faststats/sourcemap-uploader-plugin@0.5.0", "", { "dependencies": { "unplugin": "^3.0.0" }, "peerDependencies": { "typescript": "^5.9.3 || ^6.0.0" } }, "sha512-1CI3xw9JRthMBWoPoiYonEBHqliZNBGcdKQu/s6p9RhYsfFSKj0Vzi+/WwdhCwr0O4aircckq0vr4dBXlBHDrQ=="],
 
     "@faststats/web": ["@faststats/web@0.4.2", "", { "dependencies": { "@rrweb/record": "^2.0.1", "@rrweb/rrweb-plugin-console-record": "^2.0.1", "web-vitals": "^5.3.0" } }, "sha512-RJ/HebRS1oqtW5FhJPnYboiOyRHz9vLlMRDojA25PGMgjLgydpZT04wjRQ3oAB0bWjntRT9KT6/MV5mSP2q/Nw=="],
 
