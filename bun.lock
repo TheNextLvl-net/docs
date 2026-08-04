@@ -5,7 +5,7 @@
     "": {
       "name": "thenextlvl-docs",
       "dependencies": {
-        "@faststats/react": "0.6.0",
+        "@faststats/react": "0.7.0",
         "@icons-pack/react-simple-icons": "^13.13.0",
         "@shikijs/types": "^4.2.0",
         "@takumi-rs/image-response": "^2.0.0",
@@ -151,11 +151,11 @@
 
     "@esbuild/win32-x64": ["@esbuild/win32-x64@0.28.0", "", { "os": "win32", "cpu": "x64" }, "sha512-pEl1bO9mfAmIC+tW5btTmrKaujg3zGtUmWNdCw/xs70FBjwAL3o9OEKNHvNmnyylD6ubxUERiEhdsL0xBQ9efw=="],
 
-    "@faststats/react": ["@faststats/react@0.6.0", "", { "dependencies": { "@faststats/web": "^0.6.0" }, "peerDependencies": { "react": ">=18" } }, "sha512-uGY23eobIYFN/zkJvIpmFszVKT0PyEd6qya+pAyPytkKEcn2zA6rRu9y2/3WR6QyvbFPgJ1hMf4HV0bf+JqdLw=="],
+    "@faststats/react": ["@faststats/react@0.7.0", "", { "dependencies": { "@faststats/web": "^0.7.0" }, "peerDependencies": { "react": ">=18" } }, "sha512-/MCxOh3E5PEBC8bAxkgglYwCLUHbS5sqKzFLYVDbWfLWyaID024E8tUh30ZXCX48x7JWTcT1q0UdKh3PBot/yQ=="],
 
     "@faststats/sourcemap-uploader-plugin": ["@faststats/sourcemap-uploader-plugin@0.5.0", "", { "dependencies": { "unplugin": "^3.0.0" }, "peerDependencies": { "typescript": "^5.9.3 || ^6.0.0" } }, "sha512-1CI3xw9JRthMBWoPoiYonEBHqliZNBGcdKQu/s6p9RhYsfFSKj0Vzi+/WwdhCwr0O4aircckq0vr4dBXlBHDrQ=="],
 
-    "@faststats/web": ["@faststats/web@0.6.0", "", { "dependencies": { "@rrweb/record": "^2.1.0", "@rrweb/rrweb-plugin-console-record": "^2.1.0", "@rrweb/rrweb-plugin-sequential-id-record": "^2.1.0", "web-vitals": "^6.0.0" } }, "sha512-8xU5Q3pJkRhsWKwGc4LWGo1YbPFDyNHxcXNxIfa8KeZbhgGNxUR2aMN0IBN1zM9QnImfxeOVvdfBnT0chr5duw=="],
+    "@faststats/web": ["@faststats/web@0.7.0", "", { "dependencies": { "@rrweb/record": "^2.1.0", "@rrweb/rrweb-plugin-console-record": "^2.1.0", "@rrweb/rrweb-plugin-sequential-id-record": "^2.1.0", "web-vitals": "^6.0.0" } }, "sha512-jodlXNnHKH+y/60gMfzqNST7NKDICxdAYmNSBIQYyOu4uJFSA0DAnHrls8FzgOMxigkHFhIKVjnFTq4H1O6ffw=="],
 
     "@floating-ui/core": ["@floating-ui/core@1.7.3", "", { "dependencies": { "@floating-ui/utils": "^0.2.10" } }, "sha512-sGnvb5dmrJaKEZ+LDIpguvdX3bDlEllmv4/ClQ9awcmCZrlx5jQyyMWFM5kBI+EyNOCDDiKk8il0zeuX3Zlg/w=="],
 
