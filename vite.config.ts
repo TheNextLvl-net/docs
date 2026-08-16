@@ -9,6 +9,8 @@ import { nitro } from "nitro/vite";
 import { defineConfig } from "vite";
 import * as MdxConfig from "./source.config";
 
+const root = path.dirname(fileURLToPath(import.meta.url));
+
 export default defineConfig({
 	server: {
 		port: 3000,
@@ -16,7 +18,7 @@ export default defineConfig({
 	resolve: {
 		tsconfigPaths: true,
 		alias: {
-			"@": path.resolve(fileURLToPath(import.meta.url), "src"),
+			"@": path.resolve(root, "src"),
 		},
 	},
 	build: {
