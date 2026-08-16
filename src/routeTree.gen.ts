@@ -9,27 +9,21 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
-import { Route as RssDotxmlRouteImport } from './routes/rss[.]xml'
-import { Route as LlmsFullDottxtRouteImport } from './routes/llms-full[.]txt'
 import { Route as homeRouteRouteImport } from './routes/(home)/route'
+import { Route as LlmsFullDottxtRouteImport } from './routes/llms-full[.]txt'
+import { Route as RssDotxmlRouteImport } from './routes/rss[.]xml'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as homeIndexRouteImport } from './routes/(home)/index'
-import { Route as LlmsDotmdxSplatRouteImport } from './routes/llms[.]mdx.$'
-import { Route as DocsSplatRouteImport } from './routes/docs/$'
-import { Route as DocsOgSplatRouteImport } from './routes/docs-og/$'
-import { Route as ApiSearchRouteImport } from './routes/api/search'
 import { Route as homeErrorRouteImport } from './routes/(home)/error'
+import { Route as ApiSearchRouteImport } from './routes/api/search'
+import { Route as DocsOgSplatRouteImport } from './routes/docs-og/$'
+import { Route as DocsSplatRouteImport } from './routes/docs/$'
+import { Route as LlmsDotmdxSplatRouteImport } from './routes/llms[.]mdx.$'
 import { Route as homeBlogIndexRouteImport } from './routes/(home)/blog/index'
 import { Route as homeBlogSlugRouteImport } from './routes/(home)/blog/$slug'
 
-const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
-  id: '/sitemap.xml',
-  path: '/sitemap.xml',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const RssDotxmlRoute = RssDotxmlRouteImport.update({
-  id: '/rss.xml',
-  path: '/rss.xml',
+const homeRouteRoute = homeRouteRouteImport.update({
+  id: '/(home)',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LlmsFullDottxtRoute = LlmsFullDottxtRouteImport.update({
@@ -37,8 +31,14 @@ const LlmsFullDottxtRoute = LlmsFullDottxtRouteImport.update({
   path: '/llms-full.txt',
   getParentRoute: () => rootRouteImport,
 } as any)
-const homeRouteRoute = homeRouteRouteImport.update({
-  id: '/(home)',
+const RssDotxmlRoute = RssDotxmlRouteImport.update({
+  id: '/rss.xml',
+  path: '/rss.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
 const homeIndexRoute = homeIndexRouteImport.update({
@@ -46,14 +46,14 @@ const homeIndexRoute = homeIndexRouteImport.update({
   path: '/',
   getParentRoute: () => homeRouteRoute,
 } as any)
-const LlmsDotmdxSplatRoute = LlmsDotmdxSplatRouteImport.update({
-  id: '/llms.mdx/$',
-  path: '/llms.mdx/$',
-  getParentRoute: () => rootRouteImport,
+const homeErrorRoute = homeErrorRouteImport.update({
+  id: '/error',
+  path: '/error',
+  getParentRoute: () => homeRouteRoute,
 } as any)
-const DocsSplatRoute = DocsSplatRouteImport.update({
-  id: '/docs/$',
-  path: '/docs/$',
+const ApiSearchRoute = ApiSearchRouteImport.update({
+  id: '/api/search',
+  path: '/api/search',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DocsOgSplatRoute = DocsOgSplatRouteImport.update({
@@ -61,15 +61,15 @@ const DocsOgSplatRoute = DocsOgSplatRouteImport.update({
   path: '/docs-og/$',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ApiSearchRoute = ApiSearchRouteImport.update({
-  id: '/api/search',
-  path: '/api/search',
+const DocsSplatRoute = DocsSplatRouteImport.update({
+  id: '/docs/$',
+  path: '/docs/$',
   getParentRoute: () => rootRouteImport,
 } as any)
-const homeErrorRoute = homeErrorRouteImport.update({
-  id: '/error',
-  path: '/error',
-  getParentRoute: () => homeRouteRoute,
+const LlmsDotmdxSplatRoute = LlmsDotmdxSplatRouteImport.update({
+  id: '/llms.mdx/$',
+  path: '/llms.mdx/$',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const homeBlogIndexRoute = homeBlogIndexRouteImport.update({
   id: '/blog/',
@@ -179,18 +179,11 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/sitemap.xml': {
-      id: '/sitemap.xml'
-      path: '/sitemap.xml'
-      fullPath: '/sitemap.xml'
-      preLoaderRoute: typeof SitemapDotxmlRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/rss.xml': {
-      id: '/rss.xml'
-      path: '/rss.xml'
-      fullPath: '/rss.xml'
-      preLoaderRoute: typeof RssDotxmlRouteImport
+    '/(home)': {
+      id: '/(home)'
+      path: ''
+      fullPath: ''
+      preLoaderRoute: typeof homeRouteRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/llms-full.txt': {
@@ -200,11 +193,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LlmsFullDottxtRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/(home)': {
-      id: '/(home)'
-      path: ''
-      fullPath: ''
-      preLoaderRoute: typeof homeRouteRouteImport
+    '/rss.xml': {
+      id: '/rss.xml'
+      path: '/rss.xml'
+      fullPath: '/rss.xml'
+      preLoaderRoute: typeof RssDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/(home)/': {
@@ -214,18 +214,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof homeIndexRouteImport
       parentRoute: typeof homeRouteRoute
     }
-    '/llms.mdx/$': {
-      id: '/llms.mdx/$'
-      path: '/llms.mdx/$'
-      fullPath: '/llms.mdx/$'
-      preLoaderRoute: typeof LlmsDotmdxSplatRouteImport
-      parentRoute: typeof rootRouteImport
+    '/(home)/error': {
+      id: '/(home)/error'
+      path: '/error'
+      fullPath: '/error'
+      preLoaderRoute: typeof homeErrorRouteImport
+      parentRoute: typeof homeRouteRoute
     }
-    '/docs/$': {
-      id: '/docs/$'
-      path: '/docs/$'
-      fullPath: '/docs/$'
-      preLoaderRoute: typeof DocsSplatRouteImport
+    '/api/search': {
+      id: '/api/search'
+      path: '/api/search'
+      fullPath: '/api/search'
+      preLoaderRoute: typeof ApiSearchRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/docs-og/$': {
@@ -235,19 +235,19 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DocsOgSplatRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/api/search': {
-      id: '/api/search'
-      path: '/api/search'
-      fullPath: '/api/search'
-      preLoaderRoute: typeof ApiSearchRouteImport
+    '/docs/$': {
+      id: '/docs/$'
+      path: '/docs/$'
+      fullPath: '/docs/$'
+      preLoaderRoute: typeof DocsSplatRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/(home)/error': {
-      id: '/(home)/error'
-      path: '/error'
-      fullPath: '/error'
-      preLoaderRoute: typeof homeErrorRouteImport
-      parentRoute: typeof homeRouteRoute
+    '/llms.mdx/$': {
+      id: '/llms.mdx/$'
+      path: '/llms.mdx/$'
+      fullPath: '/llms.mdx/$'
+      preLoaderRoute: typeof LlmsDotmdxSplatRouteImport
+      parentRoute: typeof rootRouteImport
     }
     '/(home)/blog/': {
       id: '/(home)/blog/'

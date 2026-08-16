@@ -1,5 +1,5 @@
-import ImageResponse from "@takumi-rs/image-response";
 import { createFileRoute, notFound } from "@tanstack/react-router";
+import ImageResponse from "takumi-js/response";
 import { OgImage } from "@/components/og-image";
 import { source } from "@/lib/source";
 

@@ -1,3 +1,5 @@
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 import sourcemapsPlugin from "@faststats/sourcemap-uploader-plugin/vite";
 import tailwindcss from "@tailwindcss/vite";
 import { tanstackStart } from "@tanstack/react-start/plugin/vite";
@@ -11,11 +13,11 @@ export default defineConfig({
 	server: {
 		port: 3000,
 	},
-	optimizeDeps: {
-		exclude: ["@takumi-rs/core"],
-	},
 	resolve: {
 		tsconfigPaths: true,
+		alias: {
+			"@": path.resolve(fileURLToPath(import.meta.url), "src"),
+		},
 	},
 	build: {
 		sourcemap: true,
@@ -45,7 +47,6 @@ export default defineConfig({
 					redirect: { to: "https://modrinth.com/organization/thenextlvl" },
 				},
 			},
-			traceDeps: ["@takumi-rs/core"],
 		}),
 		tailwindcss(),
 		tanstackStart(),
