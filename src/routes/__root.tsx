@@ -1,6 +1,10 @@
 /// <reference types="vite/client" />
 
 import { Analytics } from "@faststats/react";
+import { errorTracking } from "@faststats/react/error";
+import { outboundLinks } from "@faststats/react/outbound-links";
+import { sessionReplay } from "@faststats/react/replay";
+import { webVitals } from "@faststats/react/web-vitals";
 import {
 	createRootRoute,
 	HeadContent,
@@ -61,9 +65,12 @@ function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
 				{import.meta.env.VITE_FASTSTATS_SITEKEY && (
 					<Analytics
 						siteKey={import.meta.env.VITE_FASTSTATS_SITEKEY}
-						errorTracking={{ enabled: true }}
-						sessionReplays={{ enabled: true }}
-						webVitals={{ enabled: true }}
+						extensions={[
+							errorTracking(),
+							webVitals(),
+							sessionReplay(),
+							outboundLinks(),
+						]}
 					/>
 				)}
 				<script
