@@ -1,19 +1,16 @@
 import { remarkMdxMermaid } from "fumadocs-core/mdx-plugins";
+import { metaSchema, pageSchema } from "fumadocs-core/source/schema";
 import {
 	defineCollections,
 	defineConfig,
 	defineDocs,
-	frontmatterSchema,
-	metaSchema,
 } from "fumadocs-mdx/config";
-import lastModified from "fumadocs-mdx/plugins/last-modified";
 import { z } from "zod";
-import { lastEditFromPath } from "./src/lib/api";
 import { transformerCommandColor } from "./src/lib/command-transformer";
 
 export const docs = defineDocs({
 	docs: {
-		schema: frontmatterSchema,
+		schema: pageSchema,
 		postprocess: {
 			includeProcessedMarkdown: true,
 		},
@@ -26,7 +23,7 @@ export const docs = defineDocs({
 export const blogPosts = defineCollections({
 	type: "doc",
 	dir: "content/blog",
-	schema: frontmatterSchema.extend({
+	schema: pageSchema.extend({
 		author: z.string(),
 		category: z.enum(["devlog", "updates", "other"]),
 		keywords: z.string().array().optional(),
@@ -35,12 +32,6 @@ export const blogPosts = defineCollections({
 });
 
 export default defineConfig({
-	plugins: [
-		lastModified({
-			versionControl:
-				process.env.NODE_ENV === "production" ? lastEditFromPath : "git",
-		}),
-	],
 	mdxOptions: {
 		rehypeCodeOptions: {
 			themes: {

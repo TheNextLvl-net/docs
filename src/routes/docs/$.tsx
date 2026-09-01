@@ -9,7 +9,6 @@ import {
 	DocsDescription,
 	DocsPage,
 	DocsTitle,
-	PageLastUpdate,
 } from "fumadocs-ui/layouts/docs/page";
 import defaultMdxComponents from "fumadocs-ui/mdx";
 import { Mermaid } from "@/components/mdx/mermaid";
@@ -96,7 +95,7 @@ const serverLoader = createServerFn({
 	});
 
 const clientLoader = browserCollections.docs.createClientLoader({
-	component({ toc, frontmatter, lastModified, default: MDX }) {
+	component({ toc, frontmatter, default: MDX }) {
 		// biome-ignore lint/correctness/useHookAtTopLevel: <false positive>
 		const data = Route.useLoaderData();
 		return (
@@ -122,7 +121,6 @@ const clientLoader = browserCollections.docs.createClientLoader({
 						}}
 					/>
 				</DocsBody>
-				<PageLastUpdate date={new Date(lastModified ?? 0)} />
 			</DocsPage>
 		);
 	},

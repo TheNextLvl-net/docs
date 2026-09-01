@@ -15,7 +15,7 @@
 		"@faststats/react": "0.8.0",
 		"@icons-pack/react-simple-icons": "^13.15.1",
 		"@shikijs/types": "^4.4.3",
-		"takumi-js": "2.13.3",
+		"takumi-js": "2.13.4",
 		"@tanstack/react-router": "^1.170.32",
 		"@tanstack/react-start": "^1.168.49",
 		"feed": "^6.0.0",
