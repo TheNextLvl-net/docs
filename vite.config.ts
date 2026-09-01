@@ -32,6 +32,8 @@ export default defineConfig({
 			enabled: process.env.GITHUB_REF_NAME === "main",
 		}),
 		nitro({
+			exportConditions: ["!unwasm"],
+			traceDeps: ["takumi-js*"],
 			routeRules: {
 				"/discord": {
 					redirect: { to: "https://discord.com/invite/npPXFQcsK8" },
