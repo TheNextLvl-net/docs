@@ -5,7 +5,7 @@
     "": {
       "name": "thenextlvl-docs",
       "dependencies": {
-        "@faststats/react": "0.10.2",
+        "@faststats/react": "0.11.0",
         "@icons-pack/react-simple-icons": "^13.15.1",
         "@shikijs/types": "^4.4.3",
         "@tanstack/react-router": "^1.170.32",
@@ -145,11 +145,11 @@
 
     "@esbuild/win32-x64": ["@esbuild/win32-x64@0.28.2", "", { "os": "win32", "cpu": "x64" }, "sha512-5ebpxr3nWMzrL/rnUI755Jkuee0bHL/Gq0WTF9lvcpv73wAp5eu8MfBUgWK9bhWvZjj7yX8etf/8tI8Ney695g=="],
 
-    "@faststats/react": ["@faststats/react@0.10.2", "", { "dependencies": { "@faststats/web": "^0.10.2" }, "peerDependencies": { "react": ">=18" } }, "sha512-/YvCXhxGWiuy7aCu2Fh2u7E30wDuVVahnhyoYmzgi8+LBigzEg9/GVVyvbIOLB2ibfIgAkCVIOYuoOibjbz0+Q=="],
+    "@faststats/react": ["@faststats/react@0.11.0", "", { "dependencies": { "@faststats/web": "^0.11.0" }, "peerDependencies": { "react": ">=18" } }, "sha512-eyK8nT/GhttCAD4dlQp4rq4EHTWBp3dnliILaaziN+NL2pV40YhvorAlAR+n9SC9ydVMMRivNhE2artVmjYi4A=="],
 
     "@faststats/sourcemap-uploader-plugin": ["@faststats/sourcemap-uploader-plugin@0.5.0", "", { "dependencies": { "unplugin": "^3.0.0" }, "peerDependencies": { "typescript": "^5.9.3 || ^6.0.0" } }, "sha512-1CI3xw9JRthMBWoPoiYonEBHqliZNBGcdKQu/s6p9RhYsfFSKj0Vzi+/WwdhCwr0O4aircckq0vr4dBXlBHDrQ=="],
 
-    "@faststats/web": ["@faststats/web@0.10.2", "", { "dependencies": { "@rrweb/record": "^2.1.6", "@rrweb/rrweb-plugin-console-record": "^2.1.6", "@rrweb/rrweb-plugin-network-record": "^2.1.6", "web-vitals": "^6.2.2" } }, "sha512-wrYi7MDCNBgfibXRqBFzowB6/WuLmcFGGVabo2c750A+YgTJBeLu6ND6Q0x1ErTXqP1muRSCSjG/qydQF6StQQ=="],
+    "@faststats/web": ["@faststats/web@0.11.0", "", { "dependencies": { "@rrweb/record": "^2.1.6", "@rrweb/rrweb-plugin-console-record": "^2.1.6", "@rrweb/rrweb-plugin-network-record": "^2.1.6", "web-vitals": "^6.2.2" } }, "sha512-aQymVcohf3tOxz8ySYWXEhJQeKD8LclCavYo2RWrxpbAAw95zzYBvN7Pp6czHoQ11BHxMvd3OgJr/jyx88rWDA=="],
 
     "@floating-ui/core": ["@floating-ui/core@1.8.0", "", { "dependencies": { "@floating-ui/utils": "^0.2.12" } }, "sha512-0CIZ5itps/8x7BG8dEIhs53BvCUH2PCoogtakwRTut+Arm58sJooJ0AuZhLw2HJYIR5cMLNPBSS728sPho2khQ=="],
 
