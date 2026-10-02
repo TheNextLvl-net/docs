@@ -2,7 +2,6 @@
 
 import { Analytics } from "@faststats/react";
 import { errorTracking } from "@faststats/react/error";
-import { outboundLinks } from "@faststats/react/outbound-links";
 import { sessionReplay } from "@faststats/react/replay";
 import { webVitals } from "@faststats/react/web-vitals";
 import {
@@ -68,8 +67,7 @@ function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
 						extensions={[
 							errorTracking(),
 							webVitals(),
-							sessionReplay(),
-							outboundLinks(),
+							sessionReplay()
 						]}
 					/>
 				)}
