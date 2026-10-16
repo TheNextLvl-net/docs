@@ -1,0 +1,53 @@
+---
+title: World Gamerule
+description: How to view and change gamerules of a specific world
+---
+
+# World Gamerule
+
+The gamerule command lets you view or change a gamerule of a specific world,
+without having to be in that world.
+
+**Usage:** `/world gamerule <world> <rule> [<value>]`
+
+**Permission:** `worlds.command.gamerule`
+
+<Callout type="info">
+  See the [Permissions page](/docs/worlds/permissions) for all command permissions.
+</Callout>
+
+| Argument  | Description                                                                                      |
+|-----------|--------------------------------------------------------------------------------------------------|
+| `<world>` | The world to view or change the gamerule in                                                      |
+| `<rule>`  | The gamerule to view or change, e.g. `keep_inventory`                                            |
+| `<value>` | The new value of the gamerule. If omitted, the current value is displayed instead of changed     |
+
+The value has to match the type of the gamerule:
+boolean gamerules accept `true` or `false`, while numeric gamerules accept a whole number.
+
+<Callout type="info">
+  Only gamerules that are available on your server are suggested.
+  Gamerules belonging to disabled experimental features are not listed.
+</Callout>
+
+## Examples
+
+View the current value of a gamerule:
+```
+/world gamerule <aqua>worlds:survival</aqua> <gray>keep_inventory</gray>
+```
+
+Enable keep inventory in a world:
+```
+/world gamerule <aqua>worlds:survival</aqua> <gray>keep_inventory</gray> <green>true</green>
+```
+
+Disable mob spawning in a world:
+```
+/world gamerule <aqua>worlds:lobby</aqua> <gray>spawn_mobs</gray> <green>false</green>
+```
+
+Change the random tick speed of a world:
+```
+/world gamerule <aqua>worlds:farm</aqua> <gray>random_tick_speed</gray> <green>10</green>
+```

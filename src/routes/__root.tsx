@@ -64,11 +64,7 @@ function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
 				{import.meta.env.VITE_FASTSTATS_SITEKEY && (
 					<Analytics
 						siteKey={import.meta.env.VITE_FASTSTATS_SITEKEY}
-						extensions={[
-							errorTracking(),
-							webVitals(),
-							sessionReplay()
-						]}
+						extensions={[errorTracking(), webVitals(), sessionReplay()]}
 					/>
 				)}
 				<script
