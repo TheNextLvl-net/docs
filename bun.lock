@@ -24,7 +24,7 @@
       },
       "devDependencies": {
         "@biomejs/biome": "2.5.11",
-        "@faststats/sourcemap-uploader-plugin": "0.5.2",
+        "@faststats/sourcemap-uploader-plugin": "0.5.3",
         "@tailwindcss/vite": "^4.3.3",
         "@types/bun": "^1.4.0",
         "@types/mdx": "^2.0.14",
@@ -155,7 +155,7 @@
 
     "@faststats/react": ["@faststats/react@0.13.2", "", { "dependencies": { "@faststats/web": "^0.13.2" }, "peerDependencies": { "react": ">=18" } }, "sha512-j7kegmmMkZWCaMdlvegr4HT6B1Vzep1KdmCoYNEMvIMGP57KVUhhf4OF+k0m3YeEkT7znckFPNuS4qbLM6gfWw=="],
 
-    "@faststats/sourcemap-uploader-plugin": ["@faststats/sourcemap-uploader-plugin@0.5.2", "", { "dependencies": { "unplugin": "^3.4.0" } }, "sha512-h10q+PTTbifg64hZnNateeHmU5Oaz/Yyu1T8J2kalEZjCFYNrovLqQFdBH2xyeJljDldnMYzepe4VWGOizhzcA=="],
+    "@faststats/sourcemap-uploader-plugin": ["@faststats/sourcemap-uploader-plugin@0.5.3", "", { "dependencies": { "unplugin": "^3.4.0" } }, "sha512-T5Hn9Z2PXMI3zxwZEskMVQ/6pupxqxdbs+QFQLVFMOq6fsAPeZl+OICr8jlyMC0n7iYIMWaBnEr89MZ2mA+BhA=="],
 
     "@faststats/web": ["@faststats/web@0.13.2", "", { "dependencies": { "@rrweb/record": "^2.1.7", "@rrweb/rrweb-plugin-console-record": "^2.1.7", "@rrweb/rrweb-plugin-network-record": "^2.1.7", "web-vitals": "^6.2.3" } }, "sha512-jjTWjZ0sbLgow9776Qk8c8OE1RpKKzKZouO4sZKfszmTrLlQUXULEca2lKP1uGfWwi+ya+YEq4lbmLIlvazrFw=="],
 
