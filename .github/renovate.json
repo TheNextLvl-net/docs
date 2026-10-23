@@ -5,6 +5,11 @@
 		{
 			"matchPackageNames": ["fumadocs-*"],
 			"groupName": "fumadocs"
+		},
+		{
+			"matchPackageNames": ["@faststats/**"],
+			"matchUpdateTypes": ["patch"],
+			"automerge": true
 		}
 	]
 }
