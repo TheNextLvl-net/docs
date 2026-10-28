@@ -5,7 +5,7 @@
     "": {
       "name": "thenextlvl-docs",
       "dependencies": {
-        "@faststats/react": "0.13.3",
+        "@faststats/react": "0.14.0",
         "@icons-pack/react-simple-icons": "^13.15.1",
         "@shikijs/types": "^4.4.3",
         "@tanstack/react-router": "^1.170.32",
@@ -153,11 +153,11 @@
 
     "@esbuild/win32-x64": ["@esbuild/win32-x64@0.28.2", "", { "os": "win32", "cpu": "x64" }, "sha512-5ebpxr3nWMzrL/rnUI755Jkuee0bHL/Gq0WTF9lvcpv73wAp5eu8MfBUgWK9bhWvZjj7yX8etf/8tI8Ney695g=="],
 
-    "@faststats/react": ["@faststats/react@0.13.3", "", { "dependencies": { "@faststats/web": "^0.13.3" }, "peerDependencies": { "react": ">=18" } }, "sha512-AyMZWq/Upo+3YRivJlFQuX6+Q9fz8q4iyCbzuvXq3p4Tw4GMPP3tqaeTV3v+u4vsQkp2tFjn2RWWydZa96gr3A=="],
+    "@faststats/react": ["@faststats/react@0.14.0", "", { "dependencies": { "@faststats/web": "^0.14.0" }, "peerDependencies": { "react": ">=18" } }, "sha512-tDUzlVgcKdAjITkMT4WaegiFSCXDIwxlvlebW+qcbcyp4+Jy70AYcGbYSi/2Q4UfAHDs8xItj1TIL8FaTds/8g=="],
 
     "@faststats/sourcemap-uploader-plugin": ["@faststats/sourcemap-uploader-plugin@0.5.3", "", { "dependencies": { "unplugin": "^3.4.0" } }, "sha512-T5Hn9Z2PXMI3zxwZEskMVQ/6pupxqxdbs+QFQLVFMOq6fsAPeZl+OICr8jlyMC0n7iYIMWaBnEr89MZ2mA+BhA=="],
 
-    "@faststats/web": ["@faststats/web@0.13.3", "", { "dependencies": { "@rrweb/record": "^2.2.0", "@rrweb/rrweb-plugin-console-record": "^2.2.0", "@rrweb/rrweb-plugin-network-record": "^2.2.0", "web-vitals": "^6.2.3" } }, "sha512-xY00soCDBlUyPzjnDCCkYMFVte0GFb1CCVPw1wnYWQ13I/AdfptVDDeI0G8nfd3iRxfq/ZA2GbE4yYoJjRD2PA=="],
+    "@faststats/web": ["@faststats/web@0.14.0", "", { "dependencies": { "@rrweb/record": "^2.2.0", "@rrweb/rrweb-plugin-console-record": "^2.2.0", "@rrweb/rrweb-plugin-network-record": "^2.2.0", "web-vitals": "^6.2.3" } }, "sha512-CGJX69cgcMkkva9dMEiMzH1wmvi3RhYZ1MannPlEaHMybk6x4MTecSOd4yrLki3Z9h+9YoQQ0QJ93dqbU3pm5g=="],
 
     "@floating-ui/core": ["@floating-ui/core@1.8.0", "", { "dependencies": { "@floating-ui/utils": "^0.2.12" } }, "sha512-0CIZ5itps/8x7BG8dEIhs53BvCUH2PCoogtakwRTut+Arm58sJooJ0AuZhLw2HJYIR5cMLNPBSS728sPho2khQ=="],
 
