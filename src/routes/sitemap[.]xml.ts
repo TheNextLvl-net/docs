@@ -17,9 +17,6 @@ async function getSitemap() {
 
 	const docPages = source.getPages().map((page) => ({
 		loc: url(page.url),
-		lastmod: page.data.lastModified
-			? new Date(page.data.lastModified).toISOString().split("T")[0]
-			: undefined,
 		changefreq: "weekly",
 		priority: "0.5",
 	}));

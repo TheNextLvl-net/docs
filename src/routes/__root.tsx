@@ -13,6 +13,7 @@ import {
 import { RootProvider } from "fumadocs-ui/provider/tanstack";
 import type { ReactNode } from "react";
 import { NotFound } from "@/components/not-found";
+import SearchDialog from "@/components/search";
 import globalCss from "./../global.css?url";
 
 export const Route = createRootRoute({
@@ -77,7 +78,7 @@ function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
 				></script>
 			</head>
 			<body>
-				<RootProvider>{children}</RootProvider>
+				<RootProvider search={{ SearchDialog }}>{children}</RootProvider>
 				<Scripts />
 			</body>
 		</html>
