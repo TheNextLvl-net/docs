@@ -1,4 +1,5 @@
 import { useTrack } from "@faststats/react";
+import { usePostHog } from "posthog-js/react";
 import { useFetchSearch } from "fumadocs-core/search/client";
 import {
 	SearchDialog,
@@ -19,6 +20,7 @@ const TRACK_DELAY_MS = 1000;
 
 export default function DocsSearchDialog(props: SharedProps) {
 	const search = useFetchSearch({ api: "/api/search" });
+	const posthog = usePostHog();
 	const track = useTrack();
 	const { data, isLoading } = search;
 
@@ -37,6 +39,9 @@ export default function DocsSearchDialog(props: SharedProps) {
 			query: search.search.trim(),
 			url: item.url,
 			type: item.type,
+		});
+		posthog.capture("docs_search_result_selected", {
+			result_type: item.type,
 		});
 	}
 
