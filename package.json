@@ -14,8 +14,11 @@
 	"dependencies": {
 		"@faststats/react": "0.15.1",
 		"@icons-pack/react-simple-icons": "^13.15.1",
+		"@opentelemetry/api-logs": "^0.223.0",
+		"@opentelemetry/exporter-logs-otlp-http": "^0.301.0",
+		"@opentelemetry/resources": "^3.1.0",
+		"@opentelemetry/sdk-logs": "^3.1.0",
 		"@shikijs/types": "^4.6.0",
-		"takumi-js": "2.19.0",
 		"@tanstack/react-router": "^1.170.46",
 		"@tanstack/react-start": "^1.169.4",
 		"feed": "^6.0.0",
@@ -25,9 +28,12 @@
 		"lucide-react": "1.70.0",
 		"mermaid": "^12.3.0",
 		"nitro": "^3.0.261103-rc",
+		"posthog-js": "^1.447.3",
+		"posthog-node": "^5.63.1",
 		"react": "^19.3.1",
 		"react-dom": "^19.3.1",
-		"tailwindcss": "^4.3.5"
+		"tailwindcss": "^4.3.5",
+		"takumi-js": "2.19.0"
 	},
 	"devDependencies": {
 		"@faststats/sourcemap-uploader-plugin": "0.5.3",

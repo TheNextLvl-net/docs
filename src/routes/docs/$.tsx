@@ -2,6 +2,7 @@ import browserCollections from "fumadocs-mdx:collections/browser";
 import { SiGithub } from "@icons-pack/react-simple-icons";
 import { createFileRoute, notFound } from "@tanstack/react-router";
 import { createServerFn } from "@tanstack/react-start";
+import { usePostHog } from "posthog-js/react";
 import { useFumadocsLoader } from "fumadocs-core/source/client";
 import { DocsLayout } from "fumadocs-ui/layouts/docs";
 import {
@@ -98,6 +99,8 @@ const clientLoader = browserCollections.docs.createClientLoader({
 	component({ toc, frontmatter, default: MDX }) {
 		// biome-ignore lint/correctness/useHookAtTopLevel: <false positive>
 		const data = Route.useLoaderData();
+		// biome-ignore lint/correctness/useHookAtTopLevel: <false positive>
+		const posthog = usePostHog();
 		return (
 			<DocsPage toc={toc}>
 				<DocsTitle>{frontmatter.title}</DocsTitle>
@@ -110,6 +113,7 @@ const clientLoader = browserCollections.docs.createClientLoader({
 					rel="noreferrer noopener"
 					target="_blank"
 					className="mb-8 w-fit border flex items-center gap-2 rounded-md p-2 font-medium text-xs text-fd-secondary-foreground hover:text-fd-accent-foreground hover:bg-fd-accent"
+					onClick={() => posthog?.capture("documentation_edit_requested")}
 				>
 					<SiGithub className="size-4" /> Edit on GitHub
 				</a>

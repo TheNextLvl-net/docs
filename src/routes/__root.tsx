@@ -4,6 +4,7 @@ import { Analytics } from "@faststats/react";
 import { errorTracking } from "@faststats/react/error";
 import { sessionReplay } from "@faststats/react/replay";
 import { webVitals } from "@faststats/react/web-vitals";
+import { PostHogErrorBoundary, PostHogProvider } from "posthog-js/react";
 import {
 	createRootRoute,
 	HeadContent,
@@ -57,6 +58,38 @@ function RootComponent() {
 	);
 }
 
+function PostHogRootProvider({ children }: Readonly<{ children: ReactNode }>) {
+	const apiKey = import.meta.env.VITE_PUBLIC_POSTHOG_PROJECT_TOKEN;
+	const apiHost = import.meta.env.VITE_PUBLIC_POSTHOG_HOST;
+
+	if (!apiKey || !apiHost) {
+		if (typeof window !== "undefined" && import.meta.env.DEV) {
+			const missingVariable = apiKey
+				? "VITE_PUBLIC_POSTHOG_HOST"
+				: "VITE_PUBLIC_POSTHOG_PROJECT_TOKEN";
+			throw new Error(
+				`${missingVariable} variable required by PostHog is missing or un-configured, this causes events to be silently missed. This error stops appearing once ${missingVariable} is configured`,
+			);
+		}
+
+		return children;
+	}
+
+	return (
+		<PostHogProvider
+			apiKey={apiKey}
+			options={{
+				api_host: apiHost,
+				defaults: "2025-05-24",
+				capture_exceptions: true,
+				debug: import.meta.env.DEV,
+			}}
+		>
+			<PostHogErrorBoundary>{children}</PostHogErrorBoundary>
+		</PostHogProvider>
+	);
+}
+
 function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
 	return (
 		<html lang="en">
@@ -78,7 +111,9 @@ function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
 				></script>
 			</head>
 			<body>
-				<RootProvider search={{ SearchDialog }}>{children}</RootProvider>
+				<PostHogRootProvider>
+					<RootProvider search={{ SearchDialog }}>{children}</RootProvider>
+				</PostHogRootProvider>
 				<Scripts />
 			</body>
 		</html>

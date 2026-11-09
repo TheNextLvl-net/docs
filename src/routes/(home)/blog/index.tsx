@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { BookOpen, Code, File, FileText, RotateCcw } from "lucide-react";
 import { useState } from "react";
+import { usePostHog } from "posthog-js/react";
 import { getBlogPosts } from "@/lib/blog";
 
 export const Route = createFileRoute("/(home)/blog/")({
@@ -19,6 +20,7 @@ const categoryIcons: Record<string, React.ReactNode> = {
 
 function RouteComponent() {
 	const posts = Route.useLoaderData();
+	const posthog = usePostHog();
 	const [selectedCategory, setSelectedCategory] = useState("All Posts");
 
 	const categories = [
@@ -104,7 +106,12 @@ function RouteComponent() {
 										<button
 											key={category}
 											type="button"
-											onClick={() => setSelectedCategory(category)}
+											onClick={() => {
+												setSelectedCategory(category);
+												posthog?.capture("blog_category_filtered", {
+													category,
+												});
+											}}
 											className={`flex items-center gap-2 text-left transition-colors hover:text-fd-foreground uppercase text-md ${
 												selectedCategory === category
 													? "text-fd-foreground"

@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { createFromSource } from "fumadocs-core/search/server";
+import { logPostHogInfo } from "@/lib/posthog-logs";
 import { source } from "@/lib/source";
 
 const server = createFromSource(source, {
@@ -9,7 +10,12 @@ const server = createFromSource(source, {
 export const Route = createFileRoute("/api/search")({
 	server: {
 		handlers: {
-			GET: async ({ request }) => server.GET(request),
+			GET: async ({ request }) => {
+				logPostHogInfo("documentation search requested", {
+					route: "/api/search",
+				});
+				return server.GET(request);
+			},
 		},
 	},
 });
