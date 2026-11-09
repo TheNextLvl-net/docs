@@ -36,16 +36,17 @@
 		"takumi-js": "2.19.0"
 	},
 	"devDependencies": {
-		"@faststats/sourcemap-uploader-plugin": "0.5.3",
-		"@vitejs/plugin-react": "^6.2.1",
-		"@tailwindcss/vite": "^4.3.5",
 		"@biomejs/biome": "2.6.6",
-		"vite": "8.3.6",
+		"@faststats/sourcemap-uploader-plugin": "0.5.3",
+		"@posthog/rollup-plugin": "^1.6.3",
+		"@tailwindcss/vite": "^4.3.5",
 		"@types/bun": "^1.4.4",
 		"@types/mdx": "^2.0.14",
 		"@types/react": "19.3.0",
 		"@types/react-dom": "19.3.0",
-		"typescript": "7.0.2"
+		"@vitejs/plugin-react": "^6.2.1",
+		"typescript": "7.0.2",
+		"vite": "8.3.6"
 	},
 	"packageManager": "bun@1.4.2"
 }
