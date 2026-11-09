@@ -33,7 +33,7 @@
 		"react": "^19.3.1",
 		"react-dom": "^19.3.1",
 		"tailwindcss": "^4.3.5",
-		"takumi-js": "2.19.0"
+		"takumi-js": "2.20.0"
 	},
 	"devDependencies": {
 		"@faststats/sourcemap-uploader-plugin": "0.5.3",
