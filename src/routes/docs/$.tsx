@@ -2,7 +2,7 @@ import browserCollections from "fumadocs-mdx:collections/browser";
 import { SiGithub } from "@icons-pack/react-simple-icons";
 import { createFileRoute, notFound } from "@tanstack/react-router";
 import { createServerFn } from "@tanstack/react-start";
-import { usePostHog } from "posthog-js/react";
+import type * as PageTree from "fumadocs-core/page-tree";
 import { useFumadocsLoader } from "fumadocs-core/source/client";
 import { DocsLayout } from "fumadocs-ui/layouts/docs";
 import {
@@ -11,7 +11,9 @@ import {
 	DocsPage,
 	DocsTitle,
 } from "fumadocs-ui/layouts/docs/page";
+import type { GetLayoutTabsOptions } from "fumadocs-ui/layouts/shared";
 import defaultMdxComponents from "fumadocs-ui/mdx";
+import { usePostHog } from "posthog-js/react";
 import { Mermaid } from "@/components/mdx/mermaid";
 import { baseOptions } from "@/lib/layout.shared";
 import { source } from "@/lib/source";
@@ -135,8 +137,39 @@ function Page() {
 	const { pageTree } = useFumadocsLoader(data);
 
 	return (
-		<DocsLayout {...baseOptions} tree={pageTree}>
+		<DocsLayout {...baseOptions} tree={pageTree} tabs={tabOptions}>
 			{clientLoader.useContent(data.path)}
 		</DocsLayout>
 	);
 }
+
+// fumadocs picks the first page child as the tab url, which is the external
+// GitHub link in our meta.json files; use the first internal page instead
+function findInternalUrl(folder: PageTree.Folder): string | undefined {
+	if (folder.index && !folder.index.external) return folder.index.url;
+	for (const child of folder.children) {
+		if (child.type === "page" && !child.external) return child.url;
+		if (child.type === "folder") {
+			const url = findInternalUrl(child);
+			if (url) return url;
+		}
+	}
+}
+
+const tabOptions: GetLayoutTabsOptions = {
+	transform(option, node) {
+		const url = findInternalUrl(node);
+		if (!url) return null;
+		return {
+			...option,
+			url,
+			icon: node.icon ? (
+				<div className="size-full [&_svg]:size-full max-md:p-1.5 max-md:rounded-md max-md:border max-md:bg-fd-secondary">
+					{node.icon}
+				</div>
+			) : (
+				option.icon
+			),
+		};
+	},
+};
