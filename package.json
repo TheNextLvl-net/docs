@@ -36,7 +36,7 @@
 		"takumi-js": "2.19.0"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "2.6.6",
+		"@biomejs/biome": "2.6.7",
 		"@faststats/sourcemap-uploader-plugin": "0.5.3",
 		"@posthog/rollup-plugin": "^1.6.3",
 		"@tailwindcss/vite": "^4.3.5",
