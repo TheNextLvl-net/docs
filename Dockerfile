@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1
-FROM oven/bun:1.4.4-slim AS builder
+FROM oven/bun:1.4.5-slim AS builder
 WORKDIR /app
 COPY . .
 ARG PAT_GITHUB
@@ -30,7 +30,7 @@ ENV POSTHOG_RELEASE_VERSION=$POSTHOG_RELEASE_VERSION
 RUN bun install --frozen-lockfile
 RUN POSTHOG_API_KEY=$POSTHOG_API_KEY bun run build
 
-FROM oven/bun:1.4.4-slim
+FROM oven/bun:1.4.5-slim
 RUN apt-get update && apt-get install -y --no-install-recommends curl && rm -rf /var/lib/apt/lists/*
 WORKDIR /app
 COPY --from=builder /app/.output /app/.output
